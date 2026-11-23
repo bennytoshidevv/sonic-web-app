@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><meta content="mobile_tab" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Montserrat:wght@600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{width:100vw;margin:0;padding:0;}body{overscroll-behavior:none;}.pb-safe{padding-bottom:env(safe-area-inset-bottom,0px);}.pt-safe{padding-top:env(safe-area-inset-top,0px);}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { colors: { "secondary-fixed": "#e4dfff", "outline": "#757688", "sonic-bolt": "#FFD60A", "secondary-container": "#5537fe", "outline-variant": "#c4c5d9", "on-tertiary-fixed-variant": "#004c6a", "on-surface-variant": "#444656", "surface-container-highest": "#dfe0ff", "on-secondary-fixed": "#150066", "on-primary-fixed-variant": "#002ad0", "on-tertiary": "#ffffff", "surface-container-low": "#f4f2ff", "primary-fixed-dim": "#bbc3ff", "error": "#ba1a1a", "sonic-bg": "#F5F7FF", "primary-fixed": "#dfe0ff", "sonic-surface": "#FFFFFF", "tertiary": "#004561", "primary": "#0026c0", "surface-dim": "#d4d7ff", "secondary-fixed-dim": "#c6c0ff", "surface-container": "#edecff", "on-secondary": "#ffffff", "on-primary-fixed": "#000e5f", "sonic-blue-dark": "#0F27B8", "on-primary": "#ffffff", "sonic-border": "#DDE2F5", "tertiary-fixed": "#c5e7ff", "tertiary-fixed-dim": "#7fd0ff", "error-container": "#ffdad6", "tertiary-container": "#005e82", "on-primary-container": "#c5cbff", "surface-container-high": "#e6e6ff", "sonic-muted": "#5B6386", "on-surface": "#13183b", "sonic-warning": "#F59E0B", "secondary": "#3b00e6", "on-error": "#ffffff", "on-secondary-fixed-variant": "#3a00df", "inverse-surface": "#292e51", "on-secondary-container": "#ddd8ff", "surface-tint": "#2445f6", "inverse-primary": "#bbc3ff", "surface-bright": "#fbf8ff", "sonic-blue-light": "#E8ECFE", "on-background": "#13183b", "sonic-danger": "#DC2626", "on-tertiary-container": "#93d6ff", "surface-variant": "#dfe0ff", "sonic-success": "#16A34A", "surface-container-lowest": "#ffffff", "inverse-on-surface": "#f0efff", "primary-container": "#183cf0", "surface": "#fbf8ff", "background": "#fbf8ff", "on-error-container": "#93000a", "on-tertiary-fixed": "#001e2d" }, borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, spacing: { "space-xl": "2rem", "space-xs": "0.25rem", "space-lg": "1.5rem", "space-sm": "0.5rem", "gutter": "1rem", "space-md": "1rem", "margin": "1rem", "gutter-desktop": "1.5rem", "margin-desktop": "2rem" }, fontFamily: { "body-md": ["Inter"], "price-display": ["Montserrat"], "body-sm": ["Inter"], "body-lg": ["Inter"], "headline-md": ["Montserrat"], "label-lg": ["Montserrat"], "headline-sm": ["Montserrat"], "label-sm": ["Inter"], "label-md": ["Montserrat"], "headline-lg": ["Montserrat"] }, fontSize: { "body-md": ["15px", { lineHeight: "22px", fontWeight: "400" }], "price-display": ["18px", { lineHeight: "24px", fontWeight: "700" }], "body-sm": ["13px", { lineHeight: "18px", fontWeight: "400" }], "body-lg": ["16px", { lineHeight: "24px", fontWeight: "400" }], "headline-md": ["22px", { lineHeight: "28px", letterSpacing: "-0.01em", fontWeight: "700" }], "label-lg": ["16px", { lineHeight: "20px", fontWeight: "600" }], "headline-sm": ["18px", { lineHeight: "24px", fontWeight: "600" }], "label-sm": ["12px", { lineHeight: "16px", fontWeight: "500" }], "label-md": ["14px", { lineHeight: "18px", fontWeight: "600" }], "headline-lg": ["28px", { lineHeight: "36px", letterSpacing: "-0.02em", fontWeight: "800" }] } } } }</script><style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head><body class="bg-sonic-bg font-body-md text-body-md text-on-surface flex flex-col min-h-screen"><header class="fixed top-0 w-full z-50 bg-sonic-surface/90 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)] pt-safe"><div class="h-16 px-margin flex items-center justify-between"><div class="flex items-center gap-space-sm"><div class="w-9 h-9 rounded-full bg-primary-container flex items-center justify-center text-sonic-bolt shadow-sm"><span class="material-symbols-outlined text-[20px]">bolt</span></div><div class="flex flex-col"><span class="font-label-sm text-label-sm text-sonic-muted uppercase tracking-wider leading-none">Super Sonic</span><span class="font-headline-sm text-headline-sm text-on-surface leading-tight">Hi, Mark</span></div></div><div class="flex items-center gap-space-sm"><button aria-label="Notifications" class="relative w-11 h-11 flex items-center justify-center rounded-full hover:bg-surface-container transition-colors text-on-surface"><span class="material-symbols-outlined text-[24px]">notifications</span><span class="absolute top-2.5 right-2.5 w-2 h-2 rounded-full bg-sonic-danger ring-2 ring-sonic-surface"></span></button><img alt="Profile" class="w-8 h-8 rounded-full object-cover ring-2 ring-sonic-border" src="https://lh3.googleusercontent.com/aida/ALJJyrC8lRXYdjybIE90MeONF2eH0KosGRJACkoy-lyzF-YOG4th5LTs_7Jhi6mtx3iDcwEOTXrNpX9Ra-N2vuj8M_5qI4lhK3Pbu8O2Nxa5QYOvR4R9--26DM48rQTpq20WdGYtm2_Cb0H6kwEaKRgzb0ESoksxV_CZU8LKOqPui2GGPVj45SFbthr2nqU0RhX9M0r78aMalNCPNMmYVdwVWXbrc9rJTHOJdp3fcfGr7t6I7eiQWVaN3c-xgqvP"/></div></div></header><main class="flex flex-col relative w-full pt-16 pb-20 bg-sonic-bg min-h-screen"><div class="flex flex-col w-full relative">
+<!-- Interactive View Switcher Bar (Demo/Inspection mode) -->
+<div class="px-margin pt-space-xs pb-space-sm bg-surface-container-low shadow-sm">
+<div class="flex items-center justify-between mb-1.5">
+<span class="font-label-sm text-label-sm text-sonic-muted uppercase tracking-wider flex items-center gap-1">
+<span class="material-symbols-outlined text-[15px] text-primary">tune</span> Preview States
+      </span>
+<span class="font-label-sm text-label-sm text-sonic-success flex items-center gap-1 font-semibold">
+<span class="w-2 h-2 rounded-full bg-sonic-success animate-ping"></span> Live Dispatch
+      </span>
+</div>
+<div class="grid grid-cols-3 gap-1 bg-surface-container p-1 rounded-xl">
+<button class="py-1.5 px-2 rounded-lg text-center font-label-sm text-label-sm font-semibold transition-all bg-sonic-surface text-primary shadow-sm" id="btn-state-all" onclick="setViewState('all')">
+        All Deliveries
+      </button>
+<button class="py-1.5 px-2 rounded-lg text-center font-label-sm text-label-sm font-medium transition-all text-sonic-muted hover:text-on-surface" id="btn-state-empty" onclick="setViewState('empty')">
+        Empty Queue
+      </button>
+<button class="py-1.5 px-2 rounded-lg text-center font-label-sm text-label-sm font-medium transition-all text-sonic-muted hover:text-on-surface" id="btn-state-modal" onclick="openRejectModal()">
+        Reject Flow
+      </button>
+</div>
+</div>
+<!-- Rider Shift & Location Strip -->
+<div class="px-margin py-space-sm bg-sonic-surface shadow-sm flex items-center justify-between">
+<div class="flex items-center gap-space-sm min-w-0">
+<div class="relative w-10 h-10 rounded-full overflow-hidden bg-primary-fixed flex items-center justify-center shrink-0">
+<img alt="Super Sonic Rider Mark" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDACz9-UardfXhFsJD4pw5Sqo3eGGinaC-OHCjnTPJKKBRoqUosLLH0jiW3j7BfrcO-idbViWh85RRAoGUTOMD7iPsBrFCtaDrGAkyTXYD05rQNAcObEUY2_8mK1AciB64DTKnGEuvyLgnfOVxNZhbZ_cOF50HDKXGx3fVXDdl7mjFdc-e3gLWixz-kZ1KDZWcc-pxOL8ryHuDO44re6UnY-7xEswBsYh2XE9GTnMobDq9fKWtN7FXK5A"/>
+<div class="absolute bottom-0 right-0 w-3 h-3 bg-sonic-success rounded-full ring-2 ring-sonic-surface"></div>
+</div>
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-1.5">
+<span class="font-headline-sm text-headline-sm text-on-surface truncate">Sipocot Centro Zone</span>
+<span class="w-2 h-2 rounded-full bg-sonic-success"></span>
+</div>
+<span class="font-label-sm text-label-sm text-sonic-muted truncate">Shift: Morning · Zone 1 Active</span>
+</div>
+</div>
+<div class="flex items-center gap-1 bg-sonic-blue-light text-primary px-2.5 py-1 rounded-full shrink-0">
+<span class="material-symbols-outlined text-[16px]">electric_moped</span>
+<span class="font-label-sm text-label-sm font-bold">Fast Lane</span>
+</div>
+</div>
+<!-- Screen Header & Title -->
+<div class="px-margin pt-space-md pb-space-xs">
+<div class="flex items-end justify-between">
+<div>
+<h1 class="font-headline-md text-headline-md text-on-surface">My Deliveries</h1>
+<p class="font-body-sm text-body-sm text-sonic-muted mt-0.5">Assigned jobs and incoming dispatch requests</p>
+</div>
+<div class="flex items-center gap-1 bg-surface-container px-2.5 py-1 rounded-full">
+<span class="font-label-sm text-label-sm text-sonic-muted">Total:</span>
+<span class="font-label-sm text-label-sm font-bold text-primary">2 Active</span>
+</div>
+</div>
+<!-- Segmented Filter Tabs -->
+<div class="flex items-center gap-2 mt-space-md">
+<button class="relative flex-1 py-2 px-3 rounded-full bg-primary text-on-primary font-label-md text-label-md flex items-center justify-center gap-1.5 shadow-sm">
+<span>New Dispatches</span>
+<span class="bg-sonic-bolt text-on-surface px-1.5 py-0.2 rounded-full text-[11px] font-extrabold leading-none">1</span>
+</button>
+<button class="flex-1 py-2 px-3 rounded-full bg-surface-container text-on-surface-variant font-label-md text-label-md flex items-center justify-center gap-1.5">
+<span>In-Transit</span>
+<span class="bg-surface-container-highest text-primary px-1.5 py-0.2 rounded-full text-[11px] font-bold leading-none">1</span>
+</button>
+</div>
+</div>
+<!-- MAIN LIST CONTAINER -->
+<div class="flex flex-col px-margin py-space-md gap-space-md" id="deliveries-container">
+<!-- URGENT NEW ASSIGNMENT CARD -->
+<div class="bg-sonic-surface rounded-xl p-space-md shadow-md relative overflow-hidden transition-all" id="card-new-assignment">
+<!-- Top Urgent Countdown Strip -->
+<div class="bg-gradient-to-r from-amber-50 to-amber-100 rounded-lg p-2.5 flex items-center justify-between mb-space-md">
+<div class="flex items-center gap-2 min-w-0">
+<span class="w-6 h-6 rounded-full bg-sonic-warning text-on-primary flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[16px]">bolt</span>
+</span>
+<div class="flex flex-col min-w-0">
+<span class="font-label-sm text-label-sm font-bold text-amber-950 truncate">Incoming Dispatch Response</span>
+<span class="font-body-sm text-body-sm text-amber-900/80 text-[11px] leading-tight">Auto-reassigns if unanswered</span>
+</div>
+</div>
+<div class="bg-sonic-surface px-2.5 py-1 rounded-full shadow-sm flex items-center gap-1 shrink-0">
+<span class="material-symbols-outlined text-[16px] text-sonic-warning animate-pulse">timer</span>
+<span class="font-label-md text-label-md font-bold text-amber-900" id="countdown-timer">01:45</span>
+</div>
+</div>
+<!-- Order ID & Timestamp -->
+<div class="flex items-center justify-between pb-space-sm">
+<div>
+<span class="font-label-sm text-label-sm text-sonic-muted uppercase tracking-wider block">Batch Order</span>
+<span class="font-headline-sm text-headline-sm text-on-surface tracking-tight">SSD-20261121-0043</span>
+</div>
+<div class="text-right">
+<span class="inline-flex items-center gap-1 font-label-sm text-label-sm bg-surface-container text-sonic-muted px-2 py-0.5 rounded-full">
+<span class="material-symbols-outlined text-[13px]">schedule</span> 10:30 AM
+          </span>
+<span class="block text-[11px] text-sonic-muted mt-0.5">2 mins ago</span>
+</div>
+</div>
+<!-- Earnings & Distance Highlight Card -->
+<div class="bg-surface-container-low rounded-xl p-3 my-space-xs flex items-center justify-between">
+<div class="flex items-center gap-2.5">
+<div class="w-10 h-10 rounded-full bg-sonic-bolt/20 text-amber-700 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[22px]">payments</span>
+</div>
+<div>
+<span class="font-label-sm text-label-sm text-sonic-muted block leading-none">Your Earning</span>
+<span class="font-headline-md text-headline-md text-primary font-extrabold leading-tight">₱200.00</span>
+</div>
+</div>
+<div class="text-right pl-2 shrink-0">
+<div class="inline-flex items-center gap-1 bg-sonic-surface px-2 py-0.5 rounded-full shadow-sm">
+<span class="material-symbols-outlined text-[14px] text-primary">route</span>
+<span class="font-label-sm text-label-sm font-semibold text-on-surface">~3.2 km</span>
+</div>
+<span class="block text-[11px] text-sonic-muted mt-1 font-medium">Est. 20 mins trip</span>
+</div>
+</div>
+<!-- Route Stepper -->
+<div class="py-space-sm">
+<!-- Pickup 1 -->
+<div class="flex items-start gap-3 relative pb-3">
+<div class="w-6 flex flex-col items-center shrink-0">
+<div class="w-6 h-6 rounded-full bg-sonic-blue-light text-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-[14px]">storefront</span>
+</div>
+<div class="w-0.5 h-7 bg-sonic-border mt-1"></div>
+</div>
+<div class="flex-1 min-w-0 pt-0.5">
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md text-on-surface font-semibold truncate">1. Kusina ni Aling Rosa</span>
+<span class="font-label-sm text-label-sm bg-surface-container px-1.5 py-0.5 rounded text-[11px] text-sonic-muted">Pickup</span>
+</div>
+<p class="font-body-sm text-body-sm text-sonic-muted truncate">Stall 4, Centro Commercial Complex, Sipocot</p>
+</div>
+</div>
+<!-- Pickup 2 -->
+<div class="flex items-start gap-3 relative pb-3">
+<div class="w-6 flex flex-col items-center shrink-0">
+<div class="w-6 h-6 rounded-full bg-sonic-blue-light text-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-[14px]">local_cafe</span>
+</div>
+<div class="w-0.5 h-7 bg-sonic-border mt-1"></div>
+</div>
+<div class="flex-1 min-w-0 pt-0.5">
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md text-on-surface font-semibold truncate">2. Tea Haus Sipocot</span>
+<span class="font-label-sm text-label-sm bg-surface-container px-1.5 py-0.5 rounded text-[11px] text-sonic-muted">Pickup</span>
+</div>
+<p class="font-body-sm text-body-sm text-sonic-muted truncate">Ground Floor, Centro Commercial, Sipocot</p>
+</div>
+</div>
+<!-- Drop-off -->
+<div class="flex items-start gap-3">
+<div class="w-6 flex flex-col items-center shrink-0">
+<div class="w-6 h-6 rounded-full bg-secondary-fixed text-secondary flex items-center justify-center">
+<span class="material-symbols-outlined text-[14px]">pin_drop</span>
+</div>
+</div>
+<div class="flex-1 min-w-0 pt-0.5">
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md text-on-surface font-semibold truncate">Drop-off: Purok 2</span>
+<span class="font-label-sm text-label-sm bg-secondary-fixed text-secondary px-1.5 py-0.5 rounded text-[11px] font-semibold">Customer</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant truncate">San Juan Ave., South Centro, Sipocot</p>
+<div class="flex items-center gap-1 mt-0.5 text-sonic-muted text-[12px]">
+<span class="material-symbols-outlined text-[14px] text-amber-600">flag</span>
+<span class="truncate">Landmark: Near covered basketball court</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Payment & COD Collection Strip -->
+<div class="bg-surface-container rounded-xl p-2.5 flex items-center justify-between mt-1 mb-space-md">
+<div class="flex items-center gap-2">
+<div class="w-7 h-7 rounded-full bg-sonic-success/15 text-sonic-success flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[18px]">attach_money</span>
+</div>
+<div>
+<span class="font-label-sm text-label-sm font-semibold text-on-surface block leading-none">Collect COD Payment</span>
+<span class="font-body-sm text-body-sm text-sonic-muted text-[11px]">Exact cash change required</span>
+</div>
+</div>
+<span class="font-price-display text-price-display text-sonic-success font-bold">₱470.00</span>
+</div>
+<!-- Action Buttons Side-by-Side (48px tap targets) -->
+<div class="grid grid-cols-2 gap-3 pt-space-xs">
+<button class="h-12 rounded-full bg-surface-container text-sonic-danger font-label-md text-label-md hover:bg-error-container transition-colors flex items-center justify-center gap-1 active:scale-[0.98]" onclick="openRejectModal()">
+<span class="material-symbols-outlined text-[18px]">close</span>
+<span>Reject</span>
+</button>
+<button class="h-12 rounded-full bg-primary text-on-primary font-label-md text-label-md shadow-md hover:bg-sonic-blue-dark transition-all flex items-center justify-center gap-1.5 active:scale-[0.98]" onclick="acceptOrder()">
+<span>Accept</span>
+<span class="material-symbols-outlined text-[18px] text-sonic-bolt">bolt</span>
+</button>
+</div>
+</div>
+<!-- IN-PROGRESS / ACTIVE DELIVERY CARD -->
+<div class="bg-sonic-surface rounded-xl p-space-md shadow-sm" id="card-active-delivery">
+<!-- Status Badge & Order Number -->
+<div class="flex items-center justify-between pb-space-sm">
+<div class="flex items-center gap-2 min-w-0">
+<span class="bg-secondary-fixed text-secondary px-2.5 py-1 rounded-full font-label-sm text-label-sm font-bold flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">local_shipping</span> Picked Up
+          </span>
+<span class="font-label-md text-label-md text-on-surface font-bold truncate">#SSD-20261121-0042</span>
+</div>
+<span class="font-label-sm text-label-sm text-sonic-success font-semibold flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-sonic-success"></span> In Progress
+        </span>
+</div>
+<!-- Customer Contact Row -->
+<div class="bg-surface-container-low rounded-xl p-3 my-2 flex items-center justify-between">
+<div class="flex items-center gap-2.5 min-w-0">
+<div class="w-9 h-9 rounded-full bg-primary-fixed text-primary flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[20px]">person</span>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-label-md text-label-md text-on-surface font-semibold truncate">Juan Dela Cruz</span>
+<span class="font-body-sm text-body-sm text-sonic-muted text-[12px] truncate">Customer · Mobile Verified</span>
+</div>
+</div>
+<div class="flex items-center gap-1 shrink-0">
+<button class="w-9 h-9 rounded-full bg-sonic-surface text-primary flex items-center justify-center shadow-sm hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-[18px]">call</span>
+</button>
+<button class="w-9 h-9 rounded-full bg-sonic-surface text-primary flex items-center justify-center shadow-sm hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-[18px]">chat</span>
+</button>
+</div>
+</div>
+<!-- Progress Track Status -->
+<div class="py-2">
+<div class="flex items-center justify-between text-xs mb-1">
+<span class="font-label-sm text-label-sm text-sonic-success font-semibold flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">check_circle</span> 2 of 2 pickups completed
+          </span>
+<span class="font-label-sm text-label-sm text-sonic-muted font-medium">Drop-off phase</span>
+</div>
+<div class="w-full h-1.5 bg-surface-container rounded-full overflow-hidden">
+<div class="w-3/4 h-full bg-secondary rounded-full"></div>
+</div>
+</div>
+<!-- Next Stop Details -->
+<div class="bg-surface-container rounded-xl p-3 my-2 flex items-start gap-2.5">
+<div class="w-7 h-7 rounded-full bg-secondary text-on-secondary flex items-center justify-center shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-[16px]">navigation</span>
+</div>
+<div class="min-w-0 flex-1">
+<span class="font-label-sm text-label-sm text-sonic-muted uppercase tracking-wider block">Next Destination</span>
+<span class="font-label-md text-label-md text-on-surface font-bold block truncate">Purok 3, Rizal St., San Jose, Sipocot</span>
+<p class="font-body-sm text-body-sm text-sonic-muted text-[12px] mt-0.5 truncate">Note: Beside blue sari-sari store &amp; mango tree</p>
+</div>
+</div>
+<!-- Open Navigation CTA -->
+<div class="pt-2">
+<button class="w-full h-12 rounded-full bg-primary text-on-primary font-label-md text-label-md shadow-md hover:bg-sonic-blue-dark transition-all flex items-center justify-center gap-2 active:scale-[0.99]">
+<span class="material-symbols-outlined text-[18px]">directions</span>
+<span>Open Turn-by-Turn Navigation</span>
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- EMPTY STATE CARD (Hidden by default, shown via toggle) -->
+<div class="hidden bg-sonic-surface rounded-2xl p-space-xl shadow-sm text-center py-10 my-4 flex-col items-center" id="card-empty-state">
+<div class="w-16 h-16 rounded-full bg-sonic-bolt/20 text-amber-600 flex items-center justify-center mb-space-md shadow-inner">
+<span class="material-symbols-outlined text-[36px] text-sonic-warning">bolt</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-bold">No deliveries yet. Stay available!</h3>
+<p class="font-body-sm text-body-sm text-sonic-muted max-w-xs mt-1.5 mb-space-lg">
+        You're online and first in queue for upcoming orders around Sipocot Centro. New orders refresh automatically.
+      </p>
+<div class="inline-flex items-center gap-2 bg-surface-container-low px-4 py-2 rounded-full shadow-inner">
+<span class="relative flex h-2.5 w-2.5">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-sonic-success opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-sonic-success"></span>
+</span>
+<span class="font-label-sm text-label-sm font-semibold text-on-surface">Rider Status: Available &amp; Ready</span>
+</div>
+<div class="mt-6 pt-4 border-t-0 flex items-center gap-2 text-sonic-muted text-xs">
+<span class="material-symbols-outlined text-[16px] text-primary">radar</span>
+<span>Scanning Sipocot coverage area (5km radius)</span>
+</div>
+</div>
+</div>
+<!-- REJECT ASSIGNMENT BOTTOM SHEET / MODAL -->
+<div class="hidden fixed inset-0 z-50 flex items-end justify-center bg-on-surface/40 backdrop-blur-sm p-0 transition-opacity" id="reject-modal">
+<div class="w-full max-w-[420px] bg-sonic-surface rounded-t-3xl p-space-lg shadow-2xl animate-in slide-in-from-bottom duration-200">
+<!-- Drag handle -->
+<div class="w-12 h-1 bg-outline-variant rounded-full mx-auto mb-space-md"></div>
+<div class="flex items-start justify-between mb-space-sm">
+<div>
+<h2 class="font-headline-sm text-headline-sm text-on-surface font-bold">Reject Assignment?</h2>
+<span class="font-label-sm text-label-sm text-sonic-muted">Order #SSD-20261121-0043</span>
+</div>
+<button class="w-8 h-8 rounded-full bg-surface-container flex items-center justify-center text-sonic-muted hover:text-on-surface" onclick="closeRejectModal()">
+<span class="material-symbols-outlined text-[20px]">close</span>
+</button>
+</div>
+<div class="bg-error-container/60 rounded-xl p-3 mb-space-md flex items-start gap-2.5">
+<span class="material-symbols-outlined text-sonic-danger text-[20px] shrink-0 mt-0.5">info</span>
+<p class="font-body-sm text-body-sm text-on-error-container text-[12px] leading-relaxed">
+          Passing this order will dispatch it to the next available rider in Sipocot. Your acceptance rate will adjust slightly.
+        </p>
+</div>
+<!-- Radio options for reject reasons -->
+<fieldset class="space-y-2 mb-space-md">
+<legend class="font-label-sm text-label-sm font-semibold text-on-surface mb-1">Select reason for rejection</legend>
+<label class="flex items-center justify-between p-2.5 rounded-xl bg-surface-container-low hover:bg-surface-container cursor-pointer transition-colors">
+<span class="font-body-sm text-body-sm text-on-surface">Too far from current location</span>
+<input checked="" class="w-4 h-4 accent-primary text-primary focus:ring-0" name="reject_reason" type="radio" value="too_far"/>
+</label>
+<label class="flex items-center justify-between p-2.5 rounded-xl bg-surface-container-low hover:bg-surface-container cursor-pointer transition-colors">
+<span class="font-body-sm text-body-sm text-on-surface">Vehicle issue / flat tire</span>
+<input class="w-4 h-4 accent-primary text-primary focus:ring-0" name="reject_reason" type="radio" value="vehicle"/>
+</label>
+<label class="flex items-center justify-between p-2.5 rounded-xl bg-surface-container-low hover:bg-surface-container cursor-pointer transition-colors">
+<span class="font-body-sm text-body-sm text-on-surface">COD cash limit reached</span>
+<input class="w-4 h-4 accent-primary text-primary focus:ring-0" name="reject_reason" type="radio" value="cash_limit"/>
+</label>
+<label class="flex items-center justify-between p-2.5 rounded-xl bg-surface-container-low hover:bg-surface-container cursor-pointer transition-colors">
+<span class="font-body-sm text-body-sm text-on-surface">Taking a break / emergency</span>
+<input class="w-4 h-4 accent-primary text-primary focus:ring-0" name="reject_reason" type="radio" value="emergency"/>
+</label>
+<label class="flex items-center justify-between p-2.5 rounded-xl bg-surface-container-low hover:bg-surface-container cursor-pointer transition-colors">
+<span class="font-body-sm text-body-sm text-on-surface">Other reason</span>
+<input class="w-4 h-4 accent-primary text-primary focus:ring-0" name="reject_reason" type="radio" value="other"/>
+</label>
+</fieldset>
+<!-- Optional comments -->
+<div class="mb-space-lg">
+<textarea class="w-full bg-surface-container-low rounded-xl p-2.5 text-body-sm font-body-sm text-on-surface placeholder:text-sonic-muted focus:outline-none focus:bg-surface-container resize-none" placeholder="Optional notes for dispatcher..." rows="2"></textarea>
+</div>
+<!-- Action Buttons -->
+<div class="grid grid-cols-2 gap-3 pb-safe">
+<button class="h-12 rounded-full bg-surface-container text-on-surface font-label-md text-label-md hover:bg-surface-container-high transition-colors" onclick="closeRejectModal()">
+          Keep Assignment
+        </button>
+<button class="h-12 rounded-full bg-sonic-danger text-on-error font-label-md text-label-md shadow-md hover:opacity-90 transition-opacity" onclick="confirmReject()">
+          Confirm Reject
+        </button>
+</div>
+</div>
+</div>
+<!-- Toast Confirmation for Actions -->
+<div class="fixed bottom-20 left-1/2 -translate-x-1/2 z-40 hidden px-4 py-2.5 rounded-full shadow-lg bg-inverse-surface text-inverse-on-surface font-label-sm text-label-sm items-center gap-2" id="toast-notification">
+<span class="material-symbols-outlined text-[18px] text-sonic-bolt" id="toast-icon">check_circle</span>
+<span id="toast-message">Order accepted! Starting navigation...</span>
+</div>
+</div>
+<script>
+  let remainingSeconds = 105;
+  const timerElement = document.getElementById('countdown-timer');
+
+  const countdownInterval = setInterval(() => {
+    if (remainingSeconds <= 0) {
+      clearInterval(countdownInterval);
+      if (timerElement) timerElement.textContent = "00:00";
+      return;
+    }
+    remainingSeconds--;
+    const mins = Math.floor(remainingSeconds / 60).toString().padStart(2, '0');
+    const secs = (remainingSeconds % 60).toString().padStart(2, '0');
+    if (timerElement) timerElement.textContent = `${mins}:${secs}`;
+  }, 1000);
+
+  function setViewState(state) {
+    const cardNew = document.getElementById('card-new-assignment');
+    const cardActive = document.getElementById('card-active-delivery');
+    const cardEmpty = document.getElementById('card-empty-state');
+    
+    const btnAll = document.getElementById('btn-state-all');
+    const btnEmpty = document.getElementById('btn-state-empty');
+    const btnModal = document.getElementById('btn-state-modal');
+
+    // Reset button styling
+    [btnAll, btnEmpty, btnModal].forEach(b => {
+      b.className = "py-1.5 px-2 rounded-lg text-center font-label-sm text-label-sm font-medium transition-all text-sonic-muted hover:text-on-surface";
+    });
+
+    if (state === 'all') {
+      btnAll.className = "py-1.5 px-2 rounded-lg text-center font-label-sm text-label-sm font-semibold transition-all bg-sonic-surface text-primary shadow-sm";
+      cardNew.classList.remove('hidden');
+      cardActive.classList.remove('hidden');
+      cardEmpty.classList.add('hidden');
+      cardEmpty.classList.remove('flex');
+    } else if (state === 'empty') {
+      btnEmpty.className = "py-1.5 px-2 rounded-lg text-center font-label-sm text-label-sm font-semibold transition-all bg-sonic-surface text-primary shadow-sm";
+      cardNew.classList.add('hidden');
+      cardActive.classList.add('hidden');
+      cardEmpty.classList.remove('hidden');
+      cardEmpty.classList.add('flex');
+    }
+  }
+
+  function openRejectModal() {
+    const modal = document.getElementById('reject-modal');
+    modal.classList.remove('hidden');
+  }
+
+  function closeRejectModal() {
+    const modal = document.getElementById('reject-modal');
+    modal.classList.add('hidden');
+  }
+
+  function showToast(message, icon = 'check_circle') {
+    const toast = document.getElementById('toast-notification');
+    const toastMsg = document.getElementById('toast-message');
+    const toastIcon = document.getElementById('toast-icon');
+    if (!toast) return;
+    toastMsg.textContent = message;
+    toastIcon.textContent = icon;
+    toast.classList.remove('hidden');
+    toast.classList.add('flex');
+    setTimeout(() => {
+      toast.classList.add('hidden');
+      toast.classList.remove('flex');
+    }, 2800);
+  }
+
+  function acceptOrder() {
+    showToast("Order SSD-20261121-0043 Accepted! ⚡", "bolt");
+    const cardNew = document.getElementById('card-new-assignment');
+    if (cardNew) {
+      cardNew.style.transform = "scale(0.98)";
+      setTimeout(() => {
+        cardNew.style.opacity = "0.4";
+        cardNew.style.pointerEvents = "none";
+      }, 300);
+    }
+  }
+
+  function confirmReject() {
+    closeRejectModal();
+    showToast("Order rejected and dispatched to next rider", "cancel");
+    const cardNew = document.getElementById('card-new-assignment');
+    if (cardNew) {
+      cardNew.classList.add('hidden');
+    }
+  }
+</script></main><nav class="fixed bottom-0 w-full z-50 pb-safe bg-sonic-surface/95 backdrop-blur-xl shadow-[0_-2px_12px_rgba(11,16,51,0.06)]" data-active-classes="text-primary font-label-md"><div class="flex justify-around items-center h-16 px-space-xs"><a class="flex flex-col items-center justify-center w-16 h-12 text-sonic-muted hover:text-on-surface transition-colors gap-0.5" data-path="dashboard" href="#"><span class="material-symbols-outlined text-[24px]">speed</span><span class="font-label-sm text-label-sm">Dashboard</span></a><a class="flex flex-col items-center justify-center w-16 h-12 text-sonic-muted hover:text-on-surface transition-colors gap-0.5" data-path="deliveries" href="#"><span class="material-symbols-outlined text-[24px]">two_wheeler</span><span class="font-label-sm text-label-sm">Deliveries</span></a><a class="flex flex-col items-center justify-center w-16 h-12 text-sonic-muted hover:text-on-surface transition-colors gap-0.5" data-path="history" href="#"><span class="material-symbols-outlined text-[24px]">receipt_long</span><span class="font-label-sm text-label-sm">History</span></a><a class="flex flex-col items-center justify-center w-16 h-12 text-sonic-muted hover:text-on-surface transition-colors gap-0.5" data-path="wallet" href="#"><span class="material-symbols-outlined text-[24px]">account_balance_wallet</span><span class="font-label-sm text-label-sm">Wallet</span></a></div></nav></body></html>

@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Montserrat:wght@600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{"colors":{"sonic-warning":"#F59E0B","on-secondary":"#ffffff","surface-bright":"#fbf8ff","on-surface-variant":"#444656","on-error":"#ffffff","on-tertiary-fixed-variant":"#004c6a","on-secondary-fixed-variant":"#3a00df","outline":"#757688","sonic-bg":"#F5F7FF","sonic-bolt":"#FFD60A","surface-container-low":"#f4f2ff","primary-container":"#183cf0","sonic-success":"#16A34A","surface-container-highest":"#dfe0ff","sonic-surface":"#FFFFFF","on-primary":"#ffffff","primary":"#0026c0","on-surface":"#13183b","surface-dim":"#d4d7ff","sonic-blue-light":"#E8ECFE","tertiary-fixed":"#c5e7ff","surface-variant":"#dfe0ff","sonic-muted":"#5B6386","tertiary-fixed-dim":"#7fd0ff","sonic-border":"#DDE2F5","on-tertiary-fixed":"#001e2d","on-error-container":"#93000a","surface":"#fbf8ff","secondary-container":"#5537fe","on-primary-fixed":"#000e5f","primary-fixed-dim":"#bbc3ff","tertiary-container":"#005e82","inverse-on-surface":"#f0efff","surface-container":"#edecff","inverse-primary":"#bbc3ff","error":"#ba1a1a","error-container":"#ffdad6","surface-tint":"#2445f6","on-primary-fixed-variant":"#002ad0","secondary-fixed":"#e4dfff","primary-fixed":"#dfe0ff","on-secondary-container":"#ddd8ff","background":"#fbf8ff","sonic-danger":"#DC2626","surface-container-high":"#e6e6ff","secondary-fixed-dim":"#c6c0ff","secondary":"#3b00e6","inverse-surface":"#292e51","on-tertiary-container":"#93d6ff","on-background":"#13183b","on-secondary-fixed":"#150066","outline-variant":"#c4c5d9","surface-container-lowest":"#ffffff","sonic-blue-dark":"#0F27B8","on-tertiary":"#ffffff","on-primary-container":"#c5cbff","tertiary":"#004561"},"borderRadius":{"DEFAULT":"0.25rem","lg":"0.5rem","xl":"0.75rem","full":"9999px"},"spacing":{"space-lg":"1.5rem","space-xs":"0.25rem","gutter":"1rem","gutter-desktop":"1.5rem","margin":"1rem","space-sm":"0.5rem","space-md":"1rem","margin-desktop":"2rem","space-xl":"2rem"},"fontFamily":{"body-md":["Inter"],"headline-md":["Montserrat"],"label-sm":["Inter"],"body-lg":["Inter"],"price-display":["Montserrat"],"headline-lg":["Montserrat"],"headline-sm":["Montserrat"],"label-md":["Montserrat"],"body-sm":["Inter"],"label-lg":["Montserrat"]},"fontSize":{"body-md":["15px",{"lineHeight":"22px","fontWeight":"400"}],"headline-md":["22px",{"lineHeight":"28px","letterSpacing":"-0.01em","fontWeight":"700"}],"label-sm":["12px",{"lineHeight":"16px","fontWeight":"500"}],"body-lg":["16px",{"lineHeight":"24px","fontWeight":"400"}],"price-display":["18px",{"lineHeight":"24px","fontWeight":"700"}],"headline-lg":["28px",{"lineHeight":"36px","letterSpacing":"-0.02em","fontWeight":"800"}],"headline-sm":["18px",{"lineHeight":"24px","fontWeight":"600"}],"label-md":["14px",{"lineHeight":"18px","fontWeight":"600"}],"body-sm":["13px",{"lineHeight":"18px","fontWeight":"400"}],"label-lg":["16px",{"lineHeight":"20px","fontWeight":"600"}]}}}}</script></head><body class="bg-surface font-body-md text-on-surface"><aside class="fixed left-0 top-0 h-full w-64 bg-surface-container-lowest shadow-[0_1px_8px_rgba(0,0,0,0.04)] z-50 flex flex-col justify-between py-6"><div class="flex flex-col"><div class="px-6 mb-8 flex items-center gap-3"><div class="w-10 h-10 rounded-xl bg-primary flex items-center justify-center text-on-primary shadow-sm"><span class="material-symbols-outlined text-sonic-bolt text-2xl">bolt</span></div><div class="flex flex-col"><span class="font-headline-sm text-headline-sm text-on-surface font-bold tracking-tight leading-none">Super Sonic</span><span class="font-label-sm text-label-sm text-outline mt-1 font-medium">Design System</span></div></div><div class="px-6 mb-2"><span class="font-label-sm text-label-sm uppercase tracking-wider text-outline font-semibold">Library Specs</span></div><nav class="flex flex-col gap-1 px-3" data-active-classes="bg-primary-container text-on-primary font-semibold shadow-sm"><a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-all font-body-md text-body-md" data-path="overview-tokens" href="#"><span class="material-symbols-outlined text-xl">palette</span>Overview &amp; Tokens</a><a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-all font-body-md text-body-md" data-path="typography-spacing" href="#"><span class="material-symbols-outlined text-xl">text_fields</span>Typography &amp; Grid</a><a aria-current="page" class="flex items-center gap-3 px-3 py-2.5 rounded-lg transition-all bg-primary-container text-on-primary font-semibold shadow-sm" data-path="action-components" href="#"><span class="material-symbols-outlined text-xl">smart_button</span>Action Components</a><a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-all font-body-md text-body-md" data-path="delivery-cards" href="#"><span class="material-symbols-outlined text-xl">fastfood</span>Cards &amp; Menu Rows</a><a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-all font-body-md text-body-md" data-path="status-steppers" href="#"><span class="material-symbols-outlined text-xl">timeline</span>Status &amp; Steppers</a></nav></div><div class="px-6 pt-4 border-t border-surface-container"><div class="flex items-center justify-between text-on-surface-variant"><span class="font-label-sm text-label-sm font-medium">Theme Mode</span><span class="font-label-sm text-label-sm px-2.5 py-0.5 rounded-full bg-surface-container-high text-on-surface font-semibold">Light Mode</span></div></div></aside><div class="pl-64"><header class="fixed top-0 left-64 right-0 h-16 bg-surface-container-lowest/90 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)] z-40 flex items-center justify-between px-8"><div class="flex items-center gap-4"><h1 class="font-headline-sm text-headline-sm text-on-surface font-bold tracking-tight">Super Sonic Design System — Component Library &amp; Tokens</h1><span class="font-label-sm text-label-sm px-2.5 py-0.5 rounded-full bg-primary-fixed text-on-primary-fixed font-bold">v1.0.0</span></div><div class="flex items-center gap-4"><div class="flex items-center gap-2 px-3 py-1.5 rounded-full bg-surface-container-low text-on-surface-variant"><span class="material-symbols-outlined text-lg text-sonic-success">verified</span><span class="font-label-sm text-label-sm font-semibold text-on-surface">Production Stable</span></div><img alt="Profile" class="w-8 h-8 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida/ALJJyrC8lRXYdjybIE90MeONF2eH0KosGRJACkoy-lyzF-YOG4th5LTs_7Jhi6mtx3iDcwEOTXrNpX9Ra-N2vuj8M_5qI4lhK3Pbu8O2Nxa5QYOvR4R9--26DM48rQTpq20WdGYtm2_Cb0H6kwEaKRgzb0ESoksxV_CZU8LKOqPui2GGPVj45SFbthr2nqU0RhX9M0r78aMalNCPNMmYVdwVWXbrc9rJTHOJdp3fcfGr7t6I7eiQWVaN3c-xgqvP"/></div></header><main class="relative pt-16 w-full min-h-screen bg-sonic-bg"><div class="flex flex-col w-full">
+<!-- Top System Header Banner & Brand Visual Reference -->
+<div class="px-8 py-6 bg-surface-container-lowest border-b border-sonic-border flex flex-wrap items-center justify-between gap-6 shadow-[0_1px_4px_rgba(11,16,51,0.04)]">
+<div class="flex items-center gap-5">
+<div class="relative w-16 h-16 rounded-2xl bg-sonic-bg p-2 flex items-center justify-center shadow-inner overflow-hidden">
+<img alt="Super Sonic Delivery Brand Identity Logo" class="w-full h-full object-contain drop-shadow" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDvJGGyxQK0achh_fbXzvpeTSV8HsLbXdl7oFFBTlO4FBET3V3qVmcXflGSgoPjKHeYZwl2Ho6ba3dX5asrqIfo4AdOAqSZKwYa88GrAsQuce1wiwO323a6Y4ld1hZs8VafMloJz-zQrsdbN2UbdZUUXV2KUExuHdNp9gyzDx0-ZiY2TmiYkvEb5va8JLpVWarAHIPDQ8WAAgCy7A7U9u-4YCJwT6qToxLVmChY8GX2zvmlJ-c2_uS_BA"/>
+</div>
+<div>
+<div class="flex items-center gap-2.5">
+<span class="font-headline-md text-headline-md font-bold tracking-tight text-on-surface">Super Sonic Delivery</span>
+<span class="px-2.5 py-0.5 rounded-full bg-primary-container text-on-primary font-label-sm text-label-sm font-semibold tracking-wide">DS v1.2</span>
+<span class="px-2 py-0.5 rounded bg-sonic-bolt text-on-surface font-label-sm text-label-sm font-bold flex items-center gap-1">
+<span class="material-symbols-outlined text-sm font-bold">bolt</span> Desktop Spec
+          </span>
+</div>
+<p class="font-body-sm text-body-sm text-sonic-muted mt-0.5">Comprehensive Component Library &amp; Token Manifest for Desktop Web Console &amp; Delivery Dispatch</p>
+</div>
+</div>
+<!-- Quick Palette Strip -->
+<div class="flex items-center gap-3 bg-sonic-bg px-4 py-2.5 rounded-xl border border-sonic-border">
+<div class="flex flex-col items-center">
+<div class="w-6 h-6 rounded-md bg-primary-container shadow-xs" title="sonic-blue (#183CF0)"></div>
+<span class="font-label-sm text-[10px] text-sonic-muted mt-1 font-semibold">Blue</span>
+</div>
+<div class="flex flex-col items-center">
+<div class="w-6 h-6 rounded-md bg-sonic-blue-dark shadow-xs" title="sonic-blue-dark (#0F27B8)"></div>
+<span class="font-label-sm text-[10px] text-sonic-muted mt-1 font-semibold">Navy</span>
+</div>
+<div class="flex flex-col items-center">
+<div class="w-6 h-6 rounded-md bg-secondary-container shadow-xs" title="sonic-violet (#3F0BEB)"></div>
+<span class="font-label-sm text-[10px] text-sonic-muted mt-1 font-semibold">Violet</span>
+</div>
+<div class="flex flex-col items-center">
+<div class="w-6 h-6 rounded-md bg-tertiary-fixed-dim shadow-xs" title="sonic-sky (#30B4F0)"></div>
+<span class="font-label-sm text-[10px] text-sonic-muted mt-1 font-semibold">Sky</span>
+</div>
+<div class="flex flex-col items-center">
+<div class="w-6 h-6 rounded-md bg-sonic-bolt shadow-xs flex items-center justify-center text-on-surface" title="sonic-bolt (#FFD60A)">
+<span class="material-symbols-outlined text-xs font-bold">bolt</span>
+</div>
+<span class="font-label-sm text-[10px] text-sonic-muted mt-1 font-semibold">Bolt</span>
+</div>
+<div class="flex flex-col items-center">
+<div class="w-6 h-6 rounded-md bg-sonic-success shadow-xs" title="sonic-success (#16A34A)"></div>
+<span class="font-label-sm text-[10px] text-sonic-muted mt-1 font-semibold">Success</span>
+</div>
+<div class="flex flex-col items-center">
+<div class="w-6 h-6 rounded-md bg-sonic-warning shadow-xs" title="sonic-warning (#F59E0B)"></div>
+<span class="font-label-sm text-[10px] text-sonic-muted mt-1 font-semibold">Warn</span>
+</div>
+<div class="flex flex-col items-center">
+<div class="w-6 h-6 rounded-md bg-sonic-danger shadow-xs" title="sonic-danger (#DC2626)"></div>
+<span class="font-label-sm text-[10px] text-sonic-muted mt-1 font-semibold">Danger</span>
+</div>
+</div>
+</div>
+<!-- Content Container (1440px target layout inside app shell) -->
+<div class="p-8 space-y-8 max-w-[1440px] mx-auto w-full">
+<!-- SECTION 1 & SECTION 2: Action Components & Inputs Side-by-Side -->
+<div class="grid grid-cols-1 xl:grid-cols-2 gap-8 items-start">
+<!-- 1. Buttons Section -->
+<section class="bg-sonic-surface rounded-xl p-6 shadow-[0_2px_8px_rgba(11,16,51,0.08)] border border-sonic-border flex flex-col gap-6">
+<div class="flex items-center justify-between border-b border-sonic-border pb-4">
+<div class="flex items-center gap-3">
+<span class="w-7 h-7 rounded-lg bg-primary-container text-on-primary flex items-center justify-center font-bold text-xs">01</span>
+<h2 class="font-headline-sm text-headline-sm font-bold text-on-surface">Action Components (Buttons)</h2>
+</div>
+<span class="font-label-sm text-label-sm font-semibold text-sonic-muted bg-sonic-bg px-2.5 py-1 rounded-md">Token: pill-radius 9999px</span>
+</div>
+<!-- Buttons Matrix -->
+<div class="flex flex-col gap-5">
+<div>
+<span class="font-label-sm text-label-sm text-sonic-muted uppercase tracking-wider block mb-2 font-semibold">Standard Button Variants</span>
+<div class="flex flex-wrap items-center gap-3.5">
+<!-- Primary Button -->
+<button class="px-6 py-2.5 rounded-full bg-primary-container hover:bg-sonic-blue-dark active:scale-[0.98] transition-all text-on-primary font-headline-sm text-sm font-semibold shadow-sm flex items-center gap-2 cursor-pointer">
+<span class="material-symbols-outlined text-lg">bolt</span>
+<span>Confirm Order</span>
+</button>
+<!-- Secondary Button -->
+<button class="px-6 py-2 rounded-full bg-sonic-surface border-2 border-primary-container text-primary-container hover:bg-sonic-blue-light transition-all font-headline-sm text-sm font-semibold flex items-center gap-2 cursor-pointer">
+<span class="material-symbols-outlined text-lg">edit</span>
+<span>Edit Cart</span>
+</button>
+<!-- Danger Button -->
+<button class="px-6 py-2.5 rounded-full bg-sonic-danger hover:bg-red-700 active:scale-[0.98] transition-all text-on-error font-headline-sm text-sm font-semibold shadow-sm flex items-center gap-2 cursor-pointer">
+<span class="material-symbols-outlined text-lg">cancel</span>
+<span>Cancel Order</span>
+</button>
+<!-- Disabled Button -->
+<button class="px-6 py-2.5 rounded-full bg-surface-container-high text-outline font-headline-sm text-sm font-medium cursor-not-allowed flex items-center gap-2" disabled="">
+<span class="material-symbols-outlined text-lg">block</span>
+<span>Unavailable</span>
+</button>
+<!-- Small Button -->
+<button class="px-4 py-1.5 rounded-full bg-primary-container hover:bg-sonic-blue-dark text-on-primary font-label-sm text-label-sm font-semibold shadow-xs flex items-center gap-1.5 cursor-pointer">
+<span class="material-symbols-outlined text-sm">add</span>
+<span>Add Item</span>
+</button>
+</div>
+</div>
+<!-- Full Width Mobile Height Preview Button -->
+<div class="pt-3 border-t border-sonic-border">
+<div class="flex justify-between items-center mb-2">
+<span class="font-label-sm text-label-sm text-sonic-muted uppercase tracking-wider font-semibold">Mobile Primary Action Bar (Min Height: 48px)</span>
+<span class="font-label-sm text-label-sm text-primary-container font-semibold">Touch Target: 48px Safe</span>
+</div>
+<button class="w-full h-12 rounded-full bg-primary-container hover:bg-sonic-blue-dark text-on-primary font-headline-sm text-base font-bold shadow-md flex items-center justify-between px-6 transition-all group">
+<div class="flex items-center gap-2">
+<span class="w-7 h-7 rounded-full bg-white/20 flex items-center justify-center text-xs font-bold">3</span>
+<span>Checkout (₱340.00)</span>
+</div>
+<div class="flex items-center gap-1 group-hover:translate-x-1 transition-transform">
+<span class="font-semibold text-sm">Proceed</span>
+<span class="material-symbols-outlined text-lg">arrow_forward</span>
+</div>
+</button>
+</div>
+</div>
+</section>
+<!-- 2. Inputs Section -->
+<section class="bg-sonic-surface rounded-xl p-6 shadow-[0_2px_8px_rgba(11,16,51,0.08)] border border-sonic-border flex flex-col gap-6">
+<div class="flex items-center justify-between border-b border-sonic-border pb-4">
+<div class="flex items-center gap-3">
+<span class="w-7 h-7 rounded-lg bg-primary-container text-on-primary flex items-center justify-center font-bold text-xs">02</span>
+<h2 class="font-headline-sm text-headline-sm font-bold text-on-surface">Input Fields &amp; Form Controls</h2>
+</div>
+<span class="font-label-sm text-label-sm font-semibold text-sonic-muted bg-sonic-bg px-2.5 py-1 rounded-md">Token: 12px Radius • 1px sonic-border</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<!-- Text Input -->
+<div class="flex flex-col gap-1.5">
+<label class="font-body-sm text-body-sm font-semibold text-on-surface">Customer Name</label>
+<input class="w-full h-11 px-3.5 rounded-xl bg-sonic-surface border border-sonic-border text-on-surface placeholder:text-outline text-body-sm focus:outline-none focus:ring-2 focus:ring-primary-container" placeholder="e.g. Maria Clara Santos" type="text"/>
+</div>
+<!-- Password Input with Toggle -->
+<div class="flex flex-col gap-1.5">
+<label class="font-body-sm text-body-sm font-semibold text-on-surface">Operator PIN / Password</label>
+<div class="relative">
+<input class="w-full h-11 pl-3.5 pr-10 rounded-xl bg-sonic-surface border border-sonic-border text-on-surface text-body-sm focus:outline-none focus:ring-2 focus:ring-primary-container" type="password" value="secretPIN123"/>
+<button class="absolute right-3 top-2.5 text-sonic-muted hover:text-on-surface" type="button">
+<span class="material-symbols-outlined text-xl">visibility</span>
+</button>
+</div>
+</div>
+<!-- Dropdown Select -->
+<div class="flex flex-col gap-1.5">
+<label class="font-body-sm text-body-sm font-semibold text-on-surface">Dispatch Hub Area</label>
+<div class="relative">
+<select class="w-full h-11 px-3.5 rounded-xl bg-sonic-surface border border-sonic-border text-on-surface text-body-sm appearance-none focus:outline-none focus:ring-2 focus:ring-primary-container pr-10">
+<option>Metro Manila — Central Hub (EDSA)</option>
+<option>Makati — Poblacion Fast Fleet</option>
+<option>BGC Taguig — Rapid Express</option>
+<option>Quezon City North Hub</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 top-3 text-sonic-muted pointer-events-none">expand_more</span>
+</div>
+</div>
+<!-- Search Input -->
+<div class="flex flex-col gap-1.5">
+<label class="font-body-sm text-body-sm font-semibold text-on-surface">Search Menu / Stores</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3.5 top-3 text-sonic-muted text-lg">search</span>
+<input class="w-full h-11 pl-10 pr-3.5 rounded-xl bg-sonic-surface border border-sonic-border text-on-surface placeholder:text-outline text-body-sm focus:outline-none focus:ring-2 focus:ring-primary-container" placeholder="Search dishes, drinks, merchants..." type="search"/>
+</div>
+</div>
+<!-- Error State Input -->
+<div class="flex flex-col gap-1.5">
+<label class="font-body-sm text-body-sm font-semibold text-sonic-danger flex items-center justify-between">
+<span>Mobile Phone Number</span>
+<span class="text-[11px] font-bold text-sonic-danger">Error State</span>
+</label>
+<div class="relative">
+<input class="w-full h-11 px-3.5 pr-10 rounded-xl bg-red-50/50 border-2 border-sonic-danger text-sonic-danger text-body-sm focus:outline-none" type="text" value="+63 9"/>
+<span class="material-symbols-outlined absolute right-3 top-2.5 text-sonic-danger">error</span>
+</div>
+<span class="font-label-sm text-xs text-sonic-danger font-medium flex items-center gap-1">
+<span>This field is required and must be 11 digits</span>
+</span>
+</div>
+<!-- Focus State Input -->
+<div class="flex flex-col gap-1.5">
+<label class="font-body-sm text-body-sm font-semibold text-primary-container flex items-center justify-between">
+<span>Delivery Address Landmark</span>
+<span class="text-[11px] font-bold text-primary-container">Focused State</span>
+</label>
+<div class="relative">
+<input class="w-full h-11 px-3.5 rounded-xl bg-sonic-surface border-2 border-primary-container ring-2 ring-primary-container/20 text-on-surface text-body-sm focus:outline-none" type="text" value="Tower 2 Lobby, Reception Desk"/>
+<span class="material-symbols-outlined absolute right-3 top-2.5 text-primary-container">near_me</span>
+</div>
+<span class="font-label-sm text-xs text-sonic-muted">Active 2px focus ring token</span>
+</div>
+<!-- Textarea (Full Width) -->
+<div class="md:col-span-2 flex flex-col gap-1.5">
+<label class="font-body-sm text-body-sm font-semibold text-on-surface">Delivery Special Instructions</label>
+<textarea class="w-full p-3 rounded-xl bg-sonic-surface border border-sonic-border text-on-surface placeholder:text-outline text-body-sm focus:outline-none focus:ring-2 focus:ring-primary-container" placeholder="e.g. Please leave at guardhouse or ring unit 12-B directly..." rows="2"></textarea>
+</div>
+</div>
+</section>
+</div>
+<!-- SECTION 3 & SECTION 4: Badges & Chips System (Order Status & Payment Badges) -->
+<div class="grid grid-cols-1 xl:grid-cols-2 gap-8 items-start">
+<!-- 3. Order Status Badges -->
+<section class="bg-sonic-surface rounded-xl p-6 shadow-[0_2px_8px_rgba(11,16,51,0.08)] border border-sonic-border flex flex-col gap-5">
+<div class="flex items-center justify-between border-b border-sonic-border pb-4">
+<div class="flex items-center gap-3">
+<span class="w-7 h-7 rounded-lg bg-primary-container text-on-primary flex items-center justify-center font-bold text-xs">03</span>
+<h2 class="font-headline-sm text-headline-sm font-bold text-on-surface">Order Lifecycle Status Badges</h2>
+</div>
+<span class="font-label-sm text-label-sm text-sonic-muted font-semibold bg-sonic-bg px-2 py-0.5 rounded">8 Canonical States</span>
+</div>
+<div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+<!-- Pending -->
+<div class="p-3 bg-sonic-bg rounded-xl border border-sonic-border flex flex-col items-center gap-2 text-center">
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-50 text-sonic-warning font-label-sm text-label-sm font-bold border border-amber-200">
+<span class="w-1.5 h-1.5 rounded-full bg-sonic-warning animate-pulse"></span>
+              Pending
+            </span>
+<span class="text-[11px] text-sonic-muted">#F59E0B Warning</span>
+</div>
+<!-- Confirmed -->
+<div class="p-3 bg-sonic-bg rounded-xl border border-sonic-border flex flex-col items-center gap-2 text-center">
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-sonic-blue-light text-primary-container font-label-sm text-label-sm font-bold border border-blue-200">
+<span class="w-1.5 h-1.5 rounded-full bg-primary-container"></span>
+              Confirmed
+            </span>
+<span class="text-[11px] text-sonic-muted">#183CF0 Blue</span>
+</div>
+<!-- Preparing -->
+<div class="p-3 bg-sonic-bg rounded-xl border border-sonic-border flex flex-col items-center gap-2 text-center">
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-50 text-sonic-warning font-label-sm text-label-sm font-bold border border-amber-200">
+<span class="material-symbols-outlined text-xs">skillet</span>
+              Preparing
+            </span>
+<span class="text-[11px] text-sonic-muted">Kitchen Active</span>
+</div>
+<!-- Ready for Pickup -->
+<div class="p-3 bg-sonic-bg rounded-xl border border-sonic-border flex flex-col items-center gap-2 text-center">
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-sky-50 text-[#0284c7] font-label-sm text-label-sm font-bold border border-sky-200">
+<span class="w-1.5 h-1.5 rounded-full bg-[#0284c7]"></span>
+              Ready for Pickup
+            </span>
+<span class="text-[11px] text-sonic-muted">#30B4F0 Sky</span>
+</div>
+<!-- Picked Up -->
+<div class="p-3 bg-sonic-bg rounded-xl border border-sonic-border flex flex-col items-center gap-2 text-center">
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-purple-50 text-secondary-container font-label-sm text-label-sm font-bold border border-purple-200">
+<span class="material-symbols-outlined text-xs">sports_motorsports</span>
+              Picked Up
+            </span>
+<span class="text-[11px] text-sonic-muted">#3F0BEB Violet</span>
+</div>
+<!-- On the Way -->
+<div class="p-3 bg-sonic-bg rounded-xl border border-sonic-border flex flex-col items-center gap-2 text-center">
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-purple-50 text-secondary-container font-label-sm text-label-sm font-bold border border-purple-200 shadow-xs">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary-container animate-ping"></span>
+              On the Way
+            </span>
+<span class="text-[11px] text-sonic-muted">Live Tracking</span>
+</div>
+<!-- Delivered -->
+<div class="p-3 bg-sonic-bg rounded-xl border border-sonic-border flex flex-col items-center gap-2 text-center">
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-green-50 text-sonic-success font-label-sm text-label-sm font-bold border border-green-200">
+<span class="material-symbols-outlined text-xs font-bold">check_circle</span>
+              Delivered
+            </span>
+<span class="text-[11px] text-sonic-muted">#16A34A Success</span>
+</div>
+<!-- Cancelled -->
+<div class="p-3 bg-sonic-bg rounded-xl border border-sonic-border flex flex-col items-center gap-2 text-center">
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-red-50 text-sonic-danger font-label-sm text-label-sm font-bold border border-red-200">
+<span class="material-symbols-outlined text-xs">cancel</span>
+              Cancelled
+            </span>
+<span class="text-[11px] text-sonic-muted">#DC2626 Danger</span>
+</div>
+</div>
+</section>
+<!-- 4. Payment Badges (Methods & Statuses) -->
+<section class="bg-sonic-surface rounded-xl p-6 shadow-[0_2px_8px_rgba(11,16,51,0.08)] border border-sonic-border flex flex-col gap-5">
+<div class="flex items-center justify-between border-b border-sonic-border pb-4">
+<div class="flex items-center gap-3">
+<span class="w-7 h-7 rounded-lg bg-primary-container text-on-primary flex items-center justify-center font-bold text-xs">04</span>
+<h2 class="font-headline-sm text-headline-sm font-bold text-on-surface">Payment Methods &amp; Status Badges</h2>
+</div>
+<span class="font-label-sm text-label-sm text-sonic-muted font-semibold bg-sonic-bg px-2 py-0.5 rounded">PH Gateway Specs</span>
+</div>
+<!-- Payment Methods -->
+<div class="flex flex-col gap-2">
+<span class="font-label-sm text-label-sm text-sonic-muted uppercase tracking-wider font-semibold">Payment Method Chips</span>
+<div class="flex flex-wrap gap-2.5">
+<!-- COD -->
+<div class="px-3.5 py-1.5 rounded-full bg-sonic-bg border border-sonic-border flex items-center gap-2">
+<span class="material-symbols-outlined text-base text-primary-container">payments</span>
+<span class="font-label-sm text-label-sm font-bold text-on-surface">COD (Cash on Delivery)</span>
+</div>
+<!-- GCash -->
+<div class="px-3.5 py-1.5 rounded-full bg-[#005CE6]/10 border border-[#005CE6]/30 flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-[#005CE6]"></span>
+<span class="font-label-sm text-label-sm font-bold text-[#005CE6]">GCash</span>
+</div>
+<!-- Maya -->
+<div class="px-3.5 py-1.5 rounded-full bg-[#1db954]/10 border border-[#1db954]/30 flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-[#1db954]"></span>
+<span class="font-label-sm text-label-sm font-bold text-[#0c7c34]">Maya</span>
+</div>
+<!-- QR Ph -->
+<div class="px-3.5 py-1.5 rounded-full bg-amber-500/10 border border-amber-500/30 flex items-center gap-1.5">
+<span class="material-symbols-outlined text-sm text-amber-700">qr_code_2</span>
+<span class="font-label-sm text-label-sm font-bold text-amber-800">QR Ph</span>
+</div>
+<!-- Credit/Debit Card -->
+<div class="px-3.5 py-1.5 rounded-full bg-sonic-bg border border-sonic-border flex items-center gap-2">
+<span class="material-symbols-outlined text-base text-sonic-muted">credit_card</span>
+<span class="font-label-sm text-label-sm font-bold text-on-surface">Debit / Credit Card</span>
+</div>
+</div>
+</div>
+<!-- Payment Statuses -->
+<div class="flex flex-col gap-2 pt-2 border-t border-sonic-border">
+<span class="font-label-sm text-label-sm text-sonic-muted uppercase tracking-wider font-semibold">Transaction Statuses</span>
+<div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
+<span class="px-3 py-1.5 rounded-lg bg-amber-50 border border-amber-200 text-sonic-warning font-label-sm text-label-sm font-bold flex items-center justify-center gap-1.5">
+<span class="material-symbols-outlined text-sm">schedule</span> Pending
+            </span>
+<span class="px-3 py-1.5 rounded-lg bg-green-50 border border-green-200 text-sonic-success font-label-sm text-label-sm font-bold flex items-center justify-center gap-1.5">
+<span class="material-symbols-outlined text-sm">verified</span> Paid
+            </span>
+<span class="px-3 py-1.5 rounded-lg bg-red-50 border border-red-200 text-sonic-danger font-label-sm text-label-sm font-bold flex items-center justify-center gap-1.5">
+<span class="material-symbols-outlined text-sm">cancel</span> Failed
+            </span>
+<span class="px-3 py-1.5 rounded-lg bg-slate-100 border border-slate-200 text-sonic-muted font-label-sm text-label-sm font-bold flex items-center justify-center gap-1.5">
+<span class="material-symbols-outlined text-sm">replay</span> Refunded
+            </span>
+</div>
+</div>
+</section>
+</div>
+<!-- SECTION 5 & SECTION 6: Restaurant Card & Menu Item Rows -->
+<div class="grid grid-cols-1 xl:grid-cols-12 gap-8 items-start">
+<!-- 5. Restaurant Card (Takes 5 cols) -->
+<section class="xl:col-span-5 bg-sonic-surface rounded-xl p-6 shadow-[0_2px_8px_rgba(11,16,51,0.08)] border border-sonic-border flex flex-col gap-5">
+<div class="flex items-center justify-between border-b border-sonic-border pb-4">
+<div class="flex items-center gap-3">
+<span class="w-7 h-7 rounded-lg bg-primary-container text-on-primary flex items-center justify-center font-bold text-xs">05</span>
+<h2 class="font-headline-sm text-headline-sm font-bold text-on-surface">Restaurant Merchant Card</h2>
+</div>
+<span class="font-label-sm text-label-sm font-semibold text-sonic-muted bg-sonic-bg px-2.5 py-0.5 rounded">16:9 Cover Spec</span>
+</div>
+<!-- The Canonical Card Component -->
+<div class="w-full bg-sonic-surface rounded-xl border border-sonic-border overflow-hidden hover:shadow-md transition-shadow group">
+<!-- 16:9 Aspect Cover Image -->
+<div class="relative w-full aspect-video overflow-hidden bg-surface-container-high">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" data-alt="A warm, vibrant Filipino restaurant kitchen counter displaying sizzling plates of sisig, garlic sinangag rice, and crispy lechon kawali under warm bistro downlights, energetic delivery scene" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAd980AMkDxxm_j99oo1sNQkfjKO2lJd6_q4tVGj3MqYSQT5MeN_j3bLteyDxCvERXvzN2t2hRu_4JjPtD99p2oMPn77r7S4GhAqo1h0pW86L8nzq56Hbe8khtMQ1dOale4U1q8vFBqxeVaDyje3jy4-q8anKu06tiQm3OFMrvK3V036jAILIt2bRbcOFxAc8rcwYDLiQ0n-Shwyq6yJ4alebnD_RhJIMpl9JV8lWCw"/>
+<!-- Floating Open Badge -->
+<div class="absolute top-3 left-3">
+<span class="px-3 py-1 rounded-full bg-sonic-success text-on-primary font-label-sm text-label-sm font-bold shadow-md flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-white animate-pulse"></span>
+                OPEN
+              </span>
+</div>
+<!-- Alternative Closed Badge Preview Pill -->
+<div class="absolute top-3 right-3">
+<span class="px-2.5 py-0.5 rounded-full bg-sonic-surface/90 backdrop-blur-sm text-sonic-muted font-label-sm text-xs font-semibold border border-sonic-border flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-sonic-danger"></span>
+                Alt: Closed state
+              </span>
+</div>
+<!-- Fast Delivery Pill -->
+<div class="absolute bottom-3 left-3 bg-on-surface/85 backdrop-blur-md px-3 py-1 rounded-full text-white text-xs font-semibold flex items-center gap-1.5">
+<span class="material-symbols-outlined text-sonic-bolt text-sm">electric_bolt</span>
+<span>20-30 mins</span>
+</div>
+</div>
+<!-- Card Content Body -->
+<div class="p-5 flex flex-col gap-3">
+<div class="flex items-start justify-between gap-2">
+<div>
+<h3 class="font-headline-md text-headline-md font-bold text-on-surface">Kusina ni Aling Rosa</h3>
+<p class="font-body-sm text-body-sm text-sonic-muted">Authentic comfort breakfast &amp; all-day silog meals</p>
+</div>
+<div class="flex items-center gap-1 bg-amber-50 px-2 py-1 rounded-lg border border-amber-200">
+<span class="material-symbols-outlined text-sonic-bolt text-base" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-headline-sm text-sm font-bold text-amber-900">4.8</span>
+<span class="text-xs text-sonic-muted font-medium">(240+)</span>
+</div>
+</div>
+<!-- Cuisine Chips -->
+<div class="flex flex-wrap items-center gap-2">
+<span class="px-2.5 py-0.5 rounded-md bg-sonic-bg text-on-surface text-xs font-semibold border border-sonic-border">Filipino</span>
+<span class="px-2.5 py-0.5 rounded-md bg-sonic-bg text-on-surface text-xs font-semibold border border-sonic-border">Silog</span>
+<span class="px-2.5 py-0.5 rounded-md bg-sonic-bg text-on-surface text-xs font-semibold border border-sonic-border">Comfort Food</span>
+</div>
+<!-- Footer Details -->
+<div class="pt-3 border-t border-sonic-border flex items-center justify-between font-body-sm text-body-sm text-sonic-muted">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-base text-primary-container">two_wheeler</span>
+<span class="font-semibold text-on-surface">₱39 delivery fee</span>
+</div>
+<span class="text-xs">1.2 km away • Pinagkaisahan</span>
+</div>
+</div>
+</div>
+</section>
+<!-- 6. Menu Item Rows (Takes 7 cols) -->
+<section class="xl:col-span-7 bg-sonic-surface rounded-xl p-6 shadow-[0_2px_8px_rgba(11,16,51,0.08)] border border-sonic-border flex flex-col gap-5">
+<div class="flex items-center justify-between border-b border-sonic-border pb-4">
+<div class="flex items-center gap-3">
+<span class="w-7 h-7 rounded-lg bg-primary-container text-on-primary flex items-center justify-center font-bold text-xs">06</span>
+<h2 class="font-headline-sm text-headline-sm font-bold text-on-surface">Menu Item Rows</h2>
+</div>
+<span class="font-label-sm text-label-sm font-semibold text-sonic-muted bg-sonic-bg px-2.5 py-0.5 rounded">Active &amp; Sold Out States</span>
+</div>
+<div class="flex flex-col gap-4">
+<!-- Row 1: Active In-Stock Item (Tapsilog) -->
+<div class="p-4 rounded-xl border border-sonic-border bg-sonic-surface hover:border-primary-container/40 transition-all flex items-center justify-between gap-4">
+<!-- Left Info -->
+<div class="flex-1 min-w-0">
+<div class="flex items-center gap-2 mb-1">
+<h4 class="font-headline-sm text-base font-bold text-on-surface">Tapsilog</h4>
+<span class="px-2 py-0.2 rounded bg-amber-100 text-amber-800 text-[11px] font-bold">Best Seller</span>
+</div>
+<p class="font-body-sm text-body-sm text-sonic-muted line-clamp-2 mb-2">
+                Cured beef tapa served with garlic fried sinangag rice, sunny-side egg, and spiced vinegar dip.
+              </p>
+<div class="flex items-center gap-4">
+<span class="font-price-display text-price-display font-bold text-primary-container">₱95.00</span>
+<span class="text-xs text-sonic-muted">• 450 kcal</span>
+</div>
+</div>
+<!-- Right Thumbnail & Action Button -->
+<div class="flex items-center gap-4 shrink-0">
+<div class="w-24 h-24 rounded-lg overflow-hidden border border-sonic-border relative">
+<img class="w-full h-full object-cover" data-alt="Plated delicious Filipino Tapsilog beef tapa garlic fried rice sunny side up egg on white plate garnished with spring onions" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBzsbCI_W5wAcwigBIyUHcfhUVz38y1RcsQlAfG7-m_-CU4xpsiEENGNWyket-m92dG3FwsA3_1e6GJUcQ6ZIBtEAKb-ZWc99cNHyxv9dkp_yHEqnctKn3KcDFFB9G7QHzHrJFvaMLnULfVlGCtbHQlQnViJfjLoj4MqY59iwB4S2pXWGgxeqJ-tcKg12WaUQcnpRDo3Km4GbeIIRmLK8s0kMm1NpTU7juFDIuvUgO5"/>
+</div>
+<button class="w-10 h-10 rounded-full bg-primary-container hover:bg-sonic-blue-dark active:scale-95 text-on-primary flex items-center justify-center shadow-md transition-all cursor-pointer" title="Add Tapsilog to order">
+<span class="material-symbols-outlined text-xl font-bold">add</span>
+</button>
+</div>
+</div>
+<!-- Row 2: Sold Out Item (Bangsilog) -->
+<div class="p-4 rounded-xl border border-sonic-border bg-slate-50/70 opacity-75 flex items-center justify-between gap-4 relative overflow-hidden">
+<!-- Sold out banner hint -->
+<div class="flex-1 min-w-0">
+<div class="flex items-center gap-2 mb-1">
+<h4 class="font-headline-sm text-base font-bold text-sonic-muted line-through">Bangsilog</h4>
+<span class="px-2.5 py-0.5 rounded-full bg-sonic-danger text-on-error font-label-sm text-xs font-bold shadow-xs">
+                  Sold out
+                </span>
+</div>
+<p class="font-body-sm text-body-sm text-sonic-muted line-clamp-2 mb-2">
+                Pan-fried marinated bangus belly with garlic rice and sunny-side egg. Restocking tomorrow morning.
+              </p>
+<div class="flex items-center gap-4">
+<span class="font-price-display text-price-display font-bold text-sonic-muted">₱110.00</span>
+<span class="text-xs text-sonic-muted">• Out of stock</span>
+</div>
+</div>
+<!-- Right Thumbnail & Disabled Add Button -->
+<div class="flex items-center gap-4 shrink-0">
+<div class="w-24 h-24 rounded-lg overflow-hidden border border-sonic-border relative filter grayscale-[40%]">
+<img class="w-full h-full object-cover" data-alt="Fried marinated milkfish bangus belly breakfast plate with garlic fried rice overhead food shot" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCMyVBbZ3yQKvmqqtBT2NjVOMklNKduU9M6LhKVb_9Z_kjw0TlBW-wbdHhPV6Uhr-4HxWpRLxRsYXZrTR5ioVcUwr6n5A2VWNVGV0N45rNK6TLmhTq7HcnvZ_eI4dn_MtQU4H-VHGOJXl2ENkuNLhOtAMs8FYDg2mAvevXv2gmEmUk-DXuO5LUobhd2RYDFE6dmUlNvGDOq5GJWvqPn9Is7TeeCTvA9jfrA1Ksy9E4X"/>
+<div class="absolute inset-0 bg-on-surface/20"></div>
+</div>
+<button class="w-10 h-10 rounded-full bg-surface-container-high text-outline flex items-center justify-center cursor-not-allowed" disabled="" title="Item is sold out">
+<span class="material-symbols-outlined text-xl">block</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+</div>
+<!-- SECTION 7 & SECTION 8: Stepper & Stat Card + Data Table -->
+<div class="grid grid-cols-1 xl:grid-cols-12 gap-8 items-start">
+<!-- 7. Vertical Order Tracking Stepper (Takes 4 cols) -->
+<section class="xl:col-span-4 bg-sonic-surface rounded-xl p-6 shadow-[0_2px_8px_rgba(11,16,51,0.08)] border border-sonic-border flex flex-col gap-6">
+<div class="flex items-center justify-between border-b border-sonic-border pb-4">
+<div class="flex items-center gap-3">
+<span class="w-7 h-7 rounded-lg bg-primary-container text-on-primary flex items-center justify-center font-bold text-xs">07</span>
+<h2 class="font-headline-sm text-headline-sm font-bold text-on-surface">Order Tracking Stepper</h2>
+</div>
+<span class="font-label-sm text-label-sm text-primary-container font-semibold bg-sonic-blue-light px-2 py-0.5 rounded">Live Status</span>
+</div>
+<div class="relative pl-3">
+<!-- Stepper Item 1 (Completed) -->
+<div class="relative flex items-start gap-4 pb-7">
+<!-- Continuous Line Segment -->
+<div class="absolute left-3.5 top-7 bottom-0 w-0.5 bg-tertiary-fixed-dim"></div>
+<!-- Node -->
+<div class="relative z-10 w-7 h-7 rounded-full bg-primary-container text-on-primary flex items-center justify-center shadow-xs">
+<span class="material-symbols-outlined text-sm font-bold">check</span>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex items-center justify-between">
+<span class="font-headline-sm text-sm font-bold text-on-surface">Order Placed</span>
+<span class="font-label-sm text-xs text-sonic-muted">11:30 AM</span>
+</div>
+<p class="font-body-sm text-xs text-sonic-muted mt-0.5">Order sent to Kusina ni Aling Rosa</p>
+</div>
+</div>
+<!-- Stepper Item 2 (Completed) -->
+<div class="relative flex items-start gap-4 pb-7">
+<div class="absolute left-3.5 top-7 bottom-0 w-0.5 bg-tertiary-fixed-dim"></div>
+<div class="relative z-10 w-7 h-7 rounded-full bg-primary-container text-on-primary flex items-center justify-center shadow-xs">
+<span class="material-symbols-outlined text-sm font-bold">check</span>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex items-center justify-between">
+<span class="font-headline-sm text-sm font-bold text-on-surface">Merchant Confirmed</span>
+<span class="font-label-sm text-xs text-sonic-muted">11:34 AM</span>
+</div>
+<p class="font-body-sm text-xs text-sonic-muted mt-0.5">Kitchen prepared and packed items</p>
+</div>
+</div>
+<!-- Stepper Item 3 (Completed) -->
+<div class="relative flex items-start gap-4 pb-7">
+<div class="absolute left-3.5 top-7 bottom-0 w-0.5 bg-tertiary-fixed-dim"></div>
+<div class="relative z-10 w-7 h-7 rounded-full bg-primary-container text-on-primary flex items-center justify-center shadow-xs">
+<span class="material-symbols-outlined text-sm font-bold">check</span>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex items-center justify-between">
+<span class="font-headline-sm text-sm font-bold text-on-surface">Rider Picked Up</span>
+<span class="font-label-sm text-xs text-sonic-muted">11:48 AM</span>
+</div>
+<p class="font-body-sm text-xs text-sonic-muted mt-0.5">Kuya Mark received parcel</p>
+</div>
+</div>
+<!-- Stepper Item 4 (Active / Pulsing) -->
+<div class="relative flex items-start gap-4 pb-7">
+<div class="absolute left-3.5 top-7 bottom-0 w-0.5 bg-sonic-border"></div>
+<div class="relative z-10 w-7 h-7 rounded-full bg-secondary-container text-on-secondary flex items-center justify-center ring-4 ring-purple-100 shadow-sm animate-pulse">
+<span class="material-symbols-outlined text-sm">two_wheeler</span>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex items-center justify-between">
+<span class="font-headline-sm text-sm font-bold text-secondary-container">On the Way (Kuya Mark)</span>
+<span class="font-label-sm text-xs font-bold text-secondary-container bg-purple-100 px-2 py-0.5 rounded-full">Est. 12:05 PM</span>
+</div>
+<p class="font-body-sm text-xs text-sonic-muted mt-0.5">Rider is 1.8km away on Yamaha Mio</p>
+</div>
+</div>
+<!-- Stepper Item 5 (Pending/Unfilled) -->
+<div class="relative flex items-start gap-4">
+<div class="relative z-10 w-7 h-7 rounded-full bg-sonic-surface border-2 border-sonic-border text-outline flex items-center justify-center">
+<span class="w-2 h-2 rounded-full bg-sonic-border"></span>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex items-center justify-between">
+<span class="font-headline-sm text-sm font-medium text-sonic-muted">Delivered to Customer</span>
+<span class="font-label-sm text-xs text-outline">Upcoming</span>
+</div>
+<p class="font-body-sm text-xs text-sonic-muted mt-0.5">Pin location confirmation required</p>
+</div>
+</div>
+</div>
+</section>
+<!-- 8. Stat Cards & Data Table Row (Takes 8 cols) -->
+<section class="xl:col-span-8 bg-sonic-surface rounded-xl p-6 shadow-[0_2px_8px_rgba(11,16,51,0.08)] border border-sonic-border flex flex-col gap-6">
+<div class="flex items-center justify-between border-b border-sonic-border pb-4">
+<div class="flex items-center gap-3">
+<span class="w-7 h-7 rounded-lg bg-primary-container text-on-primary flex items-center justify-center font-bold text-xs">08</span>
+<h2 class="font-headline-sm text-headline-sm font-bold text-on-surface">Console Metric Cards &amp; Table Row</h2>
+</div>
+<span class="font-label-sm text-label-sm font-semibold text-sonic-muted bg-sonic-bg px-2.5 py-0.5 rounded">Operator View</span>
+</div>
+<!-- Metric KPI Cards Row -->
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+<!-- Stat 1 -->
+<div class="p-5 rounded-xl bg-sonic-bg border border-sonic-border relative overflow-hidden">
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md font-semibold text-sonic-muted">Today's Completed Orders</span>
+<span class="w-8 h-8 rounded-lg bg-primary-container/10 text-primary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-lg">check_circle</span>
+</span>
+</div>
+<div class="mt-2 flex items-baseline gap-3">
+<span class="font-headline-lg text-3xl font-extrabold text-on-surface tracking-tight">1,248</span>
+<span class="inline-flex items-center text-xs font-bold text-sonic-success bg-green-100 px-2 py-0.5 rounded-full">
+<span class="material-symbols-outlined text-xs">arrow_upward</span> +18.4%
+              </span>
+</div>
+<span class="font-body-sm text-xs text-sonic-muted mt-1 block">vs. yesterday's 1,054 deliveries</span>
+</div>
+<!-- Stat 2 -->
+<div class="p-5 rounded-xl bg-sonic-bg border border-sonic-border relative overflow-hidden">
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md font-semibold text-sonic-muted">Gross Merchandise Value (GMV)</span>
+<span class="w-8 h-8 rounded-lg bg-sonic-bolt/30 text-on-surface flex items-center justify-center">
+<span class="material-symbols-outlined text-lg">payments</span>
+</span>
+</div>
+<div class="mt-2 flex items-baseline gap-3">
+<span class="font-headline-lg text-3xl font-extrabold text-on-surface tracking-tight">₱142,850.00</span>
+<span class="inline-flex items-center text-xs font-bold text-sonic-success bg-green-100 px-2 py-0.5 rounded-full">
+<span class="material-symbols-outlined text-xs">arrow_upward</span> +12.2%
+              </span>
+</div>
+<span class="font-body-sm text-xs text-sonic-muted mt-1 block">₱16,500 above target run rate</span>
+</div>
+</div>
+<!-- Data Table Specimen -->
+<div class="flex flex-col gap-2 pt-2">
+<span class="font-label-sm text-label-sm text-sonic-muted uppercase tracking-wider font-semibold">Standard Order Table Row Pattern</span>
+<div class="overflow-x-auto rounded-xl border border-sonic-border">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-sonic-bg border-b border-sonic-border text-sonic-muted font-label-sm text-xs font-bold uppercase tracking-wider">
+<th class="py-3 px-4">Order ID</th>
+<th class="py-3 px-4">Customer</th>
+<th class="py-3 px-4">Merchant</th>
+<th class="py-3 px-4">Amount</th>
+<th class="py-3 px-4">Status</th>
+<th class="py-3 px-4 text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-sonic-border bg-sonic-surface">
+<!-- Highlighted Row -->
+<tr class="hover:bg-sonic-bg/50 transition-colors">
+<td class="py-3.5 px-4 font-headline-sm text-sm font-bold text-primary-container">#ORD-8921</td>
+<td class="py-3.5 px-4 font-body-sm text-sm text-on-surface font-semibold">Maria Santos</td>
+<td class="py-3.5 px-4 font-body-sm text-sm text-on-surface">Kusina ni Aling Rosa</td>
+<td class="py-3.5 px-4 font-price-display text-sm font-bold text-on-surface">₱340.00</td>
+<td class="py-3.5 px-4">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-purple-50 text-secondary-container font-label-sm text-xs font-bold border border-purple-200">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary-container animate-pulse"></span>
+                      On the Way
+                    </span>
+</td>
+<td class="py-3.5 px-4 text-right">
+<div class="flex items-center justify-end gap-2">
+<button class="px-3 py-1 rounded-full bg-sonic-bg hover:bg-sonic-blue-light text-primary-container font-label-sm text-xs font-bold border border-sonic-border transition-colors">
+                        View Details
+                      </button>
+<button class="px-3 py-1 rounded-full bg-primary-container hover:bg-sonic-blue-dark text-on-primary font-label-sm text-xs font-semibold shadow-xs">
+                        Assign Rider
+                      </button>
+<button class="w-7 h-7 rounded-full text-sonic-muted hover:text-on-surface hover:bg-sonic-bg flex items-center justify-center">
+<span class="material-symbols-outlined text-lg">more_vert</span>
+</button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+</div>
+<!-- SECTION 9: Empty State Component -->
+<section class="bg-sonic-surface rounded-xl p-6 shadow-[0_2px_8px_rgba(11,16,51,0.08)] border border-sonic-border flex flex-col gap-6">
+<div class="flex items-center justify-between border-b border-sonic-border pb-4">
+<div class="flex items-center gap-3">
+<span class="w-7 h-7 rounded-lg bg-primary-container text-on-primary flex items-center justify-center font-bold text-xs">09</span>
+<h2 class="font-headline-sm text-headline-sm font-bold text-on-surface">Empty State Display Pattern</h2>
+</div>
+<span class="font-label-sm text-label-sm font-semibold text-sonic-muted bg-sonic-bg px-2.5 py-0.5 rounded">Dispatch Zero-State</span>
+</div>
+<!-- Empty State Centered Card Container -->
+<div class="w-full max-w-xl mx-auto py-12 px-6 flex flex-col items-center text-center bg-sonic-bg rounded-2xl border border-dashed border-sonic-border relative">
+<!-- Bolt Icon Node -->
+<div class="w-20 h-20 rounded-full bg-sonic-surface border-2 border-sonic-border shadow-sm flex items-center justify-center mb-5 relative group">
+<div class="w-14 h-14 rounded-full bg-sonic-bolt/20 flex items-center justify-center">
+<span class="material-symbols-outlined text-4xl text-amber-500 group-hover:scale-110 transition-transform">bolt</span>
+</div>
+<!-- Tiny status badge -->
+<div class="absolute -bottom-1 -right-1 w-6 h-6 rounded-full bg-sonic-success text-on-primary flex items-center justify-center shadow-xs">
+<span class="material-symbols-outlined text-sm font-bold">check</span>
+</div>
+</div>
+<h3 class="font-headline-md text-headline-md font-bold text-on-surface tracking-tight">No Active Deliveries</h3>
+<p class="font-body-md text-body-md text-sonic-muted max-w-md mt-2 mb-6">
+          All assigned orders have been cleared. New orders will appear instantly as dispatch clears them.
+        </p>
+<!-- Primary CTA Button -->
+<button class="px-7 py-3 rounded-full bg-primary-container hover:bg-sonic-blue-dark active:scale-98 transition-all text-on-primary font-headline-sm text-sm font-bold shadow-md flex items-center gap-2 cursor-pointer">
+<span class="material-symbols-outlined text-lg">refresh</span>
+<span>Refresh Dispatch</span>
+</button>
+<!-- Subtle Helper Tag -->
+<div class="mt-6 flex items-center gap-1.5 text-xs text-sonic-muted">
+<span class="w-2 h-2 rounded-full bg-sonic-success"></span>
+<span>Live WebSocket listener connected to Manila Central Hub</span>
+</div>
+</div>
+</section>
+</div>
+</div></main></div></body></html>

@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><meta content="mobile_stack" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Montserrat:wght@600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "sonic-bolt": "#FFD60A", "on-surface": "#13183b", "outline": "#757688", "sonic-success": "#16A34A", "primary": "#0026c0", "on-secondary-fixed": "#150066", "sonic-bg": "#F5F7FF", "background": "#fbf8ff", "primary-fixed": "#dfe0ff", "surface-container-high": "#e6e6ff", "on-primary-fixed-variant": "#002ad0", "tertiary-fixed": "#c5e7ff", "on-error": "#ffffff", "sonic-danger": "#DC2626", "inverse-primary": "#bbc3ff", "on-tertiary-container": "#93d6ff", "secondary": "#3b00e6", "on-tertiary-fixed-variant": "#004c6a", "surface-bright": "#fbf8ff", "inverse-surface": "#292e51", "tertiary": "#004561", "on-background": "#13183b", "sonic-muted": "#5B6386", "surface": "#fbf8ff", "sonic-surface": "#FFFFFF", "on-primary": "#ffffff", "on-error-container": "#93000a", "tertiary-fixed-dim": "#7fd0ff", "on-secondary": "#ffffff", "surface-container-lowest": "#ffffff", "on-secondary-container": "#ddd8ff", "surface-variant": "#dfe0ff", "sonic-blue-dark": "#0F27B8", "surface-container": "#edecff", "on-tertiary-fixed": "#001e2d", "on-primary-container": "#c5cbff", "error": "#ba1a1a", "secondary-container": "#5537fe", "sonic-border": "#DDE2F5", "tertiary-container": "#005e82", "secondary-fixed": "#e4dfff", "surface-container-highest": "#dfe0ff", "on-surface-variant": "#444656", "outline-variant": "#c4c5d9", "primary-fixed-dim": "#bbc3ff", "secondary-fixed-dim": "#c6c0ff", "sonic-warning": "#F59E0B", "sonic-blue-light": "#E8ECFE", "on-secondary-fixed-variant": "#3a00df", "inverse-on-surface": "#f0efff", "surface-container-low": "#f4f2ff", "surface-dim": "#d4d7ff", "on-primary-fixed": "#000e5f", "error-container": "#ffdad6", "surface-tint": "#2445f6", "primary-container": "#183cf0", "on-tertiary": "#ffffff" }, "borderRadius": { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, "spacing": { "gutter": "1rem", "space-sm": "0.5rem", "space-xs": "0.25rem", "space-md": "1rem", "margin": "1rem", "margin-desktop": "2rem", "space-lg": "1.5rem", "gutter-desktop": "1.5rem", "space-xl": "2rem" }, "fontFamily": { "body-md": ["Inter"], "headline-lg": ["Montserrat"], "body-sm": ["Inter"], "headline-md": ["Montserrat"], "label-lg": ["Montserrat"], "price-display": ["Montserrat"], "headline-sm": ["Montserrat"], "label-md": ["Montserrat"], "body-lg": ["Inter"], "label-sm": ["Inter"] }, "fontSize": { "body-md": ["15px", { "lineHeight": "22px", "fontWeight": "400" }], "headline-lg": ["28px", { "lineHeight": "36px", "letterSpacing": "-0.02em", "fontWeight": "800" }], "body-sm": ["13px", { "lineHeight": "18px", "fontWeight": "400" }], "headline-md": ["22px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "700" }], "label-lg": ["16px", { "lineHeight": "20px", "fontWeight": "600" }], "price-display": ["18px", { "lineHeight": "24px", "fontWeight": "700" }], "headline-sm": ["18px", { "lineHeight": "24px", "fontWeight": "600" }], "label-md": ["14px", { "lineHeight": "18px", "fontWeight": "600" }], "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }], "label-sm": ["12px", { "lineHeight": "16px", "fontWeight": "500" }] } } } }</script><style>@layer base{html,body{width:100%;margin:0;padding:0;background-color:#F5F7FF;}body{overscroll-behavior-y:none;}.pb-safe{padding-bottom:env(safe-area-inset-bottom,0px);}.pt-safe{padding-top:env(safe-area-inset-top,0px);}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style></head><body class="bg-sonic-bg text-on-surface antialiased min-h-screen flex flex-col"><header class="fixed top-0 w-full z-50 pt-safe bg-sonic-surface/85 backdrop-blur-xl shadow-[0_1px_8px_rgba(11,16,51,0.04)]"><div class="h-16 px-margin flex items-center justify-between"><div class="flex items-center gap-space-sm"><button aria-label="Go back" class="w-11 h-11 -ml-space-xs rounded-full flex items-center justify-center text-on-surface hover:bg-sonic-blue-light transition-colors" onclick="history.back()" type="button"><span class="material-symbols-outlined text-[24px]">arrow_back</span></button><h1 class="font-headline-sm text-headline-sm text-on-surface font-semibold">My Cart</h1></div><div class="flex items-center gap-space-sm"><button aria-label="Clear cart items" class="w-11 h-11 rounded-full flex items-center justify-center text-sonic-muted hover:text-sonic-danger hover:bg-sonic-blue-light transition-colors" type="button"><span class="material-symbols-outlined text-[22px]">delete_outline</span></button><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center shadow-[0_2px_8px_rgba(11,16,51,0.08)]"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="flex-1 w-full pt-16 bg-sonic-bg flex flex-col"><div class="flex flex-col w-full pb-safe">
+<!-- Demo State Switcher (Interactive Prototype Controls) -->
+<div class="px-margin pt-space-sm pb-space-xs">
+<div class="bg-surface-container-high p-1 rounded-full flex items-center justify-between shadow-sm">
+<button class="flex-1 py-1.5 px-space-xs rounded-full font-label-sm text-label-sm text-center transition-all bg-primary-container text-on-primary shadow-sm font-semibold" id="btnStateNormal" onclick="setCartState('normal')">
+        Normal Cart
+      </button>
+<button class="flex-1 py-1.5 px-space-xs rounded-full font-label-sm text-label-sm text-center transition-all text-on-surface-variant hover:text-on-surface" id="btnStateSoldOut" onclick="setCartState('soldout')">
+        Sold-Out Alert
+      </button>
+<button class="flex-1 py-1.5 px-space-xs rounded-full font-label-sm text-label-sm text-center transition-all text-on-surface-variant hover:text-on-surface" id="btnStateEmpty" onclick="setCartState('empty')">
+        Empty Cart
+      </button>
+</div>
+</div>
+<!-- Delivery Destination Pill / Sub-header -->
+<div class="px-margin py-space-xs">
+<button class="w-full flex items-center justify-between bg-sonic-surface py-2.5 px-space-md rounded-xl shadow-[0_2px_8px_rgba(11,16,51,0.06)] hover:bg-sonic-blue-light/50 transition-colors" type="button">
+<div class="flex items-center gap-space-xs min-w-0">
+<span class="material-symbols-outlined text-primary-container text-[20px] shrink-0" style="font-variation-settings: 'FILL' 1;">location_on</span>
+<div class="flex items-baseline gap-1.5 truncate">
+<span class="font-body-sm text-body-sm text-sonic-muted shrink-0">Deliver to:</span>
+<span class="font-label-md text-label-md text-on-surface font-semibold truncate">San Jose, Sipocot</span>
+</div>
+</div>
+<div class="flex items-center gap-1 shrink-0 text-primary-container font-label-sm text-label-sm font-semibold ml-2">
+<span>Change</span>
+<span class="material-symbols-outlined text-[16px]">expand_more</span>
+</div>
+</button>
+</div>
+<!-- ACTIVE CART VIEW CONTAINER -->
+<div class="flex flex-col gap-space-md px-margin pt-space-xs pb-space-lg" id="cartFilledView">
+<!-- Multi-Store Order Notice Banner -->
+<div class="bg-sonic-blue-light/70 rounded-xl p-space-sm flex items-center gap-space-sm shadow-[0_2px_8px_rgba(11,16,51,0.04)]">
+<div class="w-7 h-7 rounded-full bg-sonic-bolt flex items-center justify-center shrink-0 shadow-sm">
+<span class="material-symbols-outlined text-on-surface text-[18px]" style="font-variation-settings: 'FILL' 1;">bolt</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface leading-tight">
+<span class="font-semibold text-primary">Multi-store batch:</span> 1 rider will pickup both orders to save delivery fees!
+      </p>
+</div>
+<!-- STORE CARD 1: Kusina ni Aling Rosa (Main Store) -->
+<section class="bg-sonic-surface rounded-xl shadow-[0_2px_8px_rgba(11,16,51,0.08)] p-space-md flex flex-col gap-space-md">
+<!-- Store Header -->
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-sm min-w-0">
+<div class="w-8 h-8 rounded-lg bg-sonic-blue-light flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-primary-container text-[20px]">storefront</span>
+</div>
+<div class="truncate">
+<h2 class="font-headline-sm text-headline-sm text-on-surface font-bold truncate">Kusina ni Aling Rosa</h2>
+<p class="font-body-sm text-body-sm text-sonic-muted">Homestyle Filipino Comfort</p>
+</div>
+</div>
+<span class="bg-sonic-blue-light text-primary-container px-2.5 py-1 rounded-full font-label-sm text-label-sm font-semibold shrink-0">
+          Main store
+        </span>
+</div>
+<!-- Item 1: Tapsilog -->
+<div class="bg-sonic-bg/50 rounded-xl p-space-sm flex flex-col gap-space-sm">
+<div class="flex gap-space-sm items-start">
+<img alt="Filipino beef tapsilog with garlic rice and egg" class="w-20 h-20 rounded-lg object-cover shrink-0 shadow-sm" src="https://lh3.googleusercontent.com/aida/ALJJyrDrx6uNik0DkA1hb-MH216F7IKvQnOPF9btY8hmBilgrSl58KB5X-aMlG52Jh02j8hJquaPau6vAkvFHCjekHo_CYkCTiusIQfrEi2tDKahFareX3hxZvClei-PENNJA1-y6Cu61_nXi_V9hP63mMECSWn8AeYbH9Ia3UKOfJ0xAGmNmiQZexXaM6dmljDD_yKb9muqRPpLBx6SVLWCE3TkdNNYtMDWgWdy_R-0ep0A"/>
+<div class="flex-1 min-w-0">
+<div class="flex items-start justify-between gap-1">
+<h3 class="font-label-lg text-label-lg text-on-surface font-bold truncate">Tapsilog</h3>
+<button aria-label="Remove Tapsilog" class="text-sonic-muted hover:text-sonic-danger p-0.5 rounded-full transition-colors" type="button">
+<span class="material-symbols-outlined text-[18px]">close</span>
+</button>
+</div>
+<p class="font-body-sm text-body-sm text-sonic-muted line-clamp-2 mt-0.5">
+              Cured beef tapa with garlic rice &amp; sunny egg
+            </p>
+<div class="flex items-center justify-between mt-2 pt-1">
+<div>
+<span class="font-body-sm text-body-sm text-sonic-muted">₱95.00 ea</span>
+<p class="font-price-display text-price-display text-primary-container font-bold">₱190.00</p>
+</div>
+<!-- Quantity Stepper -->
+<div class="flex items-center bg-sonic-surface rounded-full shadow-[0_2px_6px_rgba(11,16,51,0.06)] px-1 py-0.5 gap-2">
+<button aria-label="Decrease Tapsilog quantity" class="w-7 h-7 rounded-full flex items-center justify-center text-on-surface hover:bg-sonic-blue-light transition-colors" type="button">
+<span class="material-symbols-outlined text-[16px]">remove</span>
+</button>
+<span class="font-label-md text-label-md text-on-surface font-bold w-4 text-center">2</span>
+<button aria-label="Increase Tapsilog quantity" class="w-7 h-7 rounded-full flex items-center justify-center text-on-surface hover:bg-sonic-blue-light transition-colors" type="button">
+<span class="material-symbols-outlined text-[16px]">add</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Item 2: House Blend Iced Tea -->
+<div class="bg-sonic-bg/50 rounded-xl p-space-sm flex flex-col gap-space-sm">
+<div class="flex gap-space-sm items-start">
+<img alt="House blend iced tea with lemon and fresh mint" class="w-20 h-20 rounded-lg object-cover shrink-0 shadow-sm" src="https://lh3.googleusercontent.com/aida/ALJJyrCChEiZS_c-0gSB49YmYoeq9QSePRId-hyPx6Qil7QBmfUP7FZvt28iWVUrgJWLnzPt2Gi1uUVb_czBcC9NqFeIhxxeTZ8SxeRkY8cNti333s_6RnEAvjQ1E3qj7utsrgguzmOVqyd8XDAHhefTzvjuy0Dd_-0dMgpuDjtCE4bbogPgDigqtU3Zck8K_A92RmCCo5iJthoiQMaadCjbe6NVKOkG9-dbPBvg6_fTMAVv8Q"/>
+<div class="flex-1 min-w-0">
+<div class="flex items-start justify-between gap-1">
+<h3 class="font-label-lg text-label-lg text-on-surface font-bold truncate">House Blend Iced Tea</h3>
+<button aria-label="Remove Iced Tea" class="text-sonic-muted hover:text-sonic-danger p-0.5 rounded-full transition-colors" type="button">
+<span class="material-symbols-outlined text-[18px]">close</span>
+</button>
+</div>
+<p class="font-body-sm text-body-sm text-sonic-muted line-clamp-1 mt-0.5">
+              Fresh calamansi &amp; honey iced tea
+            </p>
+<div class="flex items-center justify-between mt-2 pt-1">
+<div>
+<span class="font-body-sm text-body-sm text-sonic-muted">₱25.00 ea</span>
+<p class="font-price-display text-price-display text-primary-container font-bold">₱25.00</p>
+</div>
+<!-- Quantity Stepper -->
+<div class="flex items-center bg-sonic-surface rounded-full shadow-[0_2px_6px_rgba(11,16,51,0.06)] px-1 py-0.5 gap-2">
+<button aria-label="Decrease Iced Tea quantity" class="w-7 h-7 rounded-full flex items-center justify-center text-on-surface hover:bg-sonic-blue-light transition-colors" type="button">
+<span class="material-symbols-outlined text-[16px]">remove</span>
+</button>
+<span class="font-label-md text-label-md text-on-surface font-bold w-4 text-center">1</span>
+<button aria-label="Increase Iced Tea quantity" class="w-7 h-7 rounded-full flex items-center justify-center text-on-surface hover:bg-sonic-blue-light transition-colors" type="button">
+<span class="material-symbols-outlined text-[16px]">add</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Item 3: Bangsilog (Sold-Out Alert Card Container) -->
+<div class="hidden bg-error-container/40 rounded-xl p-space-sm flex flex-col gap-space-sm transition-all duration-300" id="soldOutItemCard">
+<div class="flex gap-space-sm items-start">
+<div class="relative w-20 h-20 rounded-lg overflow-hidden shrink-0 shadow-sm opacity-60">
+<div class="w-full h-full bg-cover bg-center" data-alt="Traditional Filipino bangsilog dish with golden fried milkfish fillet bangus garlic fried rice and fried egg garnished with fresh tomato slices and calamansi" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCl5xGk-XiUuWvTu_Aw6ST6dWV_jrVhstjVynoJIhKMLkky14WZqMXCPUYBo_NZi9CbhezghukCl-QweLa_6Q_dp04EyqqtLnb3XuBcIfZVtPaOvlOhmil__D1mBEfL5cX2TIaRZQnDui0HN9JurBIDZRJVJBTHoUEf7bZqdp8jXP3IkfnkbIJPcMJVGFs4bMwayXM_tDwcX-kD22eiHsvxnxd9ym5Co-NCu50NJ8bc')"></div>
+<div class="absolute inset-0 bg-on-surface/30 flex items-center justify-center">
+<span class="material-symbols-outlined text-on-primary text-[24px]">block</span>
+</div>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex items-start justify-between gap-1">
+<h3 class="font-label-lg text-label-lg text-on-surface font-bold truncate">Bangsilog</h3>
+<span class="bg-sonic-danger text-on-primary px-2 py-0.5 rounded-full font-label-sm text-label-sm font-semibold shrink-0">
+                Sold out
+              </span>
+</div>
+<p class="font-body-sm text-body-sm text-sonic-danger font-medium mt-1">
+              Currently unavailable from merchant. Remove to continue.
+            </p>
+<div class="flex items-center justify-between mt-2 pt-1">
+<p class="font-price-display text-price-display text-sonic-muted line-through font-bold">₱110.00</p>
+<button class="bg-sonic-danger text-on-primary px-3 py-1.5 rounded-full font-label-sm text-label-sm font-semibold flex items-center gap-1 shadow-sm hover:opacity-90 active:scale-95 transition-all" onclick="removeSoldOutItem()" type="button">
+<span class="material-symbols-outlined text-[16px]">delete</span>
+<span>Remove item</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- STORE CARD 2: Tea Haus (Extra Store) -->
+<section class="bg-sonic-surface rounded-xl shadow-[0_2px_8px_rgba(11,16,51,0.08)] p-space-md flex flex-col gap-space-md">
+<!-- Store Header -->
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-sm min-w-0">
+<div class="w-8 h-8 rounded-lg bg-surface-container-highest flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-secondary text-[20px]">local_cafe</span>
+</div>
+<div class="truncate">
+<h2 class="font-headline-sm text-headline-sm text-on-surface font-bold truncate">Tea Haus</h2>
+<p class="font-body-sm text-body-sm text-sonic-muted">Artisan Teas &amp; Boba</p>
+</div>
+</div>
+<span class="bg-secondary-fixed text-on-secondary-fixed px-2.5 py-1 rounded-full font-label-sm text-label-sm font-semibold shrink-0 flex items-center gap-1 shadow-sm">
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">add_circle</span>
+          Extra store +₱10.00
+        </span>
+</div>
+<!-- Item 1: Wintermelon Milk Tea -->
+<div class="bg-sonic-bg/50 rounded-xl p-space-sm flex flex-col gap-space-sm">
+<div class="flex gap-space-sm items-start">
+<div class="w-20 h-20 rounded-lg overflow-hidden shrink-0 shadow-sm relative">
+<div class="w-full h-full bg-cover bg-center" data-alt="Taiwanese wintermelon milk tea with dark brown sugar tapioca pearls boba visible at the bottom of a transparent take-out cup with creamy foam top on a pastel background" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAHNFg_uKaSHF1HIoxZ00U6DXZMqME-3jrqaUe8XboY5cSp6MDYe1vCSDT7jt_MIRRxCGU2Iss1rjGK3Ks7SvB9F7Q5kTko0SPPE5NC30A6qbp6peJqKzEGoly2JthL2b-Vl_IHtVnoTVal7CUulW8Zj8PUWoe00-fTp4vU3oHN4KaQjzBmbHKDT4JwzkgdyV_9BrsbD51JHz6fsTKQ9XxF1Rlbf2ttzr2Jeac_9oDi')"></div>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex items-start justify-between gap-1">
+<h3 class="font-label-lg text-label-lg text-on-surface font-bold truncate">Wintermelon Milk Tea</h3>
+<button aria-label="Remove Milk Tea" class="text-sonic-muted hover:text-sonic-danger p-0.5 rounded-full transition-colors" type="button">
+<span class="material-symbols-outlined text-[18px]">close</span>
+</button>
+</div>
+<p class="font-body-sm text-body-sm text-sonic-muted line-clamp-1 mt-0.5">
+              50% sweetness · Regular boba pearls
+            </p>
+<div class="flex items-center justify-between mt-2 pt-1">
+<div>
+<span class="font-body-sm text-body-sm text-sonic-muted">₱95.00 ea</span>
+<p class="font-price-display text-price-display text-primary-container font-bold">₱95.00</p>
+</div>
+<!-- Quantity Stepper -->
+<div class="flex items-center bg-sonic-surface rounded-full shadow-[0_2px_6px_rgba(11,16,51,0.06)] px-1 py-0.5 gap-2">
+<button aria-label="Decrease Wintermelon Milk Tea" class="w-7 h-7 rounded-full flex items-center justify-center text-on-surface hover:bg-sonic-blue-light transition-colors" type="button">
+<span class="material-symbols-outlined text-[16px]">remove</span>
+</button>
+<span class="font-label-md text-label-md text-on-surface font-bold w-4 text-center">1</span>
+<button aria-label="Increase Wintermelon Milk Tea" class="w-7 h-7 rounded-full flex items-center justify-center text-on-surface hover:bg-sonic-blue-light transition-colors" type="button">
+<span class="material-symbols-outlined text-[16px]">add</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- ORDER SUMMARY CARD -->
+<section class="bg-sonic-surface rounded-xl shadow-[0_2px_8px_rgba(11,16,51,0.08)] p-space-md flex flex-col gap-space-sm">
+<div class="flex items-center justify-between pb-1">
+<h2 class="font-headline-sm text-headline-sm text-on-surface font-bold">Order summary</h2>
+<span class="font-label-sm text-label-sm text-sonic-muted bg-surface-container px-2 py-0.5 rounded-full">2 Stores</span>
+</div>
+<div class="flex justify-between items-center py-1">
+<span class="font-body-md text-body-md text-sonic-muted">Items subtotal (3 items)</span>
+<span class="font-label-lg text-label-lg text-on-surface font-semibold">₱310.00</span>
+</div>
+<div class="flex justify-between items-center py-1">
+<div class="flex items-center gap-1.5">
+<span class="font-body-md text-body-md text-sonic-muted">Delivery fee (San Jose)</span>
+<span class="material-symbols-outlined text-sonic-muted text-[16px]">two_wheeler</span>
+</div>
+<span class="font-label-lg text-label-lg text-on-surface font-semibold">₱150.00</span>
+</div>
+<div class="flex justify-between items-center py-1">
+<div class="flex items-center gap-1.5">
+<span class="font-body-md text-body-md text-sonic-muted">Extra store fee (1 extra store)</span>
+<button class="text-primary-container inline-flex items-center" title="Combined rider multi-stop fee" type="button">
+<span class="material-symbols-outlined text-[16px]">info</span>
+</button>
+</div>
+<span class="font-label-lg text-label-lg text-secondary font-semibold">+₱10.00</span>
+</div>
+<!-- Subtle Divider without border utility -->
+<div class="w-full h-px bg-sonic-border my-space-xs"></div>
+<!-- Total Row -->
+<div class="flex justify-between items-end pt-1">
+<div>
+<span class="font-headline-md text-headline-md text-on-surface font-bold">Total</span>
+<p class="font-label-sm text-label-sm text-sonic-muted mt-0.5">Includes VAT &amp; delivery service</p>
+</div>
+<div class="text-right">
+<span class="font-headline-lg text-headline-lg text-primary-container font-extrabold leading-none" id="summaryTotalText">₱470.00</span>
+</div>
+</div>
+</section>
+<!-- Super Sonic Delivery Guarantee Badge -->
+<div class="bg-surface-container-low rounded-xl p-space-sm flex items-center gap-space-sm">
+<div class="w-8 h-8 rounded-full bg-sonic-success/15 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-sonic-success text-[20px]" style="font-variation-settings: 'FILL' 1;">verified</span>
+</div>
+<div>
+<p class="font-label-sm text-label-sm text-on-surface font-semibold">Sonic Fresh Guarantee</p>
+<p class="font-body-sm text-body-sm text-sonic-muted">Hot thermal insulated bags &amp; live GPS courier tracking.</p>
+</div>
+</div>
+</div>
+<!-- EMPTY CART VIEW (Default hidden, shown via toggle) -->
+<div class="hidden flex-col items-center justify-center text-center px-margin py-space-xl min-h-[460px]" id="cartEmptyView">
+<div class="relative w-28 h-28 mb-space-md flex items-center justify-center">
+<div class="absolute inset-0 rounded-full bg-sonic-blue-light/70 animate-pulse"></div>
+<div class="relative w-20 h-20 rounded-full bg-sonic-bolt flex items-center justify-center shadow-lg">
+<span class="material-symbols-outlined text-on-surface text-[44px]" style="font-variation-settings: 'FILL' 1;">shopping_bag</span>
+</div>
+<div class="absolute -bottom-1 -right-1 w-9 h-9 rounded-full bg-primary-container flex items-center justify-center text-on-primary shadow-md">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">bolt</span>
+</div>
+</div>
+<h2 class="font-headline-md text-headline-md text-on-surface font-bold mb-space-xs">Your cart is empty</h2>
+<p class="font-body-md text-body-md text-sonic-muted max-w-[280px] mb-space-lg leading-relaxed">
+      Explore restaurants around Sipocot and add your favorites for lightning-fast delivery!
+    </p>
+<button class="h-12 px-space-xl bg-primary-container hover:bg-sonic-blue-dark active:scale-95 text-on-primary font-label-lg text-label-lg font-semibold rounded-full shadow-[0_4px_12px_rgba(24,60,240,0.25)] flex items-center gap-space-xs transition-all" onclick="setCartState('normal')" type="button">
+<span class="material-symbols-outlined text-[20px]">restaurant_menu</span>
+<span>Browse restaurants</span>
+</button>
+</div>
+<!-- STICKY BOTTOM CHECKOUT DOCK -->
+<div class="sticky bottom-0 w-full z-40 bg-sonic-surface/95 backdrop-blur-md shadow-[0_-4px_16px_rgba(11,16,51,0.08)] px-margin py-space-sm pb-safe transition-transform duration-200" id="stickyCheckoutBar">
+<!-- Sold-Out Block Warning -->
+<div class="hidden mb-2 px-3 py-1.5 bg-error-container text-on-error-container rounded-lg font-label-sm text-label-sm flex items-center justify-between" id="checkoutSoldOutWarning">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px]">warning</span>
+<span>Remove sold-out Bangsilog to checkout</span>
+</div>
+<span class="font-semibold underline cursor-pointer" onclick="removeSoldOutItem()">Fix now</span>
+</div>
+<button class="w-full h-12 bg-primary-container hover:bg-sonic-blue-dark active:scale-[0.98] text-on-primary rounded-full font-label-lg text-label-lg font-semibold flex items-center justify-between px-space-md shadow-[0_4px_14px_rgba(24,60,240,0.3)] transition-all" id="btnCheckoutSubmit" type="button">
+<div class="flex items-center gap-2">
+<span class="w-6 h-6 rounded-full bg-sonic-bolt text-on-surface flex items-center justify-center font-bold text-label-sm">
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">bolt</span>
+</span>
+<span>Checkout</span>
+</div>
+<div class="flex items-center gap-1 font-price-display">
+<span id="checkoutBarPrice">₱470.00</span>
+<span class="material-symbols-outlined text-[20px]">arrow_forward</span>
+</div>
+</button>
+</div>
+</div>
+<script>
+  function setCartState(state) {
+    const filledView = document.getElementById('cartFilledView');
+    const emptyView = document.getElementById('cartEmptyView');
+    const soldOutItem = document.getElementById('soldOutItemCard');
+    const checkoutBar = document.getElementById('stickyCheckoutBar');
+    const warning = document.getElementById('checkoutSoldOutWarning');
+    const checkoutBtn = document.getElementById('btnCheckoutSubmit');
+    const checkoutPrice = document.getElementById('checkoutBarPrice');
+    const summaryTotal = document.getElementById('summaryTotalText');
+
+    // Button tabs
+    const btnNormal = document.getElementById('btnStateNormal');
+    const btnSoldOut = document.getElementById('btnStateSoldOut');
+    const btnEmpty = document.getElementById('btnStateEmpty');
+
+    const activeClasses = ['bg-primary-container', 'text-on-primary', 'shadow-sm', 'font-semibold'];
+    const inactiveClasses = ['text-on-surface-variant'];
+
+    [btnNormal, btnSoldOut, btnEmpty].forEach(btn => {
+      btn.classList.remove(...activeClasses);
+      btn.classList.add(...inactiveClasses);
+    });
+
+    if (state === 'empty') {
+      btnEmpty.classList.add(...activeClasses);
+      btnEmpty.classList.remove(...inactiveClasses);
+      filledView.classList.add('hidden');
+      emptyView.classList.remove('hidden');
+      checkoutBar.classList.add('translate-y-full');
+    } else if (state === 'soldout') {
+      btnSoldOut.classList.add(...activeClasses);
+      btnSoldOut.classList.remove(...inactiveClasses);
+      filledView.classList.remove('hidden');
+      emptyView.classList.add('hidden');
+      soldOutItem.classList.remove('hidden');
+      checkoutBar.classList.remove('translate-y-full');
+      warning.classList.remove('hidden');
+      
+      // Disable checkout button visually & functionally
+      checkoutBtn.classList.remove('bg-primary-container', 'hover:bg-sonic-blue-dark');
+      checkoutBtn.classList.add('bg-outline', 'cursor-not-allowed', 'opacity-65');
+      checkoutPrice.textContent = '₱580.00';
+      summaryTotal.textContent = '₱580.00';
+    } else {
+      // Normal state
+      btnNormal.classList.add(...activeClasses);
+      btnNormal.classList.remove(...inactiveClasses);
+      filledView.classList.remove('hidden');
+      emptyView.classList.add('hidden');
+      soldOutItem.classList.add('hidden');
+      checkoutBar.classList.remove('translate-y-full');
+      warning.classList.add('hidden');
+
+      checkoutBtn.classList.add('bg-primary-container', 'hover:bg-sonic-blue-dark');
+      checkoutBtn.classList.remove('bg-outline', 'cursor-not-allowed', 'opacity-65');
+      checkoutPrice.textContent = '₱470.00';
+      summaryTotal.textContent = '₱470.00';
+    }
+  }
+
+  function removeSoldOutItem() {
+    // Smooth removal animation
+    const soldOutItem = document.getElementById('soldOutItemCard');
+    soldOutItem.style.opacity = '0';
+    soldOutItem.style.transform = 'scale(0.95)';
+    setTimeout(() => {
+      setCartState('normal');
+      soldOutItem.style.opacity = '1';
+      soldOutItem.style.transform = 'scale(1)';
+    }, 200);
+  }
+</script></main></body></html>

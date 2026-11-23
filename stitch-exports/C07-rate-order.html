@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><meta content="mobile_stack" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Montserrat:wght@600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "sonic-bolt": "#FFD60A", "on-surface": "#13183b", "outline": "#757688", "sonic-success": "#16A34A", "primary": "#0026c0", "on-secondary-fixed": "#150066", "sonic-bg": "#F5F7FF", "background": "#fbf8ff", "primary-fixed": "#dfe0ff", "surface-container-high": "#e6e6ff", "on-primary-fixed-variant": "#002ad0", "tertiary-fixed": "#c5e7ff", "on-error": "#ffffff", "sonic-danger": "#DC2626", "inverse-primary": "#bbc3ff", "on-tertiary-container": "#93d6ff", "secondary": "#3b00e6", "on-tertiary-fixed-variant": "#004c6a", "surface-bright": "#fbf8ff", "inverse-surface": "#292e51", "tertiary": "#004561", "on-background": "#13183b", "sonic-muted": "#5B6386", "surface": "#fbf8ff", "sonic-surface": "#FFFFFF", "on-primary": "#ffffff", "on-error-container": "#93000a", "tertiary-fixed-dim": "#7fd0ff", "on-secondary": "#ffffff", "surface-container-lowest": "#ffffff", "on-secondary-container": "#ddd8ff", "surface-variant": "#dfe0ff", "sonic-blue-dark": "#0F27B8", "surface-container": "#edecff", "on-tertiary-fixed": "#001e2d", "on-primary-container": "#c5cbff", "error": "#ba1a1a", "secondary-container": "#5537fe", "sonic-border": "#DDE2F5", "tertiary-container": "#005e82", "secondary-fixed": "#e4dfff", "surface-container-highest": "#dfe0ff", "on-surface-variant": "#444656", "outline-variant": "#c4c5d9", "primary-fixed-dim": "#bbc3ff", "secondary-fixed-dim": "#c6c0ff", "sonic-warning": "#F59E0B", "sonic-blue-light": "#E8ECFE", "on-secondary-fixed-variant": "#3a00df", "inverse-on-surface": "#f0efff", "surface-container-low": "#f4f2ff", "surface-dim": "#d4d7ff", "on-primary-fixed": "#000e5f", "error-container": "#ffdad6", "surface-tint": "#2445f6", "primary-container": "#183cf0", "on-tertiary": "#ffffff" }, "borderRadius": { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, "spacing": { "gutter": "1rem", "space-sm": "0.5rem", "space-xs": "0.25rem", "space-md": "1rem", "margin": "1rem", "margin-desktop": "2rem", "space-lg": "1.5rem", "gutter-desktop": "1.5rem", "space-xl": "2rem" }, "fontFamily": { "body-md": ["Inter"], "headline-lg": ["Montserrat"], "body-sm": ["Inter"], "headline-md": ["Montserrat"], "label-lg": ["Montserrat"], "price-display": ["Montserrat"], "headline-sm": ["Montserrat"], "label-md": ["Montserrat"], "body-lg": ["Inter"], "label-sm": ["Inter"] }, "fontSize": { "body-md": ["15px", { "lineHeight": "22px", "fontWeight": "400" }], "headline-lg": ["28px", { "lineHeight": "36px", "letterSpacing": "-0.02em", "fontWeight": "800" }], "body-sm": ["13px", { "lineHeight": "18px", "fontWeight": "400" }], "headline-md": ["22px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "700" }], "label-lg": ["16px", { "lineHeight": "20px", "fontWeight": "600" }], "price-display": ["18px", { "lineHeight": "24px", "fontWeight": "700" }], "headline-sm": ["18px", { "lineHeight": "24px", "fontWeight": "600" }], "label-md": ["14px", { "lineHeight": "18px", "fontWeight": "600" }], "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }], "label-sm": ["12px", { "lineHeight": "16px", "fontWeight": "500" }] } } } }</script><style>@layer base{html,body{width:100%;margin:0;padding:0;background-color:#F5F7FF;}body{overscroll-behavior-y:none;}.pb-safe{padding-bottom:env(safe-area-inset-bottom,0px);}.pt-safe{padding-top:env(safe-area-inset-top,0px);}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head><body class="bg-sonic-bg text-on-surface antialiased min-h-screen flex flex-col"><header class="fixed top-0 w-full z-50 pt-safe bg-sonic-surface/85 backdrop-blur-xl shadow-[0_1px_8px_rgba(11,16,51,0.04)]"><div class="h-16 px-margin flex items-center justify-between"><div class="flex items-center gap-space-sm"><button aria-label="Go back" class="w-11 h-11 -ml-space-xs rounded-full flex items-center justify-center text-on-surface hover:bg-sonic-blue-light transition-colors" onclick="history.back()" type="button"><span class="material-symbols-outlined text-[24px]">arrow_back</span></button><h1 class="font-headline-sm text-headline-sm text-on-surface font-semibold">My Cart</h1></div><div class="flex items-center gap-space-sm"><button aria-label="Clear cart items" class="w-11 h-11 rounded-full flex items-center justify-center text-sonic-muted hover:text-sonic-danger hover:bg-sonic-blue-light transition-colors" type="button"><span class="material-symbols-outlined text-[22px]">delete_outline</span></button><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center shadow-[0_2px_8px_rgba(11,16,51,0.08)]"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="flex-1 w-full pt-16 bg-sonic-bg flex flex-col"><div class="flex flex-col w-full pb-32">
+<!-- Interactive View Switcher Pill -->
+<div class="px-margin pt-space-sm pb-space-xs">
+<div class="bg-surface-container p-1 rounded-full flex items-center justify-between shadow-sm">
+<button class="flex-1 py-2 px-3 rounded-full text-center font-label-md text-label-md transition-all duration-200 bg-sonic-surface text-on-surface shadow-sm flex items-center justify-center gap-1.5" id="btn-tab-unrated" onclick="switchRatingState('unrated')">
+<span class="material-symbols-outlined text-[18px] text-primary-container">edit_note</span>
+<span>Active Review</span>
+</button>
+<button class="flex-1 py-2 px-3 rounded-full text-center font-label-md text-label-md transition-all duration-200 text-sonic-muted hover:text-on-surface flex items-center justify-center gap-1.5" id="btn-tab-rated" onclick="switchRatingState('rated')">
+<span class="material-symbols-outlined text-[18px]">verified</span>
+<span>Submitted (Preview)</span>
+</button>
+</div>
+</div>
+<!-- Order Meta Information Header -->
+<section class="px-margin pt-space-sm pb-space-md">
+<div class="flex flex-col gap-1">
+<div class="flex items-center gap-2">
+<h2 class="font-headline-md text-headline-md text-on-surface font-bold tracking-tight">Rate your order</h2>
+<span class="inline-flex items-center justify-center w-6 h-6 rounded-full bg-sonic-bolt/20 text-on-surface">
+<span class="material-symbols-outlined text-[16px] text-amber-500 fill-current" style="font-variation-settings: 'FILL' 1;">bolt</span>
+</span>
+</div>
+<p class="font-body-sm text-body-sm text-sonic-muted">
+        Order <span class="font-semibold text-on-surface">#SSD-20261121-0042</span> · Delivered today at 10:50 AM
+      </p>
+</div>
+<!-- Friendly Community Micro-Callout -->
+<div class="mt-3 p-3 bg-sonic-blue-light/70 rounded-xl flex items-start gap-2.5 shadow-sm">
+<span class="material-symbols-outlined text-primary text-[20px] shrink-0 mt-0.5">favorite</span>
+<p class="font-body-sm text-body-sm text-on-surface leading-snug">
+        Your honest feedback fuels our local stores &amp; fast riders in Sipocot to serve you better!
+      </p>
+</div>
+</section>
+<!-- STATE 1: UNRATED / ACTIVE REVIEW MODE -->
+<div class="flex flex-col gap-space-md px-margin transition-opacity duration-200" id="view-unrated">
+<!-- Store Card 1: Kusina ni Aling Rosa -->
+<article class="bg-sonic-surface rounded-xl p-space-md shadow-[0_2px_8px_rgba(11,16,51,0.06)] flex flex-col gap-3">
+<!-- Store Header -->
+<div class="flex items-center gap-3">
+<div class="w-12 h-12 rounded-full overflow-hidden shrink-0 bg-surface-container-high flex items-center justify-center shadow-inner">
+<img class="w-full h-full object-cover" data-alt="Authentic Filipino Kusina circular emblem logo with a smiling warm chef holding a wok with fresh steaming tapsilog and warm terracotta colors" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDIgGxyzu8acVqJat4cblsOv8PVX8CdB6bhAvgPosuoGvRb-gQ2w90-s2UMuYsP3oOY7WbnWwFtjY6tx2IXU26wTVuvOWKk5IvH5J2pxiw0O2EXpgPUVojshvjrhUShnPlcFGsTf4ZD8WpSgRO2N7LOTVZgg92d61tzmh6z93lrY6R7qf2eB2xmQcTZk_wO9YqP9oqPMu44Krv6vIjbdy2Zq_8Tpwoc706HFIjqWjzD"/>
+</div>
+<div class="min-w-0 flex-1">
+<div class="flex items-center justify-between">
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-semibold truncate">Kusina ni Aling Rosa</h3>
+<span class="px-2 py-0.5 rounded-full bg-surface-container text-sonic-muted font-label-sm text-label-sm">Store 1</span>
+</div>
+<p class="font-body-sm text-body-sm text-sonic-muted truncate mt-0.5">
+            Tapsilog ×2, House Blend Iced Tea ×1
+          </p>
+</div>
+</div>
+<!-- Star Rating Block -->
+<div class="bg-sonic-bg rounded-lg p-3 flex flex-col items-center justify-center gap-1.5">
+<span class="font-label-md text-label-md text-on-surface font-medium">How was the food &amp; packaging?</span>
+<div class="flex items-center gap-2 py-1" id="stars-store-1">
+<button aria-label="1 Star" class="p-1 hover:scale-110 active:scale-95 transition-transform" onclick="setStars('stars-store-1', 1)" type="button">
+<svg class="w-8 h-8 text-sonic-bolt filter drop-shadow-sm" fill="currentColor" viewbox="0 0 24 24">
+<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path>
+</svg>
+</button>
+<button aria-label="2 Stars" class="p-1 hover:scale-110 active:scale-95 transition-transform" onclick="setStars('stars-store-1', 2)" type="button">
+<svg class="w-8 h-8 text-sonic-bolt filter drop-shadow-sm" fill="currentColor" viewbox="0 0 24 24">
+<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path>
+</svg>
+</button>
+<button aria-label="3 Stars" class="p-1 hover:scale-110 active:scale-95 transition-transform" onclick="setStars('stars-store-1', 3)" type="button">
+<svg class="w-8 h-8 text-sonic-bolt filter drop-shadow-sm" fill="currentColor" viewbox="0 0 24 24">
+<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path>
+</svg>
+</button>
+<button aria-label="4 Stars" class="p-1 hover:scale-110 active:scale-95 transition-transform" onclick="setStars('stars-store-1', 4)" type="button">
+<svg class="w-8 h-8 text-sonic-bolt filter drop-shadow-sm" fill="currentColor" viewbox="0 0 24 24">
+<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path>
+</svg>
+</button>
+<button aria-label="5 Stars" class="p-1 hover:scale-110 active:scale-95 transition-transform" onclick="setStars('stars-store-1', 5)" type="button">
+<svg class="w-8 h-8 text-sonic-bolt filter drop-shadow-sm" fill="currentColor" viewbox="0 0 24 24">
+<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path>
+</svg>
+</button>
+</div>
+<span class="font-label-sm text-label-sm text-sonic-muted">Exceptional taste &amp; heat!</span>
+</div>
+<!-- Quick Compliment Chips -->
+<div class="flex flex-col gap-1.5">
+<span class="font-label-sm text-label-sm text-sonic-muted">Quick impressions:</span>
+<div class="flex flex-wrap gap-2">
+<button class="px-3 py-1.5 rounded-full font-label-sm text-label-sm bg-sonic-blue-light text-primary font-medium transition-colors shadow-sm" onclick="toggleChip(this)" type="button">
+            Delicious food 🍲
+          </button>
+<button class="px-3 py-1.5 rounded-full font-label-sm text-label-sm bg-sonic-blue-light text-primary font-medium transition-colors shadow-sm" onclick="toggleChip(this)" type="button">
+            Hot &amp; fresh 🔥
+          </button>
+<button class="px-3 py-1.5 rounded-full font-label-sm text-label-sm bg-surface-container text-on-surface transition-colors" onclick="toggleChip(this)" type="button">
+            Secure packaging 📦
+          </button>
+<button class="px-3 py-1.5 rounded-full font-label-sm text-label-sm bg-surface-container text-on-surface transition-colors" onclick="toggleChip(this)" type="button">
+            Generous portion 🍚
+          </button>
+</div>
+</div>
+<!-- Feedback Area -->
+<div class="flex flex-col gap-1">
+<label class="font-label-sm text-label-sm text-on-surface font-medium" for="comment-store-1">Add comments or feedback (optional)</label>
+<textarea class="w-full bg-sonic-bg rounded-xl p-3 font-body-sm text-body-sm text-on-surface placeholder:text-sonic-muted outline-none focus:bg-sonic-surface focus:shadow-[0_0_0_2px_#183cf0] transition-all resize-none" id="comment-store-1" placeholder="Tell us what you loved about Kusina ni Aling Rosa..." rows="2"></textarea>
+</div>
+</article>
+<!-- Store Card 2: Tea Haus -->
+<article class="bg-sonic-surface rounded-xl p-space-md shadow-[0_2px_8px_rgba(11,16,51,0.06)] flex flex-col gap-3">
+<!-- Store Header -->
+<div class="flex items-center gap-3">
+<div class="w-12 h-12 rounded-full overflow-hidden shrink-0 bg-secondary/10 flex items-center justify-center text-secondary shadow-sm">
+<span class="material-symbols-outlined text-[26px]">local_cafe</span>
+</div>
+<div class="min-w-0 flex-1">
+<div class="flex items-center justify-between">
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-semibold truncate">Tea Haus</h3>
+<span class="px-2 py-0.5 rounded-full bg-surface-container text-sonic-muted font-label-sm text-label-sm">Store 2</span>
+</div>
+<p class="font-body-sm text-body-sm text-sonic-muted truncate mt-0.5">
+            Wintermelon Milk Tea ×1
+          </p>
+</div>
+</div>
+<!-- Star Rating Block -->
+<div class="bg-sonic-bg rounded-lg p-3 flex flex-col items-center justify-center gap-1.5">
+<span class="font-label-md text-label-md text-on-surface font-medium">How was the drink?</span>
+<div class="flex items-center gap-2 py-1" id="stars-store-2">
+<button aria-label="1 Star" class="p-1 hover:scale-110 active:scale-95 transition-transform" onclick="setStars('stars-store-2', 1)" type="button">
+<svg class="w-8 h-8 text-sonic-bolt filter drop-shadow-sm" fill="currentColor" viewbox="0 0 24 24">
+<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path>
+</svg>
+</button>
+<button aria-label="2 Stars" class="p-1 hover:scale-110 active:scale-95 transition-transform" onclick="setStars('stars-store-2', 2)" type="button">
+<svg class="w-8 h-8 text-sonic-bolt filter drop-shadow-sm" fill="currentColor" viewbox="0 0 24 24">
+<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path>
+</svg>
+</button>
+<button aria-label="3 Stars" class="p-1 hover:scale-110 active:scale-95 transition-transform" onclick="setStars('stars-store-2', 3)" type="button">
+<svg class="w-8 h-8 text-sonic-bolt filter drop-shadow-sm" fill="currentColor" viewbox="0 0 24 24">
+<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path>
+</svg>
+</button>
+<button aria-label="4 Stars" class="p-1 hover:scale-110 active:scale-95 transition-transform" onclick="setStars('stars-store-2', 4)" type="button">
+<svg class="w-8 h-8 text-sonic-bolt filter drop-shadow-sm" fill="currentColor" viewbox="0 0 24 24">
+<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path>
+</svg>
+</button>
+<button aria-label="5 Stars" class="p-1 hover:scale-110 active:scale-95 transition-transform" onclick="setStars('stars-store-2', 5)" type="button">
+<svg class="w-8 h-8 text-sonic-bolt filter drop-shadow-sm" fill="currentColor" viewbox="0 0 24 24">
+<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path>
+</svg>
+</button>
+</div>
+<span class="font-label-sm text-label-sm text-sonic-muted">Perfect sweetness!</span>
+</div>
+<!-- Quick Compliment Chips -->
+<div class="flex flex-col gap-1.5">
+<span class="font-label-sm text-label-sm text-sonic-muted">Quick impressions:</span>
+<div class="flex flex-wrap gap-2">
+<button class="px-3 py-1.5 rounded-full font-label-sm text-label-sm bg-sonic-blue-light text-primary font-medium transition-colors shadow-sm" onclick="toggleChip(this)" type="button">
+            Perfect sweetness 🧋
+          </button>
+<button class="px-3 py-1.5 rounded-full font-label-sm text-label-sm bg-surface-container text-on-surface transition-colors" onclick="toggleChip(this)" type="button">
+            Cold &amp; refreshing 🧊
+          </button>
+<button class="px-3 py-1.5 rounded-full font-label-sm text-label-sm bg-surface-container text-on-surface transition-colors" onclick="toggleChip(this)" type="button">
+            No leaks ✨
+          </button>
+</div>
+</div>
+<!-- Feedback Area -->
+<div class="flex flex-col gap-1">
+<label class="font-label-sm text-label-sm text-on-surface font-medium" for="comment-store-2">Any notes for Tea Haus?</label>
+<textarea class="w-full bg-sonic-bg rounded-xl p-3 font-body-sm text-body-sm text-on-surface placeholder:text-sonic-muted outline-none focus:bg-sonic-surface focus:shadow-[0_0_0_2px_#183cf0] transition-all resize-none" id="comment-store-2" placeholder="Any special notes about the drinks or preparation..." rows="2"></textarea>
+</div>
+</article>
+<!-- Rider Rating Card -->
+<article class="bg-sonic-surface rounded-xl p-space-md shadow-[0_2px_8px_rgba(11,16,51,0.06)] flex flex-col gap-3">
+<!-- Rider Header -->
+<div class="flex items-center gap-3">
+<div class="w-12 h-12 rounded-full overflow-hidden shrink-0 bg-primary/10 flex items-center justify-center text-primary shadow-sm relative">
+<span class="material-symbols-outlined text-[28px]">sports_motorsports</span>
+<span class="absolute bottom-0 right-0 w-3.5 h-3.5 rounded-full bg-sonic-success ring-2 ring-white"></span>
+</div>
+<div class="min-w-0 flex-1">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-1.5">
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-semibold truncate">Mark D.</h3>
+<span class="inline-flex items-center gap-0.5 px-1.5 py-0.5 rounded-full bg-sonic-bolt/20 text-on-surface font-label-sm text-[11px] font-bold">
+<span class="material-symbols-outlined text-[12px] text-amber-500 fill-current" style="font-variation-settings: 'FILL' 1;">star</span>
+                4.9
+              </span>
+</div>
+<span class="px-2 py-0.5 rounded-full bg-sonic-blue-light text-primary font-label-sm text-label-sm">Rider</span>
+</div>
+<p class="font-body-sm text-body-sm text-sonic-muted truncate mt-0.5">
+            Motorcycle · ABC 1234 · Delivered in 15m ⚡
+          </p>
+</div>
+</div>
+<!-- Star Rating Block -->
+<div class="bg-sonic-bg rounded-lg p-3 flex flex-col items-center justify-center gap-1.5">
+<span class="font-label-md text-label-md text-on-surface font-medium">How was your delivery rider?</span>
+<div class="flex items-center gap-2 py-1" id="stars-rider">
+<button aria-label="1 Star" class="p-1 hover:scale-110 active:scale-95 transition-transform" onclick="setStars('stars-rider', 1)" type="button">
+<svg class="w-8 h-8 text-sonic-bolt filter drop-shadow-sm" fill="currentColor" viewbox="0 0 24 24">
+<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path>
+</svg>
+</button>
+<button aria-label="2 Stars" class="p-1 hover:scale-110 active:scale-95 transition-transform" onclick="setStars('stars-rider', 2)" type="button">
+<svg class="w-8 h-8 text-sonic-bolt filter drop-shadow-sm" fill="currentColor" viewbox="0 0 24 24">
+<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path>
+</svg>
+</button>
+<button aria-label="3 Stars" class="p-1 hover:scale-110 active:scale-95 transition-transform" onclick="setStars('stars-rider', 3)" type="button">
+<svg class="w-8 h-8 text-sonic-bolt filter drop-shadow-sm" fill="currentColor" viewbox="0 0 24 24">
+<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path>
+</svg>
+</button>
+<button aria-label="4 Stars" class="p-1 hover:scale-110 active:scale-95 transition-transform" onclick="setStars('stars-rider', 4)" type="button">
+<svg class="w-8 h-8 text-sonic-bolt filter drop-shadow-sm" fill="currentColor" viewbox="0 0 24 24">
+<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path>
+</svg>
+</button>
+<button aria-label="5 Stars" class="p-1 hover:scale-110 active:scale-95 transition-transform" onclick="setStars('stars-rider', 5)" type="button">
+<svg class="w-8 h-8 text-sonic-bolt filter drop-shadow-sm" fill="currentColor" viewbox="0 0 24 24">
+<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path>
+</svg>
+</button>
+</div>
+<span class="font-label-sm text-label-sm text-sonic-muted">Lightning fast and friendly!</span>
+</div>
+<!-- Rider Compliments -->
+<div class="flex flex-col gap-1.5">
+<span class="font-label-sm text-label-sm text-sonic-muted">Compliments for Mark:</span>
+<div class="flex flex-wrap gap-2">
+<button class="px-3 py-1.5 rounded-full font-label-sm text-label-sm bg-sonic-blue-light text-primary font-medium transition-colors shadow-sm" onclick="toggleChip(this)" type="button">
+            Polite &amp; friendly 😊
+          </button>
+<button class="px-3 py-1.5 rounded-full font-label-sm text-label-sm bg-sonic-blue-light text-primary font-medium transition-colors shadow-sm" onclick="toggleChip(this)" type="button">
+            Fast delivery ⚡
+          </button>
+<button class="px-3 py-1.5 rounded-full font-label-sm text-label-sm bg-surface-container text-on-surface transition-colors" onclick="toggleChip(this)" type="button">
+            Handled with care 🛡️
+          </button>
+<button class="px-3 py-1.5 rounded-full font-label-sm text-label-sm bg-surface-container text-on-surface transition-colors" onclick="toggleChip(this)" type="button">
+            Followed notes 📍
+          </button>
+</div>
+</div>
+<!-- Optional Rider Tip Note -->
+<div class="flex flex-col gap-1">
+<label class="font-label-sm text-label-sm text-on-surface font-medium" for="comment-rider">Send a compliment or note</label>
+<input class="w-full bg-sonic-bg rounded-xl px-3 py-2.5 font-body-sm text-body-sm text-on-surface placeholder:text-sonic-muted outline-none focus:bg-sonic-surface focus:shadow-[0_0_0_2px_#183cf0] transition-all" id="comment-rider" placeholder="Send a compliment to Mark..." type="text"/>
+</div>
+</article>
+</div>
+<!-- STATE 2: ALREADY RATED / PREVIEW MODE (Initially Hidden) -->
+<div class="hidden flex-col gap-space-md px-margin transition-opacity duration-200" id="view-rated">
+<!-- Success Status Badge Pill -->
+<div class="p-3 bg-sonic-success/10 rounded-xl flex items-center justify-between shadow-sm">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-sonic-success text-[20px]" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span class="font-label-md text-label-md text-sonic-success font-semibold">Rated on Nov 21, 2026 at 11:15 AM</span>
+</div>
+<span class="px-2 py-0.5 rounded-full bg-sonic-success text-on-primary font-label-sm text-label-sm font-bold">Verified</span>
+</div>
+<!-- Store Card 1 Submitted -->
+<article class="bg-sonic-surface rounded-xl p-space-md shadow-[0_2px_8px_rgba(11,16,51,0.06)] flex flex-col gap-3">
+<div class="flex items-center gap-3">
+<div class="w-12 h-12 rounded-full overflow-hidden shrink-0 bg-surface-container-high flex items-center justify-center">
+<img class="w-full h-full object-cover" data-alt="Authentic Filipino Kusina circular emblem logo with a smiling warm chef holding a wok with fresh steaming tapsilog and warm terracotta colors" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCrzBliGzyZMuYvP9edYFb7DgFJAJXPnLlqKkwSK8G4Zj1R3gzDh3vkFdnPbFWdHSQOc0M_QBKEAI36_V-GRZVXEU4OsEsHlKeM4cSNCc1a43P0YYkldRqBka1osytoKnrmLABVz8Le5DbbZtoYksntlUeUqy1JGcJfDWesaFAqfSDS4zKrSZCBf5RB0-jXwMaSou727sn-YvH159PuUgqPtbrzgsdJ54eMTEWTmA2c"/>
+</div>
+<div class="min-w-0 flex-1">
+<div class="flex items-center justify-between">
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-semibold truncate">Kusina ni Aling Rosa</h3>
+<span class="px-2 py-0.5 rounded-full bg-surface-container text-sonic-muted font-label-sm text-label-sm">Store 1</span>
+</div>
+<p class="font-body-sm text-body-sm text-sonic-muted truncate mt-0.5">
+            Tapsilog ×2, House Blend Iced Tea ×1
+          </p>
+</div>
+</div>
+<div class="bg-sonic-bg rounded-lg p-3 flex flex-col gap-2">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-1">
+<svg class="w-5 h-5 text-sonic-bolt" fill="currentColor" viewbox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path></svg>
+<svg class="w-5 h-5 text-sonic-bolt" fill="currentColor" viewbox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path></svg>
+<svg class="w-5 h-5 text-sonic-bolt" fill="currentColor" viewbox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path></svg>
+<svg class="w-5 h-5 text-sonic-bolt" fill="currentColor" viewbox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path></svg>
+<svg class="w-5 h-5 text-sonic-bolt" fill="currentColor" viewbox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path></svg>
+</div>
+<span class="font-label-sm text-label-sm text-sonic-success font-medium flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">thumb_up</span> 5.0 Rating
+          </span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface bg-sonic-surface p-2.5 rounded-lg">
+          "The tapsilog was still hot and garlic rice was packed with flavor! Loved the iced tea."
+        </p>
+</div>
+<div class="flex flex-wrap gap-1.5">
+<span class="px-2.5 py-1 rounded-full font-label-sm text-label-sm bg-sonic-blue-light text-primary font-medium">Delicious food 🍲</span>
+<span class="px-2.5 py-1 rounded-full font-label-sm text-label-sm bg-sonic-blue-light text-primary font-medium">Hot &amp; fresh 🔥</span>
+</div>
+</article>
+<!-- Store Card 2 Submitted -->
+<article class="bg-sonic-surface rounded-xl p-space-md shadow-[0_2px_8px_rgba(11,16,51,0.06)] flex flex-col gap-3">
+<div class="flex items-center gap-3">
+<div class="w-12 h-12 rounded-full overflow-hidden shrink-0 bg-secondary/10 flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined text-[26px]">local_cafe</span>
+</div>
+<div class="min-w-0 flex-1">
+<div class="flex items-center justify-between">
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-semibold truncate">Tea Haus</h3>
+<span class="px-2 py-0.5 rounded-full bg-surface-container text-sonic-muted font-label-sm text-label-sm">Store 2</span>
+</div>
+<p class="font-body-sm text-body-sm text-sonic-muted truncate mt-0.5">
+            Wintermelon Milk Tea ×1
+          </p>
+</div>
+</div>
+<div class="bg-sonic-bg rounded-lg p-3 flex flex-col gap-2">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-1">
+<svg class="w-5 h-5 text-sonic-bolt" fill="currentColor" viewbox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path></svg>
+<svg class="w-5 h-5 text-sonic-bolt" fill="currentColor" viewbox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path></svg>
+<svg class="w-5 h-5 text-sonic-bolt" fill="currentColor" viewbox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path></svg>
+<svg class="w-5 h-5 text-sonic-bolt" fill="currentColor" viewbox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path></svg>
+<svg class="w-5 h-5 text-sonic-bolt" fill="currentColor" viewbox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path></svg>
+</div>
+<span class="font-label-sm text-label-sm text-sonic-success font-medium flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">thumb_up</span> 5.0 Rating
+          </span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface bg-sonic-surface p-2.5 rounded-lg">
+          "Boba pearls were nice and chewy, sweetness was spot on."
+        </p>
+</div>
+<div class="flex flex-wrap gap-1.5">
+<span class="px-2.5 py-1 rounded-full font-label-sm text-label-sm bg-sonic-blue-light text-primary font-medium">Perfect sweetness 🧋</span>
+</div>
+</article>
+<!-- Rider Submitted Card -->
+<article class="bg-sonic-surface rounded-xl p-space-md shadow-[0_2px_8px_rgba(11,16,51,0.06)] flex flex-col gap-3">
+<div class="flex items-center gap-3">
+<div class="w-12 h-12 rounded-full overflow-hidden shrink-0 bg-primary/10 flex items-center justify-center text-primary relative">
+<span class="material-symbols-outlined text-[28px]">sports_motorsports</span>
+<span class="absolute bottom-0 right-0 w-3.5 h-3.5 rounded-full bg-sonic-success ring-2 ring-white"></span>
+</div>
+<div class="min-w-0 flex-1">
+<div class="flex items-center justify-between">
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-semibold truncate">Mark D.</h3>
+<span class="px-2 py-0.5 rounded-full bg-sonic-blue-light text-primary font-label-sm text-label-sm">Rider</span>
+</div>
+<p class="font-body-sm text-body-sm text-sonic-muted truncate mt-0.5">
+            Motorcycle · ABC 1234 · Delivered in 15m ⚡
+          </p>
+</div>
+</div>
+<div class="bg-sonic-bg rounded-lg p-3 flex flex-col gap-2">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-1">
+<svg class="w-5 h-5 text-sonic-bolt" fill="currentColor" viewbox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path></svg>
+<svg class="w-5 h-5 text-sonic-bolt" fill="currentColor" viewbox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path></svg>
+<svg class="w-5 h-5 text-sonic-bolt" fill="currentColor" viewbox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path></svg>
+<svg class="w-5 h-5 text-sonic-bolt" fill="currentColor" viewbox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path></svg>
+<svg class="w-5 h-5 text-sonic-bolt" fill="currentColor" viewbox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path></svg>
+</div>
+<span class="font-label-sm text-label-sm text-sonic-success font-medium flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">bolt</span> 5.0 Speed &amp; Care
+          </span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface bg-sonic-surface p-2.5 rounded-lg">
+          "Mark called right when arriving outside the sari-sari store as requested in the notes. Super fast!"
+        </p>
+</div>
+<div class="flex flex-wrap gap-1.5">
+<span class="px-2.5 py-1 rounded-full font-label-sm text-label-sm bg-sonic-blue-light text-primary font-medium">Polite &amp; friendly 😊</span>
+<span class="px-2.5 py-1 rounded-full font-label-sm text-label-sm bg-sonic-blue-light text-primary font-medium">Fast delivery ⚡</span>
+</div>
+</article>
+</div>
+<!-- Sticky Bottom Checkout / Submission Bar -->
+<div class="fixed bottom-0 left-0 right-0 z-40 bg-sonic-surface/95 backdrop-blur-xl shadow-[0_-4px_16px_rgba(11,16,51,0.08)] pb-safe">
+<div class="p-margin flex flex-col gap-2 max-w-[420px] mx-auto">
+<!-- Active Mode Button -->
+<div class="flex flex-col gap-1.5 w-full" id="footer-unrated">
+<button class="w-full h-12 rounded-full bg-primary-container hover:bg-sonic-blue-dark active:scale-[0.99] text-on-primary font-label-lg text-label-lg font-semibold flex items-center justify-center gap-2 shadow-[0_4px_12px_rgba(24,60,240,0.3)] transition-all" onclick="submitRatings()" type="button">
+<span>Submit ratings</span>
+<span class="material-symbols-outlined text-[18px] text-sonic-bolt" style="font-variation-settings: 'FILL' 1;">bolt</span>
+</button>
+<p class="text-center font-label-sm text-label-sm text-sonic-muted">
+          You can update your rating within 24 hours.
+        </p>
+</div>
+<!-- Submitted Mode Button -->
+<div class="hidden flex-col gap-1.5 w-full" id="footer-rated">
+<button class="w-full h-12 rounded-full bg-surface-container hover:bg-surface-container-high text-primary font-label-lg text-label-lg font-semibold flex items-center justify-center gap-2 transition-all" onclick="switchRatingState('unrated')" type="button">
+<span class="material-symbols-outlined text-[18px]">edit</span>
+<span>Edit my reviews</span>
+</button>
+<p class="text-center font-label-sm text-label-sm text-sonic-muted">
+          Rating locked on Nov 22, 2026.
+        </p>
+</div>
+</div>
+</div>
+</div>
+<script>
+  function switchRatingState(state) {
+    const unratedView = document.getElementById('view-unrated');
+    const ratedView = document.getElementById('view-rated');
+    const footerUnrated = document.getElementById('footer-unrated');
+    const footerRated = document.getElementById('footer-rated');
+    const btnUnrated = document.getElementById('btn-tab-unrated');
+    const btnRated = document.getElementById('btn-tab-rated');
+
+    if (state === 'rated') {
+      unratedView.classList.add('hidden');
+      ratedView.classList.remove('hidden');
+      footerUnrated.classList.add('hidden');
+      footerRated.classList.remove('hidden');
+
+      btnRated.classList.add('bg-sonic-surface', 'text-on-surface', 'shadow-sm');
+      btnRated.classList.remove('text-sonic-muted');
+      btnUnrated.classList.remove('bg-sonic-surface', 'text-on-surface', 'shadow-sm');
+      btnUnrated.classList.add('text-sonic-muted');
+    } else {
+      ratedView.classList.add('hidden');
+      unratedView.classList.remove('hidden');
+      footerRated.classList.add('hidden');
+      footerUnrated.classList.remove('hidden');
+
+      btnUnrated.classList.add('bg-sonic-surface', 'text-on-surface', 'shadow-sm');
+      btnUnrated.classList.remove('text-sonic-muted');
+      btnRated.classList.remove('bg-sonic-surface', 'text-on-surface', 'shadow-sm');
+      btnRated.classList.add('text-sonic-muted');
+    }
+  }
+
+  function setStars(containerId, count) {
+    const container = document.getElementById(containerId);
+    if (!container) return;
+    const buttons = container.querySelectorAll('button');
+    buttons.forEach((btn, index) => {
+      const svg = btn.querySelector('svg');
+      if (index < count) {
+        svg.setAttribute('class', 'w-8 h-8 text-sonic-bolt filter drop-shadow-sm');
+        svg.setAttribute('fill', 'currentColor');
+      } else {
+        svg.setAttribute('class', 'w-8 h-8 text-outline-variant');
+        svg.setAttribute('fill', 'none');
+      }
+    });
+  }
+
+  function toggleChip(button) {
+    const isSelected = button.classList.contains('bg-sonic-blue-light');
+    if (isSelected) {
+      button.classList.remove('bg-sonic-blue-light', 'text-primary', 'shadow-sm');
+      button.classList.add('bg-surface-container', 'text-on-surface');
+    } else {
+      button.classList.remove('bg-surface-container', 'text-on-surface');
+      button.classList.add('bg-sonic-blue-light', 'text-primary', 'shadow-sm');
+    }
+  }
+
+  function submitRatings() {
+    switchRatingState('rated');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+</script></main></body></html>

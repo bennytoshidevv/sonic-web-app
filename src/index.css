@@ -1,0 +1,53 @@
+@import "tailwindcss";
+
+/* Design tokens from DESIGN.md. Use them as Tailwind classes,
+   e.g. bg-sonic-blue, text-sonic-ink, border-sonic-border, font-display, text-body, shadow-card. */
+@theme {
+  /* Colors */
+  --color-sonic-blue: #183cf0;
+  --color-sonic-blue-dark: #0f27b8;
+  --color-sonic-blue-50: #e8ecfe;
+  --color-sonic-violet: #3f0beb;
+  --color-sonic-sky: #30b4f0;
+  --color-sonic-bolt: #ffd60a;
+  --color-sonic-ink: #0b1033;
+  --color-sonic-muted: #5b6386;
+  --color-sonic-bg: #f5f7ff;
+  --color-sonic-border: #dde2f5;
+  /* success = green-600, warning = amber-500, danger = red-600 (Tailwind defaults) */
+
+  /* Fonts: Poppins for headings/buttons/prices, Inter for body/tables/forms */
+  --font-display: "Poppins", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+
+  /* Type scale */
+  --text-h1: 28px;
+  --text-h1--line-height: 36px;
+  --text-h2: 22px;
+  --text-h2--line-height: 28px;
+  --text-h3: 18px;
+  --text-h3--line-height: 24px;
+  --text-body: 15px;
+  --text-body--line-height: 22px;
+  --text-small: 13px;
+  --text-small--line-height: 18px;
+  --text-caption: 12px;
+  --text-caption--line-height: 16px;
+
+  /* Soft card shadow */
+  --shadow-card: 0 2px 8px rgba(11, 16, 51, 0.08);
+}
+
+@layer base {
+  body {
+    @apply bg-sonic-bg font-sans text-body text-sonic-ink antialiased;
+  }
+}
+
+/* Hides the scrollbar on sideways-scrolling rows (e.g. cuisine chips) but keeps them scrollable */
+@utility scrollbar-none {
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}

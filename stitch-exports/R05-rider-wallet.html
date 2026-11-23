@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><meta content="mobile_tab" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Montserrat:wght@600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{width:100vw;margin:0;padding:0;}body{overscroll-behavior:none;}.pb-safe{padding-bottom:env(safe-area-inset-bottom,0px);}.pt-safe{padding-top:env(safe-area-inset-top,0px);}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { colors: { "secondary-fixed": "#e4dfff", "outline": "#757688", "sonic-bolt": "#FFD60A", "secondary-container": "#5537fe", "outline-variant": "#c4c5d9", "on-tertiary-fixed-variant": "#004c6a", "on-surface-variant": "#444656", "surface-container-highest": "#dfe0ff", "on-secondary-fixed": "#150066", "on-primary-fixed-variant": "#002ad0", "on-tertiary": "#ffffff", "surface-container-low": "#f4f2ff", "primary-fixed-dim": "#bbc3ff", "error": "#ba1a1a", "sonic-bg": "#F5F7FF", "primary-fixed": "#dfe0ff", "sonic-surface": "#FFFFFF", "tertiary": "#004561", "primary": "#0026c0", "surface-dim": "#d4d7ff", "secondary-fixed-dim": "#c6c0ff", "surface-container": "#edecff", "on-secondary": "#ffffff", "on-primary-fixed": "#000e5f", "sonic-blue-dark": "#0F27B8", "on-primary": "#ffffff", "sonic-border": "#DDE2F5", "tertiary-fixed": "#c5e7ff", "tertiary-fixed-dim": "#7fd0ff", "error-container": "#ffdad6", "tertiary-container": "#005e82", "on-primary-container": "#c5cbff", "surface-container-high": "#e6e6ff", "sonic-muted": "#5B6386", "on-surface": "#13183b", "sonic-warning": "#F59E0B", "secondary": "#3b00e6", "on-error": "#ffffff", "on-secondary-fixed-variant": "#3a00df", "inverse-surface": "#292e51", "on-secondary-container": "#ddd8ff", "surface-tint": "#2445f6", "inverse-primary": "#bbc3ff", "surface-bright": "#fbf8ff", "sonic-blue-light": "#E8ECFE", "on-background": "#13183b", "sonic-danger": "#DC2626", "on-tertiary-container": "#93d6ff", "surface-variant": "#dfe0ff", "sonic-success": "#16A34A", "surface-container-lowest": "#ffffff", "inverse-on-surface": "#f0efff", "primary-container": "#183cf0", "surface": "#fbf8ff", "background": "#fbf8ff", "on-error-container": "#93000a", "on-tertiary-fixed": "#001e2d" }, borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, spacing: { "space-xl": "2rem", "space-xs": "0.25rem", "space-lg": "1.5rem", "space-sm": "0.5rem", "gutter": "1rem", "space-md": "1rem", "margin": "1rem", "gutter-desktop": "1.5rem", "margin-desktop": "2rem" }, fontFamily: { "body-md": ["Inter"], "price-display": ["Montserrat"], "body-sm": ["Inter"], "body-lg": ["Inter"], "headline-md": ["Montserrat"], "label-lg": ["Montserrat"], "headline-sm": ["Montserrat"], "label-sm": ["Inter"], "label-md": ["Montserrat"], "headline-lg": ["Montserrat"] }, fontSize: { "body-md": ["15px", { lineHeight: "22px", fontWeight: "400" }], "price-display": ["18px", { lineHeight: "24px", fontWeight: "700" }], "body-sm": ["13px", { lineHeight: "18px", fontWeight: "400" }], "body-lg": ["16px", { lineHeight: "24px", fontWeight: "400" }], "headline-md": ["22px", { lineHeight: "28px", letterSpacing: "-0.01em", fontWeight: "700" }], "label-lg": ["16px", { lineHeight: "20px", fontWeight: "600" }], "headline-sm": ["18px", { lineHeight: "24px", fontWeight: "600" }], "label-sm": ["12px", { lineHeight: "16px", fontWeight: "500" }], "label-md": ["14px", { lineHeight: "18px", fontWeight: "600" }], "headline-lg": ["28px", { lineHeight: "36px", letterSpacing: "-0.02em", fontWeight: "800" }] } } } }</script><style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head><body class="bg-sonic-bg font-body-md text-body-md text-on-surface flex flex-col min-h-screen"><header class="fixed top-0 w-full z-50 bg-sonic-surface/90 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)] pt-safe"><div class="h-16 px-margin flex items-center justify-between"><div class="flex items-center gap-space-sm"><div class="w-9 h-9 rounded-full bg-primary-container flex items-center justify-center text-sonic-bolt shadow-sm"><span class="material-symbols-outlined text-[20px]">bolt</span></div><div class="flex flex-col"><span class="font-label-sm text-label-sm text-sonic-muted uppercase tracking-wider leading-none">Super Sonic</span><span class="font-headline-sm text-headline-sm text-on-surface leading-tight">Hi, Mark</span></div></div><div class="flex items-center gap-space-sm"><button aria-label="Notifications" class="relative w-11 h-11 flex items-center justify-center rounded-full hover:bg-surface-container transition-colors text-on-surface"><span class="material-symbols-outlined text-[24px]">notifications</span><span class="absolute top-2.5 right-2.5 w-2 h-2 rounded-full bg-sonic-danger ring-2 ring-sonic-surface"></span></button><img alt="Profile" class="w-8 h-8 rounded-full object-cover ring-2 ring-sonic-border" src="https://lh3.googleusercontent.com/aida/ALJJyrC8lRXYdjybIE90MeONF2eH0KosGRJACkoy-lyzF-YOG4th5LTs_7Jhi6mtx3iDcwEOTXrNpX9Ra-N2vuj8M_5qI4lhK3Pbu8O2Nxa5QYOvR4R9--26DM48rQTpq20WdGYtm2_Cb0H6kwEaKRgzb0ESoksxV_CZU8LKOqPui2GGPVj45SFbthr2nqU0RhX9M0r78aMalNCPNMmYVdwVWXbrc9rJTHOJdp3fcfGr7t6I7eiQWVaN3c-xgqvP"/></div></div></header><main class="flex flex-col relative w-full pt-16 pb-20 bg-sonic-bg min-h-screen"><div class="flex flex-col w-full pb-6">
+<!-- Brand Status Bar & Context Header -->
+<div class="px-margin pt-space-sm pb-space-xs flex flex-col gap-space-xs">
+<!-- Hub status pill & Mode indicators -->
+<div class="flex items-center justify-between">
+<div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-sonic-surface shadow-sm">
+<span class="w-2 h-2 rounded-full bg-sonic-success animate-pulse"></span>
+<span class="font-label-sm text-label-sm text-on-surface font-semibold">Sipocot Hub</span>
+</div>
+<div class="flex items-center gap-space-xs">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full bg-surface-container-high text-sonic-muted font-label-sm text-[11px] font-medium tracking-wide">
+          Shift: Nov 21, 2026
+        </span>
+<span class="inline-flex items-center px-2 py-0.5 rounded-full bg-secondary-fixed text-on-secondary-fixed font-label-sm text-[11px] font-bold uppercase tracking-wider">
+          View Only
+        </span>
+</div>
+</div>
+<!-- Title & Subtitle with Alert Simulation Action -->
+<div class="flex items-start justify-between mt-space-xs">
+<div>
+<h1 class="font-headline-lg text-headline-lg text-on-surface tracking-tight">Rider Wallet</h1>
+<p class="font-body-sm text-body-sm text-sonic-muted leading-tight mt-0.5">Petty cash float, shift ledger &amp; accumulated savings</p>
+</div>
+<button aria-label="Toggle Float Alert State" class="shrink-0 flex items-center gap-1 px-2.5 py-1.5 rounded-full bg-sonic-blue-light text-primary hover:bg-primary hover:text-on-primary transition-all shadow-sm active:scale-95" id="toggleAlertBtn">
+<span class="material-symbols-outlined text-[16px]">tune</span>
+<span class="font-label-sm text-[11px] font-semibold">Test Alert</span>
+</button>
+</div>
+</div>
+<div class="px-margin flex flex-col gap-space-md mt-space-xs">
+<!-- Low Cash Alert Banner (Dynamic State) -->
+<div class="hidden rounded-xl bg-amber-50 shadow-sm p-3.5 flex items-start gap-3 transition-all duration-300" id="lowCashAlert">
+<div class="w-8 h-8 rounded-full bg-sonic-warning/20 flex items-center justify-center shrink-0 text-sonic-warning mt-0.5">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">warning</span>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex items-center gap-2">
+<span class="font-label-md text-label-md text-on-surface font-bold">Low Cash Alert</span>
+<span class="inline-flex px-1.5 py-0.2 rounded-full bg-sonic-warning text-white font-label-sm text-[10px] font-semibold">&lt; ₱200</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5 leading-snug">
+          On-hand balance is below minimum float threshold. Request replenishment at Sipocot Hub cashier or submit via GCash.
+        </p>
+</div>
+</div>
+<!-- Card 1: Petty Cash Float -->
+<div class="rounded-xl bg-sonic-surface shadow-sm overflow-hidden flex flex-col">
+<!-- Card Header -->
+<div class="p-space-md bg-gradient-to-b from-surface-container-low/50 to-sonic-surface flex flex-col gap-space-sm">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 rounded-lg bg-primary-container/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[20px]">account_balance_wallet</span>
+</div>
+<span class="font-label-lg text-label-lg text-on-surface font-bold">Petty Cash Float</span>
+</div>
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-emerald-50 text-sonic-success font-label-sm text-label-sm font-semibold" id="floatStatusBadge">
+<span class="w-1.5 h-1.5 rounded-full bg-sonic-success"></span>
+            Sufficient Float
+          </span>
+</div>
+<!-- Balance Display -->
+<div class="pt-1 flex flex-col">
+<span class="font-label-sm text-label-sm text-sonic-muted uppercase tracking-wider">Current Balance on Hand</span>
+<div class="flex items-baseline gap-2 mt-0.5">
+<span class="font-headline-lg text-[32px] leading-tight text-on-surface font-extrabold tracking-tight" id="onHandAmount">₱500.00</span>
+<span class="font-label-sm text-[11px] text-sonic-success font-medium bg-emerald-50 px-2 py-0.5 rounded-full" id="safeStatusText">
+              Safe (&gt; ₱200 threshold)
+            </span>
+</div>
+</div>
+<!-- Shift Balance Breakdown Pill Ribbon -->
+<div class="grid grid-cols-3 gap-2 pt-2">
+<div class="p-2 rounded-lg bg-surface-container-low flex flex-col items-start">
+<span class="font-label-sm text-[10px] text-sonic-muted uppercase font-medium">Float Issued</span>
+<span class="font-label-md text-label-md text-on-surface font-bold mt-0.5">₱1,000.00</span>
+</div>
+<div class="p-2 rounded-lg bg-surface-container-low flex flex-col items-start">
+<span class="font-label-sm text-[10px] text-sonic-muted uppercase font-medium">Net Advances</span>
+<span class="font-label-md text-label-md text-sonic-danger font-bold mt-0.5">−₱800.00</span>
+</div>
+<div class="p-2 rounded-lg bg-surface-container-low flex flex-col items-start">
+<span class="font-label-sm text-[10px] text-sonic-muted uppercase font-medium">Top-Ups</span>
+<span class="font-label-md text-label-md text-sonic-success font-bold mt-0.5">+₱300.00</span>
+</div>
+</div>
+</div>
+<!-- Ledger Section Header -->
+<div class="px-space-md pt-space-xs pb-2 flex items-center justify-between bg-sonic-surface">
+<span class="font-label-sm text-label-sm text-sonic-muted font-semibold uppercase tracking-wider">Today's Float Ledger</span>
+<span class="font-label-sm text-[11px] text-sonic-muted">4 entries</span>
+</div>
+<!-- Float Ledger List -->
+<div class="flex flex-col px-space-md pb-space-md gap-3">
+<!-- Item 1: Morning Cash Issued -->
+<div class="flex items-center justify-between p-3 rounded-xl bg-surface-container-low/60 hover:bg-surface-container-low transition-colors">
+<div class="flex items-center gap-3 min-w-0">
+<div class="w-9 h-9 rounded-full bg-emerald-100/70 text-sonic-success flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[20px]">add_circle</span>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-label-md text-label-md text-on-surface font-semibold truncate">Cash issued</span>
+<span class="font-body-sm text-body-sm text-sonic-muted truncate">7:30 AM · Morning shift float</span>
+</div>
+</div>
+<div class="flex flex-col items-end shrink-0 pl-2">
+<span class="font-price-display text-price-display text-sonic-success">+₱1,000.00</span>
+<span class="font-label-sm text-[10px] text-sonic-muted">Disbursed</span>
+</div>
+</div>
+<!-- Item 2: Store Advance SSD-0042 -->
+<div class="flex items-center justify-between p-3 rounded-xl bg-surface-container-low/60 hover:bg-surface-container-low transition-colors">
+<div class="flex items-center gap-3 min-w-0">
+<div class="w-9 h-9 rounded-full bg-surface-container-high text-on-surface-variant flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[20px]">shopping_bag</span>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-label-md text-label-md text-on-surface font-semibold truncate">Purchase for SSD-0042</span>
+<span class="font-body-sm text-body-sm text-sonic-muted truncate">10:15 AM · Kusina ni Aling Rosa &amp; Tea</span>
+</div>
+</div>
+<div class="flex flex-col items-end shrink-0 pl-2">
+<span class="font-price-display text-price-display text-on-surface">−₱310.00</span>
+<span class="font-label-sm text-[10px] text-sonic-muted">Order Advance</span>
+</div>
+</div>
+<!-- Item 3: GCash Replenish Top-up -->
+<div class="flex items-center justify-between p-3 rounded-xl bg-surface-container-low/60 hover:bg-surface-container-low transition-colors">
+<div class="flex items-center gap-3 min-w-0">
+<div class="w-9 h-9 rounded-full bg-blue-100/70 text-primary flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[20px]">account_balance</span>
+</div>
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-1.5">
+<span class="font-label-md text-label-md text-on-surface font-semibold truncate">GCash top-up</span>
+<span class="px-1.5 py-0.2 rounded-full bg-sonic-blue-light text-primary font-label-sm text-[10px] font-semibold">Approved</span>
+</div>
+<span class="font-body-sm text-body-sm text-sonic-muted truncate">11:20 AM · Ref #1234567890</span>
+</div>
+</div>
+<div class="flex flex-col items-end shrink-0 pl-2">
+<span class="font-price-display text-price-display text-sonic-success">+₱300.00</span>
+<span class="font-label-sm text-[10px] text-sonic-muted">Hub E-Float</span>
+</div>
+</div>
+<!-- Item 4: Store Advance SSD-0045 -->
+<div class="flex items-center justify-between p-3 rounded-xl bg-surface-container-low/60 hover:bg-surface-container-low transition-colors">
+<div class="flex items-center gap-3 min-w-0">
+<div class="w-9 h-9 rounded-full bg-surface-container-high text-on-surface-variant flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[20px]">restaurant</span>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-label-md text-label-md text-on-surface font-semibold truncate">Purchase for SSD-0045</span>
+<span class="font-body-sm text-body-sm text-sonic-muted truncate">01:10 PM · Nanay's Grill store advance</span>
+</div>
+</div>
+<div class="flex flex-col items-end shrink-0 pl-2">
+<span class="font-price-display text-price-display text-on-surface">−₱490.00</span>
+<span class="font-label-sm text-[10px] text-sonic-muted">Order Advance</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Shift End Policy Note Card (Yellow/Amber Delight Accent) -->
+<div class="rounded-xl bg-amber-50 shadow-sm p-4 flex items-start gap-3 relative overflow-hidden">
+<div class="absolute -right-3 -bottom-3 w-16 h-16 rounded-full bg-sonic-bolt/20 blur-xl pointer-events-none"></div>
+<div class="w-9 h-9 rounded-full bg-sonic-bolt flex items-center justify-center shrink-0 text-on-surface shadow-sm">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">bolt</span>
+</div>
+<div class="flex-1 min-w-0">
+<h4 class="font-headline-sm text-headline-sm text-on-surface font-bold leading-tight">Shift End Remittance Policy</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1 leading-relaxed">
+          Petty cash is returned at the end of your shift. Unused float must be remitted alongside COD collections at the <span class="font-semibold text-on-surface">Sipocot Dispatch Hub</span> before checkout.
+        </p>
+</div>
+</div>
+<!-- Card 2: Rider Savings Program -->
+<div class="rounded-xl bg-sonic-surface shadow-sm overflow-hidden flex flex-col">
+<!-- Savings Header -->
+<div class="p-space-md bg-gradient-to-b from-surface-container-low/40 to-sonic-surface flex flex-col gap-space-sm">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 rounded-lg bg-secondary/10 flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">savings</span>
+</div>
+<span class="font-label-lg text-label-lg text-on-surface font-bold">Rider Savings Program</span>
+</div>
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-sonic-blue-light text-primary font-label-sm text-[11px] font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></span>
+            Auto-Deduct Active
+          </span>
+</div>
+<!-- Savings Balance Display -->
+<div class="pt-1 flex flex-col">
+<span class="font-label-sm text-label-sm text-sonic-muted uppercase tracking-wider">Total Accumulated Balance</span>
+<div class="flex items-baseline gap-2 mt-0.5">
+<span class="font-headline-lg text-[30px] leading-tight text-primary font-extrabold tracking-tight">₱430.00</span>
+<span class="font-label-sm text-label-sm text-sonic-success font-medium flex items-center">
+<span class="material-symbols-outlined text-[16px]">trending_up</span> 43 Shifts
+            </span>
+</div>
+<p class="font-body-sm text-[12px] text-sonic-muted leading-tight mt-1">
+            ₱10.00 auto-saved per completed duty shift toward emergency rider fund and year-end cooperative bonus.
+          </p>
+</div>
+</div>
+<!-- Savings Entries List Header -->
+<div class="px-space-md pt-space-xs pb-2 flex items-center justify-between bg-sonic-surface">
+<span class="font-label-sm text-label-sm text-sonic-muted font-semibold uppercase tracking-wider">Recent Contributions</span>
+<button class="font-label-sm text-[12px] text-primary font-semibold hover:underline">Full History</button>
+</div>
+<!-- Savings Entries List -->
+<div class="flex flex-col px-space-md pb-space-md gap-2.5">
+<!-- Entry 1 -->
+<div class="flex items-center justify-between p-2.5 rounded-lg bg-surface-container-low/50 hover:bg-surface-container-low transition-colors">
+<div class="flex items-center gap-2.5 min-w-0">
+<div class="w-7 h-7 rounded-full bg-emerald-100 text-sonic-success flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[16px]">arrow_downward</span>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-label-md text-label-md text-on-surface font-semibold truncate">Deposit (Today's Shift)</span>
+<span class="font-body-sm text-[11px] text-sonic-muted truncate">Nov 21, 2026 · Shift #43 deduction</span>
+</div>
+</div>
+<span class="font-label-md text-label-md text-sonic-success font-bold shrink-0 pl-2">+₱10.00</span>
+</div>
+<!-- Entry 2 -->
+<div class="flex items-center justify-between p-2.5 rounded-lg bg-surface-container-low/50 hover:bg-surface-container-low transition-colors">
+<div class="flex items-center gap-2.5 min-w-0">
+<div class="w-7 h-7 rounded-full bg-emerald-100 text-sonic-success flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[16px]">arrow_downward</span>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-label-md text-label-md text-on-surface font-semibold truncate">Deposit (Shift #42)</span>
+<span class="font-body-sm text-[11px] text-sonic-muted truncate">Nov 20, 2026 · Automatic deduction</span>
+</div>
+</div>
+<span class="font-label-md text-label-md text-sonic-success font-bold shrink-0 pl-2">+₱10.00</span>
+</div>
+<!-- Entry 3 -->
+<div class="flex items-center justify-between p-2.5 rounded-lg bg-surface-container-low/50 hover:bg-surface-container-low transition-colors">
+<div class="flex items-center gap-2.5 min-w-0">
+<div class="w-7 h-7 rounded-full bg-emerald-100 text-sonic-success flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[16px]">arrow_downward</span>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-label-md text-label-md text-on-surface font-semibold truncate">Deposit (Shift #41)</span>
+<span class="font-body-sm text-[11px] text-sonic-muted truncate">Nov 19, 2026 · Automatic deduction</span>
+</div>
+</div>
+<span class="font-label-md text-label-md text-sonic-success font-bold shrink-0 pl-2">+₱10.00</span>
+</div>
+<!-- Entry 4: Withdrawal -->
+<div class="flex items-center justify-between p-2.5 rounded-lg bg-red-50/60 hover:bg-red-50 transition-colors">
+<div class="flex items-center gap-2.5 min-w-0">
+<div class="w-7 h-7 rounded-full bg-red-100 text-sonic-danger flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[16px]">arrow_upward</span>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-label-md text-label-md text-on-surface font-semibold truncate">Emergency Withdrawal</span>
+<span class="font-body-sm text-[11px] text-sonic-muted truncate">Nov 15, 2026 · Ref #WD-491 · Processed by operator</span>
+</div>
+</div>
+<span class="font-label-md text-label-md text-sonic-danger font-bold shrink-0 pl-2">−₱100.00</span>
+</div>
+<!-- Entry 5 -->
+<div class="flex items-center justify-between p-2.5 rounded-lg bg-surface-container-low/50 hover:bg-surface-container-low transition-colors">
+<div class="flex items-center gap-2.5 min-w-0">
+<div class="w-7 h-7 rounded-full bg-emerald-100 text-sonic-success flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[16px]">arrow_downward</span>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-label-md text-label-md text-on-surface font-semibold truncate">Deposit (Shift #40)</span>
+<span class="font-body-sm text-[11px] text-sonic-muted truncate">Nov 14, 2026 · Automatic deduction</span>
+</div>
+</div>
+<span class="font-label-md text-label-md text-sonic-success font-bold shrink-0 pl-2">+₱10.00</span>
+</div>
+<!-- Savings Help Link -->
+<div class="mt-2 pt-2 text-center">
+<a class="inline-flex items-center gap-1.5 font-label-sm text-[12px] text-primary hover:text-sonic-blue-dark font-semibold" href="#">
+<span class="material-symbols-outlined text-[16px]">help_center</span>
+            Request savings withdrawal · Contact Dispatch Admin
+          </a>
+</div>
+</div>
+</div>
+<!-- Helpful Hub Support Box -->
+<div class="rounded-xl bg-surface-container-high/60 p-space-md flex items-center justify-between gap-3 shadow-sm">
+<div class="flex items-center gap-3 min-w-0">
+<div class="w-10 h-10 rounded-full bg-sonic-surface flex items-center justify-center text-primary shrink-0 shadow-sm">
+<span class="material-symbols-outlined text-[22px]">headset_mic</span>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-label-md text-label-md text-on-surface font-bold truncate">Float discrepancy?</span>
+<span class="font-body-sm text-[12px] text-sonic-muted leading-tight">Contact Hub Cashier or Sipocot Dispatcher</span>
+</div>
+</div>
+<button aria-label="Call Dispatcher" class="shrink-0 h-9 px-3.5 rounded-full bg-sonic-surface text-primary hover:bg-sonic-blue-light transition-colors font-label-sm text-[12px] font-semibold flex items-center gap-1 shadow-sm active:scale-95">
+<span class="material-symbols-outlined text-[16px]">call</span>
+        Call Hub
+      </button>
+</div>
+</div>
+</div>
+<script>
+  (function initWalletAlertToggle() {
+    const btn = document.getElementById('toggleAlertBtn');
+    const alertBox = document.getElementById('lowCashAlert');
+    const onHandAmt = document.getElementById('onHandAmount');
+    const safeStatus = document.getElementById('safeStatusText');
+    const statusBadge = document.getElementById('floatStatusBadge');
+
+    let isLow = false;
+
+    if (!btn || !alertBox) return;
+
+    btn.addEventListener('click', () => {
+      isLow = !isLow;
+      if (isLow) {
+        alertBox.classList.remove('hidden');
+        onHandAmt.textContent = '₱140.00';
+        onHandAmt.classList.add('text-sonic-warning');
+        safeStatus.textContent = 'Critically Low (< ₱200)';
+        safeStatus.className = 'font-label-sm text-[11px] text-sonic-warning font-semibold bg-amber-100 px-2 py-0.5 rounded-full';
+        statusBadge.innerHTML = '<span class="w-1.5 h-1.5 rounded-full bg-sonic-warning"></span> Replenish Soon';
+        statusBadge.className = 'inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-amber-50 text-sonic-warning font-label-sm text-label-sm font-semibold';
+        btn.querySelector('span:last-child').textContent = 'Reset Float';
+      } else {
+        alertBox.classList.add('hidden');
+        onHandAmt.textContent = '₱500.00';
+        onHandAmt.classList.remove('text-sonic-warning');
+        safeStatus.textContent = 'Safe (> ₱200 threshold)';
+        safeStatus.className = 'font-label-sm text-[11px] text-sonic-success font-medium bg-emerald-50 px-2 py-0.5 rounded-full';
+        statusBadge.innerHTML = '<span class="w-1.5 h-1.5 rounded-full bg-sonic-success"></span> Sufficient Float';
+        statusBadge.className = 'inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-emerald-50 text-sonic-success font-label-sm text-label-sm font-semibold';
+        btn.querySelector('span:last-child').textContent = 'Test Alert';
+      }
+    });
+
+    // Mark current wallet tab active in shell navigation
+    const navLinks = document.querySelectorAll('nav a');
+    navLinks.forEach(link => {
+      const isWallet = link.getAttribute('data-path') === 'wallet';
+      if (isWallet) {
+        link.classList.remove('text-sonic-muted');
+        link.classList.add('text-primary', 'font-label-md');
+        const icon = link.querySelector('.material-symbols-outlined');
+        if (icon) {
+          icon.style.fontVariationSettings = "'FILL' 1";
+        }
+      } else {
+        link.classList.remove('text-primary', 'font-label-md');
+        link.classList.add('text-sonic-muted');
+        const icon = link.querySelector('.material-symbols-outlined');
+        if (icon) {
+          icon.style.fontVariationSettings = "'FILL' 0";
+        }
+      }
+    });
+  })();
+</script></main><nav class="fixed bottom-0 w-full z-50 pb-safe bg-sonic-surface/95 backdrop-blur-xl shadow-[0_-2px_12px_rgba(11,16,51,0.06)]" data-active-classes="text-primary font-label-md"><div class="flex justify-around items-center h-16 px-space-xs"><a class="flex flex-col items-center justify-center w-16 h-12 text-sonic-muted hover:text-on-surface transition-colors gap-0.5" data-path="dashboard" href="#"><span class="material-symbols-outlined text-[24px]">speed</span><span class="font-label-sm text-label-sm">Dashboard</span></a><a class="flex flex-col items-center justify-center w-16 h-12 text-sonic-muted hover:text-on-surface transition-colors gap-0.5" data-path="deliveries" href="#"><span class="material-symbols-outlined text-[24px]">two_wheeler</span><span class="font-label-sm text-label-sm">Deliveries</span></a><a class="flex flex-col items-center justify-center w-16 h-12 text-sonic-muted hover:text-on-surface transition-colors gap-0.5" data-path="history" href="#"><span class="material-symbols-outlined text-[24px]">receipt_long</span><span class="font-label-sm text-label-sm">History</span></a><a class="flex flex-col items-center justify-center w-16 h-12 text-sonic-muted hover:text-on-surface transition-colors gap-0.5" data-path="wallet" href="#"><span class="material-symbols-outlined text-[24px]">account_balance_wallet</span><span class="font-label-sm text-label-sm">Wallet</span></a></div></nav></body></html>

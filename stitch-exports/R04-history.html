@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><meta content="mobile_tab" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Montserrat:wght@600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{width:100vw;margin:0;padding:0;}body{overscroll-behavior:none;}.pb-safe{padding-bottom:env(safe-area-inset-bottom,0px);}.pt-safe{padding-top:env(safe-area-inset-top,0px);}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { colors: { "secondary-fixed": "#e4dfff", "outline": "#757688", "sonic-bolt": "#FFD60A", "secondary-container": "#5537fe", "outline-variant": "#c4c5d9", "on-tertiary-fixed-variant": "#004c6a", "on-surface-variant": "#444656", "surface-container-highest": "#dfe0ff", "on-secondary-fixed": "#150066", "on-primary-fixed-variant": "#002ad0", "on-tertiary": "#ffffff", "surface-container-low": "#f4f2ff", "primary-fixed-dim": "#bbc3ff", "error": "#ba1a1a", "sonic-bg": "#F5F7FF", "primary-fixed": "#dfe0ff", "sonic-surface": "#FFFFFF", "tertiary": "#004561", "primary": "#0026c0", "surface-dim": "#d4d7ff", "secondary-fixed-dim": "#c6c0ff", "surface-container": "#edecff", "on-secondary": "#ffffff", "on-primary-fixed": "#000e5f", "sonic-blue-dark": "#0F27B8", "on-primary": "#ffffff", "sonic-border": "#DDE2F5", "tertiary-fixed": "#c5e7ff", "tertiary-fixed-dim": "#7fd0ff", "error-container": "#ffdad6", "tertiary-container": "#005e82", "on-primary-container": "#c5cbff", "surface-container-high": "#e6e6ff", "sonic-muted": "#5B6386", "on-surface": "#13183b", "sonic-warning": "#F59E0B", "secondary": "#3b00e6", "on-error": "#ffffff", "on-secondary-fixed-variant": "#3a00df", "inverse-surface": "#292e51", "on-secondary-container": "#ddd8ff", "surface-tint": "#2445f6", "inverse-primary": "#bbc3ff", "surface-bright": "#fbf8ff", "sonic-blue-light": "#E8ECFE", "on-background": "#13183b", "sonic-danger": "#DC2626", "on-tertiary-container": "#93d6ff", "surface-variant": "#dfe0ff", "sonic-success": "#16A34A", "surface-container-lowest": "#ffffff", "inverse-on-surface": "#f0efff", "primary-container": "#183cf0", "surface": "#fbf8ff", "background": "#fbf8ff", "on-error-container": "#93000a", "on-tertiary-fixed": "#001e2d" }, borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, spacing: { "space-xl": "2rem", "space-xs": "0.25rem", "space-lg": "1.5rem", "space-sm": "0.5rem", "gutter": "1rem", "space-md": "1rem", "margin": "1rem", "gutter-desktop": "1.5rem", "margin-desktop": "2rem" }, fontFamily: { "body-md": ["Inter"], "price-display": ["Montserrat"], "body-sm": ["Inter"], "body-lg": ["Inter"], "headline-md": ["Montserrat"], "label-lg": ["Montserrat"], "headline-sm": ["Montserrat"], "label-sm": ["Inter"], "label-md": ["Montserrat"], "headline-lg": ["Montserrat"] }, fontSize: { "body-md": ["15px", { lineHeight: "22px", fontWeight: "400" }], "price-display": ["18px", { lineHeight: "24px", fontWeight: "700" }], "body-sm": ["13px", { lineHeight: "18px", fontWeight: "400" }], "body-lg": ["16px", { lineHeight: "24px", fontWeight: "400" }], "headline-md": ["22px", { lineHeight: "28px", letterSpacing: "-0.01em", fontWeight: "700" }], "label-lg": ["16px", { lineHeight: "20px", fontWeight: "600" }], "headline-sm": ["18px", { lineHeight: "24px", fontWeight: "600" }], "label-sm": ["12px", { lineHeight: "16px", fontWeight: "500" }], "label-md": ["14px", { lineHeight: "18px", fontWeight: "600" }], "headline-lg": ["28px", { lineHeight: "36px", letterSpacing: "-0.02em", fontWeight: "800" }] } } } }</script><style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head><body class="bg-sonic-bg font-body-md text-body-md text-on-surface flex flex-col min-h-screen"><header class="fixed top-0 w-full z-50 bg-sonic-surface/90 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)] pt-safe"><div class="h-16 px-margin flex items-center justify-between"><div class="flex items-center gap-space-sm"><div class="w-9 h-9 rounded-full bg-primary-container flex items-center justify-center text-sonic-bolt shadow-sm"><span class="material-symbols-outlined text-[20px]">bolt</span></div><div class="flex flex-col"><span class="font-label-sm text-label-sm text-sonic-muted uppercase tracking-wider leading-none">Super Sonic</span><span class="font-headline-sm text-headline-sm text-on-surface leading-tight">Hi, Mark</span></div></div><div class="flex items-center gap-space-sm"><button aria-label="Notifications" class="relative w-11 h-11 flex items-center justify-center rounded-full hover:bg-surface-container transition-colors text-on-surface"><span class="material-symbols-outlined text-[24px]">notifications</span><span class="absolute top-2.5 right-2.5 w-2 h-2 rounded-full bg-sonic-danger ring-2 ring-sonic-surface"></span></button><img alt="Profile" class="w-8 h-8 rounded-full object-cover ring-2 ring-sonic-border" src="https://lh3.googleusercontent.com/aida/ALJJyrC8lRXYdjybIE90MeONF2eH0KosGRJACkoy-lyzF-YOG4th5LTs_7Jhi6mtx3iDcwEOTXrNpX9Ra-N2vuj8M_5qI4lhK3Pbu8O2Nxa5QYOvR4R9--26DM48rQTpq20WdGYtm2_Cb0H6kwEaKRgzb0ESoksxV_CZU8LKOqPui2GGPVj45SFbthr2nqU0RhX9M0r78aMalNCPNMmYVdwVWXbrc9rJTHOJdp3fcfGr7t6I7eiQWVaN3c-xgqvP"/></div></div></header><main class="flex flex-col relative w-full pt-16 pb-20 bg-sonic-bg min-h-screen"><div class="flex flex-col w-full pb-6 px-margin gap-space-lg">
+<!-- Title & Context Area -->
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-center justify-between">
+<h1 class="font-headline-md text-headline-md text-on-surface tracking-tight">Delivery &amp; Earnings</h1>
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-surface-container-high text-on-surface font-label-sm text-label-sm">
+<span class="w-2 h-2 rounded-full bg-sonic-success"></span>
+        Sipocot Hub
+      </span>
+</div>
+<p class="font-body-sm text-body-sm text-sonic-muted">Track past runs, remittances &amp; clear earnings breakdown</p>
+</div>
+<!-- Date Selector Pills -->
+<div class="flex items-center gap-2 overflow-x-auto no-scrollbar py-0.5" id="dateFilterGroup">
+<button class="date-chip flex items-center justify-center px-4 py-2 rounded-full bg-primary-container text-on-primary font-label-md text-label-md shadow-sm transition-all whitespace-nowrap active:scale-95" data-filter="today" type="button">
+<span>Today (Nov 21)</span>
+</button>
+<button class="date-chip flex items-center justify-center px-4 py-2 rounded-full bg-surface-container-lowest text-sonic-muted font-label-md text-label-md shadow-sm transition-all whitespace-nowrap hover:text-on-surface active:scale-95" data-filter="week" type="button">
+<span>This week</span>
+</button>
+<button class="date-chip flex items-center justify-center gap-1.5 px-4 py-2 rounded-full bg-surface-container-lowest text-sonic-muted font-label-md text-label-md shadow-sm transition-all whitespace-nowrap hover:text-on-surface active:scale-95" data-filter="custom" type="button">
+<span class="material-symbols-outlined text-[18px]">calendar_month</span>
+<span>Pick a date</span>
+</button>
+</div>
+<!-- Shift Summary Card (Nov 21, 2026) -->
+<section class="bg-surface-container-lowest rounded-xl shadow-[0_2px_8px_rgba(11,16,51,0.06)] p-space-md flex flex-col gap-space-md">
+<!-- Card Header -->
+<div class="flex items-start justify-between gap-2">
+<div class="flex flex-col">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-primary text-[20px]">assignment_turned_in</span>
+<h2 class="font-headline-sm text-headline-sm text-on-surface">Shift Summary</h2>
+</div>
+<p class="font-body-sm text-body-sm text-sonic-muted mt-0.5">Nov 21, 2026 · 07:32 AM – 03:15 PM</p>
+<span class="font-label-sm text-label-sm text-sonic-muted font-medium">7h 43m on duty</span>
+</div>
+<div class="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-sonic-success/10 text-sonic-success font-label-sm text-label-sm font-semibold">
+<span class="material-symbols-outlined text-[16px]">check_circle</span>
+<span>Settled</span>
+</div>
+</div>
+<!-- Metrics Grid -->
+<div class="grid grid-cols-3 gap-2 bg-surface-container-low p-space-sm rounded-xl">
+<div class="flex flex-col items-center justify-center p-2 rounded-lg bg-surface-container-lowest text-center">
+<span class="font-label-sm text-label-sm text-sonic-muted">Runs</span>
+<span class="font-headline-md text-headline-md text-on-surface font-bold">5</span>
+</div>
+<div class="flex flex-col items-center justify-center p-2 rounded-lg bg-surface-container-lowest text-center">
+<span class="font-label-sm text-label-sm text-sonic-muted">Gross</span>
+<span class="font-label-lg text-label-lg text-on-surface font-bold">₱820.00</span>
+</div>
+<div class="flex flex-col items-center justify-center p-2 rounded-lg bg-surface-container-lowest text-center">
+<span class="font-label-sm text-label-sm text-sonic-muted">Deductions</span>
+<span class="font-label-lg text-label-lg text-sonic-danger font-bold">−₱70.00</span>
+</div>
+</div>
+<!-- Net Pay Banner Highlight -->
+<div class="bg-gradient-to-r from-primary-container to-secondary-container rounded-xl p-space-md text-on-primary flex items-center justify-between shadow-sm">
+<div class="flex items-center gap-2">
+<div class="w-10 h-10 rounded-full bg-sonic-surface/20 flex items-center justify-center text-sonic-bolt">
+<span class="material-symbols-outlined text-[24px]">payments</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-primary/80 uppercase tracking-wider">Net Take-Home Pay</span>
+<span class="font-headline-lg text-headline-lg font-bold leading-tight">₱750.00</span>
+</div>
+</div>
+<span class="inline-flex items-center justify-center w-8 h-8 rounded-full bg-sonic-surface/10 text-on-primary">
+<span class="material-symbols-outlined text-[20px]">trending_up</span>
+</span>
+</div>
+<!-- Deductions Accordion -->
+<details class="group bg-surface-container-low rounded-xl overflow-hidden">
+<summary class="flex items-center justify-between p-space-sm cursor-pointer list-none select-none text-on-surface">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-sonic-muted text-[18px]">receipt</span>
+<span class="font-label-md text-label-md">Deductions Breakdown</span>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="font-label-md text-label-md text-sonic-danger">−₱70.00</span>
+<span class="material-symbols-outlined text-sonic-muted text-[18px] transition-transform duration-200 group-open:rotate-180">expand_more</span>
+</div>
+</summary>
+<div class="px-space-md pb-space-md pt-1 flex flex-col gap-2 font-body-sm text-body-sm text-on-surface-variant">
+<div class="flex justify-between items-center py-1">
+<span>Operator dispatch fee (5 × ₱10.00)</span>
+<span class="font-label-sm text-label-sm text-on-surface font-semibold">−₱50.00</span>
+</div>
+<div class="flex justify-between items-center py-1">
+<span>Thermal insulated box rent</span>
+<span class="font-label-sm text-label-sm text-on-surface font-semibold">−₱10.00</span>
+</div>
+<div class="flex justify-between items-center py-1">
+<span>Rider cooperative savings</span>
+<span class="font-label-sm text-label-sm text-on-surface font-semibold">−₱10.00</span>
+</div>
+<div class="mt-1 pt-2 bg-surface-container-highest/40 -mx-space-md px-space-md flex justify-between font-label-md text-label-md text-on-surface">
+<span>Total deductions deducted</span>
+<span class="text-sonic-danger">−₱70.00</span>
+</div>
+</div>
+</details>
+<!-- Cash & Remittance Reconciliation Section -->
+<div class="bg-surface-container-low rounded-xl p-space-md flex flex-col gap-space-sm">
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md text-on-surface flex items-center gap-1.5">
+<span class="material-symbols-outlined text-primary text-[18px]">account_balance</span>
+          Remittance &amp; COD Settling
+        </span>
+<span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-sonic-success/15 text-sonic-success font-label-sm text-label-sm font-semibold">
+<span class="material-symbols-outlined text-[14px]">done_all</span>
+          Fully Settled
+        </span>
+</div>
+<div class="flex flex-col gap-1.5 pt-1 text-body-sm font-body-sm">
+<div class="flex justify-between text-on-surface">
+<span class="text-sonic-muted">Total COD cash collected:</span>
+<span class="font-label-md text-label-md font-bold">₱1,940.00</span>
+</div>
+<div class="flex justify-between text-on-surface">
+<span class="text-sonic-muted">Cash remitted to hub:</span>
+<span class="font-label-md text-label-md font-bold text-primary">₱1,190.00</span>
+</div>
+<div class="flex justify-between text-on-surface">
+<span class="text-sonic-muted">Rider cash retained (Pay + Float):</span>
+<span class="font-label-md text-label-md font-bold text-sonic-success">₱750.00</span>
+</div>
+</div>
+<!-- Receipt Voucher Box -->
+<div class="mt-1 p-2.5 rounded-lg bg-surface-container-lowest flex items-start gap-2">
+<span class="material-symbols-outlined text-sonic-muted text-[18px] shrink-0 mt-0.5">verified</span>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface font-semibold">Receipt #REM-8821</span>
+<span class="font-body-sm text-body-sm text-sonic-muted">Remitted 03:30 PM at Sipocot Hub · ₱0.00 due balance</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Section: Completed Deliveries -->
+<section class="flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<h2 class="font-headline-sm text-headline-sm text-on-surface">Completed Deliveries</h2>
+<span class="w-6 h-6 rounded-full bg-surface-container-highest text-on-surface font-label-sm text-label-sm flex items-center justify-center font-bold">5</span>
+</div>
+<span class="font-label-sm text-label-sm text-sonic-muted">Tap card for payout details</span>
+</div>
+<!-- Delivery List Accordion Items -->
+<div class="flex flex-col gap-space-sm" id="deliveriesAccordion">
+<!-- ITEM 1: EXPANDED DEFAULT -->
+<div class="delivery-card bg-surface-container-lowest rounded-xl shadow-[0_2px_8px_rgba(11,16,51,0.06)] overflow-hidden transition-all">
+<button aria-expanded="true" class="w-full text-left p-space-md flex flex-col gap-2 accordion-trigger focus:outline-none" type="button">
+<div class="flex items-start justify-between gap-2">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-sonic-muted font-mono tracking-tight">#SSD-20261121-0042</span>
+<span class="font-headline-sm text-headline-sm text-on-surface">San Jose, Sipocot</span>
+<span class="font-body-sm text-body-sm text-sonic-muted">Purok 3 · 10:50 AM</span>
+</div>
+<div class="flex flex-col items-end">
+<span class="font-price-display text-price-display text-primary font-bold">₱200.00</span>
+<span class="inline-flex items-center gap-0.5 font-label-sm text-label-sm text-sonic-success mt-1">
+<span class="material-symbols-outlined text-[14px]">check</span> Delivered
+              </span>
+</div>
+</div>
+<!-- Store Batch Tag -->
+<div class="flex items-center gap-1.5 mt-0.5">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-sonic-blue-light text-primary font-label-sm text-label-sm font-semibold">
+<span class="material-symbols-outlined text-[14px]">storefront</span>
+              2 stores (Kusina ni Aling Rosa + Tea Haus)
+            </span>
+</div>
+</button>
+<!-- Expanded Detailed Breakdown (VISIBLE by default) -->
+<div class="accordion-content px-space-md pb-space-md pt-0 flex flex-col gap-space-sm">
+<div class="rounded-xl bg-sonic-blue-light/50 p-space-md flex flex-col gap-2">
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md text-on-surface font-semibold flex items-center gap-1">
+<span class="material-symbols-outlined text-primary text-[18px]">calculate</span>
+                Delivery Fee Breakdown
+              </span>
+<span class="font-label-sm text-label-sm text-primary font-semibold">70% Rider Share</span>
+</div>
+<div class="flex flex-col gap-1.5 pt-1 text-body-sm font-body-sm text-on-surface">
+<div class="flex justify-between">
+<span class="text-sonic-muted">Base Barangay delivery fee</span>
+<span>₱250.00</span>
+</div>
+<div class="flex justify-between">
+<span class="text-sonic-muted">Gas allowance</span>
+<span>₱50.00</span>
+</div>
+<div class="flex justify-between">
+<span class="text-sonic-muted">Base Rider share (70%)</span>
+<span class="font-medium text-on-surface">₱140.00</span>
+</div>
+<div class="flex justify-between">
+<span class="text-sonic-muted">Extra store batch surcharge</span>
+<span class="font-medium text-sonic-success">+₱10.00</span>
+</div>
+<div class="flex justify-between">
+<span class="text-sonic-muted">Customer direct tip</span>
+<span class="font-medium text-sonic-success">+₱50.00</span>
+</div>
+<div class="pt-2 mt-1 bg-surface-container-lowest/80 -mx-space-md px-space-md flex justify-between font-label-md text-label-md text-primary">
+<span>Total Rider Earning</span>
+<span class="font-bold">₱200.00</span>
+</div>
+</div>
+<div class="mt-2 pt-2 bg-sonic-surface/80 rounded-lg p-2.5 flex flex-col gap-1 text-body-sm font-body-sm">
+<div class="flex items-center gap-1.5 text-on-surface">
+<span class="material-symbols-outlined text-sonic-warning text-[18px]">local_atm</span>
+<span class="font-label-sm text-label-sm font-semibold">Cash on Delivery (COD ₱470.00 collected)</span>
+</div>
+<p class="font-body-sm text-body-sm text-sonic-muted pl-6">Customer: Juan Dela Cruz · Delivered on time (15 mins)</p>
+</div>
+</div>
+</div>
+</div>
+<!-- ITEM 2: Tara, Sipocot -->
+<div class="delivery-card bg-surface-container-lowest rounded-xl shadow-[0_2px_8px_rgba(11,16,51,0.06)] overflow-hidden transition-all">
+<button aria-expanded="false" class="w-full text-left p-space-md flex flex-col gap-2 accordion-trigger focus:outline-none" type="button">
+<div class="flex items-start justify-between gap-2">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-sonic-muted font-mono tracking-tight">#SSD-20261121-0039</span>
+<span class="font-headline-sm text-headline-sm text-on-surface">Tara, Sipocot</span>
+<span class="font-body-sm text-body-sm text-sonic-muted">09:15 AM · Nanay's Grill (1 store)</span>
+</div>
+<div class="flex flex-col items-end">
+<span class="font-price-display text-price-display text-primary font-bold">₱140.00</span>
+<span class="inline-flex items-center gap-0.5 font-label-sm text-label-sm text-sonic-success mt-1">
+<span class="material-symbols-outlined text-[14px]">check</span> Delivered
+              </span>
+</div>
+</div>
+</button>
+<div class="accordion-content hidden px-space-md pb-space-md pt-0 flex flex-col gap-space-sm">
+<div class="rounded-xl bg-sonic-blue-light/50 p-space-md flex flex-col gap-2 text-body-sm font-body-sm">
+<div class="flex justify-between text-on-surface">
+<span class="text-sonic-muted">Barangay fee</span>
+<span>₱150.00</span>
+</div>
+<div class="flex justify-between text-on-surface">
+<span class="text-sonic-muted">Rider 70% share</span>
+<span class="font-label-sm text-label-sm font-bold text-primary">₱140.00</span>
+</div>
+<div class="flex justify-between text-on-surface">
+<span class="text-sonic-muted">COD collected</span>
+<span>₱320.00</span>
+</div>
+<div class="text-sonic-muted font-body-sm">Customer: Maria Santos · 18 min transit</div>
+</div>
+</div>
+</div>
+<!-- ITEM 3: Gaongan, Sipocot -->
+<div class="delivery-card bg-surface-container-lowest rounded-xl shadow-[0_2px_8px_rgba(11,16,51,0.06)] overflow-hidden transition-all">
+<button aria-expanded="false" class="w-full text-left p-space-md flex flex-col gap-2 accordion-trigger focus:outline-none" type="button">
+<div class="flex items-start justify-between gap-2">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-sonic-muted font-mono tracking-tight">#SSD-20261121-0035</span>
+<span class="font-headline-sm text-headline-sm text-on-surface">Gaongan, Sipocot</span>
+<span class="font-body-sm text-body-sm text-sonic-muted">08:40 AM · Baker's Den Sipocot</span>
+</div>
+<div class="flex flex-col items-end">
+<span class="font-price-display text-price-display text-primary font-bold">₱150.00</span>
+<span class="inline-flex items-center gap-0.5 font-label-sm text-label-sm text-sonic-success mt-1">
+<span class="material-symbols-outlined text-[14px]">check</span> Delivered
+              </span>
+</div>
+</div>
+</button>
+<div class="accordion-content hidden px-space-md pb-space-md pt-0 flex flex-col gap-space-sm">
+<div class="rounded-xl bg-sonic-blue-light/50 p-space-md flex flex-col gap-2 text-body-sm font-body-sm">
+<div class="flex justify-between text-on-surface">
+<span class="text-sonic-muted">Barangay fee</span>
+<span>₱160.00</span>
+</div>
+<div class="flex justify-between text-on-surface">
+<span class="text-sonic-muted">Rider base + Tip</span>
+<span class="font-label-sm text-label-sm font-bold text-primary">₱150.00</span>
+</div>
+<div class="flex justify-between text-on-surface">
+<span class="text-sonic-muted">COD collected</span>
+<span>₱410.00</span>
+</div>
+<div class="text-sonic-muted font-body-sm">Customer: Ramon Valenzuela · Pastries &amp; Loaf</div>
+</div>
+</div>
+</div>
+<!-- ITEM 4: Centro, Sipocot -->
+<div class="delivery-card bg-surface-container-lowest rounded-xl shadow-[0_2px_8px_rgba(11,16,51,0.06)] overflow-hidden transition-all">
+<button aria-expanded="false" class="w-full text-left p-space-md flex flex-col gap-2 accordion-trigger focus:outline-none" type="button">
+<div class="flex items-start justify-between gap-2">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-sonic-muted font-mono tracking-tight">#SSD-20261121-0031</span>
+<span class="font-headline-sm text-headline-sm text-on-surface">Centro, Sipocot</span>
+<span class="font-body-sm text-body-sm text-sonic-muted">08:05 AM · Sipocot Cafe &amp; Diner</span>
+</div>
+<div class="flex flex-col items-end">
+<span class="font-price-display text-price-display text-primary font-bold">₱130.00</span>
+<span class="inline-flex items-center gap-0.5 font-label-sm text-label-sm text-sonic-success mt-1">
+<span class="material-symbols-outlined text-[14px]">check</span> Delivered
+              </span>
+</div>
+</div>
+</button>
+<div class="accordion-content hidden px-space-md pb-space-md pt-0 flex flex-col gap-space-sm">
+<div class="rounded-xl bg-sonic-blue-light/50 p-space-md flex flex-col gap-2 text-body-sm font-body-sm">
+<div class="flex justify-between text-on-surface">
+<span class="text-sonic-muted">Barangay fee</span>
+<span>₱130.00</span>
+</div>
+<div class="flex justify-between text-on-surface">
+<span class="text-sonic-muted">Rider 70% share + allowance</span>
+<span class="font-label-sm text-label-sm font-bold text-primary">₱130.00</span>
+</div>
+<div class="flex justify-between text-on-surface">
+<span class="text-sonic-muted">COD collected</span>
+<span>₱380.00</span>
+</div>
+<div class="text-sonic-muted font-body-sm">Customer: Elena Cruz · Breakfast Combo</div>
+</div>
+</div>
+</div>
+<!-- ITEM 5: South Centro, Sipocot -->
+<div class="delivery-card bg-surface-container-lowest rounded-xl shadow-[0_2px_8px_rgba(11,16,51,0.06)] overflow-hidden transition-all">
+<button aria-expanded="false" class="w-full text-left p-space-md flex flex-col gap-2 accordion-trigger focus:outline-none" type="button">
+<div class="flex items-start justify-between gap-2">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-sonic-muted font-mono tracking-tight">#SSD-20261121-0028</span>
+<span class="font-headline-sm text-headline-sm text-on-surface">South Centro, Sipocot</span>
+<span class="font-body-sm text-body-sm text-sonic-muted">07:45 AM · Aling Rosa Tapsilogan</span>
+</div>
+<div class="flex flex-col items-end">
+<span class="font-price-display text-price-display text-primary font-bold">₱130.00</span>
+<span class="inline-flex items-center gap-0.5 font-label-sm text-label-sm text-sonic-success mt-1">
+<span class="material-symbols-outlined text-[14px]">check</span> Delivered
+              </span>
+</div>
+</div>
+</button>
+<div class="accordion-content hidden px-space-md pb-space-md pt-0 flex flex-col gap-space-sm">
+<div class="rounded-xl bg-sonic-blue-light/50 p-space-md flex flex-col gap-2 text-body-sm font-body-sm">
+<div class="flex justify-between text-on-surface">
+<span class="text-sonic-muted">Barangay fee</span>
+<span>₱130.00</span>
+</div>
+<div class="flex justify-between text-on-surface">
+<span class="text-sonic-muted">Rider share</span>
+<span class="font-label-sm text-label-sm font-bold text-primary">₱130.00</span>
+</div>
+<div class="flex justify-between text-on-surface">
+<span class="text-sonic-muted">COD collected</span>
+<span>₱360.00</span>
+</div>
+<div class="text-sonic-muted font-body-sm">Customer: Dexter Ocampo · 2x Silog Meal</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Export Statement Action & Support Note -->
+<section class="flex flex-col gap-space-md pt-2">
+<button class="w-full h-12 rounded-full bg-surface-container-lowest text-primary font-label-md text-label-md flex items-center justify-center gap-2 shadow-[0_2px_8px_rgba(11,16,51,0.06)] hover:bg-surface-container-low active:scale-98 transition-all" id="downloadStatementBtn" type="button">
+<span class="material-symbols-outlined text-[20px]">picture_as_pdf</span>
+<span>Download Daily Statement (PDF)</span>
+</button>
+<div class="flex items-center justify-center gap-2 text-center px-4">
+<span class="material-symbols-outlined text-sonic-muted text-[18px]">support_agent</span>
+<p class="font-body-sm text-body-sm text-sonic-muted">
+        Questions regarding deductions or remittance? <a class="font-label-sm text-label-sm text-primary font-semibold underline underline-offset-2" href="#">Contact Dispatch Hub</a>
+</p>
+</div>
+</section>
+</div>
+<!-- Micro-Interactions Client Script -->
+<script>
+  (function initR04Interactions() {
+    // Accordion Toggle for Deliveries
+    const cards = document.querySelectorAll('#deliveriesAccordion .delivery-card');
+    cards.forEach((card) => {
+      const trigger = card.querySelector('.accordion-trigger');
+      const content = card.querySelector('.accordion-content');
+      if (!trigger || !content) return;
+
+      trigger.addEventListener('click', () => {
+        const isExpanded = trigger.getAttribute('aria-expanded') === 'true';
+        if (isExpanded) {
+          content.classList.add('hidden');
+          trigger.setAttribute('aria-expanded', 'false');
+        } else {
+          content.classList.remove('hidden');
+          trigger.setAttribute('aria-expanded', 'true');
+        }
+      });
+    });
+
+    // Date Chips Toggle Styling
+    const dateChips = document.querySelectorAll('#dateFilterGroup .date-chip');
+    dateChips.forEach((chip) => {
+      chip.addEventListener('click', () => {
+        dateChips.forEach((c) => {
+          c.classList.remove('bg-primary-container', 'text-on-primary');
+          c.classList.add('bg-surface-container-lowest', 'text-sonic-muted');
+        });
+        chip.classList.add('bg-primary-container', 'text-on-primary');
+        chip.classList.remove('bg-surface-container-lowest', 'text-sonic-muted');
+      });
+    });
+
+    // Download Statement Toast Micro-Feedback
+    const downloadBtn = document.getElementById('downloadStatementBtn');
+    if (downloadBtn) {
+      downloadBtn.addEventListener('click', () => {
+        const originalContent = downloadBtn.innerHTML;
+        downloadBtn.innerHTML = `
+          <span class="material-symbols-outlined text-[20px] animate-spin">progress_activity</span>
+          <span>Preparing Nov 21 Statement...</span>
+        `;
+        downloadBtn.disabled = true;
+        setTimeout(() => {
+          downloadBtn.innerHTML = `
+            <span class="material-symbols-outlined text-[20px] text-sonic-success">check_circle</span>
+            <span>Downloaded Statement #REM-8821.pdf</span>
+          `;
+          setTimeout(() => {
+            downloadBtn.innerHTML = originalContent;
+            downloadBtn.disabled = false;
+          }, 2400);
+        }, 1100);
+      });
+    }
+
+    // Reflect active tab highlight in bottom navigation
+    const navHistory = document.querySelector('nav a[data-path="history"]');
+    if (navHistory) {
+      const allTabs = document.querySelectorAll('nav a');
+      allTabs.forEach(tab => {
+        tab.classList.remove('text-primary');
+        tab.classList.add('text-sonic-muted');
+      });
+      navHistory.classList.add('text-primary');
+      navHistory.classList.remove('text-sonic-muted');
+    }
+  })();
+</script></main><nav class="fixed bottom-0 w-full z-50 pb-safe bg-sonic-surface/95 backdrop-blur-xl shadow-[0_-2px_12px_rgba(11,16,51,0.06)]" data-active-classes="text-primary font-label-md"><div class="flex justify-around items-center h-16 px-space-xs"><a class="flex flex-col items-center justify-center w-16 h-12 text-sonic-muted hover:text-on-surface transition-colors gap-0.5" data-path="dashboard" href="#"><span class="material-symbols-outlined text-[24px]">speed</span><span class="font-label-sm text-label-sm">Dashboard</span></a><a class="flex flex-col items-center justify-center w-16 h-12 text-sonic-muted hover:text-on-surface transition-colors gap-0.5" data-path="deliveries" href="#"><span class="material-symbols-outlined text-[24px]">two_wheeler</span><span class="font-label-sm text-label-sm">Deliveries</span></a><a class="flex flex-col items-center justify-center w-16 h-12 text-sonic-muted hover:text-on-surface transition-colors gap-0.5" data-path="history" href="#"><span class="material-symbols-outlined text-[24px]">receipt_long</span><span class="font-label-sm text-label-sm">History</span></a><a class="flex flex-col items-center justify-center w-16 h-12 text-sonic-muted hover:text-on-surface transition-colors gap-0.5" data-path="wallet" href="#"><span class="material-symbols-outlined text-[24px]">account_balance_wallet</span><span class="font-label-sm text-label-sm">Wallet</span></a></div></nav></body></html>

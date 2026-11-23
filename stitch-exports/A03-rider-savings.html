@@ -1,0 +1,840 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Montserrat:wght@600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: 'class', theme: { extend: { colors: { 'outline': '#757688', 'surface-container-lowest': '#ffffff', 'inverse-surface': '#292e51', 'sonic-blue-dark': '#0F27B8', 'sonic-success': '#16A34A', 'on-tertiary-fixed': '#001e2d', 'secondary-fixed': '#e4dfff', 'sonic-bg': '#F5F7FF', 'sonic-blue-light': '#E8ECFE', 'surface-variant': '#dfe0ff', 'on-error-container': '#93000a', 'error': '#ba1a1a', 'surface-bright': '#fbf8ff', 'primary-container': '#183cf0', 'tertiary': '#004561', 'secondary': '#3b00e6', 'tertiary-fixed-dim': '#7fd0ff', 'primary': '#0026c0', 'surface-container-low': '#f4f2ff', 'surface-container-high': '#e6e6ff', 'outline-variant': '#c4c5d9', 'on-secondary-fixed-variant': '#3a00df', 'error-container': '#ffdad6', 'surface': '#fbf8ff', 'on-primary-fixed': '#000e5f', 'on-background': '#13183b', 'on-secondary-fixed': '#150066', 'on-secondary-container': '#ddd8ff', 'inverse-on-surface': '#f0efff', 'on-primary-container': '#c5cbff', 'surface-container-highest': '#dfe0ff', 'sonic-muted': '#5B6386', 'primary-fixed': '#dfe0ff', 'tertiary-container': '#005e82', 'surface-tint': '#2445f6', 'on-primary-fixed-variant': '#002ad0', 'sonic-bolt': '#FFD60A', 'sonic-warning': '#F59E0B', 'on-error': '#ffffff', 'inverse-primary': '#bbc3ff', 'sonic-border': '#DDE2F5', 'primary-fixed-dim': '#bbc3ff', 'sonic-surface': '#FFFFFF', 'on-primary': '#ffffff', 'secondary-fixed-dim': '#c6c0ff', 'on-surface': '#13183b', 'surface-dim': '#d4d7ff', 'background': '#fbf8ff', 'on-tertiary': '#ffffff', 'on-tertiary-container': '#93d6ff', 'secondary-container': '#5537fe', 'sonic-danger': '#DC2626', 'on-surface-variant': '#444656', 'tertiary-fixed': '#c5e7ff', 'on-secondary': '#ffffff', 'surface-container': '#edecff', 'on-tertiary-fixed-variant': '#004c6a' }, borderRadius: { 'DEFAULT': '0.25rem', 'lg': '0.5rem', 'xl': '0.75rem', 'full': '9999px' }, spacing: { 'gutter': '1rem', 'space-xs': '0.25rem', 'space-md': '1rem', 'space-xl': '2rem', 'space-sm': '0.5rem', 'space-lg': '1.5rem', 'margin': '1rem', 'gutter-desktop': '1.5rem', 'margin-desktop': '2rem' }, fontFamily: { 'headline-sm': ['Montserrat'], 'body-md': ['Inter'], 'label-md': ['Montserrat'], 'headline-md': ['Montserrat'], 'label-lg': ['Montserrat'], 'body-sm': ['Inter'], 'label-sm': ['Inter'], 'price-display': ['Montserrat'], 'headline-lg': ['Montserrat'], 'body-lg': ['Inter'] }, fontSize: { 'headline-sm': ['18px', { lineHeight: '24px', fontWeight: '600' }], 'body-md': ['15px', { lineHeight: '22px', fontWeight: '400' }], 'label-md': ['14px', { lineHeight: '18px', fontWeight: '600' }], 'headline-md': ['22px', { lineHeight: '28px', letterSpacing: '-0.01em', fontWeight: '700' }], 'label-lg': ['16px', { lineHeight: '20px', fontWeight: '600' }], 'body-sm': ['13px', { lineHeight: '18px', fontWeight: '400' }], 'label-sm': ['12px', { lineHeight: '16px', fontWeight: '500' }], 'price-display': ['18px', { lineHeight: '24px', fontWeight: '700' }], 'headline-lg': ['28px', { lineHeight: '36px', letterSpacing: '-0.02em', fontWeight: '800' }], 'body-lg': ['16px', { lineHeight: '24px', fontWeight: '400' }] } } } };</script></head><body class="bg-sonic-bg text-on-surface min-h-screen antialiased selection:bg-primary-fixed selection:text-on-primary-fixed"><aside class="fixed left-0 top-0 bottom-0 h-screen w-64 bg-[#0B1033] z-50 flex flex-col justify-between shadow-[0_2px_8px_rgba(11,16,51,0.18)] overflow-y-auto"><div class="flex flex-col"><div class="h-16 px-space-lg flex items-center gap-space-sm"><img alt="Super Sonic Delivery" class="w-9 h-9 object-contain rounded-xl" src="https://lh3.googleusercontent.com/aida/ALJJyrBFSEeHZhBBv7ANBUTkBYMW9XSdyksrbH08DFEIn0srcVgUMhmDK8GAIJDy7LdKoQZ_CD0Ak3-RDhOF9hkT_p5u5P78s5YN6iaRAJwyAKRzK0jcTBKC3BrtP3KRQXvshAcoW5kHdpu_oPDN1XW-r_9vw2Nip35UW94moAqjHm17dp_9QaZt_eAAE2kE9kdKjRprFW17sZwvVhvXE5n3aKAlJkOudLyhE7ZlO2hSTFtgKYgcOc9gzi1SiXFU"/><div class="flex flex-col"><span class="font-headline-sm text-headline-sm text-on-primary leading-tight tracking-tight">Super Sonic</span><span class="font-label-sm text-label-sm text-outline-variant font-medium tracking-wide uppercase">Admin Console</span></div></div><nav class="mt-space-md px-space-sm flex flex-col gap-1" data-active-classes="bg-primary-container text-on-primary font-bold shadow-[0_2px_8px_rgba(11,16,51,0.12)]"><a class="flex items-center px-space-md py-space-sm rounded-xl text-outline-variant hover:bg-surface-variant/10 hover:text-on-primary transition-colors font-label-md text-label-md" data-path="live-orders" href="#">Live Orders</a><a class="flex items-center px-space-md py-space-sm rounded-xl text-outline-variant hover:bg-surface-variant/10 hover:text-on-primary transition-colors font-label-md text-label-md" data-path="restaurants" href="#">Restaurants</a><a class="flex items-center px-space-md py-space-sm rounded-xl text-outline-variant hover:bg-surface-variant/10 hover:text-on-primary transition-colors font-label-md text-label-md" data-path="menus" href="#">Menus</a><a class="flex items-center px-space-md py-space-sm rounded-xl text-outline-variant hover:bg-surface-variant/10 hover:text-on-primary transition-colors font-label-md text-label-md" data-path="riders-and-customers" href="#">Riders &amp; Customers</a><a class="flex items-center px-space-md py-space-sm rounded-xl text-outline-variant hover:bg-surface-variant/10 hover:text-on-primary transition-colors font-label-md text-label-md" data-path="settlements" href="#">Settlements</a><div class="pt-space-md pb-space-xs px-space-md"><span class="font-label-sm text-label-sm text-outline tracking-wider font-semibold uppercase">Administration</span></div><a class="flex items-center px-space-md py-space-sm rounded-xl text-outline-variant hover:bg-surface-variant/10 hover:text-on-primary transition-colors font-label-md text-label-md" data-path="reports" href="#">Reports</a><a class="flex items-center px-space-md py-space-sm rounded-xl text-outline-variant hover:bg-surface-variant/10 hover:text-on-primary transition-colors font-label-md text-label-md" data-path="settings" href="#">Settings</a><a aria-current="page" class="flex items-center px-space-md py-space-sm rounded-xl transition-colors bg-primary-container text-on-primary font-bold shadow-[0_2px_8px_rgba(11,16,51,0.12)]" data-path="a03-rider-savings" href="#">Rider Savings</a></nav></div><div class="p-space-sm m-space-sm rounded-xl bg-surface-variant/5 backdrop-blur-sm flex items-center justify-between"><div class="flex items-center gap-space-sm"><div class="relative"><div class="w-9 h-9 rounded-full bg-primary-container text-on-primary flex items-center justify-center font-headline-sm text-headline-sm font-bold">EM</div><span class="absolute bottom-0 right-0 w-2.5 h-2.5 rounded-full bg-sonic-success ring-2 ring-[#0B1033]"></span></div><div class="flex flex-col"><span class="font-label-md text-label-md text-on-primary leading-tight font-semibold">Elena M.</span><span class="font-label-sm text-label-sm text-outline-variant font-medium">Admin</span></div></div><button class="p-1.5 rounded-lg text-outline-variant hover:text-on-primary hover:bg-surface-variant/10 transition-colors" title="Sign out"><span class="material-symbols-outlined text-[20px]">logout</span></button></div></aside><div class="pl-64 flex flex-col min-h-screen"><header class="fixed top-0 left-64 right-0 h-16 bg-sonic-surface/90 backdrop-blur-xl z-40 flex items-center justify-between px-space-lg shadow-[0_1px_8px_rgba(11,16,51,0.04)]"><div class="flex items-center gap-space-md flex-1 max-w-xl"><div class="relative w-full"><span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-sonic-muted text-[18px]">search</span><input class="w-full pl-9 pr-14 py-2 bg-sonic-bg rounded-xl font-body-sm text-body-sm text-on-surface placeholder:text-sonic-muted focus:outline-none focus:ring-2 focus:ring-primary focus:bg-sonic-surface transition-all" placeholder="Search orders, riders, stores..." type="text"/><kbd class="absolute right-3 top-1/2 -translate-y-1/2 font-label-sm text-label-sm text-sonic-muted bg-sonic-surface px-1.5 py-0.5 rounded shadow-[0_1px_2px_rgba(11,16,51,0.05)]">⌘K</kbd></div><div class="hidden lg:flex items-center gap-space-xs px-3 py-1.5 rounded-full bg-sonic-blue-light text-primary font-label-sm text-label-sm whitespace-nowrap"><span class="material-symbols-outlined text-[16px]">hub</span><span>Sipocot Main Hub</span></div></div><div class="flex items-center gap-space-md"><button class="relative p-2 rounded-full hover:bg-sonic-bg text-on-surface-variant hover:text-on-surface transition-colors" title="Notifications"><span class="material-symbols-outlined text-[20px]">notifications</span><span class="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-sonic-danger ring-2 ring-sonic-surface"></span></button><div class="h-6 w-px bg-sonic-border"></div><button class="flex items-center gap-space-xs px-space-md py-2 rounded-full bg-primary-container text-on-primary hover:bg-sonic-blue-dark transition-colors font-label-md text-label-md font-semibold shadow-[0_2px_8px_rgba(24,60,240,0.2)]"><span class="material-symbols-outlined text-[18px]">add</span><span>New Dispatch</span></button></div></header><main class="w-full pt-16 bg-sonic-bg flex-1 p-gutter-desktop"><div class="flex flex-col w-full gap-space-lg pb-12">
+<!-- Page Header & Global Actions -->
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-space-md">
+<div class="flex flex-col gap-1">
+<div class="flex items-center gap-2">
+<span class="inline-flex items-center justify-center w-8 h-8 rounded-lg bg-primary-container text-on-primary">
+<span class="material-symbols-outlined text-[20px]">account_balance_wallet</span>
+</span>
+<h1 class="font-headline-lg text-headline-lg text-on-surface tracking-tight">Rider Savings &amp; Passbook Ledger</h1>
+</div>
+<p class="font-body-md text-body-md text-sonic-muted max-w-3xl">
+        Monitor accumulated rider cooperative savings fund, track automatic shift deposits, and process rider balance withdrawals.
+      </p>
+</div>
+<div class="flex items-center gap-space-sm flex-wrap">
+<button class="inline-flex items-center gap-space-xs px-space-md py-2.5 rounded-full bg-sonic-surface text-primary shadow-sm hover:bg-sonic-blue-light transition-all font-label-md text-label-md">
+<span class="material-symbols-outlined text-[18px]">download</span>
+<span>Export Ledger CSV</span>
+</button>
+<button class="inline-flex items-center gap-space-xs px-space-md py-2.5 rounded-full bg-sonic-surface text-on-surface shadow-sm hover:bg-sonic-blue-light transition-all font-label-md text-label-md">
+<span class="material-symbols-outlined text-[18px]">print</span>
+<span>Print Cooperative Report</span>
+</button>
+</div>
+</div>
+<!-- Top Key Stat Cards Row (4 Metric Bento) -->
+<div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-space-md">
+<!-- Stat 1: Hero Fund Balance -->
+<div class="relative overflow-hidden rounded-xl bg-sonic-surface p-space-lg shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md text-sonic-muted">Total Rider Savings Fund</span>
+<span class="w-8 h-8 rounded-full bg-sonic-blue-light text-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-[18px]">savings</span>
+</span>
+</div>
+<div class="mt-4 flex flex-col gap-1">
+<div class="font-headline-lg text-headline-lg text-primary tracking-tight">₱6,840.00</div>
+<div class="flex items-center gap-1.5 flex-wrap">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-sonic-success/15 text-sonic-success font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[14px]">verified</span>
+<span>Verified Co-op Pool</span>
+</span>
+<span class="font-body-sm text-body-sm text-sonic-muted">+₱120.00 today (12 shifts)</span>
+</div>
+</div>
+<div class="absolute -right-6 -bottom-6 w-24 h-24 bg-primary/5 rounded-full pointer-events-none"></div>
+</div>
+<!-- Stat 2: Total Deposited -->
+<div class="rounded-xl bg-sonic-surface p-space-lg shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md text-sonic-muted">Total Deposited to Date</span>
+<span class="w-8 h-8 rounded-full bg-sonic-success/10 text-sonic-success flex items-center justify-center">
+<span class="material-symbols-outlined text-[18px]">arrow_downward_alt</span>
+</span>
+</div>
+<div class="mt-4 flex flex-col gap-1">
+<div class="font-headline-lg text-headline-lg text-on-surface tracking-tight">₱14,280.00</div>
+<div class="font-body-sm text-body-sm text-sonic-muted">
+          1,428 automatic shift contributions of ₱10.00
+        </div>
+</div>
+</div>
+<!-- Stat 3: Total Disbursed -->
+<div class="rounded-xl bg-sonic-surface p-space-lg shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md text-sonic-muted">Total Disbursed Withdrawals</span>
+<span class="w-8 h-8 rounded-full bg-sonic-warning/15 text-sonic-warning flex items-center justify-center">
+<span class="material-symbols-outlined text-[18px]">payments</span>
+</span>
+</div>
+<div class="mt-4 flex flex-col gap-1">
+<div class="font-headline-lg text-headline-lg text-on-surface tracking-tight">₱7,440.00</div>
+<div class="font-body-sm text-body-sm text-sonic-muted">
+          Across 38 approved emergency/holiday withdrawals
+        </div>
+</div>
+</div>
+<!-- Stat 4: Active Passbooks -->
+<div class="rounded-xl bg-sonic-surface p-space-lg shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md text-sonic-muted">Active Rider Passbooks</span>
+<span class="w-8 h-8 rounded-full bg-secondary/10 text-secondary flex items-center justify-center">
+<span class="material-symbols-outlined text-[18px]">group</span>
+</span>
+</div>
+<div class="mt-4 flex flex-col gap-1">
+<div class="font-headline-lg text-headline-lg text-on-surface tracking-tight">10 Riders</div>
+<div class="flex items-center gap-1.5 text-sonic-success font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[16px]">check_circle</span>
+<span>100% active fund participation</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Main Content Layout (Table 65% + Passbook Detail Panel 35%) -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-lg items-start">
+<!-- Left Column: Fleet Passbook Registry Table (7 of 12 cols / ~60-65%) -->
+<div class="lg:col-span-7 flex flex-col gap-space-md">
+<div class="rounded-xl bg-sonic-surface shadow-sm overflow-hidden flex flex-col">
+<!-- Table Toolbar -->
+<div class="p-space-md sm:p-space-lg flex flex-col gap-space-md bg-sonic-surface">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-space-sm">
+<div>
+<h2 class="font-headline-sm text-headline-sm text-on-surface">Fleet Savings Ledger</h2>
+<p class="font-body-sm text-body-sm text-sonic-muted">Auto-accumulated ₱10.00 co-op fee per completed dispatch shift.</p>
+</div>
+<span class="self-start sm:self-auto px-3 py-1 rounded-full bg-sonic-blue-light font-label-sm text-label-sm text-primary font-semibold">
+              Showing 10 registered fleet riders
+            </span>
+</div>
+<div class="flex flex-col md:flex-row gap-space-sm items-stretch md:items-center">
+<div class="relative flex-1">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-sonic-muted text-[18px]">search</span>
+<input class="w-full pl-9 pr-3 py-2 bg-sonic-bg rounded-xl font-body-sm text-body-sm text-on-surface placeholder:text-sonic-muted focus:outline-none focus:bg-sonic-surface transition-all" placeholder="Search rider by name, ID, or vehicle..." type="text"/>
+</div>
+<div class="flex items-center gap-space-xs">
+<select class="px-3 py-2 bg-sonic-bg rounded-xl font-label-sm text-label-sm text-on-surface focus:outline-none cursor-pointer">
+<option>All Statuses</option>
+<option>Active Riders</option>
+<option>Suspended</option>
+</select>
+<select class="px-3 py-2 bg-sonic-bg rounded-xl font-label-sm text-label-sm text-on-surface focus:outline-none cursor-pointer">
+<option>Sort by Balance: High to Low</option>
+<option>Sort by Balance: Low to High</option>
+<option>Sort by Recent Shift</option>
+</select>
+</div>
+</div>
+</div>
+<!-- Table View -->
+<div class="w-full overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-sonic-bg text-sonic-muted font-label-sm text-label-sm uppercase tracking-wider">
+<th class="py-3 px-space-md font-semibold">Rider</th>
+<th class="py-3 px-space-md font-semibold text-right">Deposits</th>
+<th class="py-3 px-space-md font-semibold text-right">Withdrawals</th>
+<th class="py-3 px-space-md font-semibold text-right">Current Balance</th>
+<th class="py-3 px-space-md font-semibold hidden xl:table-cell">Last Shift Activity</th>
+<th class="py-3 px-space-md font-semibold text-center">Action</th>
+</tr>
+</thead>
+<tbody class="font-body-sm text-body-sm divide-y-0">
+<!-- 1. Mark Ramos (SELECTED - Highlighted active row) -->
+<tr class="bg-primary/5 transition-colors">
+<td class="py-3.5 px-space-md">
+<div class="flex items-center gap-space-sm">
+<div class="relative">
+<div class="w-9 h-9 rounded-full bg-primary-container text-on-primary flex items-center justify-center font-headline-sm text-[13px] font-bold">
+                        MR
+                      </div>
+<span class="absolute -bottom-0.5 -right-0.5 w-3 h-3 rounded-full bg-sonic-success ring-2 ring-sonic-surface"></span>
+</div>
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-1.5 flex-wrap">
+<span class="font-label-md text-label-md text-primary font-bold">Mark Ramos</span>
+<span class="px-1.5 py-0.2 rounded bg-primary-container text-on-primary font-label-sm text-[10px]">SELECTED</span>
+</div>
+<div class="flex items-center gap-1 text-sonic-muted font-label-sm text-[11px]">
+<span>#RDR-101</span>
+<span>•</span>
+<span class="px-1 rounded bg-sonic-surface">Honda Beat 110</span>
+</div>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-space-md text-right whitespace-nowrap">
+<span class="font-label-md text-label-md text-on-surface">₱980.00</span>
+<div class="font-label-sm text-[11px] text-sonic-muted">98 shifts</div>
+</td>
+<td class="py-3.5 px-space-md text-right whitespace-nowrap">
+<span class="font-label-md text-label-md text-sonic-muted">₱550.00</span>
+<div class="font-label-sm text-[11px] text-sonic-muted">2 requests</div>
+</td>
+<td class="py-3.5 px-space-md text-right whitespace-nowrap">
+<span class="font-price-display text-price-display text-primary font-bold">₱430.00</span>
+</td>
+<td class="py-3.5 px-space-md hidden xl:table-cell">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface font-semibold">Today, 8:45 PM</span>
+<span class="text-[11px] text-sonic-success font-medium">Shift deposit +₱10.00</span>
+</div>
+</td>
+<td class="py-3.5 px-space-md text-center">
+<button class="inline-flex items-center justify-center px-3 py-1.5 rounded-full bg-primary text-on-primary font-label-sm text-label-sm shadow-sm hover:bg-sonic-blue-dark transition-all">
+<span>Active</span>
+</button>
+</td>
+</tr>
+<!-- 2. Carlo Santos -->
+<tr class="hover:bg-sonic-bg/80 transition-colors">
+<td class="py-3.5 px-space-md">
+<div class="flex items-center gap-space-sm">
+<div class="w-9 h-9 rounded-full bg-surface-container-high text-on-surface flex items-center justify-center font-headline-sm text-[13px] font-bold">
+                      CS
+                    </div>
+<div class="flex flex-col min-w-0">
+<span class="font-label-md text-label-md text-on-surface font-semibold">Carlo Santos</span>
+<div class="flex items-center gap-1 text-sonic-muted font-label-sm text-[11px]">
+<span>#RDR-102</span>
+<span>•</span>
+<span class="px-1 rounded bg-sonic-surface">Yamaha Mio i125</span>
+</div>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-space-md text-right whitespace-nowrap">
+<span class="font-label-md text-label-md text-on-surface">₱1,240.00</span>
+<div class="font-label-sm text-[11px] text-sonic-muted">124 shifts</div>
+</td>
+<td class="py-3.5 px-space-md text-right whitespace-nowrap">
+<span class="font-label-md text-label-md text-sonic-muted">₱400.00</span>
+<div class="font-label-sm text-[11px] text-sonic-muted">1 request</div>
+</td>
+<td class="py-3.5 px-space-md text-right whitespace-nowrap">
+<span class="font-price-display text-price-display text-primary font-bold">₱840.00</span>
+</td>
+<td class="py-3.5 px-space-md hidden xl:table-cell">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface">Today, 7:15 PM</span>
+<span class="text-[11px] text-sonic-success">Shift deposit +₱10.00</span>
+</div>
+</td>
+<td class="py-3.5 px-space-md text-center">
+<button class="inline-flex items-center justify-center px-3 py-1.5 rounded-full bg-sonic-surface hover:bg-sonic-blue-light text-primary font-label-sm text-label-sm transition-all shadow-sm">
+<span>View</span>
+</button>
+</td>
+</tr>
+<!-- 3. Eric Dimaculangan -->
+<tr class="hover:bg-sonic-bg/80 transition-colors">
+<td class="py-3.5 px-space-md">
+<div class="flex items-center gap-space-sm">
+<div class="w-9 h-9 rounded-full bg-surface-container-high text-on-surface flex items-center justify-center font-headline-sm text-[13px] font-bold">
+                      ED
+                    </div>
+<div class="flex flex-col min-w-0">
+<span class="font-label-md text-label-md text-on-surface font-semibold">Eric Dimaculangan</span>
+<div class="flex items-center gap-1 text-sonic-muted font-label-sm text-[11px]">
+<span>#RDR-103</span>
+<span>•</span>
+<span class="px-1 rounded bg-sonic-surface">Honda Click 125i</span>
+</div>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-space-md text-right whitespace-nowrap">
+<span class="font-label-md text-label-md text-on-surface">₱1,150.00</span>
+<div class="font-label-sm text-[11px] text-sonic-muted">115 shifts</div>
+</td>
+<td class="py-3.5 px-space-md text-right whitespace-nowrap">
+<span class="font-label-md text-label-md text-sonic-muted">₱300.00</span>
+<div class="font-label-sm text-[11px] text-sonic-muted">1 request</div>
+</td>
+<td class="py-3.5 px-space-md text-right whitespace-nowrap">
+<span class="font-price-display text-price-display text-primary font-bold">₱850.00</span>
+</td>
+<td class="py-3.5 px-space-md hidden xl:table-cell">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface">Yesterday, 8:30 PM</span>
+<span class="text-[11px] text-sonic-success">Shift deposit +₱10.00</span>
+</div>
+</td>
+<td class="py-3.5 px-space-md text-center">
+<button class="inline-flex items-center justify-center px-3 py-1.5 rounded-full bg-sonic-surface hover:bg-sonic-blue-light text-primary font-label-sm text-label-sm transition-all shadow-sm">
+<span>View</span>
+</button>
+</td>
+</tr>
+<!-- 4. Noel Bautista -->
+<tr class="hover:bg-sonic-bg/80 transition-colors">
+<td class="py-3.5 px-space-md">
+<div class="flex items-center gap-space-sm">
+<div class="w-9 h-9 rounded-full bg-surface-container-high text-on-surface flex items-center justify-center font-headline-sm text-[13px] font-bold">
+                      NB
+                    </div>
+<div class="flex flex-col min-w-0">
+<span class="font-label-md text-label-md text-on-surface font-semibold">Noel Bautista</span>
+<div class="flex items-center gap-1 text-sonic-muted font-label-sm text-[11px]">
+<span>#RDR-104</span>
+<span>•</span>
+<span class="px-1 rounded bg-sonic-surface">Suzuki Smash</span>
+</div>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-space-md text-right whitespace-nowrap">
+<span class="font-label-md text-label-md text-on-surface">₱890.00</span>
+<div class="font-label-sm text-[11px] text-sonic-muted">89 shifts</div>
+</td>
+<td class="py-3.5 px-space-md text-right whitespace-nowrap">
+<span class="font-label-md text-label-md text-sonic-muted">₱200.00</span>
+<div class="font-label-sm text-[11px] text-sonic-muted">1 request</div>
+</td>
+<td class="py-3.5 px-space-md text-right whitespace-nowrap">
+<span class="font-price-display text-price-display text-primary font-bold">₱690.00</span>
+</td>
+<td class="py-3.5 px-space-md hidden xl:table-cell">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface">Nov 20, 2026</span>
+<span class="text-[11px] text-sonic-success">Shift deposit +₱10.00</span>
+</div>
+</td>
+<td class="py-3.5 px-space-md text-center">
+<button class="inline-flex items-center justify-center px-3 py-1.5 rounded-full bg-sonic-surface hover:bg-sonic-blue-light text-primary font-label-sm text-label-sm transition-all shadow-sm">
+<span>View</span>
+</button>
+</td>
+</tr>
+<!-- 5. Jayson Cruz -->
+<tr class="hover:bg-sonic-bg/80 transition-colors">
+<td class="py-3.5 px-space-md">
+<div class="flex items-center gap-space-sm">
+<div class="w-9 h-9 rounded-full bg-surface-container-high text-on-surface flex items-center justify-center font-headline-sm text-[13px] font-bold">
+                      JC
+                    </div>
+<div class="flex flex-col min-w-0">
+<span class="font-label-md text-label-md text-on-surface font-semibold">Jayson Cruz</span>
+<div class="flex items-center gap-1 text-sonic-muted font-label-sm text-[11px]">
+<span>#RDR-105</span>
+<span>•</span>
+<span class="px-1 rounded bg-sonic-surface">Honda Beat</span>
+</div>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-space-md text-right whitespace-nowrap">
+<span class="font-label-md text-label-md text-on-surface">₱760.00</span>
+<div class="font-label-sm text-[11px] text-sonic-muted">76 shifts</div>
+</td>
+<td class="py-3.5 px-space-md text-right whitespace-nowrap">
+<span class="font-label-md text-label-md text-sonic-muted">₱0.00</span>
+<div class="font-label-sm text-[11px] text-sonic-muted">0 requests</div>
+</td>
+<td class="py-3.5 px-space-md text-right whitespace-nowrap">
+<span class="font-price-display text-price-display text-primary font-bold">₱760.00</span>
+</td>
+<td class="py-3.5 px-space-md hidden xl:table-cell">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface">Nov 21, 2026</span>
+<span class="text-[11px] text-sonic-success">Shift deposit +₱10.00</span>
+</div>
+</td>
+<td class="py-3.5 px-space-md text-center">
+<button class="inline-flex items-center justify-center px-3 py-1.5 rounded-full bg-sonic-surface hover:bg-sonic-blue-light text-primary font-label-sm text-label-sm transition-all shadow-sm">
+<span>View</span>
+</button>
+</td>
+</tr>
+<!-- 6. Ryan Morales -->
+<tr class="hover:bg-sonic-bg/80 transition-colors">
+<td class="py-3.5 px-space-md">
+<div class="flex items-center gap-space-sm">
+<div class="w-9 h-9 rounded-full bg-surface-container-high text-on-surface flex items-center justify-center font-headline-sm text-[13px] font-bold">
+                      RM
+                    </div>
+<div class="flex flex-col min-w-0">
+<span class="font-label-md text-label-md text-on-surface font-semibold">Ryan Morales</span>
+<div class="flex items-center gap-1 text-sonic-muted font-label-sm text-[11px]">
+<span>#RDR-106</span>
+<span>•</span>
+<span class="px-1 rounded bg-sonic-surface">Yamaha Aerox</span>
+</div>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-space-md text-right whitespace-nowrap">
+<span class="font-label-md text-label-md text-on-surface">₱1,420.00</span>
+<div class="font-label-sm text-[11px] text-sonic-muted">142 shifts</div>
+</td>
+<td class="py-3.5 px-space-md text-right whitespace-nowrap">
+<span class="font-label-md text-label-md text-sonic-muted">₱800.00</span>
+<div class="font-label-sm text-[11px] text-sonic-muted">4 requests</div>
+</td>
+<td class="py-3.5 px-space-md text-right whitespace-nowrap">
+<span class="font-price-display text-price-display text-primary font-bold">₱620.00</span>
+</td>
+<td class="py-3.5 px-space-md hidden xl:table-cell">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface">Nov 19, 2026</span>
+<span class="text-[11px] text-sonic-success">Shift deposit +₱10.00</span>
+</div>
+</td>
+<td class="py-3.5 px-space-md text-center">
+<button class="inline-flex items-center justify-center px-3 py-1.5 rounded-full bg-sonic-surface hover:bg-sonic-blue-light text-primary font-label-sm text-label-sm transition-all shadow-sm">
+<span>View</span>
+</button>
+</td>
+</tr>
+<!-- 7. Arnel Francisco -->
+<tr class="hover:bg-sonic-bg/80 transition-colors">
+<td class="py-3.5 px-space-md">
+<div class="flex items-center gap-space-sm">
+<div class="w-9 h-9 rounded-full bg-surface-container-high text-on-surface flex items-center justify-center font-headline-sm text-[13px] font-bold">
+                      AF
+                    </div>
+<div class="flex flex-col min-w-0">
+<span class="font-label-md text-label-md text-on-surface font-semibold">Arnel Francisco</span>
+<div class="flex items-center gap-1 text-sonic-muted font-label-sm text-[11px]">
+<span>#RDR-107</span>
+<span>•</span>
+<span class="px-1 rounded bg-sonic-surface">Honda Wave 125</span>
+</div>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-space-md text-right whitespace-nowrap">
+<span class="font-label-md text-label-md text-on-surface">₱950.00</span>
+<div class="font-label-sm text-[11px] text-sonic-muted">95 shifts</div>
+</td>
+<td class="py-3.5 px-space-md text-right whitespace-nowrap">
+<span class="font-label-md text-label-md text-sonic-muted">₱450.00</span>
+<div class="font-label-sm text-[11px] text-sonic-muted">2 requests</div>
+</td>
+<td class="py-3.5 px-space-md text-right whitespace-nowrap">
+<span class="font-price-display text-price-display text-primary font-bold">₱500.00</span>
+</td>
+<td class="py-3.5 px-space-md hidden xl:table-cell">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface">Nov 18, 2026</span>
+<span class="text-[11px] text-sonic-success">Shift deposit +₱10.00</span>
+</div>
+</td>
+<td class="py-3.5 px-space-md text-center">
+<button class="inline-flex items-center justify-center px-3 py-1.5 rounded-full bg-sonic-surface hover:bg-sonic-blue-light text-primary font-label-sm text-label-sm transition-all shadow-sm">
+<span>View</span>
+</button>
+</td>
+</tr>
+<!-- 8. Dennis Mendoza -->
+<tr class="hover:bg-sonic-bg/80 transition-colors">
+<td class="py-3.5 px-space-md">
+<div class="flex items-center gap-space-sm">
+<div class="w-9 h-9 rounded-full bg-surface-container-high text-on-surface flex items-center justify-center font-headline-sm text-[13px] font-bold">
+                      DM
+                    </div>
+<div class="flex flex-col min-w-0">
+<span class="font-label-md text-label-md text-on-surface font-semibold">Dennis Mendoza</span>
+<div class="flex items-center gap-1 text-sonic-muted font-label-sm text-[11px]">
+<span>#RDR-108</span>
+<span>•</span>
+<span class="px-1 rounded bg-sonic-surface">Kawasaki Barako</span>
+</div>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-space-md text-right whitespace-nowrap">
+<span class="font-label-md text-label-md text-on-surface">₱1,100.00</span>
+<div class="font-label-sm text-[11px] text-sonic-muted">110 shifts</div>
+</td>
+<td class="py-3.5 px-space-md text-right whitespace-nowrap">
+<span class="font-label-md text-label-md text-sonic-muted">₱500.00</span>
+<div class="font-label-sm text-[11px] text-sonic-muted">2 requests</div>
+</td>
+<td class="py-3.5 px-space-md text-right whitespace-nowrap">
+<span class="font-price-display text-price-display text-primary font-bold">₱600.00</span>
+</td>
+<td class="py-3.5 px-space-md hidden xl:table-cell">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface">Nov 17, 2026</span>
+<span class="text-[11px] text-sonic-success">Shift deposit +₱10.00</span>
+</div>
+</td>
+<td class="py-3.5 px-space-md text-center">
+<button class="inline-flex items-center justify-center px-3 py-1.5 rounded-full bg-sonic-surface hover:bg-sonic-blue-light text-primary font-label-sm text-label-sm transition-all shadow-sm">
+<span>View</span>
+</button>
+</td>
+</tr>
+<!-- 9. Rodrigo V. (Suspended) -->
+<tr class="opacity-75 hover:opacity-100 bg-surface-container-low/40 transition-colors">
+<td class="py-3.5 px-space-md">
+<div class="flex items-center gap-space-sm">
+<div class="w-9 h-9 rounded-full bg-sonic-danger/10 text-sonic-danger flex items-center justify-center font-headline-sm text-[13px] font-bold">
+                      RV
+                    </div>
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-1.5">
+<span class="font-label-md text-label-md text-on-surface font-semibold">Rodrigo V.</span>
+<span class="px-1.5 py-0.5 rounded-full bg-sonic-danger/15 text-sonic-danger font-label-sm text-[10px] font-bold">SUSPENDED</span>
+</div>
+<div class="flex items-center gap-1 text-sonic-muted font-label-sm text-[11px]">
+<span>#RDR-109</span>
+<span>•</span>
+<span class="px-1 rounded bg-sonic-surface">Honda TMX 125</span>
+</div>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-space-md text-right whitespace-nowrap">
+<span class="font-label-md text-label-md text-on-surface">₱650.00</span>
+<div class="font-label-sm text-[11px] text-sonic-muted">65 shifts</div>
+</td>
+<td class="py-3.5 px-space-md text-right whitespace-nowrap">
+<span class="font-label-md text-label-md text-sonic-muted">₱200.00</span>
+<div class="font-label-sm text-[11px] text-sonic-muted">1 request</div>
+</td>
+<td class="py-3.5 px-space-md text-right whitespace-nowrap">
+<span class="font-price-display text-price-display text-on-surface font-bold">₱450.00</span>
+</td>
+<td class="py-3.5 px-space-md hidden xl:table-cell">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-sonic-muted">Oct 28, 2026</span>
+<span class="text-[11px] text-sonic-muted">Co-op frozen</span>
+</div>
+</td>
+<td class="py-3.5 px-space-md text-center">
+<button class="inline-flex items-center justify-center px-3 py-1.5 rounded-full bg-sonic-surface hover:bg-sonic-blue-light text-primary font-label-sm text-label-sm transition-all shadow-sm">
+<span>View</span>
+</button>
+</td>
+</tr>
+<!-- 10. Kevin Alcantara -->
+<tr class="hover:bg-sonic-bg/80 transition-colors">
+<td class="py-3.5 px-space-md">
+<div class="flex items-center gap-space-sm">
+<div class="w-9 h-9 rounded-full bg-surface-container-high text-on-surface flex items-center justify-center font-headline-sm text-[13px] font-bold">
+                      KA
+                    </div>
+<div class="flex flex-col min-w-0">
+<span class="font-label-md text-label-md text-on-surface font-semibold">Kevin Alcantara</span>
+<div class="flex items-center gap-1 text-sonic-muted font-label-sm text-[11px]">
+<span>#RDR-110</span>
+<span>•</span>
+<span class="px-1 rounded bg-sonic-surface">Yamaha NMAX</span>
+</div>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-space-md text-right whitespace-nowrap">
+<span class="font-label-md text-label-md text-on-surface">₱1,140.00</span>
+<div class="font-label-sm text-[11px] text-sonic-muted">114 shifts</div>
+</td>
+<td class="py-3.5 px-space-md text-right whitespace-nowrap">
+<span class="font-label-md text-label-md text-sonic-muted">₱40.00</span>
+<div class="font-label-sm text-[11px] text-sonic-muted">1 request</div>
+</td>
+<td class="py-3.5 px-space-md text-right whitespace-nowrap">
+<span class="font-price-display text-price-display text-primary font-bold">₱1,100.00</span>
+</td>
+<td class="py-3.5 px-space-md hidden xl:table-cell">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface">Nov 21, 2026</span>
+<span class="text-[11px] text-sonic-success">Shift deposit +₱10.00</span>
+</div>
+</td>
+<td class="py-3.5 px-space-md text-center">
+<button class="inline-flex items-center justify-center px-3 py-1.5 rounded-full bg-sonic-surface hover:bg-sonic-blue-light text-primary font-label-sm text-label-sm transition-all shadow-sm">
+<span>View</span>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Table Footer / Pagination Notice -->
+<div class="px-space-lg py-space-md bg-sonic-bg flex flex-col sm:flex-row items-center justify-between gap-space-sm">
+<div class="flex items-center gap-2 text-sonic-muted font-body-sm text-body-sm">
+<span class="material-symbols-outlined text-[18px]">verified_user</span>
+<span>All passbook ledgers are verified with physical receipt counters.</span>
+</div>
+<div class="flex items-center gap-1">
+<button class="px-2.5 py-1 rounded bg-sonic-surface font-label-sm text-label-sm text-sonic-muted hover:text-on-surface disabled:opacity-40" disabled="">Prev</button>
+<span class="px-3 py-1 font-label-sm text-label-sm text-primary font-bold">1</span>
+<button class="px-2.5 py-1 rounded bg-sonic-surface font-label-sm text-label-sm text-sonic-muted hover:text-on-surface disabled:opacity-40" disabled="">Next</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Column: Dedicated Slide-over Passbook Drawer for Mark Ramos (5 of 12 cols / ~35-40%) -->
+<div class="lg:col-span-5 flex flex-col gap-space-md">
+<div class="rounded-xl bg-sonic-surface shadow-sm overflow-hidden flex flex-col">
+<!-- Drawer Header with Active Rider Profile -->
+<div class="p-space-lg bg-surface-container-high/40 flex flex-col gap-space-sm">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-1.5">
+<span class="px-2 py-0.5 rounded-full bg-primary-container text-on-primary font-label-sm text-[11px] font-bold tracking-wide">
+                ACTIVE PASSBOOK
+              </span>
+<span class="px-2 py-0.5 rounded-full bg-sonic-success/15 text-sonic-success font-label-sm text-[11px] font-semibold">
+                In Good Standing
+              </span>
+</div>
+<button class="p-1 rounded-full text-sonic-muted hover:text-on-surface hover:bg-sonic-surface transition-colors" title="Close drawer">
+<span class="material-symbols-outlined text-[20px]">close</span>
+</button>
+</div>
+<div class="flex items-start justify-between gap-space-md mt-1">
+<div class="flex items-center gap-space-sm">
+<div class="relative">
+<div class="w-12 h-12 rounded-xl bg-primary-container text-on-primary flex items-center justify-center font-headline-md text-headline-md font-bold shadow-sm">
+                  MR
+                </div>
+<span class="absolute -bottom-1 -right-1 w-3.5 h-3.5 rounded-full bg-sonic-success ring-2 ring-sonic-surface"></span>
+</div>
+<div class="flex flex-col">
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-bold leading-tight">
+                  Mark Ramos (Mark D.)
+                </h3>
+<span class="font-label-sm text-label-sm text-primary font-semibold">Rider ID: #RDR-101</span>
+<span class="font-body-sm text-[12px] text-sonic-muted mt-0.5">Honda Beat 110 · Plate DR-8821B</span>
+</div>
+</div>
+</div>
+<div class="flex items-center justify-between pt-2 text-[12px] text-sonic-muted font-body-sm">
+<span>Shift Status: <strong class="text-on-surface">Closed</strong> (Shift #SFT-884)</span>
+<span class="flex items-center gap-1 text-primary">
+<span class="material-symbols-outlined text-[14px]">call</span>
+<span>+63 920 441 9012</span>
+</span>
+</div>
+</div>
+<!-- Prominent Passbook Balance Tile -->
+<div class="p-space-lg flex flex-col gap-space-md">
+<div class="p-space-md rounded-xl bg-sonic-blue-light/60 flex flex-col gap-space-sm">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-sonic-muted uppercase tracking-wider font-semibold">Available Savings Balance</span>
+<span class="px-2 py-0.5 rounded-full bg-sonic-surface font-label-sm text-[11px] text-sonic-success font-bold flex items-center gap-1">
+<span class="material-symbols-outlined text-[13px]">check_circle</span>
+                Eligible for Cash Payout
+              </span>
+</div>
+<div class="flex items-baseline justify-between">
+<span class="font-headline-lg text-[32px] leading-tight text-primary font-bold">₱430.00</span>
+<span class="text-[12px] font-label-sm text-sonic-muted">Total 98 shift deductions</span>
+</div>
+<!-- Lifetime Metrics Bar -->
+<div class="grid grid-cols-3 gap-2 pt-2 bg-sonic-surface/80 rounded-lg p-2.5 text-center">
+<div class="flex flex-col">
+<span class="font-label-sm text-[10px] text-sonic-muted uppercase">Lifetime Saved</span>
+<span class="font-label-md text-label-md text-on-surface font-bold">₱980.00</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-sm text-[10px] text-sonic-muted uppercase">Withdrawn</span>
+<span class="font-label-md text-label-md text-sonic-warning font-bold">₱550.00</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-sm text-[10px] text-sonic-muted uppercase">Co-op Share</span>
+<span class="font-label-md text-label-md text-sonic-success font-bold">+₱0.00</span>
+</div>
+</div>
+</div>
+<!-- Section: Record Cash Withdrawal Form -->
+<div class="flex flex-col gap-space-sm p-space-md rounded-xl bg-sonic-bg">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px] text-primary">outbox</span>
+<h4 class="font-label-lg text-label-lg text-on-surface font-bold">Record Cash Withdrawal</h4>
+</div>
+<span class="font-label-sm text-[11px] text-sonic-muted">Hub Counter Action</span>
+</div>
+<!-- Form Content -->
+<div class="flex flex-col gap-space-sm mt-1">
+<!-- Field 1: Amount -->
+<div class="flex flex-col gap-1">
+<div class="flex items-center justify-between">
+<label class="font-label-sm text-label-sm text-on-surface font-medium">Withdrawal Amount (₱)</label>
+<span class="font-label-sm text-[11px] text-sonic-muted">Max available: <strong class="text-primary font-bold">₱430.00</strong></span>
+</div>
+<div class="relative">
+<span class="absolute left-3 top-1/2 -translate-y-1/2 text-sonic-muted font-bold font-price-display">₱</span>
+<input class="w-full pl-8 pr-3 py-2 bg-sonic-surface rounded-xl font-label-md text-label-md text-on-surface placeholder:text-sonic-muted focus:outline-none focus:ring-2 focus:ring-primary transition-all font-bold" id="withdrawal-amount" placeholder="0.00" step="10" type="number"/>
+</div>
+<!-- Quick Amount Buttons -->
+<div class="flex items-center gap-1.5 mt-0.5">
+<button class="px-2 py-1 rounded bg-sonic-surface hover:bg-sonic-blue-light text-primary font-label-sm text-[11px] font-semibold transition-colors" onclick="document.getElementById('withdrawal-amount').value = '100.00'" type="button">
+                    +₱100
+                  </button>
+<button class="px-2 py-1 rounded bg-sonic-surface hover:bg-sonic-blue-light text-primary font-label-sm text-[11px] font-semibold transition-colors" onclick="document.getElementById('withdrawal-amount').value = '200.00'" type="button">
+                    +₱200
+                  </button>
+<button class="px-2 py-1 rounded bg-sonic-surface hover:bg-sonic-blue-light text-primary font-label-sm text-[11px] font-semibold transition-colors" onclick="document.getElementById('withdrawal-amount').value = '430.00'" type="button">
+                    All (₱430.00)
+                  </button>
+</div>
+</div>
+<!-- Field 2: Purpose -->
+<div class="flex flex-col gap-1 mt-1">
+<label class="font-label-sm text-label-sm text-on-surface font-medium">Withdrawal Purpose / Note</label>
+<input class="w-full px-3 py-2 bg-sonic-surface rounded-xl font-body-sm text-body-sm text-on-surface placeholder:text-sonic-muted focus:outline-none focus:ring-2 focus:ring-primary transition-all" placeholder="e.g., Motorcycle tire replacement, family emergency" type="text"/>
+</div>
+<!-- Field 3: Disburser & Payment Channel -->
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-space-sm mt-1">
+<div class="flex flex-col gap-1">
+<label class="font-label-sm text-label-sm text-on-surface font-medium">Disburser</label>
+<select class="w-full px-2.5 py-2 bg-sonic-surface rounded-xl font-label-sm text-[12px] text-on-surface focus:outline-none">
+<option>Elena M. (Admin)</option>
+<option>Carlos G. (Supervisor)</option>
+</select>
+</div>
+<div class="flex flex-col gap-1">
+<label class="font-label-sm text-label-sm text-on-surface font-medium">Channel</label>
+<div class="flex gap-1">
+<button class="flex-1 py-1.5 px-2 rounded-xl bg-primary text-on-primary font-label-sm text-[11px] font-semibold text-center" type="button">
+                      Cash Hub
+                    </button>
+<button class="flex-1 py-1.5 px-2 rounded-xl bg-sonic-surface text-sonic-muted hover:text-on-surface font-label-sm text-[11px] font-semibold text-center" type="button">
+                      GCash
+                    </button>
+</div>
+</div>
+</div>
+<!-- Submit Action Button -->
+<button class="mt-2 w-full py-3 px-space-md rounded-full bg-primary text-on-primary hover:bg-sonic-blue-dark transition-all font-label-md text-label-md font-semibold flex items-center justify-center gap-2 shadow-[0_2px_8px_rgba(24,60,240,0.2)]">
+<span class="material-symbols-outlined text-[18px]">verified</span>
+<span>Save &amp; Disburse Withdrawal</span>
+</button>
+<div class="flex items-start gap-1.5 text-[11px] text-sonic-muted leading-tight mt-1">
+<span class="material-symbols-outlined text-[14px] text-sonic-muted flex-shrink-0 mt-0.5">info</span>
+<span>Withdrawals immediately deduct from rider passbook balance and issue an audit receipt SMS to +63 920 441 9012.</span>
+</div>
+</div>
+</div>
+<!-- Section: Passbook Ledger Transaction History -->
+<div class="flex flex-col gap-space-sm pt-2">
+<div class="flex items-center justify-between">
+<div>
+<h4 class="font-label-lg text-label-lg text-on-surface font-bold">Transaction History (Mark D.)</h4>
+<p class="font-body-sm text-[12px] text-sonic-muted">Verified log of shift deductions &amp; payouts</p>
+</div>
+<div class="flex items-center gap-1 bg-sonic-bg p-1 rounded-full">
+<button class="px-2 py-0.5 rounded-full bg-sonic-surface font-label-sm text-[11px] text-primary font-bold shadow-sm">All</button>
+<button class="px-2 py-0.5 rounded-full font-label-sm text-[11px] text-sonic-muted hover:text-on-surface">Deposits</button>
+<button class="px-2 py-0.5 rounded-full font-label-sm text-[11px] text-sonic-muted hover:text-on-surface">Withdrawals</button>
+</div>
+</div>
+<!-- Ledger Feed Items -->
+<div class="flex flex-col gap-2 mt-1">
+<!-- Entry 1 -->
+<div class="p-3 rounded-xl bg-sonic-bg hover:bg-sonic-surface transition-all flex flex-col gap-1">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="w-6 h-6 rounded-full bg-sonic-success/15 text-sonic-success flex items-center justify-center">
+<span class="material-symbols-outlined text-[14px]">south_east</span>
+</span>
+<span class="font-label-sm text-label-sm text-on-surface font-bold">Nov 21, 2026 · 8:45 PM</span>
+</div>
+<span class="font-label-md text-label-md text-sonic-success font-bold">+₱10.00</span>
+</div>
+<div class="text-[12px] text-sonic-muted pl-8 flex flex-col">
+<span>Shift SFT-884 automatic deduction (5 completed orders)</span>
+<span class="text-[11px] text-sonic-muted">Processed: Elena M. (Admin)</span>
+</div>
+</div>
+<!-- Entry 2 -->
+<div class="p-3 rounded-xl bg-sonic-bg hover:bg-sonic-surface transition-all flex flex-col gap-1">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="w-6 h-6 rounded-full bg-sonic-success/15 text-sonic-success flex items-center justify-center">
+<span class="material-symbols-outlined text-[14px]">south_east</span>
+</span>
+<span class="font-label-sm text-label-sm text-on-surface font-bold">Nov 20, 2026 · 8:15 PM</span>
+</div>
+<span class="font-label-md text-label-md text-sonic-success font-bold">+₱10.00</span>
+</div>
+<div class="text-[12px] text-sonic-muted pl-8 flex flex-col">
+<span>Shift SFT-872 automatic deduction (6 completed orders)</span>
+<span class="text-[11px] text-sonic-muted">Processed: Elena M. (Admin)</span>
+</div>
+</div>
+<!-- Entry 3: Withdrawal -->
+<div class="p-3 rounded-xl bg-sonic-danger/5 hover:bg-sonic-surface transition-all flex flex-col gap-1">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="w-6 h-6 rounded-full bg-sonic-danger/15 text-sonic-danger flex items-center justify-center">
+<span class="material-symbols-outlined text-[14px]">north_west</span>
+</span>
+<span class="font-label-sm text-label-sm text-on-surface font-bold">Nov 15, 2026 · 2:30 PM</span>
+</div>
+<span class="font-label-md text-label-md text-sonic-danger font-bold">-₱300.00</span>
+</div>
+<div class="text-[12px] text-sonic-muted pl-8 flex flex-col">
+<span class="text-on-surface font-medium">Emergency brake pad &amp; oil change repair</span>
+<span class="text-[11px] text-sonic-muted">Disbursed by: Elena M. · Cash Voucher #VCH-1094</span>
+</div>
+</div>
+<!-- Entry 4 -->
+<div class="p-3 rounded-xl bg-sonic-bg hover:bg-sonic-surface transition-all flex flex-col gap-1">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="w-6 h-6 rounded-full bg-sonic-success/15 text-sonic-success flex items-center justify-center">
+<span class="material-symbols-outlined text-[14px]">south_east</span>
+</span>
+<span class="font-label-sm text-label-sm text-on-surface font-bold">Nov 14, 2026 · 8:40 PM</span>
+</div>
+<span class="font-label-md text-label-md text-sonic-success font-bold">+₱10.00</span>
+</div>
+<div class="text-[12px] text-sonic-muted pl-8 flex flex-col">
+<span>Shift SFT-861 automatic deduction</span>
+<span class="text-[11px] text-sonic-muted">Processed: Elena M. (Admin)</span>
+</div>
+</div>
+<!-- Entry 5: Withdrawal -->
+<div class="p-3 rounded-xl bg-sonic-danger/5 hover:bg-sonic-surface transition-all flex flex-col gap-1">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="w-6 h-6 rounded-full bg-sonic-danger/15 text-sonic-danger flex items-center justify-center">
+<span class="material-symbols-outlined text-[14px]">north_west</span>
+</span>
+<span class="font-label-sm text-label-sm text-on-surface font-bold">Nov 01, 2026 · 11:00 AM</span>
+</div>
+<span class="font-label-md text-label-md text-sonic-danger font-bold">-₱250.00</span>
+</div>
+<div class="text-[12px] text-sonic-muted pl-8 flex flex-col">
+<span class="text-on-surface font-medium">Mid-month voluntary personal withdrawal</span>
+<span class="text-[11px] text-sonic-muted">Disbursed by: Hub Admin · Cash Voucher #VCH-1062</span>
+</div>
+</div>
+<!-- Entry 6 -->
+<div class="p-3 rounded-xl bg-sonic-bg hover:bg-sonic-surface transition-all flex flex-col gap-1">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="w-6 h-6 rounded-full bg-sonic-success/15 text-sonic-success flex items-center justify-center">
+<span class="material-symbols-outlined text-[14px]">south_east</span>
+</span>
+<span class="font-label-sm text-label-sm text-on-surface font-bold">Oct 31, 2026 · 8:30 PM</span>
+</div>
+<span class="font-label-md text-label-md text-sonic-success font-bold">+₱10.00</span>
+</div>
+<div class="text-[12px] text-sonic-muted pl-8 flex flex-col">
+<span>Shift SFT-840 automatic deduction</span>
+<span class="text-[11px] text-sonic-muted">Processed: Elena M. (Admin)</span>
+</div>
+</div>
+</div>
+<!-- View Full Audit Log Link -->
+<button class="mt-2 py-2 text-center text-primary font-label-sm text-label-sm hover:underline flex items-center justify-center gap-1">
+<span>View full 98 passbook entries</span>
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div></main></div></body></html>

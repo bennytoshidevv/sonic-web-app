@@ -1,0 +1,1021 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Montserrat:wght@600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{colors:{"inverse-primary":"#bbc3ff","sonic-blue-light":"#E8ECFE","surface-dim":"#d4d7ff","surface-variant":"#dfe0ff","on-secondary-fixed-variant":"#3a00df","on-tertiary":"#ffffff","error-container":"#ffdad6","on-error-container":"#93000a","surface-container-lowest":"#ffffff","sonic-surface":"#FFFFFF","sonic-blue-dark":"#0F27B8","on-tertiary-container":"#93d6ff","sonic-danger":"#DC2626","sonic-border":"#DDE2F5","tertiary":"#004561","on-secondary-container":"#ddd8ff","primary":"#0026c0","on-background":"#13183b","surface-tint":"#2445f6","tertiary-fixed":"#c5e7ff","on-error":"#ffffff","tertiary-fixed-dim":"#7fd0ff","on-surface-variant":"#444656","on-secondary-fixed":"#150066","inverse-on-surface":"#f0efff","outline-variant":"#c4c5d9","sonic-success":"#16A34A","on-surface":"#13183b","on-primary-fixed-variant":"#002ad0","surface-container":"#edecff","sonic-warning":"#F59E0B","error":"#ba1a1a","primary-container":"#183cf0","sonic-muted":"#5B6386","on-primary":"#ffffff","on-primary-container":"#c5cbff","surface-bright":"#fbf8ff","secondary":"#3b00e6","secondary-fixed-dim":"#c6c0ff","on-tertiary-fixed":"#001e2d","secondary-container":"#5537fe","background":"#fbf8ff","sonic-bg":"#F5F7FF","outline":"#757688","primary-fixed-dim":"#bbc3ff","on-primary-fixed":"#000e5f","tertiary-container":"#005e82","surface-container-low":"#f4f2ff","surface-container-high":"#e6e6ff","surface-container-highest":"#dfe0ff","sonic-bolt":"#FFD60A","on-secondary":"#ffffff","secondary-fixed":"#e4dfff","surface":"#fbf8ff","primary-fixed":"#dfe0ff","inverse-surface":"#292e51","on-tertiary-fixed-variant":"#004c6a"},borderRadius:{"DEFAULT":"0.25rem","lg":"0.5rem","xl":"0.75rem","full":"9999px"},spacing:{"gutter-desktop":"1.5rem","space-md":"1rem","space-sm":"0.5rem","space-xs":"0.25rem","gutter":"1rem","margin-desktop":"2rem","margin":"1rem","space-lg":"1.5rem","space-xl":"2rem"},fontFamily:{"body-sm":["Inter"],"label-lg":["Montserrat"],"headline-md":["Montserrat"],"headline-sm":["Montserrat"],"label-md":["Montserrat"],"label-sm":["Inter"],"body-lg":["Inter"],"price-display":["Montserrat"],"headline-lg":["Montserrat"],"body-md":["Inter"]},fontSize:{"body-sm":["13px",{"lineHeight":"18px","fontWeight":"400"}],"label-lg":["16px",{"lineHeight":"20px","fontWeight":"600"}],"headline-md":["22px",{"lineHeight":"28px","letterSpacing":"-0.01em","fontWeight":"700"}],"headline-sm":["18px",{"lineHeight":"24px","fontWeight":"600"}],"label-md":["14px",{"lineHeight":"18px","fontWeight":"600"}],"label-sm":["12px",{"lineHeight":"16px","fontWeight":"500"}],"body-lg":["16px",{"lineHeight":"24px","fontWeight":"400"}],"price-display":["18px",{"lineHeight":"24px","fontWeight":"700"}],"headline-lg":["28px",{"lineHeight":"36px","letterSpacing":"-0.02em","fontWeight":"800"}],"body-md":["15px",{"lineHeight":"22px","fontWeight":"400"}]}}}}</script></head><body class="bg-sonic-bg text-on-surface min-h-screen"><aside class="fixed left-0 top-0 h-full w-72 bg-on-background z-50 flex flex-col justify-between shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="flex flex-col"><div class="p-space-lg flex items-center gap-space-sm"><div class="w-9 h-9 rounded-xl bg-primary-container flex items-center justify-center shrink-0 shadow-sm"><span class="material-symbols-outlined text-on-primary text-headline-sm">bolt</span></div><div class="flex flex-col min-w-0"><span class="font-headline-sm text-headline-sm text-on-primary leading-tight truncate">Super Sonic</span><span class="font-label-sm text-label-sm text-sonic-muted uppercase tracking-wider truncate">Dispatch Console</span></div></div><div class="px-space-md py-space-xs"><nav class="flex flex-col gap-space-xs" data-active-classes="bg-primary-container text-on-primary shadow-sm font-label-md"><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-xl text-surface-container-low hover:bg-surface-variant/20 hover:text-on-primary transition-all group" data-path="live-orders" href="#"><span class="font-label-md text-label-md">Live Orders</span><span class="ml-auto flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-sonic-bolt text-on-background font-label-sm text-label-sm font-bold"><span class="w-1.5 h-1.5 rounded-full bg-on-background animate-ping"></span>3 pending</span></a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-xl text-surface-container-low hover:bg-surface-variant/20 hover:text-on-primary transition-all group" data-path="restaurants" href="#"><span class="font-label-md text-label-md">Restaurants</span></a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-xl text-surface-container-low hover:bg-surface-variant/20 hover:text-on-primary transition-all group" data-path="menus" href="#"><span class="font-label-md text-label-md">Menus</span></a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-xl bg-primary-container text-on-primary shadow-sm transition-all group" data-path="riders-and-customers" href="#"><span class="font-label-md text-label-md">Riders &amp; Customers</span></a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-xl text-surface-container-low hover:bg-surface-variant/20 hover:text-on-primary transition-all group" data-path="settlements" href="#"><span class="font-label-md text-label-md">Settlements</span></a><div class="pt-space-md pb-space-xs px-space-sm"><span class="font-label-sm text-label-sm uppercase tracking-wider text-sonic-muted">Administration</span></div><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-xl text-surface-container-low hover:bg-surface-variant/20 hover:text-on-primary transition-all group" data-path="reports" href="#"><span class="font-label-md text-label-md">Reports</span></a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-xl text-surface-container-low hover:bg-surface-variant/20 hover:text-on-primary transition-all group" data-path="settings" href="#"><span class="font-label-md text-label-md">Settings</span></a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-xl text-surface-container-low hover:bg-surface-variant/20 hover:text-on-primary transition-all group" data-path="rider-savings" href="#"><span class="font-label-md text-label-md">Rider Savings</span></a></nav></div></div><div class="p-space-md bg-inverse-surface/40 m-space-md rounded-xl flex flex-col gap-space-sm"><div class="flex items-center gap-space-sm"><img alt="Profile" class="w-8 h-8 rounded-full object-cover ring-2 ring-primary-container shrink-0" src="https://lh3.googleusercontent.com/aida/ALJJyrC8lRXYdjybIE90MeONF2eH0KosGRJACkoy-lyzF-YOG4th5LTs_7Jhi6mtx3iDcwEOTXrNpX9Ra-N2vuj8M_5qI4lhK3Pbu8O2Nxa5QYOvR4R9--26DM48rQTpq20WdGYtm2_Cb0H6kwEaKRgzb0ESoksxV_CZU8LKOqPui2GGPVj45SFbthr2nqU0RhX9M0r78aMalNCPNMmYVdwVWXbrc9rJTHOJdp3fcfGr7t6I7eiQWVaN3c-xgqvP"/><div class="flex flex-col min-w-0"><span class="font-label-md text-label-md text-on-primary truncate">Operator Elena M.</span><span class="font-label-sm text-label-sm text-sonic-muted truncate">Sipocot Hub Dispatcher</span></div></div><div class="flex items-center justify-between pt-space-xs"><span class="inline-flex items-center gap-1 font-label-sm text-label-sm text-sonic-success"><span class="w-2 h-2 rounded-full bg-sonic-success"></span>Online</span><a class="inline-flex items-center gap-1 font-label-sm text-label-sm text-surface-variant hover:text-on-primary transition-colors" data-path="login" href="#"><span class="material-symbols-outlined text-label-sm">logout</span>Log out</a></div></div></aside><div class="pl-72"><header class="fixed top-0 left-72 right-0 h-16 bg-sonic-surface/90 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)] z-40 flex items-center justify-between px-gutter-desktop"><div class="flex items-center gap-space-md flex-1 max-w-xl"><div class="relative w-full flex items-center"><span class="material-symbols-outlined absolute left-3 text-sonic-muted text-body-lg pointer-events-none">search</span><input class="w-full pl-10 pr-12 py-2 bg-sonic-bg rounded-xl font-body-sm text-body-sm text-on-surface placeholder:text-sonic-muted focus:outline-none focus:ring-2 focus:ring-primary-container" placeholder="Search order no., customer, or barangay..." type="text"/><span class="absolute right-3 px-1.5 py-0.5 rounded bg-surface-container text-on-surface-variant font-label-sm text-label-sm font-semibold">⌘K</span></div></div><div class="flex items-center gap-space-md shrink-0"><div class="hidden xl:flex items-center gap-space-xs font-body-sm text-body-sm text-sonic-muted"><span class="w-2 h-2 rounded-full bg-sonic-success animate-pulse"></span><span>Last refreshed 10:42 AM</span></div><div class="flex items-center gap-1.5 px-space-sm py-1 rounded-full bg-sonic-blue-light text-primary font-label-sm text-label-sm font-semibold"><span class="material-symbols-outlined text-label-md">hub</span><span>Sipocot Main Hub · Shift Morning</span></div><button aria-label="Notifications" class="relative w-9 h-9 rounded-full bg-sonic-bg hover:bg-surface-container flex items-center justify-center text-on-surface transition-colors" type="button"><span class="material-symbols-outlined text-headline-sm">notifications</span><span class="absolute top-1 right-1 w-4 h-4 rounded-full bg-sonic-danger text-on-primary font-label-sm text-[10px] flex items-center justify-center font-bold">3</span></button><button class="inline-flex items-center gap-space-xs px-space-md py-2 rounded-full bg-primary-container hover:bg-sonic-blue-dark text-on-primary font-label-md text-label-md shadow-sm transition-all" type="button"><span class="material-symbols-outlined text-label-md">add</span><span>New Manual Order</span></button><img alt="Profile" class="w-8 h-8 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida/ALJJyrC8lRXYdjybIE90MeONF2eH0KosGRJACkoy-lyzF-YOG4th5LTs_7Jhi6mtx3iDcwEOTXrNpX9Ra-N2vuj8M_5qI4lhK3Pbu8O2Nxa5QYOvR4R9--26DM48rQTpq20WdGYtm2_Cb0H6kwEaKRgzb0ESoksxV_CZU8LKOqPui2GGPVj45SFbthr2nqU0RhX9M0r78aMalNCPNMmYVdwVWXbrc9rJTHOJdp3fcfGr7t6I7eiQWVaN3c-xgqvP"/></div></header><main class="w-full pt-16 bg-sonic-bg min-h-screen"><div class="flex flex-col w-full">
+<!-- Interactive View State Controller Header -->
+<div class="px-margin-desktop pt-space-lg pb-space-md">
+<div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-space-md">
+<div>
+<div class="flex items-center gap-space-xs mb-1">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-sonic-muted">Dispatch Fleet &amp; Directory</span>
+<span class="w-1 h-1 rounded-full bg-outline-variant"></span>
+<span class="font-label-sm text-label-sm text-primary font-semibold">Sipocot District 1</span>
+</div>
+<h1 class="font-headline-md text-headline-md text-on-surface tracking-tight">Riders &amp; Customers</h1>
+<p class="font-body-md text-body-md text-sonic-muted mt-0.5">Manage delivery fleet personnel, duty shifts, customer directory, and account access.</p>
+</div>
+<!-- Quick Action Controls & State Inspector Previews -->
+<div class="flex flex-wrap items-center gap-space-sm">
+<button class="inline-flex items-center gap-space-xs px-space-md py-2.5 rounded-full bg-primary-container hover:bg-sonic-blue-dark text-on-primary font-label-md text-label-md shadow-sm transition-all" id="quick-add-rider-trigger" type="button">
+<span class="material-symbols-outlined text-label-lg">two_wheeler</span>
+<span>Add Rider</span>
+</button>
+<button class="inline-flex items-center gap-space-xs px-space-md py-2.5 rounded-full bg-surface-container hover:bg-surface-variant text-on-surface-variant font-label-md text-label-md transition-colors" id="quick-suspend-trigger" type="button">
+<span class="material-symbols-outlined text-label-lg text-sonic-danger">shield_person</span>
+<span>Test Suspend Modal</span>
+</button>
+</div>
+</div>
+<!-- Metric Snapshot Cards (Fleet Real-Time Glance) -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-space-md mt-space-lg">
+<div class="bg-sonic-surface rounded-xl p-space-md shadow-sm flex items-center justify-between">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-sonic-muted uppercase tracking-wider">Active on Shift</span>
+<span class="font-headline-md text-headline-md text-on-surface mt-1 font-bold">5 <span class="font-body-sm text-body-sm text-sonic-muted font-normal">/ 10 registered</span></span>
+<span class="inline-flex items-center gap-1 font-label-sm text-label-sm text-sonic-success mt-1">
+<span class="w-1.5 h-1.5 rounded-full bg-sonic-success animate-pulse"></span>
+            3 riders ready for pickup
+          </span>
+</div>
+<div class="w-11 h-11 rounded-xl bg-sonic-blue-light flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-headline-sm">moped</span>
+</div>
+</div>
+<div class="bg-sonic-surface rounded-xl p-space-md shadow-sm flex items-center justify-between">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-sonic-muted uppercase tracking-wider">Ongoing Trips</span>
+<span class="font-headline-md text-headline-md text-on-surface mt-1 font-bold">2 <span class="font-body-sm text-body-sm text-sonic-muted font-normal">dispatched</span></span>
+<span class="font-label-sm text-label-sm text-secondary font-medium mt-1">Avg delivery 14.8 mins</span>
+</div>
+<div class="w-11 h-11 rounded-xl bg-surface-container flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined text-headline-sm">route</span>
+</div>
+</div>
+<div class="bg-sonic-surface rounded-xl p-space-md shadow-sm flex items-center justify-between">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-sonic-muted uppercase tracking-wider">Total Customers</span>
+<span class="font-headline-md text-headline-md text-on-surface mt-1 font-bold">142</span>
+<span class="inline-flex items-center gap-1 font-label-sm text-label-sm text-sonic-success mt-1">
+<span class="material-symbols-outlined text-label-sm">trending_up</span>
+            +18 this week
+          </span>
+</div>
+<div class="w-11 h-11 rounded-xl bg-sonic-blue-light flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-headline-sm">person_pin_circle</span>
+</div>
+</div>
+<div class="bg-sonic-surface rounded-xl p-space-md shadow-sm flex items-center justify-between">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-sonic-muted uppercase tracking-wider">Account Flags</span>
+<span class="font-headline-md text-headline-md text-sonic-danger mt-1 font-bold">2 <span class="font-body-sm text-body-sm text-sonic-muted font-normal">suspended</span></span>
+<span class="font-label-sm text-label-sm text-sonic-muted mt-1">1 Rider · 1 Customer</span>
+</div>
+<div class="w-11 h-11 rounded-xl bg-error-container/40 flex items-center justify-center text-sonic-danger">
+<span class="material-symbols-outlined text-headline-sm">gavel</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Primary Tab Segmented Bar & Search Row -->
+<div class="px-margin-desktop py-space-sm">
+<div class="bg-sonic-surface rounded-xl p-space-md shadow-sm flex flex-col gap-space-md">
+<!-- Tabs Switcher -->
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-space-md pb-space-xs">
+<div class="inline-flex p-1 rounded-full bg-sonic-bg">
+<button class="tab-button inline-flex items-center gap-space-xs px-space-md py-2 rounded-full bg-primary-container text-on-primary font-label-md text-label-md transition-all" id="tab-btn-riders" type="button">
+<span class="material-symbols-outlined text-label-md">two_wheeler</span>
+<span>Riders (Fleet)</span>
+<span class="ml-1 px-2 py-0.5 rounded-full bg-on-primary/20 text-on-primary font-label-sm text-label-sm" id="badge-riders">10 registered</span>
+</button>
+<button class="tab-button inline-flex items-center gap-space-xs px-space-md py-2 rounded-full text-sonic-muted hover:text-on-surface font-label-md text-label-md transition-all" id="tab-btn-customers" type="button">
+<span class="material-symbols-outlined text-label-md">group</span>
+<span>Customers</span>
+<span class="ml-1 px-2 py-0.5 rounded-full bg-surface-container text-on-surface-variant font-label-sm text-label-sm" id="badge-customers">142 registered</span>
+</button>
+</div>
+<!-- Dynamic Context Action -->
+<div class="flex items-center gap-space-sm">
+<button class="inline-flex items-center gap-space-xs px-space-md py-2 rounded-full bg-primary-container hover:bg-sonic-blue-dark text-on-primary font-label-md text-label-md shadow-sm transition-all" id="context-action-btn" type="button">
+<span class="material-symbols-outlined text-label-md">add_circle</span>
+<span id="context-action-text">+ Add rider</span>
+</button>
+<button class="inline-flex items-center gap-space-xs px-space-md py-2 rounded-full bg-sonic-bg hover:bg-surface-container text-on-surface font-label-md text-label-md transition-colors" id="export-csv-btn" type="button">
+<span class="material-symbols-outlined text-label-md text-sonic-muted">file_download</span>
+<span>Export CSV</span>
+</button>
+</div>
+</div>
+<!-- Filters & Universal Search Bar -->
+<div class="flex flex-col lg:flex-row items-stretch lg:items-center justify-between gap-space-md pt-2">
+<div class="relative flex-1 max-w-xl">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-sonic-muted text-body-lg pointer-events-none">search</span>
+<input class="w-full pl-10 pr-4 py-2.5 bg-sonic-bg rounded-xl font-body-sm text-body-sm text-on-surface placeholder:text-sonic-muted focus:outline-none focus:ring-2 focus:ring-primary-container transition-all" id="directory-search-input" placeholder="Search by name, phone, plate number, or email..." type="text"/>
+</div>
+<!-- Filter Pill Chips -->
+<div class="flex flex-wrap items-center gap-space-xs">
+<span class="font-label-sm text-label-sm text-sonic-muted mr-1">Status:</span>
+<button class="status-chip active px-3 py-1.5 rounded-full bg-primary text-on-primary font-label-sm text-label-sm" type="button">All</button>
+<button class="status-chip px-3 py-1.5 rounded-full bg-sonic-bg text-on-surface-variant hover:bg-surface-container font-label-sm text-label-sm transition-colors" type="button">Active</button>
+<button class="status-chip px-3 py-1.5 rounded-full bg-sonic-bg text-on-surface-variant hover:bg-surface-container font-label-sm text-label-sm transition-colors" type="button">Busy / In Shift</button>
+<button class="status-chip px-3 py-1.5 rounded-full bg-sonic-bg text-on-surface-variant hover:bg-surface-container font-label-sm text-label-sm transition-colors" type="button">Suspended</button>
+</div>
+</div>
+</div>
+</div>
+<!-- VIEW 1: RIDERS TABLE -->
+<section class="px-margin-desktop py-space-md" id="riders-view">
+<div class="bg-sonic-surface rounded-xl shadow-sm overflow-hidden">
+<!-- Table Header / Title Info -->
+<div class="px-space-lg py-space-md bg-sonic-surface flex items-center justify-between">
+<div>
+<h2 class="font-headline-sm text-headline-sm text-on-surface">Registered Delivery Riders</h2>
+<p class="font-body-sm text-body-sm text-sonic-muted">Active shifts, vehicle assignments, and real-time dispatch availability.</p>
+</div>
+<div class="flex items-center gap-2">
+<span class="w-2.5 h-2.5 rounded-full bg-sonic-success"></span>
+<span class="font-label-sm text-label-sm text-sonic-muted">Live dispatch connection</span>
+</div>
+</div>
+<!-- Riders Table -->
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-sonic-bg text-sonic-muted font-label-sm text-label-sm tracking-wider uppercase">
+<th class="py-3.5 px-space-lg font-semibold">Rider Name &amp; ID</th>
+<th class="py-3.5 px-space-md font-semibold">Contact Number</th>
+<th class="py-3.5 px-space-md font-semibold">Vehicle Type &amp; Plate</th>
+<th class="py-3.5 px-space-md font-semibold">Availability</th>
+<th class="py-3.5 px-space-md font-semibold">Shift Today</th>
+<th class="py-3.5 px-space-md font-semibold">Account Status</th>
+<th class="py-3.5 px-space-lg font-semibold text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y-0 text-on-surface font-body-sm text-body-sm">
+<!-- Row 1: Mark Ramos -->
+<tr class="hover:bg-sonic-bg/50 transition-colors group">
+<td class="py-4 px-space-lg">
+<div class="flex items-center gap-space-sm">
+<div class="w-9 h-9 rounded-full bg-primary-container text-on-primary font-label-md text-label-md flex items-center justify-center font-bold">
+                    MR
+                  </div>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface font-semibold group-hover:text-primary transition-colors">Mark Ramos</span>
+<span class="font-label-sm text-label-sm text-sonic-muted">#RDR-101</span>
+</div>
+</div>
+</td>
+<td class="py-4 px-space-md font-body-sm text-on-surface-variant font-medium">
+                +63 920 441 9012
+              </td>
+<td class="py-4 px-space-md">
+<div class="flex items-center gap-1.5 flex-wrap">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-sonic-blue-light text-primary font-label-sm text-label-sm font-semibold">
+<span class="material-symbols-outlined text-label-sm">two_wheeler</span>
+                    Honda Beat 110
+                  </span>
+<span class="px-2 py-0.5 rounded bg-surface-container text-on-surface font-label-sm text-label-sm font-mono font-medium">NQ-8921</span>
+</div>
+</td>
+<td class="py-4 px-space-md">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-sonic-success/15 text-sonic-success font-label-sm text-label-sm font-semibold">
+<span class="w-2 h-2 rounded-full bg-sonic-success animate-ping"></span>
+                  Available
+                </span>
+</td>
+<td class="py-4 px-space-md">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface font-semibold">Open since 7:32 AM</span>
+<span class="font-label-sm text-label-sm text-sonic-muted">4h 10m on duty · 6 drops</span>
+</div>
+</td>
+<td class="py-4 px-space-md">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-sonic-success/15 text-sonic-success font-label-sm text-label-sm font-semibold">
+                  Active
+                </span>
+</td>
+<td class="py-4 px-space-lg text-right">
+<div class="inline-flex items-center gap-1">
+<button class="action-edit-btn px-3 py-1.5 rounded-full hover:bg-sonic-bg text-primary font-label-sm text-label-sm font-semibold transition-colors" type="button">
+                    Edit
+                  </button>
+<button class="action-suspend-btn px-3 py-1.5 rounded-full hover:bg-error-container/40 text-sonic-danger font-label-sm text-label-sm font-semibold transition-colors" data-name="Mark Ramos (#RDR-101)" type="button">
+                    Suspend
+                  </button>
+</div>
+</td>
+</tr>
+<!-- Row 2: Carlo Santos -->
+<tr class="hover:bg-sonic-bg/50 transition-colors group">
+<td class="py-4 px-space-lg">
+<div class="flex items-center gap-space-sm">
+<div class="w-9 h-9 rounded-full bg-secondary-container text-on-secondary font-label-md text-label-md flex items-center justify-center font-bold">
+                    CS
+                  </div>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface font-semibold group-hover:text-primary transition-colors">Carlo Santos</span>
+<span class="font-label-sm text-label-sm text-sonic-muted">#RDR-102</span>
+</div>
+</div>
+</td>
+<td class="py-4 px-space-md font-body-sm text-on-surface-variant font-medium">
+                +63 948 219 8831
+              </td>
+<td class="py-4 px-space-md">
+<div class="flex items-center gap-1.5 flex-wrap">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-sonic-blue-light text-primary font-label-sm text-label-sm font-semibold">
+<span class="material-symbols-outlined text-label-sm">two_wheeler</span>
+                    Yamaha Mio i125
+                  </span>
+<span class="px-2 py-0.5 rounded bg-surface-container text-on-surface font-label-sm text-label-sm font-mono font-medium">DA-7712</span>
+</div>
+</td>
+<td class="py-4 px-space-md">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-sonic-success/15 text-sonic-success font-label-sm text-label-sm font-semibold">
+<span class="w-2 h-2 rounded-full bg-sonic-success"></span>
+                  Available
+                </span>
+</td>
+<td class="py-4 px-space-md">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface font-semibold">Open since 7:45 AM</span>
+<span class="font-label-sm text-label-sm text-sonic-muted">3h 57m on duty · 5 drops</span>
+</div>
+</td>
+<td class="py-4 px-space-md">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-sonic-success/15 text-sonic-success font-label-sm text-label-sm font-semibold">
+                  Active
+                </span>
+</td>
+<td class="py-4 px-space-lg text-right">
+<div class="inline-flex items-center gap-1">
+<button class="action-edit-btn px-3 py-1.5 rounded-full hover:bg-sonic-bg text-primary font-label-sm text-label-sm font-semibold transition-colors" type="button">
+                    Edit
+                  </button>
+<button class="action-suspend-btn px-3 py-1.5 rounded-full hover:bg-error-container/40 text-sonic-danger font-label-sm text-label-sm font-semibold transition-colors" data-name="Carlo Santos (#RDR-102)" type="button">
+                    Suspend
+                  </button>
+</div>
+</td>
+</tr>
+<!-- Row 3: Eric Dimaculangan (Busy) -->
+<tr class="hover:bg-sonic-bg/50 transition-colors group">
+<td class="py-4 px-space-lg">
+<div class="flex items-center gap-space-sm">
+<div class="w-9 h-9 rounded-full bg-primary text-on-primary font-label-md text-label-md flex items-center justify-center font-bold">
+                    ED
+                  </div>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface font-semibold group-hover:text-primary transition-colors">Eric Dimaculangan</span>
+<span class="font-label-sm text-label-sm text-sonic-muted">#RDR-103</span>
+</div>
+</div>
+</td>
+<td class="py-4 px-space-md font-body-sm text-on-surface-variant font-medium">
+                +63 917 334 1120
+              </td>
+<td class="py-4 px-space-md">
+<div class="flex items-center gap-1.5 flex-wrap">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-sonic-blue-light text-primary font-label-sm text-label-sm font-semibold">
+<span class="material-symbols-outlined text-label-sm">sports_motorsports</span>
+                    Suzuki Raider 150
+                  </span>
+<span class="px-2 py-0.5 rounded bg-surface-container text-on-surface font-label-sm text-label-sm font-mono font-medium">WX-9014</span>
+</div>
+</td>
+<td class="py-4 px-space-md">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-secondary-fixed text-secondary font-label-sm text-label-sm font-semibold">
+<span class="material-symbols-outlined text-[14px]">local_shipping</span>
+                  Busy (#SSD-0038)
+                </span>
+</td>
+<td class="py-4 px-space-md">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface font-semibold">Open since 8:15 AM</span>
+<span class="font-label-sm text-label-sm text-sonic-muted">Delivering to San Juan Ave</span>
+</div>
+</td>
+<td class="py-4 px-space-md">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-sonic-success/15 text-sonic-success font-label-sm text-label-sm font-semibold">
+                  Active
+                </span>
+</td>
+<td class="py-4 px-space-lg text-right">
+<div class="inline-flex items-center gap-1">
+<button class="action-edit-btn px-3 py-1.5 rounded-full hover:bg-sonic-bg text-primary font-label-sm text-label-sm font-semibold transition-colors" type="button">
+                    Edit
+                  </button>
+<button class="action-suspend-btn px-3 py-1.5 rounded-full hover:bg-error-container/40 text-sonic-danger font-label-sm text-label-sm font-semibold transition-colors" data-name="Eric Dimaculangan (#RDR-103)" type="button">
+                    Suspend
+                  </button>
+</div>
+</td>
+</tr>
+<!-- Row 4: Noel Bautista (Busy) -->
+<tr class="hover:bg-sonic-bg/50 transition-colors group">
+<td class="py-4 px-space-lg">
+<div class="flex items-center gap-space-sm">
+<div class="w-9 h-9 rounded-full bg-tertiary-container text-on-tertiary font-label-md text-label-md flex items-center justify-center font-bold">
+                    NB
+                  </div>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface font-semibold group-hover:text-primary transition-colors">Noel Bautista</span>
+<span class="font-label-sm text-label-sm text-sonic-muted">#RDR-104</span>
+</div>
+</div>
+</td>
+<td class="py-4 px-space-md font-body-sm text-on-surface-variant font-medium">
+                +63 918 552 0941
+              </td>
+<td class="py-4 px-space-md">
+<div class="flex items-center gap-1.5 flex-wrap">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-sonic-blue-light text-primary font-label-sm text-label-sm font-semibold">
+<span class="material-symbols-outlined text-label-sm">two_wheeler</span>
+                    Honda Wave 110
+                  </span>
+<span class="px-2 py-0.5 rounded bg-surface-container text-on-surface font-label-sm text-label-sm font-mono font-medium">BC-3301</span>
+</div>
+</td>
+<td class="py-4 px-space-md">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-secondary-fixed text-secondary font-label-sm text-label-sm font-semibold">
+<span class="material-symbols-outlined text-[14px]">local_shipping</span>
+                  Busy (#SSD-0041)
+                </span>
+</td>
+<td class="py-4 px-space-md">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface font-semibold">Open since 8:30 AM</span>
+<span class="font-label-sm text-label-sm text-sonic-muted">Picking up at Biggs Diner</span>
+</div>
+</td>
+<td class="py-4 px-space-md">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-sonic-success/15 text-sonic-success font-label-sm text-label-sm font-semibold">
+                  Active
+                </span>
+</td>
+<td class="py-4 px-space-lg text-right">
+<div class="inline-flex items-center gap-1">
+<button class="action-edit-btn px-3 py-1.5 rounded-full hover:bg-sonic-bg text-primary font-label-sm text-label-sm font-semibold transition-colors" type="button">
+                    Edit
+                  </button>
+<button class="action-suspend-btn px-3 py-1.5 rounded-full hover:bg-error-container/40 text-sonic-danger font-label-sm text-label-sm font-semibold transition-colors" data-name="Noel Bautista (#RDR-104)" type="button">
+                    Suspend
+                  </button>
+</div>
+</td>
+</tr>
+<!-- Row 5: Jayson Cruz -->
+<tr class="hover:bg-sonic-bg/50 transition-colors group">
+<td class="py-4 px-space-lg">
+<div class="flex items-center gap-space-sm">
+<div class="w-9 h-9 rounded-full bg-primary-container text-on-primary font-label-md text-label-md flex items-center justify-center font-bold">
+                    JC
+                  </div>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface font-semibold group-hover:text-primary transition-colors">Jayson Cruz</span>
+<span class="font-label-sm text-label-sm text-sonic-muted">#RDR-105</span>
+</div>
+</div>
+</td>
+<td class="py-4 px-space-md font-body-sm text-on-surface-variant font-medium">
+                +63 919 882 3310
+              </td>
+<td class="py-4 px-space-md">
+<div class="flex items-center gap-1.5 flex-wrap">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-sonic-blue-light text-primary font-label-sm text-label-sm font-semibold">
+<span class="material-symbols-outlined text-label-sm">two_wheeler</span>
+                    Yamaha NMAX 155
+                  </span>
+<span class="px-2 py-0.5 rounded bg-surface-container text-on-surface font-label-sm text-label-sm font-mono font-medium">KL-4490</span>
+</div>
+</td>
+<td class="py-4 px-space-md">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-sonic-success/15 text-sonic-success font-label-sm text-label-sm font-semibold">
+<span class="w-2 h-2 rounded-full bg-sonic-success"></span>
+                  Available
+                </span>
+</td>
+<td class="py-4 px-space-md">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface font-semibold">Open since 9:00 AM</span>
+<span class="font-label-sm text-label-sm text-sonic-muted">Stationed at Poblacion Hub</span>
+</div>
+</td>
+<td class="py-4 px-space-md">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-sonic-success/15 text-sonic-success font-label-sm text-label-sm font-semibold">
+                  Active
+                </span>
+</td>
+<td class="py-4 px-space-lg text-right">
+<div class="inline-flex items-center gap-1">
+<button class="action-edit-btn px-3 py-1.5 rounded-full hover:bg-sonic-bg text-primary font-label-sm text-label-sm font-semibold transition-colors" type="button">
+                    Edit
+                  </button>
+<button class="action-suspend-btn px-3 py-1.5 rounded-full hover:bg-error-container/40 text-sonic-danger font-label-sm text-label-sm font-semibold transition-colors" data-name="Jayson Cruz (#RDR-105)" type="button">
+                    Suspend
+                  </button>
+</div>
+</td>
+</tr>
+<!-- Row 6: Rodrigo V. (Suspended) -->
+<tr class="bg-error-container/10 hover:bg-error-container/20 transition-colors group">
+<td class="py-4 px-space-lg">
+<div class="flex items-center gap-space-sm">
+<div class="w-9 h-9 rounded-full bg-error text-on-error font-label-md text-label-md flex items-center justify-center font-bold">
+                    RV
+                  </div>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface font-semibold">Rodrigo V.</span>
+<span class="font-label-sm text-label-sm text-sonic-muted">#RDR-109</span>
+</div>
+</div>
+</td>
+<td class="py-4 px-space-md font-body-sm text-on-surface-variant font-medium">
+                +63 929 110 5543
+              </td>
+<td class="py-4 px-space-md">
+<div class="flex items-center gap-1.5 flex-wrap">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-surface-container text-on-surface-variant font-label-sm text-label-sm font-semibold">
+<span class="material-symbols-outlined text-label-sm">electric_rickshaw</span>
+                    Bajaj RE Tricycle
+                  </span>
+<span class="px-2 py-0.5 rounded bg-surface-container text-on-surface font-label-sm text-label-sm font-mono font-medium">TR-1102</span>
+</div>
+</td>
+<td class="py-4 px-space-md">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-surface-container text-sonic-muted font-label-sm text-label-sm font-semibold">
+<span class="w-2 h-2 rounded-full bg-outline"></span>
+                  Offline
+                </span>
+</td>
+<td class="py-4 px-space-md">
+<span class="font-label-sm text-label-sm text-sonic-muted">None (Off Duty)</span>
+</td>
+<td class="py-4 px-space-md">
+<div class="flex flex-col">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-sonic-danger/15 text-sonic-danger font-label-sm text-label-sm font-semibold w-fit">
+                    Suspended
+                  </span>
+<span class="font-label-sm text-label-sm text-sonic-danger mt-0.5">Safety infraction (Oct 28)</span>
+</div>
+</td>
+<td class="py-4 px-space-lg text-right">
+<div class="inline-flex items-center gap-1">
+<button class="action-edit-btn px-3 py-1.5 rounded-full hover:bg-sonic-bg text-primary font-label-sm text-label-sm font-semibold transition-colors" type="button">
+                    Review
+                  </button>
+<button class="px-3 py-1.5 rounded-full hover:bg-sonic-success/10 text-sonic-success font-label-sm text-label-sm font-semibold transition-colors" type="button">
+                    Reactivate
+                  </button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Table Footer / Pagination -->
+<div class="px-space-lg py-3.5 bg-sonic-surface flex items-center justify-between">
+<span class="font-body-sm text-body-sm text-sonic-muted">Showing 6 of 10 registered fleet riders</span>
+<div class="flex items-center gap-2">
+<button class="px-3 py-1 rounded-full bg-sonic-bg text-sonic-muted font-label-sm text-label-sm opacity-50 cursor-not-allowed" disabled="" type="button">Previous</button>
+<span class="font-label-sm text-label-sm px-2 text-primary font-bold">1</span>
+<button class="px-3 py-1 rounded-full bg-sonic-bg hover:bg-surface-container text-on-surface font-label-sm text-label-sm transition-colors" type="button">Next</button>
+</div>
+</div>
+</div>
+</section>
+<!-- VIEW 2: CUSTOMERS TABLE (Hidden by default) -->
+<section class="px-margin-desktop py-space-md hidden" id="customers-view">
+<div class="bg-sonic-surface rounded-xl shadow-sm overflow-hidden">
+<!-- Table Header / Title Info -->
+<div class="px-space-lg py-space-md bg-sonic-surface flex items-center justify-between">
+<div>
+<h2 class="font-headline-sm text-headline-sm text-on-surface">Registered Customers Directory</h2>
+<p class="font-body-sm text-body-sm text-sonic-muted">User accounts, lifetime order frequencies, and account health.</p>
+</div>
+<div class="flex items-center gap-space-xs font-label-sm text-label-sm text-sonic-muted">
+<span class="material-symbols-outlined text-body-md text-primary">verified_user</span>
+<span>OTP-verified mobile records</span>
+</div>
+</div>
+<!-- Customers Table -->
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-sonic-bg text-sonic-muted font-label-sm text-label-sm tracking-wider uppercase">
+<th class="py-3.5 px-space-lg font-semibold">Customer Name &amp; ID</th>
+<th class="py-3.5 px-space-md font-semibold">Email</th>
+<th class="py-3.5 px-space-md font-semibold">Contact Number</th>
+<th class="py-3.5 px-space-md font-semibold">Orders &amp; Volume</th>
+<th class="py-3.5 px-space-md font-semibold">Date Joined</th>
+<th class="py-3.5 px-space-md font-semibold">Account Status</th>
+<th class="py-3.5 px-space-lg font-semibold text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y-0 text-on-surface font-body-sm text-body-sm">
+<!-- Customer Row 1: Maria Santos -->
+<tr class="hover:bg-sonic-bg/50 transition-colors group">
+<td class="py-4 px-space-lg">
+<div class="flex items-center gap-space-sm">
+<div class="w-9 h-9 rounded-full bg-sonic-blue-light text-primary font-label-md text-label-md flex items-center justify-center font-bold">
+                    MS
+                  </div>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface font-semibold group-hover:text-primary transition-colors">Maria Santos</span>
+<span class="font-label-sm text-label-sm text-sonic-muted">#CUST-9821</span>
+</div>
+</div>
+</td>
+<td class="py-4 px-space-md font-body-sm text-on-surface-variant font-medium">
+                maria.santos@gmail.com
+              </td>
+<td class="py-4 px-space-md font-body-sm text-on-surface font-semibold">
+                +63 917 555 1201
+              </td>
+<td class="py-4 px-space-md">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface font-bold">18 orders</span>
+<span class="font-label-sm text-label-sm text-primary font-semibold">₱9,420.00 spent</span>
+</div>
+</td>
+<td class="py-4 px-space-md text-sonic-muted font-body-sm">
+                Oct 14, 2026
+              </td>
+<td class="py-4 px-space-md">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-sonic-success/15 text-sonic-success font-label-sm text-label-sm font-semibold">
+                  Active
+                </span>
+</td>
+<td class="py-4 px-space-lg text-right">
+<div class="inline-flex items-center gap-1">
+<button class="px-3 py-1.5 rounded-full hover:bg-sonic-bg text-primary font-label-sm text-label-sm font-semibold transition-colors" type="button">
+                    View orders
+                  </button>
+<button class="action-suspend-btn px-3 py-1.5 rounded-full hover:bg-error-container/40 text-sonic-danger font-label-sm text-label-sm font-semibold transition-colors" data-name="Maria Santos (#CUST-9821)" type="button">
+                    Suspend
+                  </button>
+</div>
+</td>
+</tr>
+<!-- Customer Row 2: Juan Dela Cruz -->
+<tr class="hover:bg-sonic-bg/50 transition-colors group">
+<td class="py-4 px-space-lg">
+<div class="flex items-center gap-space-sm">
+<div class="w-9 h-9 rounded-full bg-surface-container text-on-surface-variant font-label-md text-label-md flex items-center justify-center font-bold">
+                    JD
+                  </div>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface font-semibold group-hover:text-primary transition-colors">Juan Dela Cruz</span>
+<span class="font-label-sm text-label-sm text-sonic-muted">#CUST-9822</span>
+</div>
+</div>
+</td>
+<td class="py-4 px-space-md font-body-sm text-on-surface-variant font-medium">
+                juan.delacruz@yahoo.com
+              </td>
+<td class="py-4 px-space-md font-body-sm text-on-surface font-semibold">
+                +63 917 123 4567
+              </td>
+<td class="py-4 px-space-md">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface font-bold">12 orders</span>
+<span class="font-label-sm text-label-sm text-primary font-semibold">₱5,180.00 spent</span>
+</div>
+</td>
+<td class="py-4 px-space-md text-sonic-muted font-body-sm">
+                Oct 18, 2026
+              </td>
+<td class="py-4 px-space-md">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-sonic-success/15 text-sonic-success font-label-sm text-label-sm font-semibold">
+                  Active
+                </span>
+</td>
+<td class="py-4 px-space-lg text-right">
+<div class="inline-flex items-center gap-1">
+<button class="px-3 py-1.5 rounded-full hover:bg-sonic-bg text-primary font-label-sm text-label-sm font-semibold transition-colors" type="button">
+                    View orders
+                  </button>
+<button class="action-suspend-btn px-3 py-1.5 rounded-full hover:bg-error-container/40 text-sonic-danger font-label-sm text-label-sm font-semibold transition-colors" data-name="Juan Dela Cruz (#CUST-9822)" type="button">
+                    Suspend
+                  </button>
+</div>
+</td>
+</tr>
+<!-- Customer Row 3: Roberto Gomez -->
+<tr class="hover:bg-sonic-bg/50 transition-colors group">
+<td class="py-4 px-space-lg">
+<div class="flex items-center gap-space-sm">
+<div class="w-9 h-9 rounded-full bg-surface-variant text-primary font-label-md text-label-md flex items-center justify-center font-bold">
+                    RG
+                  </div>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface font-semibold group-hover:text-primary transition-colors">Roberto Gomez</span>
+<span class="font-label-sm text-label-sm text-sonic-muted">#CUST-9823</span>
+</div>
+</div>
+</td>
+<td class="py-4 px-space-md font-body-sm text-on-surface-variant font-medium">
+                rgomez@outlook.ph
+              </td>
+<td class="py-4 px-space-md font-body-sm text-on-surface font-semibold">
+                +63 918 222 9941
+              </td>
+<td class="py-4 px-space-md">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface font-bold">7 orders</span>
+<span class="font-label-sm text-label-sm text-primary font-semibold">₱3,240.00 spent</span>
+</div>
+</td>
+<td class="py-4 px-space-md text-sonic-muted font-body-sm">
+                Nov 02, 2026
+              </td>
+<td class="py-4 px-space-md">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-sonic-success/15 text-sonic-success font-label-sm text-label-sm font-semibold">
+                  Active
+                </span>
+</td>
+<td class="py-4 px-space-lg text-right">
+<div class="inline-flex items-center gap-1">
+<button class="px-3 py-1.5 rounded-full hover:bg-sonic-bg text-primary font-label-sm text-label-sm font-semibold transition-colors" type="button">
+                    View orders
+                  </button>
+<button class="action-suspend-btn px-3 py-1.5 rounded-full hover:bg-error-container/40 text-sonic-danger font-label-sm text-label-sm font-semibold transition-colors" data-name="Roberto Gomez (#CUST-9823)" type="button">
+                    Suspend
+                  </button>
+</div>
+</td>
+</tr>
+<!-- Customer Row 4: Angelica Reyes -->
+<tr class="hover:bg-sonic-bg/50 transition-colors group">
+<td class="py-4 px-space-lg">
+<div class="flex items-center gap-space-sm">
+<div class="w-9 h-9 rounded-full bg-sonic-blue-light text-primary font-label-md text-label-md flex items-center justify-center font-bold">
+                    AR
+                  </div>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface font-semibold group-hover:text-primary transition-colors">Angelica Reyes</span>
+<span class="font-label-sm text-label-sm text-sonic-muted">#CUST-9824</span>
+</div>
+</div>
+</td>
+<td class="py-4 px-space-md font-body-sm text-on-surface-variant font-medium">
+                angelica.reyes@gmail.com
+              </td>
+<td class="py-4 px-space-md font-body-sm text-on-surface font-semibold">
+                +63 922 444 8871
+              </td>
+<td class="py-4 px-space-md">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface font-bold">24 orders</span>
+<span class="font-label-sm text-label-sm text-primary font-semibold">₱14,890.00 spent</span>
+</div>
+</td>
+<td class="py-4 px-space-md text-sonic-muted font-body-sm">
+                Sep 29, 2026
+              </td>
+<td class="py-4 px-space-md">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-sonic-success/15 text-sonic-success font-label-sm text-label-sm font-semibold">
+                  Active
+                </span>
+</td>
+<td class="py-4 px-space-lg text-right">
+<div class="inline-flex items-center gap-1">
+<button class="px-3 py-1.5 rounded-full hover:bg-sonic-bg text-primary font-label-sm text-label-sm font-semibold transition-colors" type="button">
+                    View orders
+                  </button>
+<button class="action-suspend-btn px-3 py-1.5 rounded-full hover:bg-error-container/40 text-sonic-danger font-label-sm text-label-sm font-semibold transition-colors" data-name="Angelica Reyes (#CUST-9824)" type="button">
+                    Suspend
+                  </button>
+</div>
+</td>
+</tr>
+<!-- Customer Row 5: Dennis Tan (Suspended) -->
+<tr class="bg-error-container/10 hover:bg-error-container/20 transition-colors group">
+<td class="py-4 px-space-lg">
+<div class="flex items-center gap-space-sm">
+<div class="w-9 h-9 rounded-full bg-error text-on-error font-label-md text-label-md flex items-center justify-center font-bold">
+                    DT
+                  </div>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface font-semibold">Dennis Tan</span>
+<span class="font-label-sm text-label-sm text-sonic-muted">#CUST-9825</span>
+</div>
+</div>
+</td>
+<td class="py-4 px-space-md font-body-sm text-on-surface-variant font-medium">
+                dtan.sipocot@gmail.com
+              </td>
+<td class="py-4 px-space-md font-body-sm text-on-surface font-semibold">
+                +63 915 777 2200
+              </td>
+<td class="py-4 px-space-md">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface font-bold">3 orders</span>
+<span class="font-label-sm text-label-sm text-primary font-semibold">₱1,250.00 spent</span>
+</div>
+</td>
+<td class="py-4 px-space-md text-sonic-muted font-body-sm">
+                Nov 10, 2026
+              </td>
+<td class="py-4 px-space-md">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-sonic-danger/15 text-sonic-danger font-label-sm text-label-sm font-semibold">
+                  Suspended
+                </span>
+</td>
+<td class="py-4 px-space-lg text-right">
+<div class="inline-flex items-center gap-1">
+<button class="px-3 py-1.5 rounded-full hover:bg-sonic-bg text-primary font-label-sm text-label-sm font-semibold transition-colors" type="button">
+                    View logs
+                  </button>
+<button class="px-3 py-1.5 rounded-full hover:bg-sonic-success/10 text-sonic-success font-label-sm text-label-sm font-semibold transition-colors" type="button">
+                    Reactivate
+                  </button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Table Footer / Pagination -->
+<div class="px-space-lg py-3.5 bg-sonic-surface flex items-center justify-between">
+<span class="font-body-sm text-body-sm text-sonic-muted">Showing 5 of 142 registered customer accounts</span>
+<div class="flex items-center gap-2">
+<button class="px-3 py-1 rounded-full bg-sonic-bg text-sonic-muted font-label-sm text-label-sm opacity-50 cursor-not-allowed" disabled="" type="button">Previous</button>
+<span class="font-label-sm text-label-sm px-2 text-primary font-bold">1</span>
+<button class="px-3 py-1 rounded-full bg-sonic-bg hover:bg-surface-container text-on-surface font-label-sm text-label-sm transition-colors" type="button">Next</button>
+</div>
+</div>
+</div>
+</section>
+<!-- MODAL 1: ADD RIDER MODAL OVERLAY -->
+<div class="fixed inset-0 z-50 flex items-center justify-center p-space-md bg-on-background/60 backdrop-blur-sm hidden transition-opacity" id="add-rider-modal">
+<div class="bg-sonic-surface w-full max-w-xl rounded-xl shadow-xl overflow-hidden animate-in fade-in zoom-in-95 duration-150">
+<!-- Modal Header -->
+<div class="p-space-lg bg-sonic-surface flex items-start justify-between">
+<div class="flex items-center gap-space-sm">
+<div class="w-10 h-10 rounded-xl bg-primary-container text-on-primary flex items-center justify-center shadow-sm">
+<span class="material-symbols-outlined text-headline-sm">two_wheeler</span>
+</div>
+<div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-bold">Add New Rider to Fleet</h3>
+<p class="font-body-sm text-body-sm text-sonic-muted">Assign credentials and vehicle details for the Super Sonic Rider mobile app.</p>
+</div>
+</div>
+<button class="w-8 h-8 rounded-full bg-sonic-bg hover:bg-surface-container flex items-center justify-center text-sonic-muted hover:text-on-surface transition-colors" id="close-add-rider-modal" type="button">
+<span class="material-symbols-outlined text-label-lg">close</span>
+</button>
+</div>
+<!-- Modal Form Body -->
+<form class="p-space-lg space-y-space-md" id="add-rider-form">
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-space-md">
+<!-- Full Name -->
+<div>
+<label class="block font-label-sm text-label-sm text-on-surface font-semibold mb-1.5" for="rider-name">
+              Full Name
+            </label>
+<input class="w-full px-space-md py-2.5 bg-sonic-bg rounded-xl font-body-sm text-body-sm text-on-surface placeholder:text-sonic-muted focus:outline-none focus:ring-2 focus:ring-primary-container" id="rider-name" placeholder="e.g. Arnel Villafuerte" required="" type="text"/>
+</div>
+<!-- Email Address -->
+<div>
+<label class="block font-label-sm text-label-sm text-on-surface font-semibold mb-1.5" for="rider-email">
+              Email Address
+            </label>
+<input class="w-full px-space-md py-2.5 bg-sonic-bg rounded-xl font-body-sm text-body-sm text-on-surface placeholder:text-sonic-muted focus:outline-none focus:ring-2 focus:ring-primary-container" id="rider-email" placeholder="arnel.rider@supersonic.ph" required="" type="email"/>
+</div>
+<!-- Contact Number -->
+<div>
+<label class="block font-label-sm text-label-sm text-on-surface font-semibold mb-1.5" for="rider-phone">
+              Contact Number
+            </label>
+<input class="w-full px-space-md py-2.5 bg-sonic-bg rounded-xl font-body-sm text-body-sm text-on-surface placeholder:text-sonic-muted focus:outline-none focus:ring-2 focus:ring-primary-container" id="rider-phone" placeholder="+63 920 000 0000" required="" type="tel"/>
+</div>
+<!-- Temporary Password -->
+<div>
+<label class="block font-label-sm text-label-sm text-on-surface font-semibold mb-1.5" for="rider-password">
+              Temporary Password
+            </label>
+<div class="relative">
+<input class="w-full px-space-md py-2.5 pr-10 bg-sonic-bg rounded-xl font-body-sm text-body-sm text-on-surface focus:outline-none focus:ring-2 focus:ring-primary-container" id="rider-password" required="" type="password" value="SonicRider2026!"/>
+<button class="absolute right-3 top-1/2 -translate-y-1/2 text-sonic-muted hover:text-on-surface" id="toggle-pwd" type="button">
+<span class="material-symbols-outlined text-body-lg">visibility</span>
+</button>
+</div>
+</div>
+</div>
+<p class="font-label-sm text-label-sm text-sonic-muted flex items-center gap-1">
+<span class="material-symbols-outlined text-[15px] text-primary">info</span>
+          Rider must change password upon first app authentication.
+        </p>
+<!-- Vehicle Details -->
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-space-md pt-2">
+<div>
+<label class="block font-label-sm text-label-sm text-on-surface font-semibold mb-1.5" for="rider-vehicle">
+              Vehicle Type
+            </label>
+<select class="w-full px-space-md py-2.5 bg-sonic-bg rounded-xl font-body-sm text-body-sm text-on-surface focus:outline-none focus:ring-2 focus:ring-primary-container" id="rider-vehicle">
+<option value="scooter">Motorcycle (Scooter / Underbone)</option>
+<option value="bigbike">Motorcycle (Big Bike)</option>
+<option value="tricycle">Tricycle / Cargo Carrier</option>
+<option value="bicycle">Bicycle</option>
+</select>
+</div>
+<div>
+<label class="block font-label-sm text-label-sm text-on-surface font-semibold mb-1.5" for="rider-plate">
+              Plate Number / Registration
+            </label>
+<input class="w-full px-space-md py-2.5 bg-sonic-bg rounded-xl font-body-sm text-body-sm text-on-surface placeholder:text-sonic-muted uppercase focus:outline-none focus:ring-2 focus:ring-primary-container" id="rider-plate" placeholder="e.g. NAB-1234" required="" type="text"/>
+</div>
+</div>
+<!-- Float Allotment -->
+<div class="pt-2">
+<label class="block font-label-sm text-label-sm text-on-surface font-semibold mb-1.5" for="rider-float">
+            Initial Petty Cash Float Allotment
+          </label>
+<div class="relative">
+<span class="absolute left-3 top-1/2 -translate-y-1/2 font-headline-sm text-label-md text-sonic-muted">₱</span>
+<input class="w-full pl-8 pr-space-md py-2.5 bg-sonic-bg rounded-xl font-body-sm text-body-sm text-on-surface focus:outline-none focus:ring-2 focus:ring-primary-container" id="rider-float" type="text" value="1,000.00"/>
+</div>
+<span class="font-label-sm text-label-sm text-sonic-muted mt-1 block">Used for cash-on-delivery change on dispatch routes.</span>
+</div>
+<!-- Modal Actions -->
+<div class="flex items-center justify-end gap-space-sm pt-space-md">
+<button class="px-space-lg py-2.5 rounded-full bg-sonic-bg hover:bg-surface-container text-on-surface font-label-md text-label-md transition-colors" id="cancel-add-rider-modal" type="button">
+            Cancel
+          </button>
+<button class="inline-flex items-center gap-space-xs px-space-lg py-2.5 rounded-full bg-primary-container hover:bg-sonic-blue-dark text-on-primary font-label-md text-label-md shadow-sm transition-all" type="submit">
+<span class="material-symbols-outlined text-label-lg text-sonic-bolt">bolt</span>
+<span>Register &amp; Issue Account</span>
+</button>
+</div>
+</form>
+</div>
+</div>
+<!-- MODAL 2: SUSPEND CONFIRMATION DIALOG -->
+<div class="fixed inset-0 z-50 flex items-center justify-center p-space-md bg-on-background/60 backdrop-blur-sm hidden transition-opacity" id="suspend-dialog-modal">
+<div class="bg-sonic-surface w-full max-w-md rounded-xl shadow-xl overflow-hidden p-space-lg animate-in fade-in zoom-in-95 duration-150">
+<div class="w-12 h-12 rounded-full bg-error-container text-sonic-danger flex items-center justify-center mb-space-md">
+<span class="material-symbols-outlined text-headline-md">warning</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-bold">Suspend Account?</h3>
+<p class="font-body-sm text-body-sm text-sonic-muted mt-1.5 leading-relaxed">
+        Are you sure you want to suspend <strong class="text-on-surface" id="suspend-target-name">this account</strong>? The user will immediately be logged out and prevented from taking orders or logging into the Super Sonic app.
+      </p>
+<div class="mt-space-md">
+<label class="block font-label-sm text-label-sm text-on-surface font-semibold mb-1" for="suspend-reason-select">
+          Select Reason
+        </label>
+<select class="w-full px-space-md py-2.5 bg-sonic-bg rounded-xl font-body-sm text-body-sm text-on-surface focus:outline-none focus:ring-2 focus:ring-sonic-danger mb-space-sm" id="suspend-reason-select">
+<option value="policy">Policy violation / Code of conduct</option>
+<option value="cancellations">Repeated cancellations during peak shift</option>
+<option value="fraud">Fraud suspicion or order manipulation</option>
+<option value="complaint">Verified customer complaint</option>
+<option value="other">Other administrative reason</option>
+</select>
+<textarea class="w-full px-space-md py-2 bg-sonic-bg rounded-xl font-body-sm text-body-sm text-on-surface placeholder:text-sonic-muted focus:outline-none focus:ring-2 focus:ring-sonic-danger resize-none" placeholder="Provide incident notes or internal dispatcher memo..." rows="2"></textarea>
+</div>
+<div class="flex items-center justify-end gap-space-sm mt-space-lg">
+<button class="px-space-md py-2 rounded-full bg-sonic-bg hover:bg-surface-container text-on-surface font-label-md text-label-md transition-colors" id="cancel-suspend-modal" type="button">
+          Cancel
+        </button>
+<button class="px-space-lg py-2 rounded-full bg-sonic-danger hover:bg-red-700 text-on-primary font-label-md text-label-md shadow-sm transition-all" id="confirm-suspend-btn" type="button">
+          Suspend Account
+        </button>
+</div>
+</div>
+</div>
+</div>
+<script>
+  (function() {
+    // Tabs state
+    const ridersTabBtn = document.getElementById('tab-btn-riders');
+    const customersTabBtn = document.getElementById('tab-btn-customers');
+    const ridersView = document.getElementById('riders-view');
+    const customersView = document.getElementById('customers-view');
+    const contextActionText = document.getElementById('context-action-text');
+    const contextActionBtn = document.getElementById('context-action-btn');
+
+    function switchToRiders() {
+      ridersTabBtn.className = 'tab-button inline-flex items-center gap-space-xs px-space-md py-2 rounded-full bg-primary-container text-on-primary font-label-md text-label-md transition-all shadow-sm';
+      customersTabBtn.className = 'tab-button inline-flex items-center gap-space-xs px-space-md py-2 rounded-full text-sonic-muted hover:text-on-surface font-label-md text-label-md transition-all';
+      ridersView.classList.remove('hidden');
+      customersView.classList.add('hidden');
+      contextActionText.textContent = '+ Add rider';
+    }
+
+    function switchToCustomers() {
+      customersTabBtn.className = 'tab-button inline-flex items-center gap-space-xs px-space-md py-2 rounded-full bg-primary-container text-on-primary font-label-md text-label-md transition-all shadow-sm';
+      ridersTabBtn.className = 'tab-button inline-flex items-center gap-space-xs px-space-md py-2 rounded-full text-sonic-muted hover:text-on-surface font-label-md text-label-md transition-all';
+      customersView.classList.remove('hidden');
+      ridersView.classList.add('hidden');
+      contextActionText.textContent = '+ Invite Customer';
+    }
+
+    ridersTabBtn.addEventListener('click', switchToRiders);
+    customersTabBtn.addEventListener('click', switchToCustomers);
+
+    // Context action click
+    contextActionBtn.addEventListener('click', () => {
+      if (!ridersView.classList.contains('hidden')) {
+        openAddRiderModal();
+      } else {
+        alert('Customer manual registration invites sent via SMS link.');
+      }
+    });
+
+    // Add Rider Modal Controls
+    const addRiderModal = document.getElementById('add-rider-modal');
+    const quickAddRiderTrigger = document.getElementById('quick-add-rider-trigger');
+    const closeAddRiderModal = document.getElementById('close-add-rider-modal');
+    const cancelAddRiderModal = document.getElementById('cancel-add-rider-modal');
+    const addRiderForm = document.getElementById('add-rider-form');
+
+    function openAddRiderModal() {
+      addRiderModal.classList.remove('hidden');
+    }
+    function hideAddRiderModal() {
+      addRiderModal.classList.add('hidden');
+    }
+
+    quickAddRiderTrigger.addEventListener('click', openAddRiderModal);
+    closeAddRiderModal.addEventListener('click', hideAddRiderModal);
+    cancelAddRiderModal.addEventListener('click', hideAddRiderModal);
+
+    addRiderForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      hideAddRiderModal();
+      alert('Rider credentials issued and sent via SMS!');
+    });
+
+    // Suspend Modal Controls
+    const suspendDialogModal = document.getElementById('suspend-dialog-modal');
+    const quickSuspendTrigger = document.getElementById('quick-suspend-trigger');
+    const cancelSuspendModal = document.getElementById('cancel-suspend-modal');
+    const confirmSuspendBtn = document.getElementById('confirm-suspend-btn');
+    const suspendTargetName = document.getElementById('suspend-target-name');
+
+    function openSuspendModal(targetText) {
+      suspendTargetName.textContent = targetText || 'the selected account';
+      suspendDialogModal.classList.remove('hidden');
+    }
+    function hideSuspendModal() {
+      suspendDialogModal.classList.add('hidden');
+    }
+
+    quickSuspendTrigger.addEventListener('click', () => openSuspendModal('Mark Ramos (#RDR-101)'));
+    cancelSuspendModal.addEventListener('click', hideSuspendModal);
+    confirmSuspendBtn.addEventListener('click', () => {
+      hideSuspendModal();
+      alert('Account status updated to Suspended.');
+    });
+
+    // Delegate row suspend buttons
+    document.querySelectorAll('.action-suspend-btn').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        const name = e.currentTarget.getAttribute('data-name');
+        openSuspendModal(name);
+      });
+    });
+
+    // Delegate edit buttons for demo
+    document.querySelectorAll('.action-edit-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        openAddRiderModal();
+      });
+    });
+
+    // Password view toggle
+    const pwdInput = document.getElementById('rider-password');
+    const togglePwd = document.getElementById('toggle-pwd');
+    if (togglePwd && pwdInput) {
+      togglePwd.addEventListener('click', () => {
+        const isPwd = pwdInput.type === 'password';
+        pwdInput.type = isPwd ? 'text' : 'password';
+        togglePwd.querySelector('span').textContent = isPwd ? 'visibility_off' : 'visibility';
+      });
+    }
+
+    // Status chips toggle
+    document.querySelectorAll('.status-chip').forEach(chip => {
+      chip.addEventListener('click', function() {
+        document.querySelectorAll('.status-chip').forEach(c => {
+          c.classList.remove('bg-primary', 'text-on-primary');
+          c.classList.add('bg-sonic-bg', 'text-on-surface-variant');
+        });
+        this.classList.remove('bg-sonic-bg', 'text-on-surface-variant');
+        this.classList.add('bg-primary', 'text-on-primary');
+      });
+    });
+
+    // Search filter mock
+    const searchInput = document.getElementById('directory-search-input');
+    searchInput.addEventListener('input', (e) => {
+      const query = e.target.value.toLowerCase();
+      const activeTable = !ridersView.classList.contains('hidden') ? ridersView : customersView;
+      const rows = activeTable.querySelectorAll('tbody tr');
+      rows.forEach(row => {
+        const text = row.textContent.toLowerCase();
+        row.style.display = text.includes(query) ? '' : 'none';
+      });
+    });
+  })();
+</script></main></div></body></html>

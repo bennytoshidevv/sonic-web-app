@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Montserrat:wght@600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{colors:{"inverse-primary":"#bbc3ff","sonic-blue-light":"#E8ECFE","surface-dim":"#d4d7ff","surface-variant":"#dfe0ff","on-secondary-fixed-variant":"#3a00df","on-tertiary":"#ffffff","error-container":"#ffdad6","on-error-container":"#93000a","surface-container-lowest":"#ffffff","sonic-surface":"#FFFFFF","sonic-blue-dark":"#0F27B8","on-tertiary-container":"#93d6ff","sonic-danger":"#DC2626","sonic-border":"#DDE2F5","tertiary":"#004561","on-secondary-container":"#ddd8ff","primary":"#0026c0","on-background":"#13183b","surface-tint":"#2445f6","tertiary-fixed":"#c5e7ff","on-error":"#ffffff","tertiary-fixed-dim":"#7fd0ff","on-surface-variant":"#444656","on-secondary-fixed":"#150066","inverse-on-surface":"#f0efff","outline-variant":"#c4c5d9","sonic-success":"#16A34A","on-surface":"#13183b","on-primary-fixed-variant":"#002ad0","surface-container":"#edecff","sonic-warning":"#F59E0B","error":"#ba1a1a","primary-container":"#183cf0","sonic-muted":"#5B6386","on-primary":"#ffffff","on-primary-container":"#c5cbff","surface-bright":"#fbf8ff","secondary":"#3b00e6","secondary-fixed-dim":"#c6c0ff","on-tertiary-fixed":"#001e2d","secondary-container":"#5537fe","background":"#fbf8ff","sonic-bg":"#F5F7FF","outline":"#757688","primary-fixed-dim":"#bbc3ff","on-primary-fixed":"#000e5f","tertiary-container":"#005e82","surface-container-low":"#f4f2ff","surface-container-high":"#e6e6ff","surface-container-highest":"#dfe0ff","sonic-bolt":"#FFD60A","on-secondary":"#ffffff","secondary-fixed":"#e4dfff","surface":"#fbf8ff","primary-fixed":"#dfe0ff","inverse-surface":"#292e51","on-tertiary-fixed-variant":"#004c6a"},borderRadius:{"DEFAULT":"0.25rem","lg":"0.5rem","xl":"0.75rem","full":"9999px"},spacing:{"gutter-desktop":"1.5rem","space-md":"1rem","space-sm":"0.5rem","space-xs":"0.25rem","gutter":"1rem","margin-desktop":"2rem","margin":"1rem","space-lg":"1.5rem","space-xl":"2rem"},fontFamily:{"body-sm":["Inter"],"label-lg":["Montserrat"],"headline-md":["Montserrat"],"headline-sm":["Montserrat"],"label-md":["Montserrat"],"label-sm":["Inter"],"body-lg":["Inter"],"price-display":["Montserrat"],"headline-lg":["Montserrat"],"body-md":["Inter"]},fontSize:{"body-sm":["13px",{"lineHeight":"18px","fontWeight":"400"}],"label-lg":["16px",{"lineHeight":"20px","fontWeight":"600"}],"headline-md":["22px",{"lineHeight":"28px","letterSpacing":"-0.01em","fontWeight":"700"}],"headline-sm":["18px",{"lineHeight":"24px","fontWeight":"600"}],"label-md":["14px",{"lineHeight":"18px","fontWeight":"600"}],"label-sm":["12px",{"lineHeight":"16px","fontWeight":"500"}],"body-lg":["16px",{"lineHeight":"24px","fontWeight":"400"}],"price-display":["18px",{"lineHeight":"24px","fontWeight":"700"}],"headline-lg":["28px",{"lineHeight":"36px","letterSpacing":"-0.02em","fontWeight":"800"}],"body-md":["15px",{"lineHeight":"22px","fontWeight":"400"}]}}}}</script></head><body class="bg-sonic-bg text-on-surface min-h-screen"><aside class="fixed left-0 top-0 h-full w-72 bg-on-background z-50 flex flex-col justify-between shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="flex flex-col"><div class="p-space-lg flex items-center gap-space-sm"><div class="w-9 h-9 rounded-xl bg-primary-container flex items-center justify-center shrink-0 shadow-sm"><span class="material-symbols-outlined text-on-primary text-headline-sm">bolt</span></div><div class="flex flex-col min-w-0"><span class="font-headline-sm text-headline-sm text-on-primary leading-tight truncate">Super Sonic</span><span class="font-label-sm text-label-sm text-sonic-muted uppercase tracking-wider truncate">Dispatch Console</span></div></div><div class="px-space-md py-space-xs"><nav class="flex flex-col gap-space-xs" data-active-classes="bg-primary-container text-on-primary shadow-sm font-label-md"><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-xl text-surface-container-low hover:bg-surface-variant/20 hover:text-on-primary transition-all group" data-path="live-orders" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-surface-container-low group-hover:text-on-primary">radar</span><span class="font-label-md text-label-md">Live Orders</span></div><span class="flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-sonic-bolt text-on-background font-label-sm text-label-sm font-bold"><span class="w-1.5 h-1.5 rounded-full bg-on-background animate-ping"></span>3 pending</span></a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-xl text-surface-container-low hover:bg-surface-variant/20 hover:text-on-primary transition-all group" data-path="restaurants" href="#"><span class="material-symbols-outlined text-surface-container-low group-hover:text-on-primary">storefront</span><span class="font-label-md text-label-md">Restaurants</span></a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-xl text-surface-container-low hover:bg-surface-variant/20 hover:text-on-primary transition-all group" data-path="menus" href="#"><span class="material-symbols-outlined text-surface-container-low group-hover:text-on-primary">restaurant_menu</span><span class="font-label-md text-label-md">Menus</span></a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-xl text-surface-container-low hover:bg-surface-variant/20 hover:text-on-primary transition-all group" data-path="riders-and-customers" href="#"><span class="material-symbols-outlined text-surface-container-low group-hover:text-on-primary">two_wheeler</span><span class="font-label-md text-label-md">Riders &amp; Customers</span></a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-xl text-surface-container-low hover:bg-surface-variant/20 hover:text-on-primary transition-all group" data-path="settlements" href="#"><span class="material-symbols-outlined text-surface-container-low group-hover:text-on-primary">payments</span><span class="font-label-md text-label-md">Settlements</span></a><div class="pt-space-md pb-space-xs px-space-sm"><span class="font-label-sm text-label-sm uppercase tracking-wider text-sonic-muted">Administration</span></div><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-xl text-surface-container-low hover:bg-surface-variant/20 hover:text-on-primary transition-all group" data-path="reports" href="#"><span class="material-symbols-outlined text-surface-container-low group-hover:text-on-primary">query_stats</span><span class="font-label-md text-label-md">Reports</span></a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-xl text-surface-container-low hover:bg-surface-variant/20 hover:text-on-primary transition-all group" data-path="settings" href="#"><span class="material-symbols-outlined text-surface-container-low group-hover:text-on-primary">tune</span><span class="font-label-md text-label-md">Settings</span></a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-xl text-surface-container-low hover:bg-surface-variant/20 hover:text-on-primary transition-all group" data-path="rider-savings" href="#"><span class="material-symbols-outlined text-surface-container-low group-hover:text-on-primary">savings</span><span class="font-label-md text-label-md">Rider Savings</span></a></nav></div></div><div class="p-space-md bg-inverse-surface/40 m-space-md rounded-xl flex flex-col gap-space-sm"><div class="flex items-center gap-space-sm"><img alt="Profile" class="w-8 h-8 rounded-full object-cover ring-2 ring-primary-container shrink-0" src="https://lh3.googleusercontent.com/aida/ALJJyrC8lRXYdjybIE90MeONF2eH0KosGRJACkoy-lyzF-YOG4th5LTs_7Jhi6mtx3iDcwEOTXrNpX9Ra-N2vuj8M_5qI4lhK3Pbu8O2Nxa5QYOvR4R9--26DM48rQTpq20WdGYtm2_Cb0H6kwEaKRgzb0ESoksxV_CZU8LKOqPui2GGPVj45SFbthr2nqU0RhX9M0r78aMalNCPNMmYVdwVWXbrc9rJTHOJdp3fcfGr7t6I7eiQWVaN3c-xgqvP"/><div class="flex flex-col min-w-0"><span class="font-label-md text-label-md text-on-primary truncate">Operator Elena M.</span><span class="font-label-sm text-label-sm text-sonic-muted truncate">Sipocot Hub Dispatcher</span></div></div><div class="flex items-center justify-between pt-space-xs"><span class="inline-flex items-center gap-1 font-label-sm text-label-sm text-sonic-success"><span class="w-2 h-2 rounded-full bg-sonic-success"></span>Online</span><a class="inline-flex items-center gap-1 font-label-sm text-label-sm text-surface-variant hover:text-on-primary transition-colors" data-path="login" href="#"><span class="material-symbols-outlined text-label-sm">logout</span>Log out</a></div></div></aside><div class="pl-72"><header class="fixed top-0 left-72 right-0 h-16 bg-sonic-surface/90 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)] z-40 flex items-center justify-between px-gutter-desktop"><div class="flex items-center gap-space-md flex-1 max-w-xl"><div class="relative w-full flex items-center"><span class="material-symbols-outlined absolute left-3 text-sonic-muted text-body-lg pointer-events-none">search</span><input class="w-full pl-10 pr-12 py-2 bg-sonic-bg rounded-xl font-body-sm text-body-sm text-on-surface placeholder:text-sonic-muted focus:outline-none focus:ring-2 focus:ring-primary-container" placeholder="Search order no., customer, or barangay..." type="text"/><span class="absolute right-3 px-1.5 py-0.5 rounded bg-surface-container text-on-surface-variant font-label-sm text-label-sm font-semibold">⌘K</span></div></div><div class="flex items-center gap-space-md shrink-0"><div class="hidden xl:flex items-center gap-space-xs font-body-sm text-body-sm text-sonic-muted"><span class="w-2 h-2 rounded-full bg-sonic-success animate-pulse"></span><span>Last refreshed 10:42 AM</span></div><div class="flex items-center gap-1.5 px-space-sm py-1 rounded-full bg-sonic-blue-light text-primary font-label-sm text-label-sm font-semibold"><span class="material-symbols-outlined text-label-md">hub</span><span>Sipocot Main Hub · Shift Morning</span></div><button aria-label="Notifications" class="relative w-9 h-9 rounded-full bg-sonic-bg hover:bg-surface-container flex items-center justify-center text-on-surface transition-colors" type="button"><span class="material-symbols-outlined text-headline-sm">notifications</span><span class="absolute top-1 right-1 w-4 h-4 rounded-full bg-sonic-danger text-on-primary font-label-sm text-[10px] flex items-center justify-center font-bold">3</span></button><button class="inline-flex items-center gap-space-xs px-space-md py-2 rounded-full bg-primary-container hover:bg-sonic-blue-dark text-on-primary font-label-md text-label-md shadow-sm transition-all" type="button"><span class="material-symbols-outlined text-label-md">add</span><span>New Manual Order</span></button><img alt="Profile" class="w-8 h-8 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida/ALJJyrC8lRXYdjybIE90MeONF2eH0KosGRJACkoy-lyzF-YOG4th5LTs_7Jhi6mtx3iDcwEOTXrNpX9Ra-N2vuj8M_5qI4lhK3Pbu8O2Nxa5QYOvR4R9--26DM48rQTpq20WdGYtm2_Cb0H6kwEaKRgzb0ESoksxV_CZU8LKOqPui2GGPVj45SFbthr2nqU0RhX9M0r78aMalNCPNMmYVdwVWXbrc9rJTHOJdp3fcfGr7t6I7eiQWVaN3c-xgqvP"/></div></header><main class="w-full pt-16 bg-sonic-bg min-h-screen"><div class="flex flex-col w-full">
+<!-- Interactive View State Bar (Demo Switcher) -->
+<div class="px-margin-desktop py-space-sm bg-surface-container flex items-center justify-between shadow-sm">
+<div class="flex items-center gap-space-sm">
+<span class="font-label-sm text-label-sm text-sonic-muted uppercase tracking-wider">Console Simulator:</span>
+<div class="inline-flex p-1 bg-sonic-surface rounded-full shadow-sm">
+<button class="px-space-md py-1 rounded-full font-label-sm text-label-sm bg-primary-container text-on-primary font-bold shadow-sm transition-all" id="btn-view-main" onclick="switchModal('none')">Order Overview</button>
+<button class="px-space-md py-1 rounded-full font-label-sm text-label-sm text-sonic-muted hover:text-on-surface transition-all flex items-center gap-1" id="btn-view-assign" onclick="switchModal('assign')">
+<span class="material-symbols-outlined text-[15px]">two_wheeler</span> Assign Rider Modal
+        </button>
+<button class="px-space-md py-1 rounded-full font-label-sm text-label-sm text-sonic-muted hover:text-sonic-danger transition-all flex items-center gap-1" id="btn-view-reject" onclick="switchModal('reject')">
+<span class="material-symbols-outlined text-[15px]">cancel</span> Reject Modal
+        </button>
+</div>
+</div>
+<div class="hidden md:flex items-center gap-space-md">
+<span class="flex items-center gap-1.5 font-label-sm text-label-sm text-sonic-muted">
+<span class="w-2 h-2 rounded-full bg-sonic-bolt animate-ping"></span> Live Webhook: Active (Syncing Sipocot Node)
+      </span>
+<button class="px-space-sm py-1 rounded-lg bg-sonic-blue-light text-primary font-label-sm text-label-sm font-semibold hover:bg-surface-variant transition-colors" onclick="togglePaymentPreview()">
+        Toggle COD / Paid Online Preview
+      </button>
+</div>
+</div>
+<div class="px-margin-desktop py-space-lg flex flex-col gap-space-lg">
+<!-- Breadcrumbs Navigation -->
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-xs font-label-md text-label-md">
+<a class="inline-flex items-center gap-1 text-primary hover:text-sonic-blue-dark transition-colors font-semibold" data-path="live-orders" href="#">
+<span class="material-symbols-outlined text-headline-sm">arrow_back</span>
+<span>Live Orders</span>
+</a>
+<span class="text-outline-variant font-normal">/</span>
+<span class="text-on-surface font-headline-sm text-headline-sm tracking-tight">Order #SSD-20261121-0044</span>
+<span class="ml-space-xs px-2 py-0.5 rounded-full bg-surface-container-high text-on-surface-variant font-label-sm text-label-sm">Multi-Store (2)</span>
+</div>
+<div class="flex items-center gap-space-xs">
+<button class="inline-flex items-center gap-1 px-space-md py-2 rounded-full bg-sonic-surface hover:bg-surface-container text-on-surface font-label-md text-label-md shadow-sm transition-all" onclick="copyOrderSummary()">
+<span class="material-symbols-outlined text-body-lg text-sonic-muted">content_copy</span>
+<span>Copy Summary</span>
+</button>
+<button class="inline-flex items-center gap-1 px-space-md py-2 rounded-full bg-sonic-surface hover:bg-surface-container text-on-surface font-label-md text-label-md shadow-sm transition-all" onclick="printTicket()">
+<span class="material-symbols-outlined text-body-lg text-sonic-muted">receipt_long</span>
+<span>Print POS Ticket</span>
+</button>
+</div>
+</div>
+<!-- Top Status & Fast Action Header Card -->
+<div class="bg-sonic-surface rounded-xl p-space-lg shadow-sm flex flex-col xl:flex-row xl:items-center justify-between gap-space-md">
+<div class="flex flex-wrap items-center gap-space-md">
+<div class="w-12 h-12 rounded-xl bg-sonic-blue-light flex items-center justify-center text-primary-container shrink-0">
+<span class="material-symbols-outlined text-[28px]">receipt</span>
+</div>
+<div class="flex flex-col">
+<div class="flex items-center gap-space-sm flex-wrap">
+<h1 class="font-headline-md text-headline-md text-on-surface leading-none">#SSD-20261121-0044</h1>
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-100 text-amber-900 font-label-sm text-label-sm font-bold">
+<span class="w-2 h-2 rounded-full bg-sonic-warning animate-ping"></span>
+              Pending Confirmation
+            </span>
+<span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-rose-100 text-sonic-danger font-label-sm text-label-sm font-semibold">
+<span class="material-symbols-outlined text-label-sm">alarm</span>
+              6 mins ago · Urgent
+            </span>
+</div>
+<p class="font-body-sm text-body-sm text-sonic-muted mt-1">Placed at 10:38 AM via Customer App (v2.4.1) · Delivery Target: San Jose, Sipocot</p>
+</div>
+</div>
+<!-- Action Button Group -->
+<div class="flex flex-wrap items-center gap-space-xs">
+<button class="inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-primary-container hover:bg-sonic-blue-dark text-on-primary font-label-md text-label-md shadow-md transition-all" id="btn-confirm-primary" onclick="confirmOrderAction()">
+<span class="material-symbols-outlined text-label-lg">check_circle</span>
+<span>Confirm Order</span>
+</button>
+<div class="relative group">
+<button class="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-full bg-surface-container hover:bg-surface-container-high text-on-surface font-label-md text-label-md transition-all">
+<span>Fast Progress</span>
+<span class="material-symbols-outlined text-body-md">expand_more</span>
+</button>
+<div class="absolute right-0 top-full mt-1 w-56 bg-sonic-surface rounded-xl shadow-lg p-1.5 hidden group-hover:flex flex-col z-30">
+<button class="w-full text-left px-3 py-2 rounded-lg text-on-surface font-body-sm text-body-sm hover:bg-surface-container flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-sonic-warning"></span> Mark Preparing
+            </button>
+<button class="w-full text-left px-3 py-2 rounded-lg text-on-surface font-body-sm text-body-sm hover:bg-surface-container flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-sonic-blue-dark"></span> Mark Ready for Pickup
+            </button>
+<button class="w-full text-left px-3 py-2 rounded-lg text-on-surface font-body-sm text-body-sm hover:bg-surface-container flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-secondary"></span> Mark On the Way
+            </button>
+</div>
+</div>
+<button class="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-full bg-error-container hover:bg-red-200 text-sonic-danger font-label-md text-label-md transition-all" onclick="switchModal('reject')">
+<span class="material-symbols-outlined text-label-md">close</span>
+<span>Reject Order</span>
+</button>
+</div>
+</div>
+<!-- MAIN TWO COLUMN GRID (7:5) -->
+<div class="grid grid-cols-1 xl:grid-cols-12 gap-space-lg items-start">
+<!-- LEFT COLUMN: Store Items, Financials, Timeline (7 Cols) -->
+<div class="xl:col-span-7 flex flex-col gap-space-lg">
+<!-- Store Group 1: Main Store -->
+<div class="bg-sonic-surface rounded-xl p-space-lg shadow-sm flex flex-col gap-space-md">
+<div class="flex items-center justify-between pb-space-xs">
+<div class="flex items-center gap-space-sm">
+<div class="w-10 h-10 rounded-xl bg-surface-container flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">restaurant</span>
+</div>
+<div class="flex flex-col">
+<div class="flex items-center gap-2">
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Kusina ni Aling Rosa</h3>
+<span class="px-2.5 py-0.5 rounded-full bg-sonic-blue-light text-primary font-label-sm text-label-sm font-bold">Main Store</span>
+</div>
+<span class="font-body-sm text-body-sm text-sonic-muted">Poblacion Centro, Sipocot · 0.6 km from Hub</span>
+</div>
+</div>
+<div class="flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-50 text-sonic-success font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[15px]">send</span>
+<span>Kitchen Notified (Auto-sent)</span>
+</div>
+</div>
+<!-- Items Table -->
+<div class="flex flex-col gap-space-sm">
+<!-- Row 1 -->
+<div class="p-space-sm rounded-xl bg-surface-container-low flex items-center justify-between gap-space-md">
+<div class="flex items-center gap-space-md min-w-0">
+<div class="w-12 h-12 rounded-lg bg-surface-container shrink-0 overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Close up photograph of Filipino beef tapsilog with garlic fried rice, sunny-side up egg and sliced fresh tomatoes in warm appetizing lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDbiWpXuKcBfdA81azIersL-bdRmqX45n2AWJFCC6iM-czOAvAjimDs-1AUMs3wvh5U2bsds9p1IWVweMXo9JUdB1cqsShzIAFcaIS5nY80WsxLQARSdlK9KNG4g9r1N_98vGvN9G1EAkGbuXFhIoe_ea6TcBMF6Mt5nqzo8ecdPP4YqYDtCjDFM6KVH7X9arIU6CvAjahItUOPgiGdC9kXL71XvmppDe5gOuwXEIMR"/>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-label-md text-label-md text-on-surface font-bold truncate">2× Beef Tapsilog Special</span>
+<span class="font-body-sm text-body-sm text-sonic-muted truncate">Includes garlic sinangag, over-easy egg, atchara side</span>
+<span class="font-label-sm text-label-sm text-primary font-semibold mt-0.5">₱140.00 each</span>
+</div>
+</div>
+<div class="text-right shrink-0">
+<span class="font-price-display text-price-display text-on-surface font-bold">₱280.00</span>
+</div>
+</div>
+<!-- Row 2 -->
+<div class="p-space-sm rounded-xl bg-surface-container-low flex items-center justify-between gap-space-md">
+<div class="flex items-center gap-space-md min-w-0">
+<div class="w-12 h-12 rounded-lg bg-surface-container shrink-0 overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Chilled house blend iced tea in clear cup with ice cubes, fresh calamansi slice, and sealed film lid on wooden table" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCrwODRlJKKkkQmiua8uIi_HW_lYB0mw9Pq3UgkNEg1vMK4hFPYW8sNSJUjQeu6T1nUfO9JBcq0w3RohVBp4shfVXIZa3tKPVT9Y-uB2lXp9aH0XvICMfh5zMlmu1CxXpweYEkLdXARaeTetcteIOx3QlHz10u9thW71H52JqS5bj03CF42NEJ5JLbTzMbzUQW-qp8WcI7JZMa3Hlkk7MipT5ITeV93enZaqZ7kq99a"/>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-label-md text-label-md text-on-surface font-bold truncate">1× House Blend Iced Tea</span>
+<span class="font-body-sm text-body-sm text-sonic-muted truncate">16oz Sealed cup, normal sweetness</span>
+<span class="font-label-sm text-label-sm text-primary font-semibold mt-0.5">₱30.00 each</span>
+</div>
+</div>
+<div class="text-right shrink-0">
+<span class="font-price-display text-price-display text-on-surface font-bold">₱30.00</span>
+</div>
+</div>
+</div>
+<div class="flex items-center justify-between pt-space-xs text-sonic-muted font-body-sm text-body-sm">
+<span>Store Contact: +63 920 441 9012 (Mama Rosa)</span>
+<div class="flex items-center gap-1 font-label-md text-label-md text-on-surface">
+<span>Subtotal:</span>
+<span class="font-bold text-primary">₱310.00</span>
+</div>
+</div>
+</div>
+<!-- Store Group 2: Secondary Multi-Store -->
+<div class="bg-sonic-surface rounded-xl p-space-lg shadow-sm flex flex-col gap-space-md">
+<div class="flex items-center justify-between pb-space-xs">
+<div class="flex items-center gap-space-sm">
+<div class="w-10 h-10 rounded-xl bg-surface-variant/40 flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined">local_cafe</span>
+</div>
+<div class="flex flex-col">
+<div class="flex items-center gap-2">
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Tea Haus Sipocot</h3>
+<span class="px-2.5 py-0.5 rounded-full bg-secondary-fixed text-on-secondary-fixed-variant font-label-sm text-label-sm font-bold">Extra Store +₱10.00</span>
+</div>
+<span class="font-body-sm text-body-sm text-sonic-muted">Burgos St., Sipocot · 0.9 km from Hub</span>
+</div>
+</div>
+<div class="flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-50 text-sonic-success font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[15px]">send</span>
+<span>Kitchen Notified</span>
+</div>
+</div>
+<!-- Items Table -->
+<div class="flex flex-col gap-space-sm">
+<div class="p-space-sm rounded-xl bg-surface-container-low flex items-center justify-between gap-space-md">
+<div class="flex items-center gap-space-md min-w-0">
+<div class="w-12 h-12 rounded-lg bg-surface-container shrink-0 overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Large wintermelon boba milk tea with chewy black tapioca pearls in clear transparent plastic takeaway cup" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD9BMT7jsKVIv92-L00xzOFY9uYQXDiIt43PMYxhRE94AhlDeaY50YW9lsBk_-N54gmZ-S4yGIdO3J6tJdlrkRNC8AH7PkuMfQVTJmmqjeWwv8G62vIrO9Uj6eYCQtgKyKmCVCHmc7UCqZTJVo0Oz0mPd-6DDaJ-qQMBGZbfzjc5bVjhUgAtKxE3yZrPR3OEf18Pfdipvx2L2aBrEJxqLUdusljKsgbtxli0hZCwl0V"/>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-label-md text-label-md text-on-surface font-bold truncate">1× Wintermelon Milk Tea</span>
+<span class="font-body-sm text-body-sm text-sonic-muted truncate">Size: Large (700ml) · Sugar: 50% · Add-on: Brown Sugar Pearls</span>
+<span class="font-label-sm text-label-sm text-primary font-semibold mt-0.5">₱110.00 each</span>
+</div>
+</div>
+<div class="text-right shrink-0">
+<span class="font-price-display text-price-display text-on-surface font-bold">₱110.00</span>
+</div>
+</div>
+</div>
+<div class="flex items-center justify-between pt-space-xs text-sonic-muted font-body-sm text-body-sm">
+<span>Store Contact: +63 948 219 8831 (Counter)</span>
+<div class="flex items-center gap-1 font-label-md text-label-md text-on-surface">
+<span>Subtotal:</span>
+<span class="font-bold text-primary">₱110.00</span>
+</div>
+</div>
+</div>
+<!-- Financial Totals & Billing Breakdown -->
+<div class="bg-sonic-surface rounded-xl p-space-lg shadow-sm flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-primary text-headline-sm">payments</span>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Financial Summary &amp; Breakdown</h3>
+</div>
+<span class="font-label-sm text-label-sm text-sonic-muted">All rates inclusive of local hub surcharge</span>
+</div>
+<div class="flex flex-col gap-space-xs bg-surface-container-low p-space-md rounded-xl">
+<div class="flex justify-between items-center text-sonic-muted font-body-sm text-body-sm">
+<span>Food &amp; Beverage Items Subtotal (3 items)</span>
+<span class="text-on-surface font-medium">₱420.00</span>
+</div>
+<div class="flex justify-between items-center text-sonic-muted font-body-sm text-body-sm">
+<div class="flex items-center gap-1">
+<span>Standard Delivery Fee (San Jose Zone)</span>
+<span class="material-symbols-outlined text-[14px] text-sonic-muted" title="Zone 2 flat rate 2.4km">help</span>
+</div>
+<span class="text-on-surface font-medium">₱40.00</span>
+</div>
+<div class="flex justify-between items-center text-sonic-muted font-body-sm text-body-sm">
+<div class="flex items-center gap-1">
+<span>Multi-Store Consolidation Surcharge</span>
+<span class="px-1.5 py-0.2 rounded bg-secondary-fixed text-[10px] text-on-secondary-fixed-variant font-bold">+1 Stop</span>
+</div>
+<span class="text-on-surface font-medium">₱10.00</span>
+</div>
+<div class="flex justify-between items-center text-sonic-muted font-body-sm text-body-sm">
+<span>Platform Service Commission (Vendor deducted)</span>
+<span class="text-sonic-success font-medium">₱0.00 (Customer Net)</span>
+</div>
+<div class="my-space-xs h-[1px] bg-sonic-border"></div>
+<div class="flex justify-between items-center pt-space-xs">
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface uppercase tracking-wide">Total Amount Payable</span>
+<span class="font-body-sm text-body-sm text-sonic-muted">Collected by rider upon turnover</span>
+</div>
+<div class="text-right">
+<span class="font-headline-lg text-headline-lg text-primary-container font-extrabold tracking-tight">₱470.00</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Status History & Audit Trail -->
+<div class="bg-sonic-surface rounded-xl p-space-lg shadow-sm flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-primary text-headline-sm">history</span>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Order Audit &amp; Lifecycle Trail</h3>
+</div>
+<span class="px-2 py-0.5 rounded-full bg-surface-container font-label-sm text-label-sm text-sonic-muted">Real-time sync</span>
+</div>
+<div class="relative pl-6 flex flex-col gap-space-lg before:absolute before:left-2.5 before:top-2 before:bottom-2 before:w-0.5 before:bg-surface-variant">
+<!-- Event 1 (Current Active) -->
+<div class="relative flex flex-col gap-0.5">
+<div class="absolute -left-6 top-1 w-3.5 h-3.5 rounded-full bg-sonic-warning ring-4 ring-amber-100"></div>
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md text-on-surface font-bold">Awaiting Operator Confirmation (Pending)</span>
+<span class="font-label-sm text-label-sm text-sonic-warning font-semibold">10:44 AM (Now)</span>
+</div>
+<p class="font-body-sm text-body-sm text-sonic-muted">System assigned priority alert. Both store kitchens pinged with initial pre-order payload.</p>
+<span class="font-label-sm text-label-sm text-primary font-medium">Actor: Dispatch Automated Scheduler</span>
+</div>
+<!-- Event 2 -->
+<div class="relative flex flex-col gap-0.5">
+<div class="absolute -left-6 top-1 w-3.5 h-3.5 rounded-full bg-primary ring-4 ring-sonic-blue-light"></div>
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md text-on-surface font-semibold">Customer Order Successfully Placed</span>
+<span class="font-label-sm text-label-sm text-sonic-muted">10:38 AM</span>
+</div>
+<p class="font-body-sm text-body-sm text-sonic-muted">Customer checkout via Android App · Auto-routed to Sipocot Central Dispatch Hub</p>
+<span class="font-label-sm text-label-sm text-on-surface font-medium">Actor: Maria Santos (Customer)</span>
+</div>
+<!-- Upcoming Milestones Placeholder -->
+<div class="relative flex flex-col gap-0.5 opacity-60">
+<div class="absolute -left-6 top-1 w-3.5 h-3.5 rounded-full bg-sonic-border"></div>
+<span class="font-label-md text-label-md text-sonic-muted">Future Milestones</span>
+<p class="font-body-sm text-body-sm text-sonic-muted">Operator Elena M. confirms ➔ Rider Assigned ➔ Picked Up Store 1 &amp; 2 ➔ In Transit to San Jose ➔ Delivered</p>
+</div>
+</div>
+</div>
+</div>
+<!-- RIGHT COLUMN: Customer, Payment, Rider Assignment (5 Cols) -->
+<div class="xl:col-span-5 flex flex-col gap-space-lg">
+<!-- Customer Card -->
+<div class="bg-sonic-surface rounded-xl p-space-lg shadow-sm flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-sonic-muted uppercase tracking-wider">Customer Profile</span>
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-emerald-50 text-sonic-success font-label-sm text-label-sm font-semibold">
+<span class="material-symbols-outlined text-[13px]">verified</span> Verified · ⭐ 5.0 (18 orders)
+            </span>
+</div>
+<div class="flex items-center gap-space-md">
+<img class="w-14 h-14 rounded-full object-cover shadow-sm" data-alt="Portrait photo of a young smiling Filipina woman customer with subtle natural daytime lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAqDchJtmm7vN2fdbBu51Ta606aNwSuOEo8LxjTkhIDj6GqbGBWfXK4ZqdSJp5e1yI5tOoncTxLeNCKwh3G_2gLP7VJcMdxN6tthzyf_DzUttkNkn_3zMQOOXUdjd2HdRKR8yGDlT02kFZNzEhLTXVnDNiveY2OmXuAMLoCrxIrNLAr23_jp6VER7Dm18etsDBU1dBq6V_keLLRuLTIJv3kwb-Vfd_gChFdcWpbcHjj"/>
+<div class="flex flex-col min-w-0">
+<h3 class="font-headline-sm text-headline-sm text-on-surface truncate">Maria Santos</h3>
+<span class="font-label-sm text-label-sm text-sonic-muted">ID: #CUST-9821 · Sipocot Resident</span>
+<span class="font-body-sm text-body-sm text-primary font-semibold mt-0.5">+63 917 555 1201</span>
+</div>
+</div>
+<!-- Contact CTAs -->
+<div class="grid grid-cols-2 gap-space-xs">
+<a class="inline-flex items-center justify-center gap-1.5 py-2 rounded-full bg-surface-container hover:bg-surface-container-high text-on-surface font-label-sm text-label-sm font-semibold transition-colors" href="tel:+639175551201">
+<span class="material-symbols-outlined text-label-md text-primary">call</span>
+<span>Call Maria</span>
+</a>
+<a class="inline-flex items-center justify-center gap-1.5 py-2 rounded-full bg-surface-container hover:bg-surface-container-high text-on-surface font-label-sm text-label-sm font-semibold transition-colors" href="sms:+639175551201">
+<span class="material-symbols-outlined text-label-md text-secondary">sms</span>
+<span>Send SMS</span>
+</a>
+</div>
+<!-- Delivery Address Snapshot -->
+<div class="p-space-md rounded-xl bg-surface-container-low flex flex-col gap-1.5">
+<div class="flex items-start gap-2">
+<span class="material-symbols-outlined text-primary text-body-lg shrink-0 mt-0.5">location_on</span>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface">Purok 3, Rizal St., San Jose, Sipocot</span>
+<span class="font-body-sm text-body-sm text-sonic-muted">Camarines Sur, 4408 (Zone 2)</span>
+</div>
+</div>
+<div class="flex items-center gap-1.5 text-sonic-muted font-body-sm text-body-sm pl-6">
+<span class="material-symbols-outlined text-[16px] text-sonic-warning">flag</span>
+<span>Landmark: Beside blue sari-sari store &amp; mango tree</span>
+</div>
+</div>
+<!-- Customer Instructions Callout -->
+<div class="p-space-md rounded-xl bg-yellow-50 border-l-4 border-sonic-bolt flex flex-col gap-1">
+<div class="flex items-center gap-1 text-on-background font-label-sm text-label-sm font-bold">
+<span class="material-symbols-outlined text-label-md text-amber-600">speaker_notes</span>
+<span>Rider Note from Maria:</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-background italic">
+              "Please ring doorbell twice. Change for ₱1,000 bill if possible, or wait at iron gate. Salamat po!"
+            </p>
+</div>
+</div>
+<!-- Payment Card -->
+<div class="bg-sonic-surface rounded-xl p-space-lg shadow-sm flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-sonic-muted uppercase tracking-wider">Payment Verification</span>
+<span class="px-2.5 py-0.5 rounded-full bg-amber-100 text-amber-900 font-label-sm text-label-sm font-bold" id="payment-badge">
+              Pending Collection
+            </span>
+</div>
+<div class="p-space-md rounded-xl bg-surface-container-low flex flex-col gap-space-sm">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 rounded-lg bg-surface-container flex items-center justify-center text-primary">
+<span class="material-symbols-outlined" id="payment-icon">local_atm</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface" id="payment-method-title">Cash on Delivery (COD)</span>
+<span class="font-body-sm text-body-sm text-sonic-muted" id="payment-method-sub">Rider to receive full cash amount</span>
+</div>
+</div>
+<span class="font-price-display text-price-display text-primary-container font-extrabold">₱470.00</span>
+</div>
+<div class="h-[1px] bg-sonic-border"></div>
+<div class="flex justify-between items-center text-sonic-muted font-body-sm text-body-sm">
+<span>PayMongo / Gateway Ref:</span>
+<span class="font-mono text-on-surface font-semibold" id="payment-ref">N/A (Cash Transaction)</span>
+</div>
+</div>
+<div class="flex items-center justify-between pt-space-xs">
+<button class="text-primary hover:text-sonic-blue-dark font-label-sm text-label-sm font-semibold transition-colors flex items-center gap-1" onclick="recordRefundNotice()">
+<span class="material-symbols-outlined text-[15px]">edit_note</span> Record adjustment / partial payment
+            </button>
+<span class="text-sonic-muted font-body-sm text-body-sm">Receipt #REC-0044</span>
+</div>
+</div>
+<!-- Rider Assignment Card -->
+<div class="bg-sonic-surface rounded-xl p-space-lg shadow-sm flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-sonic-muted uppercase tracking-wider">Fleet &amp; Dispatch Status</span>
+<span class="px-2 py-0.5 rounded-full bg-rose-100 text-sonic-danger font-label-sm text-label-sm font-bold flex items-center gap-1">
+<span class="material-symbols-outlined text-[13px]">warning</span> Unassigned
+            </span>
+</div>
+<div class="flex items-center justify-between p-space-md rounded-xl bg-surface-container-low">
+<div class="flex items-center gap-space-sm">
+<div class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center text-sonic-muted">
+<span class="material-symbols-outlined text-headline-sm">two_wheeler</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface">No Driver Assigned</span>
+<span class="font-body-sm text-body-sm text-sonic-muted">3 available nearby in Centro</span>
+</div>
+</div>
+<button class="inline-flex items-center gap-1 px-4 py-2 rounded-full bg-primary-container hover:bg-sonic-blue-dark text-on-primary font-label-md text-label-md shadow-sm transition-all" onclick="switchModal('assign')">
+<span class="material-symbols-outlined text-label-md">bolt</span>
+<span>Assign Rider</span>
+</button>
+</div>
+<!-- Dispatch Ping Logs -->
+<div class="flex flex-col gap-2">
+<span class="font-label-sm text-label-sm text-sonic-muted font-semibold">Auto-Dispatch Pings:</span>
+<div class="flex items-center justify-between text-body-sm text-body-sm py-1.5 px-space-sm rounded-lg bg-surface-container-lowest">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-sonic-warning"></span>
+<span class="font-medium text-on-surface">Mark Ramos</span>
+<span class="text-sonic-muted text-label-sm">(0.8km away)</span>
+</div>
+<span class="text-sonic-warning font-label-sm text-label-sm font-semibold">Pending response (45s left)</span>
+</div>
+<div class="flex items-center justify-between text-body-sm text-body-sm py-1.5 px-space-sm rounded-lg bg-surface-container-lowest opacity-75">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-sonic-muted"></span>
+<span class="font-medium text-on-surface">Jayson Cruz</span>
+<span class="text-sonic-muted text-label-sm">(1.5km away)</span>
+</div>
+<span class="text-sonic-danger font-label-sm text-label-sm">Timed out (10:40 AM)</span>
+</div>
+</div>
+<!-- Quick Action Auto Dispatch -->
+<button class="w-full py-2.5 rounded-full bg-surface-container hover:bg-surface-container-high text-primary font-label-md text-label-md font-bold transition-colors flex items-center justify-center gap-2" onclick="autoDispatchNearest()">
+<span class="material-symbols-outlined text-label-lg">near_me</span>
+<span>Force Re-Dispatch Nearest Available Rider</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- MODAL 1: ASSIGN RIDER (Slide-over / Centered overlay) -->
+<div class="fixed inset-0 bg-on-background/60 backdrop-blur-sm z-50 hidden items-center justify-center p-space-md" id="modal-assign">
+<div class="bg-sonic-surface rounded-xl shadow-xl w-full max-w-xl max-h-[90vh] flex flex-col overflow-hidden animate-fadeIn">
+<!-- Modal Header -->
+<div class="p-space-lg bg-surface-container flex items-center justify-between shrink-0">
+<div class="flex items-center gap-space-sm">
+<div class="w-10 h-10 rounded-xl bg-primary-container text-on-primary flex items-center justify-center">
+<span class="material-symbols-outlined">two_wheeler</span>
+</div>
+<div class="flex flex-col">
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Assign Rider to #SSD-20261121-0044</h3>
+<span class="font-body-sm text-body-sm text-sonic-muted">Target: San Jose · Multi-pickup (2 stores)</span>
+</div>
+</div>
+<button class="w-8 h-8 rounded-full bg-sonic-surface hover:bg-surface-container-high flex items-center justify-center text-sonic-muted hover:text-on-surface" onclick="switchModal('none')">
+<span class="material-symbols-outlined text-headline-sm">close</span>
+</button>
+</div>
+<!-- Search & Filters -->
+<div class="p-space-md bg-sonic-surface flex items-center gap-space-sm">
+<div class="relative w-full">
+<span class="material-symbols-outlined absolute left-3 top-2.5 text-sonic-muted text-body-lg pointer-events-none">search</span>
+<input class="w-full pl-10 pr-4 py-2 bg-surface-container-low rounded-xl font-body-sm text-body-sm text-on-surface focus:outline-none focus:ring-2 focus:ring-primary-container" placeholder="Search rider by name, phone or vehicle plate..." type="text"/>
+</div>
+<button class="px-3 py-2 rounded-xl bg-surface-container text-on-surface font-label-sm text-label-sm font-semibold shrink-0">
+          Filter: Nearby
+        </button>
+</div>
+<!-- Rider List -->
+<div class="overflow-y-auto p-space-md flex flex-col gap-space-sm divide-y divide-surface-container-low">
+<!-- Rider 1 -->
+<div class="pt-space-xs flex items-center justify-between gap-space-md p-space-sm rounded-xl hover:bg-surface-container-low transition-colors">
+<div class="flex items-center gap-space-sm min-w-0">
+<img class="w-11 h-11 rounded-full object-cover shrink-0" data-alt="Portrait photo of a young Filipino motorcycle delivery rider wearing helmet in blue delivery vest" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDSKgOMKCoiKLawH67sm1fp52J_RzNyeVniGuWWJeUAYgRD0RXZNP_rkmax41xDC6UnFrmQ2X9UU3-rgNzRO4IVEDHomIo41St0bcer4sl-QdoTDqyLI_831O7UrnAqoHmYVwNC-MxSLaHn4-Mz6xckTQJaNCdxu3a9ALfFbH8gDGmInvwvARYdje9DnDXibkCQ59Io_CiDJ7sUHQcNd1loXmod5u4jCSwwkX1y4PO4"/>
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-2">
+<span class="font-label-md text-label-md text-on-surface font-bold truncate">Mark Ramos</span>
+<span class="px-2 py-0.2 rounded-full bg-emerald-100 text-sonic-success font-label-sm text-[11px] font-bold">Available</span>
+</div>
+<span class="font-body-sm text-body-sm text-sonic-muted truncate">0 active orders · ₱500 Cash Float · Yamaha Mio (9918-EB)</span>
+<span class="font-label-sm text-label-sm text-primary font-medium mt-0.5">0.8 km away from Kusina ni Aling Rosa (3 mins)</span>
+</div>
+</div>
+<button class="px-4 py-2 rounded-full bg-primary-container hover:bg-sonic-blue-dark text-on-primary font-label-sm text-label-sm font-semibold shrink-0 shadow-sm transition-all" onclick="confirmAssignment('Mark Ramos')">
+            Assign
+          </button>
+</div>
+<!-- Rider 2 -->
+<div class="pt-space-xs flex items-center justify-between gap-space-md p-space-sm rounded-xl hover:bg-surface-container-low transition-colors">
+<div class="flex items-center gap-space-sm min-w-0">
+<img class="w-11 h-11 rounded-full object-cover shrink-0" data-alt="Portrait headshot of an energetic Filipino motorcycle courier smiling outdoors with motorcycle handlebars visible" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCsQzKy9L0MEG413bNbOIxLU6nqQo4N-RijzyFHOy4NuDqJbEQ17ivLgXtk8PXTpgvbaLxslvHBG309Zxcife2btzBCrfERO0VBs3IUCV5dRcMkhIfP3Ay_YiPtA265XBQLEdDfkhBQLSjqvk93dv05Ydy-rDJeq_f8kOeMR05yNeqasvaeCZ4yvzH8jMg18wge5D571qNaE7tC55gJEc3tW3WlPVMk8yx5R-6KTJua"/>
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-2">
+<span class="font-label-md text-label-md text-on-surface font-bold truncate">Carlo Santos</span>
+<span class="px-2 py-0.2 rounded-full bg-emerald-100 text-sonic-success font-label-sm text-[11px] font-bold">Available</span>
+</div>
+<span class="font-body-sm text-body-sm text-sonic-muted truncate">0 active orders · ₱750 Cash Float · Honda Beat (4102-ED)</span>
+<span class="font-label-sm text-label-sm text-primary font-medium mt-0.5">1.2 km away from Hub (5 mins)</span>
+</div>
+</div>
+<button class="px-4 py-2 rounded-full bg-primary-container hover:bg-sonic-blue-dark text-on-primary font-label-sm text-label-sm font-semibold shrink-0 shadow-sm transition-all" onclick="confirmAssignment('Carlo Santos')">
+            Assign
+          </button>
+</div>
+<!-- Rider 3 -->
+<div class="pt-space-xs flex items-center justify-between gap-space-md p-space-sm rounded-xl hover:bg-surface-container-low transition-colors">
+<div class="flex items-center gap-space-sm min-w-0">
+<img class="w-11 h-11 rounded-full object-cover shrink-0" data-alt="Portrait photo of an experienced male courier with lanyard smiling in casual polo shirt" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC3_8JdBKR4Ost-9orYK9yFFyUTJrL-wXRqxQjTlSzJV2q3U1xx1EaT8GGps4jWo0kLZJS85e8NELsLimQEsfdj-yB2CvCfFB-uyj0_qyQCOM3lRTHJ-LOrGLzTEYiDP34rbhYLKyj0AdcLX7OZyZG9_SzuvEfUN9ewaGijbspNNANeP0EFWYFNLVxyo-CbHEYHgezdnDJh7bXywd7OHMn8Vel0xWW8SW3fH7Qwrwpp"/>
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-2">
+<span class="font-label-md text-label-md text-on-surface font-bold truncate">Jayson Cruz</span>
+<span class="px-2 py-0.2 rounded-full bg-emerald-100 text-sonic-success font-label-sm text-[11px] font-bold">Available</span>
+</div>
+<span class="font-body-sm text-body-sm text-sonic-muted truncate">0 active orders · ₱400 Cash Float · Suzuki Raider</span>
+<span class="font-label-sm text-label-sm text-sonic-muted mt-0.5">1.5 km away (Timed out earlier)</span>
+</div>
+</div>
+<button class="px-4 py-2 rounded-full bg-surface-container hover:bg-surface-container-high text-on-surface font-label-sm text-label-sm font-semibold shrink-0 transition-all" onclick="confirmAssignment('Jayson Cruz')">
+            Re-ping
+          </button>
+</div>
+<!-- Rider 4 (Busy) -->
+<div class="pt-space-xs flex items-center justify-between gap-space-md p-space-sm rounded-xl bg-surface-container-low/50 opacity-60">
+<div class="flex items-center gap-space-sm min-w-0">
+<div class="w-11 h-11 rounded-full bg-surface-container flex items-center justify-center text-sonic-muted shrink-0 font-bold">
+              ED
+            </div>
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-2">
+<span class="font-label-md text-label-md text-on-surface font-bold truncate">Eric Dimaculangan</span>
+<span class="px-2 py-0.2 rounded-full bg-amber-100 text-amber-900 font-label-sm text-[11px] font-bold">Busy</span>
+</div>
+<span class="font-body-sm text-body-sm text-sonic-muted truncate">1 active drop · Finishing San Jose in 4 mins</span>
+</div>
+</div>
+<button class="px-4 py-2 rounded-full bg-surface-container text-sonic-muted font-label-sm text-label-sm font-semibold shrink-0 cursor-not-allowed" disabled="">
+            Finishing
+          </button>
+</div>
+</div>
+<!-- Modal Footer -->
+<div class="p-space-md bg-surface-container-low flex items-center justify-between shrink-0">
+<span class="font-body-sm text-body-sm text-sonic-muted">Need manual dispatch override? Contact Dispatch Desk ext. 104</span>
+<button class="px-5 py-2 rounded-full bg-sonic-surface hover:bg-surface-container text-on-surface font-label-md text-label-md transition-all" onclick="switchModal('none')">
+          Close
+        </button>
+</div>
+</div>
+</div>
+<!-- MODAL 2: REJECT ORDER -->
+<div class="fixed inset-0 bg-on-background/60 backdrop-blur-sm z-50 hidden items-center justify-center p-space-md" id="modal-reject">
+<div class="bg-sonic-surface rounded-xl shadow-xl w-full max-w-lg max-h-[90vh] flex flex-col overflow-hidden animate-fadeIn">
+<!-- Modal Header -->
+<div class="p-space-lg bg-rose-50 flex items-center justify-between shrink-0">
+<div class="flex items-center gap-space-sm">
+<div class="w-10 h-10 rounded-xl bg-sonic-danger text-on-primary flex items-center justify-center">
+<span class="material-symbols-outlined">cancel</span>
+</div>
+<div class="flex flex-col">
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Reject Order #SSD-20261121-0044</h3>
+<span class="font-body-sm text-body-sm text-sonic-danger font-medium">This action will cancel active kitchen notifications</span>
+</div>
+</div>
+<button class="w-8 h-8 rounded-full bg-sonic-surface hover:bg-rose-100 flex items-center justify-center text-sonic-muted hover:text-on-surface" onclick="switchModal('none')">
+<span class="material-symbols-outlined text-headline-sm">close</span>
+</button>
+</div>
+<!-- Form Body -->
+<div class="p-space-lg flex flex-col gap-space-md overflow-y-auto">
+<div class="flex flex-col gap-1">
+<label class="font-label-md text-label-md text-on-surface font-bold">Select Mandatory Rejection Reason *</label>
+<span class="font-body-sm text-body-sm text-sonic-muted">This explanation is sent directly to Maria Santos via SMS and push notification.</span>
+</div>
+<div class="flex flex-col gap-2">
+<label class="p-space-sm rounded-xl bg-surface-container-low hover:bg-surface-container flex items-center gap-3 cursor-pointer">
+<input checked="" class="w-4 h-4 text-primary accent-primary" name="reject-reason" type="radio"/>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface">Out of delivery coverage / Barangay inaccessible</span>
+<span class="font-body-sm text-body-sm text-sonic-muted">Road works, flash flooding, or zone unavailable</span>
+</div>
+</label>
+<label class="p-space-sm rounded-xl bg-surface-container-low hover:bg-surface-container flex items-center gap-3 cursor-pointer">
+<input class="w-4 h-4 text-primary accent-primary" name="reject-reason" type="radio"/>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface">Store(s) closed or items unavailable</span>
+<span class="font-body-sm text-body-sm text-sonic-muted">Kusina ni Aling Rosa or Tea Haus unable to fulfill items</span>
+</div>
+</label>
+<label class="p-space-sm rounded-xl bg-surface-container-low hover:bg-surface-container flex items-center gap-3 cursor-pointer">
+<input class="w-4 h-4 text-primary accent-primary" name="reject-reason" type="radio"/>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface">Customer uncontactable / Fake order suspicion</span>
+<span class="font-body-sm text-body-sm text-sonic-muted">No response after 3 phone call attempts</span>
+</div>
+</label>
+<label class="p-space-sm rounded-xl bg-surface-container-low hover:bg-surface-container flex items-center gap-3 cursor-pointer">
+<input class="w-4 h-4 text-primary accent-primary" name="reject-reason" type="radio"/>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface">Severe weather / Hub dispatch suspended</span>
+<span class="font-body-sm text-body-sm text-sonic-muted">Heavy rain advisory across Sipocot Centro</span>
+</div>
+</label>
+</div>
+<div class="flex flex-col gap-1.5">
+<label class="font-label-md text-label-md text-on-surface font-semibold">Operator Internal Log &amp; Customer Note</label>
+<textarea class="w-full p-space-sm bg-surface-container-low rounded-xl font-body-sm text-body-sm text-on-surface focus:outline-none focus:ring-2 focus:ring-sonic-danger resize-none" placeholder="Enter additional details for log and customer notification..." rows="3">Bridge repair on approach to Purok 3; motorcycle passage restricted until 2:00 PM.</textarea>
+</div>
+</div>
+<!-- Modal Footer -->
+<div class="p-space-md bg-surface-container-low flex items-center justify-between shrink-0">
+<button class="px-5 py-2.5 rounded-full bg-sonic-surface hover:bg-surface-container text-on-surface font-label-md text-label-md transition-all" onclick="switchModal('none')">
+          Keep Order Active
+        </button>
+<button class="inline-flex items-center gap-1.5 px-6 py-2.5 rounded-full bg-sonic-danger hover:bg-red-700 text-on-primary font-label-md text-label-md shadow-md transition-all" onclick="executeRejectOrder()">
+<span class="material-symbols-outlined text-label-md">delete_forever</span>
+<span>Confirm Rejection</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Notification Toast Simulation -->
+<div class="fixed bottom-6 right-6 bg-on-background text-on-primary px-space-md py-3 rounded-xl shadow-xl flex items-center gap-space-sm transition-all transform translate-y-24 opacity-0 z-50 pointer-events-none" id="toast">
+<span class="material-symbols-outlined text-sonic-bolt" id="toast-icon">check_circle</span>
+<span class="font-body-sm text-body-sm font-medium" id="toast-message">Action successful</span>
+</div>
+</div>
+<script>
+  let isOnlinePaid = false;
+
+  function switchModal(modalType) {
+    const modalAssign = document.getElementById('modal-assign');
+    const modalReject = document.getElementById('modal-reject');
+    const btnMain = document.getElementById('btn-view-main');
+    const btnAssign = document.getElementById('btn-view-assign');
+    const btnReject = document.getElementById('btn-view-reject');
+
+    // Reset modals
+    modalAssign.classList.add('hidden');
+    modalAssign.classList.remove('flex');
+    modalReject.classList.add('hidden');
+    modalReject.classList.remove('flex');
+
+    // Reset button states
+    btnMain.className = "px-space-md py-1 rounded-full font-label-sm text-label-sm text-sonic-muted hover:text-on-surface transition-all";
+    btnAssign.className = "px-space-md py-1 rounded-full font-label-sm text-label-sm text-sonic-muted hover:text-on-surface transition-all flex items-center gap-1";
+    btnReject.className = "px-space-md py-1 rounded-full font-label-sm text-label-sm text-sonic-muted hover:text-sonic-danger transition-all flex items-center gap-1";
+
+    if (modalType === 'assign') {
+      modalAssign.classList.remove('hidden');
+      modalAssign.classList.add('flex');
+      btnAssign.className = "px-space-md py-1 rounded-full font-label-sm text-label-sm bg-primary-container text-on-primary font-bold shadow-sm transition-all flex items-center gap-1";
+    } else if (modalType === 'reject') {
+      modalReject.classList.remove('hidden');
+      modalReject.classList.add('flex');
+      btnReject.className = "px-space-md py-1 rounded-full font-label-sm text-label-sm bg-sonic-danger text-on-primary font-bold shadow-sm transition-all flex items-center gap-1";
+    } else {
+      btnMain.className = "px-space-md py-1 rounded-full font-label-sm text-label-sm bg-primary-container text-on-primary font-bold shadow-sm transition-all";
+    }
+  }
+
+  function togglePaymentPreview() {
+    isOnlinePaid = !isOnlinePaid;
+    const badge = document.getElementById('payment-badge');
+    const title = document.getElementById('payment-method-title');
+    const sub = document.getElementById('payment-method-sub');
+    const ref = document.getElementById('payment-ref');
+    const icon = document.getElementById('payment-icon');
+
+    if (isOnlinePaid) {
+      badge.textContent = "Paid Online (GCash)";
+      badge.className = "px-2.5 py-0.5 rounded-full bg-emerald-100 text-sonic-success font-label-sm text-label-sm font-bold";
+      title.textContent = "GCash (via PayMongo)";
+      sub.textContent = "Fully paid & verified by gateway";
+      ref.textContent = "pay_live_9942a18b";
+      icon.textContent = "account_balance_wallet";
+      showToast("Toggled to Online Payment: Paid via GCash (₱470.00)");
+    } else {
+      badge.textContent = "Pending Collection";
+      badge.className = "px-2.5 py-0.5 rounded-full bg-amber-100 text-amber-900 font-label-sm text-label-sm font-bold";
+      title.textContent = "Cash on Delivery (COD)";
+      sub.textContent = "Rider to receive full cash amount";
+      ref.textContent = "N/A (Cash Transaction)";
+      icon.textContent = "local_atm";
+      showToast("Toggled back to Cash on Delivery (Pending)");
+    }
+  }
+
+  function confirmOrderAction() {
+    showToast("Order #SSD-20261121-0044 confirmed by Elena M. Stores alerted!");
+    const btn = document.getElementById('btn-confirm-primary');
+    btn.innerHTML = `<span class="material-symbols-outlined text-label-lg">check</span><span>Confirmed</span>`;
+    btn.classList.remove('bg-primary-container', 'hover:bg-sonic-blue-dark');
+    btn.classList.add('bg-sonic-success');
+  }
+
+  function confirmAssignment(riderName) {
+    switchModal('none');
+    showToast(`Rider ${riderName} successfully assigned to Order #SSD-20261121-0044!`);
+  }
+
+  function executeRejectOrder() {
+    switchModal('none');
+    showToast("Order cancelled and customer notified via SMS.", true);
+  }
+
+  function autoDispatchNearest() {
+    showToast("Dispatched priority alert to nearest rider: Mark Ramos (0.8km).");
+  }
+
+  function copyOrderSummary() {
+    navigator.clipboard?.writeText("Order #SSD-20261121-0044 - Maria Santos - Total: ₱470.00 (COD) - Purok 3, San Jose Sipocot");
+    showToast("Order summary copied to clipboard!");
+  }
+
+  function printTicket() {
+    showToast("Sent ticket command to thermal POS printer (Sipocot Central).");
+  }
+
+  function recordRefundNotice() {
+    showToast("Opened billing ledger adjustment dialog.");
+  }
+
+  function showToast(message, isDanger = false) {
+    const toast = document.getElementById('toast');
+    const toastMsg = document.getElementById('toast-message');
+    const toastIcon = document.getElementById('toast-icon');
+
+    toastMsg.textContent = message;
+    if (isDanger) {
+      toastIcon.textContent = "error";
+      toastIcon.className = "material-symbols-outlined text-sonic-danger";
+    } else {
+      toastIcon.textContent = "check_circle";
+      toastIcon.className = "material-symbols-outlined text-sonic-bolt";
+    }
+
+    toast.classList.remove('translate-y-24', 'opacity-0');
+    toast.classList.add('translate-y-0', 'opacity-100');
+
+    setTimeout(() => {
+      toast.classList.remove('translate-y-0', 'opacity-100');
+      toast.classList.add('translate-y-24', 'opacity-0');
+    }, 3200);
+  }
+</script></main></div></body></html>

@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Montserrat:wght@600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: 'class', theme: { extend: { colors: { 'inverse-on-surface': '#f0efff', 'on-background': '#13183b', 'sonic-bolt': '#FFD60A', 'primary-fixed-dim': '#bbc3ff', 'secondary-container': '#5537fe', 'on-error': '#ffffff', 'on-secondary-fixed': '#150066', 'sonic-warning': '#F59E0B', 'sonic-danger': '#DC2626', 'outline-variant': '#c4c5d9', 'primary': '#0026c0', 'secondary': '#3b00e6', 'tertiary-container': '#005e82', 'on-secondary-container': '#ddd8ff', 'on-primary-fixed-variant': '#002ad0', 'on-secondary': '#ffffff', 'on-error-container': '#93000a', 'on-tertiary': '#ffffff', 'surface-container': '#edecff', 'inverse-primary': '#bbc3ff', 'sonic-success': '#16A34A', 'surface-container-highest': '#dfe0ff', 'on-surface': '#13183b', 'error': '#ba1a1a', 'tertiary-fixed-dim': '#7fd0ff', 'sonic-border': '#DDE2F5', 'surface': '#fbf8ff', 'on-surface-variant': '#444656', 'surface-bright': '#fbf8ff', 'tertiary': '#004561', 'background': '#fbf8ff', 'on-tertiary-container': '#93d6ff', 'on-secondary-fixed-variant': '#3a00df', 'surface-tint': '#2445f6', 'error-container': '#ffdad6', 'inverse-surface': '#292e51', 'sonic-surface': '#FFFFFF', 'on-tertiary-fixed-variant': '#004c6a', 'sonic-bg': '#F5F7FF', 'primary-fixed': '#dfe0ff', 'outline': '#757688', 'surface-variant': '#dfe0ff', 'secondary-fixed': '#e4dfff', 'sonic-blue-light': '#E8ECFE', 'on-tertiary-fixed': '#001e2d', 'sonic-blue-dark': '#0F27B8', 'on-primary': '#ffffff', 'on-primary-fixed': '#000e5f', 'surface-dim': '#d4d7ff', 'tertiary-fixed': '#c5e7ff', 'on-primary-container': '#c5cbff', 'surface-container-low': '#f4f2ff', 'surface-container-high': '#e6e6ff', 'primary-container': '#183cf0', 'secondary-fixed-dim': '#c6c0ff', 'sonic-muted': '#5B6386', 'surface-container-lowest': '#ffffff' }, borderRadius: { 'DEFAULT': '0.25rem', 'lg': '0.5rem', 'xl': '0.75rem', 'full': '9999px' }, spacing: { 'space-md': '1rem', 'space-xs': '0.25rem', 'gutter-desktop': '1.5rem', 'gutter': '1rem', 'space-lg': '1.5rem', 'margin-desktop': '2rem', 'space-xl': '2rem', 'space-sm': '0.5rem', 'margin': '1rem' }, fontFamily: { 'headline-sm': ['Montserrat'], 'label-md': ['Montserrat'], 'label-lg': ['Montserrat'], 'body-lg': ['Inter'], 'body-md': ['Inter'], 'price-display': ['Montserrat'], 'label-sm': ['Inter'], 'headline-md': ['Montserrat'], 'headline-lg': ['Montserrat'], 'body-sm': ['Inter'] }, fontSize: { 'headline-sm': ['18px', { lineHeight: '24px', fontWeight: '600' }], 'label-md': ['14px', { lineHeight: '18px', fontWeight: '600' }], 'label-lg': ['16px', { lineHeight: '20px', fontWeight: '600' }], 'body-lg': ['16px', { lineHeight: '24px', fontWeight: '400' }], 'body-md': ['15px', { lineHeight: '22px', fontWeight: '400' }], 'price-display': ['18px', { lineHeight: '24px', fontWeight: '700' }], 'label-sm': ['12px', { lineHeight: '16px', fontWeight: '500' }], 'headline-md': ['22px', { lineHeight: '28px', letterSpacing: '-0.01em', fontWeight: '700' }], 'headline-lg': ['28px', { lineHeight: '36px', letterSpacing: '-0.02em', fontWeight: '800' }], 'body-sm': ['13px', { lineHeight: '18px', fontWeight: '400' }] } } } };</script></head><body class="bg-sonic-bg text-on-surface min-h-screen antialiased selection:bg-primary-fixed selection:text-on-primary-fixed"><aside class="fixed left-0 top-0 bottom-0 h-screen w-64 bg-on-background z-50 flex flex-col justify-between shadow-[0_2px_8px_rgba(11,16,51,0.08)] overflow-y-auto"><div class="flex flex-col"><div class="h-16 px-space-lg flex items-center gap-space-sm"><div class="relative flex items-center justify-center"><div class="w-9 h-9 rounded-xl bg-primary flex items-center justify-center text-sonic-bolt font-headline-md text-headline-md select-none"><span class="material-symbols-outlined text-sonic-bolt text-xl">bolt</span></div></div><div class="flex flex-col"><span class="font-headline-sm text-headline-sm text-on-primary leading-tight tracking-tight">Super Sonic</span><span class="font-label-sm text-label-sm text-outline-variant font-medium tracking-wide uppercase">Admin Console</span></div></div><nav class="mt-space-md px-space-sm flex flex-col gap-1" data-active-classes="bg-primary-container text-on-primary font-bold shadow-[0_2px_8px_rgba(11,16,51,0.12)]"><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-xl text-outline-variant hover:bg-surface-variant/10 hover:text-on-primary transition-colors font-label-md text-label-md" data-path="live-orders" href="#"><span class="material-symbols-outlined text-[20px]">sensors</span><span>Live Orders</span></a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-xl text-outline-variant hover:bg-surface-variant/10 hover:text-on-primary transition-colors font-label-md text-label-md" data-path="restaurants" href="#"><span class="material-symbols-outlined text-[20px]">storefront</span><span>Restaurants</span></a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-xl text-outline-variant hover:bg-surface-variant/10 hover:text-on-primary transition-colors font-label-md text-label-md" data-path="menus" href="#"><span class="material-symbols-outlined text-[20px]">restaurant_menu</span><span>Menus</span></a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-xl text-outline-variant hover:bg-surface-variant/10 hover:text-on-primary transition-colors font-label-md text-label-md" data-path="riders-and-customers" href="#"><span class="material-symbols-outlined text-[20px]">groups</span><span>Riders &amp; Customers</span></a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-xl text-outline-variant hover:bg-surface-variant/10 hover:text-on-primary transition-colors font-label-md text-label-md" data-path="settlements" href="#"><span class="material-symbols-outlined text-[20px]">account_balance_wallet</span><span>Settlements</span></a><a aria-current="page" class="flex items-center gap-space-sm px-space-md py-space-sm rounded-xl transition-colors bg-primary-container text-on-primary font-bold shadow-[0_2px_8px_rgba(11,16,51,0.12)]" data-path="reports" href="#"><span class="material-symbols-outlined text-[20px]">insights</span><span>Reports</span></a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-xl text-outline-variant hover:bg-surface-variant/10 hover:text-on-primary transition-colors font-label-md text-label-md" data-path="rider-savings" href="#"><span class="material-symbols-outlined text-[20px]">savings</span><span>Rider Savings</span></a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-xl text-outline-variant hover:bg-surface-variant/10 hover:text-on-primary transition-colors font-label-md text-label-md" data-path="settings" href="#"><span class="material-symbols-outlined text-[20px]">settings</span><span>Settings</span></a></nav></div><div class="p-space-md m-space-sm rounded-xl bg-surface-variant/5 backdrop-blur-sm flex items-center justify-between"><div class="flex items-center gap-space-sm"><div class="w-2.5 h-2.5 rounded-full bg-sonic-success animate-pulse"></div><div class="flex flex-col"><span class="font-label-sm text-label-sm text-on-primary font-medium">Cluster 01 Online</span><span class="font-body-sm text-body-sm text-outline-variant">99.98% uptime</span></div></div><span class="material-symbols-outlined text-outline-variant text-[18px]">verified_user</span></div></aside><div class="pl-64 flex flex-col min-h-screen"><header class="fixed top-0 left-64 right-0 h-16 bg-sonic-surface/90 backdrop-blur-xl z-40 flex items-center justify-between px-space-lg shadow-[0_1px_8px_rgba(11,16,51,0.04)]"><div class="flex items-center gap-space-md flex-1 max-w-xl"><div class="relative w-full"><span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-sonic-muted text-[18px]">search</span><input class="w-full pl-9 pr-14 py-2 bg-sonic-bg rounded-xl font-body-sm text-body-sm text-on-surface placeholder:text-sonic-muted focus:outline-none focus:ring-2 focus:ring-primary focus:bg-sonic-surface transition-all" placeholder="Search orders, riders, stores..." type="text"/><kbd class="absolute right-3 top-1/2 -translate-y-1/2 font-label-sm text-label-sm text-sonic-muted bg-sonic-surface px-1.5 py-0.5 rounded shadow-[0_1px_2px_rgba(11,16,51,0.05)]">⌘K</kbd></div><div class="hidden lg:flex items-center gap-space-xs px-3 py-1.5 rounded-full bg-sonic-blue-light text-primary font-label-sm text-label-sm whitespace-nowrap"><span class="material-symbols-outlined text-[16px]">hub</span><span>Sipocot Main Hub</span></div></div><div class="flex items-center gap-space-md"><button class="relative p-2 rounded-full hover:bg-sonic-bg text-on-surface-variant hover:text-on-surface transition-colors"><span class="material-symbols-outlined text-[20px]">notifications</span><span class="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-sonic-danger ring-2 ring-sonic-surface"></span></button><div class="h-6 w-px bg-sonic-border"></div><div class="flex items-center gap-space-sm"><div class="flex flex-col text-right hidden sm:flex"><span class="font-label-md text-label-md text-on-surface leading-tight">Operations Lead</span><span class="font-label-sm text-label-sm text-sonic-muted font-normal">Hub Admin</span></div><img alt="Profile" class="w-8 h-8 rounded-full object-cover ring-2 ring-primary-fixed" src="https://lh3.googleusercontent.com/aida/ALJJyrC8lRXYdjybIE90MeONF2eH0KosGRJACkoy-lyzF-YOG4th5LTs_7Jhi6mtx3iDcwEOTXrNpX9Ra-N2vuj8M_5qI4lhK3Pbu8O2Nxa5QYOvR4R9--26DM48rQTpq20WdGYtm2_Cb0H6kwEaKRgzb0ESoksxV_CZU8LKOqPui2GGPVj45SFbthr2nqU0RhX9M0r78aMalNCPNMmYVdwVWXbrc9rJTHOJdp3fcfGr7t6I7eiQWVaN3c-xgqvP"/></div></div></header><main class="w-full pt-16 bg-sonic-bg flex-1 p-gutter-desktop"><div class="flex flex-col w-full gap-space-lg pb-12">
+<!-- Header & Filter Row -->
+<div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-space-md">
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-center gap-space-xs">
+<span class="font-headline-lg text-headline-lg text-on-surface">Reports &amp; Business Intelligence</span>
+<span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-primary-fixed text-on-primary-fixed font-label-sm text-label-sm font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-primary animate-ping"></span>
+          Live Sync
+        </span>
+</div>
+<p class="font-body-md text-body-md text-sonic-muted">
+        High-level performance, revenue velocity, merchant distribution, and fleet analytics for Sipocot Main Hub.
+      </p>
+</div>
+<!-- Controls -->
+<div class="flex flex-wrap items-center gap-space-sm">
+<!-- Date Picker Segment -->
+<div class="inline-flex p-1 bg-surface-container rounded-full shadow-sm">
+<button class="px-4 py-1.5 rounded-full font-label-md text-label-md transition-all bg-primary-container text-on-primary shadow-sm" type="button">
+          This week
+        </button>
+<button class="px-4 py-1.5 rounded-full font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-colors" type="button">
+          This month
+        </button>
+<button class="flex items-center gap-1.5 px-3 py-1.5 rounded-full font-label-sm text-label-sm text-on-surface-variant hover:text-on-surface transition-colors" type="button">
+<span>Nov 15, 2026 – Nov 21, 2026</span>
+<span class="material-symbols-outlined text-[16px]">calendar_today</span>
+</button>
+</div>
+<!-- Quick Export Actions -->
+<div class="flex items-center gap-space-xs">
+<button class="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-sonic-surface text-primary hover:bg-sonic-blue-light transition-all shadow-sm font-label-md text-label-md">
+<span class="material-symbols-outlined text-[18px]">picture_as_pdf</span>
+<span>Export PDF Report</span>
+</button>
+<button class="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-primary text-on-primary hover:bg-sonic-blue-dark transition-all shadow-sm font-label-md text-label-md">
+<span class="material-symbols-outlined text-[18px]">download</span>
+<span>Export CSV Data</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Top Stat Cards (5 Cards Grid) -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-space-md">
+<!-- Card 1: Total Sales -->
+<div class="bg-sonic-surface rounded-xl p-space-md shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow relative overflow-hidden group">
+<div class="absolute -right-4 -top-4 w-16 h-16 rounded-full bg-primary-fixed opacity-40 group-hover:scale-125 transition-transform"></div>
+<div class="flex items-center justify-between mb-2">
+<span class="font-label-sm text-label-sm text-sonic-muted uppercase tracking-wider">Total Sales</span>
+<span class="inline-flex items-center px-2 py-0.5 rounded-full bg-sonic-success/15 text-sonic-success font-label-sm text-label-sm font-semibold">
+<span class="material-symbols-outlined text-[14px] mr-0.5">trending_up</span>+14.2%
+        </span>
+</div>
+<div>
+<div class="font-price-display text-[26px] leading-8 text-on-surface font-extrabold tracking-tight">₱48,250.00</div>
+<div class="flex items-center gap-1 mt-1 text-sonic-muted font-body-sm text-body-sm">
+<span class="material-symbols-outlined text-[16px] text-primary">check_circle</span>
+<span>312 completed orders</span>
+</div>
+</div>
+</div>
+<!-- Card 2: Orders -->
+<div class="bg-sonic-surface rounded-xl p-space-md shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow">
+<div class="flex items-center justify-between mb-2">
+<span class="font-label-sm text-label-sm text-sonic-muted uppercase tracking-wider">Total Orders</span>
+<span class="p-1 rounded-lg bg-surface-container text-primary">
+<span class="material-symbols-outlined text-[18px]">local_shipping</span>
+</span>
+</div>
+<div>
+<div class="font-price-display text-[26px] leading-8 text-on-surface font-extrabold tracking-tight">312</div>
+<div class="flex items-center gap-1 mt-1 text-sonic-muted font-body-sm text-body-sm">
+<span class="font-medium text-on-surface">Peak Fri:</span>
+<span>68 orders · 97.8% fulfilled</span>
+</div>
+</div>
+</div>
+<!-- Card 3: Delivery Fees -->
+<div class="bg-sonic-surface rounded-xl p-space-md shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow">
+<div class="flex items-center justify-between mb-2">
+<span class="font-label-sm text-label-sm text-sonic-muted uppercase tracking-wider">Delivery Fees</span>
+<span class="p-1 rounded-lg bg-secondary-container/10 text-secondary">
+<span class="material-symbols-outlined text-[18px]">two_wheeler</span>
+</span>
+</div>
+<div>
+<div class="font-price-display text-[26px] leading-8 text-on-surface font-extrabold tracking-tight">₱46,800.00</div>
+<div class="flex items-center gap-1 mt-1 text-sonic-muted font-body-sm text-body-sm">
+<span>Customer delivery vol (avg ₱150.00)</span>
+</div>
+</div>
+</div>
+<!-- Card 4: Sonic Share -->
+<div class="bg-sonic-surface rounded-xl p-space-md shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow">
+<div class="flex items-center justify-between mb-2">
+<span class="font-label-sm text-label-sm text-sonic-muted uppercase tracking-wider">Sonic Share</span>
+<span class="inline-flex items-center px-2 py-0.5 rounded-full bg-sonic-bolt/25 text-on-background font-label-sm text-label-sm font-bold">
+<span class="material-symbols-outlined text-[14px] text-primary mr-0.5">bolt</span>+18.5%
+        </span>
+</div>
+<div>
+<div class="font-price-display text-[26px] leading-8 text-primary font-extrabold tracking-tight">₱9,420.00</div>
+<div class="flex items-center gap-1 mt-1 text-sonic-muted font-body-sm text-body-sm">
+<span>Platform net margin &amp; commission</span>
+</div>
+</div>
+</div>
+<!-- Card 5: Cancelled Orders -->
+<div class="bg-sonic-surface rounded-xl p-space-md shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow">
+<div class="flex items-center justify-between mb-2">
+<span class="font-label-sm text-label-sm text-sonic-muted uppercase tracking-wider">Cancelled</span>
+<span class="inline-flex items-center px-2 py-0.5 rounded-full bg-sonic-danger/15 text-sonic-danger font-label-sm text-label-sm font-semibold">
+          2.2% rate
+        </span>
+</div>
+<div>
+<div class="font-price-display text-[26px] leading-8 text-sonic-danger font-extrabold tracking-tight">7 orders</div>
+<div class="flex items-center gap-1 mt-1 text-sonic-muted font-body-sm text-body-sm truncate" title="4 merchant out-of-stock, 3 rider unavailable">
+<span>4 stockout · 3 rider unavailable</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Big Visual Analytics Charts Row (2 Columns) -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-lg">
+<!-- Left Chart: Sales per Day (7 Cols) -->
+<div class="lg:col-span-7 bg-sonic-surface rounded-xl p-space-lg shadow-sm flex flex-col justify-between">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between pb-space-md gap-space-xs">
+<div>
+<h2 class="font-headline-sm text-headline-sm text-on-surface">Sales per Day (Weekly Velocity)</h2>
+<p class="font-body-sm text-body-sm text-sonic-muted">Gross daily order volume with weekend peak performance</p>
+</div>
+<div class="flex items-center gap-space-xs">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-sonic-blue-light text-primary font-label-sm text-label-sm font-bold">
+<span class="w-2 h-2 rounded-full bg-primary"></span>
+            Fri Peak: ₱9,240.00
+          </span>
+<span class="font-label-sm text-label-sm text-sonic-muted">Avg: ₱6,892/day</span>
+</div>
+</div>
+<!-- SVG Line & Area Chart -->
+<div class="w-full relative mt-2">
+<svg class="w-full h-56 overflow-visible" preserveaspectratio="none" viewbox="0 0 680 240">
+<defs>
+<lineargradient id="sonicBlueGrad" x1="0" x2="0" y1="0" y2="1">
+<stop offset="0%" stop-color="#183CF0" stop-opacity="0.32"></stop>
+<stop offset="70%" stop-color="#30B4F0" stop-opacity="0.08"></stop>
+<stop offset="100%" stop-color="#183CF0" stop-opacity="0.0"></stop>
+</lineargradient>
+<filter height="140%" id="softGlow" width="140%" x="-20%" y="-20%">
+<fedropshadow dx="0" dy="4" flood-color="#183CF0" flood-opacity="0.25" stddeviation="4"></fedropshadow>
+</filter>
+</defs>
+<!-- Grid Lines (Dotted background) -->
+<line stroke="#DDE2F5" stroke-dasharray="4 4" stroke-width="1" x1="30" x2="660" y1="20" y2="20"></line>
+<line stroke="#DDE2F5" stroke-dasharray="4 4" stroke-width="1" x1="30" x2="660" y1="75" y2="75"></line>
+<line stroke="#DDE2F5" stroke-dasharray="4 4" stroke-width="1" x1="30" x2="660" y1="130" y2="130"></line>
+<line stroke="#DDE2F5" stroke-width="1" x1="30" x2="660" y1="185" y2="185"></line>
+<!-- Area under curve -->
+<path d="M 50,140 C 90,130 110,120 150,118 C 190,116 210,125 250,124 C 290,123 310,95 350,96 C 390,97 410,25 450,28 C 490,31 510,48 550,44 C 590,40 610,125 640,126 L 640,185 L 50,185 Z" fill="url(#sonicBlueGrad)"></path>
+<!-- Curved Stroke Line -->
+<path d="M 50,140 C 90,130 110,120 150,118 C 190,116 210,125 250,124 C 290,123 310,95 350,96 C 390,97 410,25 450,28 C 490,31 510,48 550,44 C 590,40 610,125 640,126" fill="none" filter="url(#softGlow)" stroke="#183CF0" stroke-linecap="round" stroke-width="3.5"></path>
+<!-- Interactive Node Points -->
+<!-- Mon -->
+<circle class="hover:r-6 cursor-pointer transition-all" cx="50" cy="140" fill="#FFFFFF" r="4.5" stroke="#183CF0" stroke-width="2.5"></circle>
+<!-- Tue -->
+<circle class="hover:r-6 cursor-pointer transition-all" cx="150" cy="118" fill="#FFFFFF" r="4.5" stroke="#183CF0" stroke-width="2.5"></circle>
+<!-- Wed -->
+<circle class="hover:r-6 cursor-pointer transition-all" cx="250" cy="124" fill="#FFFFFF" r="4.5" stroke="#183CF0" stroke-width="2.5"></circle>
+<!-- Thu -->
+<circle class="hover:r-6 cursor-pointer transition-all" cx="350" cy="96" fill="#FFFFFF" r="4.5" stroke="#183CF0" stroke-width="2.5"></circle>
+<!-- Fri Peak Highlight -->
+<circle class="hover:scale-125 cursor-pointer" cx="450" cy="28" fill="#FFD60A" r="6" stroke="#0026c0" stroke-width="3"></circle>
+<!-- Sat -->
+<circle class="hover:r-6 cursor-pointer transition-all" cx="550" cy="44" fill="#FFFFFF" r="4.5" stroke="#183CF0" stroke-width="2.5"></circle>
+<!-- Sun -->
+<circle class="hover:r-6 cursor-pointer transition-all" cx="640" cy="126" fill="#FFFFFF" r="4.5" stroke="#183CF0" stroke-width="2.5"></circle>
+</svg>
+<!-- Dynamic Day & Value Labels Below -->
+<div class="grid grid-cols-7 pt-2 text-center">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-sonic-muted">Mon</span>
+<span class="font-label-sm text-label-sm font-semibold text-on-surface">₱5,420</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-sonic-muted">Tue</span>
+<span class="font-label-sm text-label-sm font-semibold text-on-surface">₱6,180</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-sonic-muted">Wed</span>
+<span class="font-label-sm text-label-sm font-semibold text-on-surface">₱5,940</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-sonic-muted">Thu</span>
+<span class="font-label-sm text-label-sm font-semibold text-on-surface">₱6,850</span>
+</div>
+<div class="flex flex-col bg-sonic-blue-light/50 rounded-lg py-0.5">
+<span class="font-label-sm text-label-sm text-primary font-bold">Fri ★</span>
+<span class="font-label-sm text-label-sm font-bold text-primary">₱9,240</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-sonic-muted">Sat</span>
+<span class="font-label-sm text-label-sm font-semibold text-on-surface">₱8,720</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-sonic-muted">Sun</span>
+<span class="font-label-sm text-label-sm font-semibold text-on-surface">₱5,900</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Chart: Orders per restaurant (5 Cols) -->
+<div class="lg:col-span-5 bg-sonic-surface rounded-xl p-space-lg shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between pb-space-sm">
+<div>
+<h2 class="font-headline-sm text-headline-sm text-on-surface">Orders per Restaurant</h2>
+<p class="font-body-sm text-body-sm text-sonic-muted">Top 8 active merchant partners this week</p>
+</div>
+<span class="px-2 py-0.5 rounded-full bg-surface-container font-label-sm text-label-sm text-primary font-semibold">312 total</span>
+</div>
+<!-- Horizontal Bar Chart Stack -->
+<div class="flex flex-col gap-2.5 my-auto">
+<!-- 1. Kusina ni Aling Rosa (84 orders, ~26.9%) -->
+<div class="flex flex-col gap-1">
+<div class="flex justify-between items-center text-xs font-medium">
+<span class="text-on-surface font-semibold truncate">1. Kusina ni Aling Rosa</span>
+<span class="text-primary font-bold">84 orders (26.9%)</span>
+</div>
+<div class="w-full h-3 rounded-full bg-surface-container overflow-hidden">
+<div class="h-full rounded-full bg-primary" style="width: 84%"></div>
+</div>
+</div>
+<!-- 2. Tea Haus Sipocot (62 orders, ~19.8%) -->
+<div class="flex flex-col gap-1">
+<div class="flex justify-between items-center text-xs font-medium">
+<span class="text-on-surface font-semibold truncate">2. Tea Haus Sipocot</span>
+<span class="text-secondary font-bold">62 orders (19.8%)</span>
+</div>
+<div class="w-full h-3 rounded-full bg-surface-container overflow-hidden">
+<div class="h-full rounded-full bg-secondary-container" style="width: 62%"></div>
+</div>
+</div>
+<!-- 3. Nanay's Grill (48 orders, ~15.3%) -->
+<div class="flex flex-col gap-1">
+<div class="flex justify-between items-center text-xs font-medium">
+<span class="text-on-surface font-semibold truncate">3. Nanay's Grill</span>
+<span class="text-tertiary-container font-bold">48 orders (15.3%)</span>
+</div>
+<div class="w-full h-3 rounded-full bg-surface-container overflow-hidden">
+<div class="h-full rounded-full bg-tertiary-fixed-dim" style="width: 48%"></div>
+</div>
+</div>
+<!-- 4. Baker's Den Sipocot (36 orders, ~11.5%) -->
+<div class="flex flex-col gap-1">
+<div class="flex justify-between items-center text-xs font-medium">
+<span class="text-on-surface font-semibold truncate">4. Baker's Den Sipocot</span>
+<span class="text-on-surface font-bold">36 orders (11.5%)</span>
+</div>
+<div class="w-full h-3 rounded-full bg-surface-container overflow-hidden">
+<div class="h-full rounded-full bg-sonic-bolt" style="width: 36%"></div>
+</div>
+</div>
+<!-- 5. Sipocot Cafe & Diner (28 orders, ~8.9%) -->
+<div class="flex flex-col gap-1">
+<div class="flex justify-between items-center text-xs font-medium">
+<span class="text-on-surface font-semibold truncate">5. Sipocot Cafe &amp; Diner</span>
+<span class="text-primary font-bold">28 orders (8.9%)</span>
+</div>
+<div class="w-full h-3 rounded-full bg-surface-container overflow-hidden">
+<div class="h-full rounded-full bg-primary" style="width: 28%"></div>
+</div>
+</div>
+<!-- 6. Kuya J Rice Bowls (22 orders, ~7.0%) -->
+<div class="flex flex-col gap-1">
+<div class="flex justify-between items-center text-xs font-medium">
+<span class="text-on-surface font-semibold truncate">6. Kuya J Rice Bowls</span>
+<span class="text-secondary font-bold">22 orders (7.0%)</span>
+</div>
+<div class="w-full h-3 rounded-full bg-surface-container overflow-hidden">
+<div class="h-full rounded-full bg-secondary-container" style="width: 22%"></div>
+</div>
+</div>
+<!-- 7. Chooks to Go Sipocot (18 orders, ~5.7%) -->
+<div class="flex flex-col gap-1">
+<div class="flex justify-between items-center text-xs font-medium">
+<span class="text-on-surface font-semibold truncate">7. Chooks to Go Sipocot</span>
+<span class="text-tertiary-container font-bold">18 orders (5.7%)</span>
+</div>
+<div class="w-full h-3 rounded-full bg-surface-container overflow-hidden">
+<div class="h-full rounded-full bg-tertiary-fixed-dim" style="width: 18%"></div>
+</div>
+</div>
+<!-- 8. Mang Inasal Sipocot (14 orders, ~4.4%) -->
+<div class="flex flex-col gap-1">
+<div class="flex justify-between items-center text-xs font-medium">
+<span class="text-on-surface font-semibold truncate">8. Mang Inasal Sipocot</span>
+<span class="text-primary font-bold">14 orders (4.4%)</span>
+</div>
+<div class="w-full h-3 rounded-full bg-surface-container overflow-hidden">
+<div class="h-full rounded-full bg-primary" style="width: 14%"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Middle Data Tables Row (2 Tables Side-by-Side) -->
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-space-lg">
+<!-- Left Table: Top Items by Volume & Revenue -->
+<div class="bg-sonic-surface rounded-xl p-space-lg shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between mb-space-md">
+<div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Top Items by Volume &amp; Revenue</h3>
+<p class="font-body-sm text-body-sm text-sonic-muted">Best-performing menu items across all partner hubs</p>
+</div>
+<button class="text-primary hover:text-sonic-blue-dark font-label-sm text-label-sm font-semibold flex items-center gap-1">
+<span>Full Menu Analysis</span>
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</button>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low text-sonic-muted font-label-sm text-label-sm uppercase tracking-wider">
+<th class="py-2.5 px-3 rounded-l-lg">Item Name</th>
+<th class="py-2.5 px-3">Partner Restaurant</th>
+<th class="py-2.5 px-3 text-right">Qty</th>
+<th class="py-2.5 px-3 text-right">Total Sales</th>
+<th class="py-2.5 px-3 text-right rounded-r-lg">Trend</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-surface-container font-body-sm text-body-sm text-on-surface">
+<!-- Row 1 -->
+<tr class="hover:bg-sonic-bg/80 transition-colors">
+<td class="py-3 px-3 font-semibold flex items-center gap-2">
+<span class="w-5 h-5 rounded-full bg-primary/10 text-primary text-xs flex items-center justify-center font-bold">1</span>
+<span>Beef Tapsilog Special</span>
+</td>
+<td class="py-3 px-3 text-sonic-muted">Kusina ni Aling Rosa</td>
+<td class="py-3 px-3 text-right font-medium">114</td>
+<td class="py-3 px-3 text-right font-price-display font-bold text-primary">₱15,960.00</td>
+<td class="py-3 px-3 text-right">
+<span class="px-2 py-0.5 rounded-full bg-sonic-success/15 text-sonic-success font-label-sm text-label-sm font-semibold">+12%</span>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-sonic-bg/80 transition-colors">
+<td class="py-3 px-3 font-semibold flex items-center gap-2">
+<span class="w-5 h-5 rounded-full bg-primary/10 text-primary text-xs flex items-center justify-center font-bold">2</span>
+<span>Wintermelon Milk Tea</span>
+</td>
+<td class="py-3 px-3 text-sonic-muted">Tea Haus Sipocot</td>
+<td class="py-3 px-3 text-right font-medium">98</td>
+<td class="py-3 px-3 text-right font-price-display font-bold text-primary">₱10,780.00</td>
+<td class="py-3 px-3 text-right">
+<span class="px-2 py-0.5 rounded-full bg-sonic-success/15 text-sonic-success font-label-sm text-label-sm font-semibold">+18%</span>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-sonic-bg/80 transition-colors">
+<td class="py-3 px-3 font-semibold flex items-center gap-2">
+<span class="w-5 h-5 rounded-full bg-primary/10 text-primary text-xs flex items-center justify-center font-bold">3</span>
+<span>Pork BBQ Skewers (3pcs)</span>
+</td>
+<td class="py-3 px-3 text-sonic-muted">Nanay's Grill</td>
+<td class="py-3 px-3 text-right font-medium">76</td>
+<td class="py-3 px-3 text-right font-price-display font-bold text-primary">₱9,120.00</td>
+<td class="py-3 px-3 text-right">
+<span class="px-2 py-0.5 rounded-full bg-sonic-success/15 text-sonic-success font-label-sm text-label-sm font-semibold">+8%</span>
+</td>
+</tr>
+<!-- Row 4 -->
+<tr class="hover:bg-sonic-bg/80 transition-colors">
+<td class="py-3 px-3 font-semibold flex items-center gap-2">
+<span class="w-5 h-5 rounded-full bg-primary/10 text-primary text-xs flex items-center justify-center font-bold">4</span>
+<span>Longsilog Meal</span>
+</td>
+<td class="py-3 px-3 text-sonic-muted">Kusina ni Aling Rosa</td>
+<td class="py-3 px-3 text-right font-medium">54</td>
+<td class="py-3 px-3 text-right font-price-display font-bold text-primary">₱6,480.00</td>
+<td class="py-3 px-3 text-right">
+<span class="px-2 py-0.5 rounded-full bg-sonic-success/15 text-sonic-success font-label-sm text-label-sm font-semibold">+5%</span>
+</td>
+</tr>
+<!-- Row 5 -->
+<tr class="hover:bg-sonic-bg/80 transition-colors">
+<td class="py-3 px-3 font-semibold flex items-center gap-2">
+<span class="w-5 h-5 rounded-full bg-primary/10 text-primary text-xs flex items-center justify-center font-bold">5</span>
+<span>House Blend Iced Tea</span>
+</td>
+<td class="py-3 px-3 text-sonic-muted">Tea Haus Sipocot</td>
+<td class="py-3 px-3 text-right font-medium">82</td>
+<td class="py-3 px-3 text-right font-price-display font-bold text-primary">₱2,460.00</td>
+<td class="py-3 px-3 text-right">
+<span class="px-2 py-0.5 rounded-full bg-sonic-success/15 text-sonic-success font-label-sm text-label-sm font-semibold">+22%</span>
+</td>
+</tr>
+<!-- Row 6 -->
+<tr class="hover:bg-sonic-bg/80 transition-colors">
+<td class="py-3 px-3 font-semibold flex items-center gap-2">
+<span class="w-5 h-5 rounded-full bg-primary/10 text-primary text-xs flex items-center justify-center font-bold">6</span>
+<span>Spanish Bread Bag (6s)</span>
+</td>
+<td class="py-3 px-3 text-sonic-muted">Baker's Den Sipocot</td>
+<td class="py-3 px-3 text-right font-medium">42</td>
+<td class="py-3 px-3 text-right font-price-display font-bold text-primary">₱3,450.00</td>
+<td class="py-3 px-3 text-right">
+<span class="px-2 py-0.5 rounded-full bg-sonic-success/15 text-sonic-success font-label-sm text-label-sm font-semibold">+4%</span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<!-- Right Table: Rider Performance & Fulfillment -->
+<div class="bg-sonic-surface rounded-xl p-space-lg shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between mb-space-md">
+<div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Rider Performance &amp; Fulfillment</h3>
+<p class="font-body-sm text-body-sm text-sonic-muted">Active delivery fleet metrics, rating, and speed rates</p>
+</div>
+<button class="text-primary hover:text-sonic-blue-dark font-label-sm text-label-sm font-semibold flex items-center gap-1">
+<span>Fleet Console</span>
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</button>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low text-sonic-muted font-label-sm text-label-sm uppercase tracking-wider">
+<th class="py-2.5 px-3 rounded-l-lg">Rider</th>
+<th class="py-2.5 px-3 text-right">Delivered</th>
+<th class="py-2.5 px-3">Avg Rating</th>
+<th class="py-2.5 px-3 text-right">Gross (₱)</th>
+<th class="py-2.5 px-3 text-right rounded-r-lg">On-Time</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-surface-container font-body-sm text-body-sm text-on-surface">
+<!-- Rider 1 -->
+<tr class="hover:bg-sonic-bg/80 transition-colors">
+<td class="py-3 px-3">
+<div class="font-semibold text-on-surface">Mark Ramos</div>
+<div class="text-xs text-sonic-muted">#RDR-101</div>
+</td>
+<td class="py-3 px-3 text-right font-medium">68</td>
+<td class="py-3 px-3">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-sonic-bolt text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-bold text-on-surface">4.9</span>
+<span class="text-xs text-sonic-muted">(42)</span>
+</div>
+</td>
+<td class="py-3 px-3 text-right font-price-display font-semibold text-on-surface">₱10,880.00</td>
+<td class="py-3 px-3 text-right">
+<span class="px-2 py-0.5 rounded-full bg-sonic-success/15 text-sonic-success font-label-sm text-label-sm font-bold">99.1%</span>
+</td>
+</tr>
+<!-- Rider 2 -->
+<tr class="hover:bg-sonic-bg/80 transition-colors">
+<td class="py-3 px-3">
+<div class="font-semibold text-on-surface">Carlo Santos</div>
+<div class="text-xs text-sonic-muted">#RDR-102</div>
+</td>
+<td class="py-3 px-3 text-right font-medium">62</td>
+<td class="py-3 px-3">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-sonic-bolt text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-bold text-on-surface">4.8</span>
+<span class="text-xs text-sonic-muted">(38)</span>
+</div>
+</td>
+<td class="py-3 px-3 text-right font-price-display font-semibold text-on-surface">₱9,920.00</td>
+<td class="py-3 px-3 text-right">
+<span class="px-2 py-0.5 rounded-full bg-sonic-success/15 text-sonic-success font-label-sm text-label-sm font-bold">98.4%</span>
+</td>
+</tr>
+<!-- Rider 3 -->
+<tr class="hover:bg-sonic-bg/80 transition-colors">
+<td class="py-3 px-3">
+<div class="font-semibold text-on-surface">Eric Dimaculangan</div>
+<div class="text-xs text-sonic-muted">#RDR-103</div>
+</td>
+<td class="py-3 px-3 text-right font-medium">58</td>
+<td class="py-3 px-3">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-sonic-bolt text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-bold text-on-surface">4.8</span>
+<span class="text-xs text-sonic-muted">(35)</span>
+</div>
+</td>
+<td class="py-3 px-3 text-right font-price-display font-semibold text-on-surface">₱9,280.00</td>
+<td class="py-3 px-3 text-right">
+<span class="px-2 py-0.5 rounded-full bg-sonic-success/15 text-sonic-success font-label-sm text-label-sm font-bold">97.6%</span>
+</td>
+</tr>
+<!-- Rider 4 -->
+<tr class="hover:bg-sonic-bg/80 transition-colors">
+<td class="py-3 px-3">
+<div class="font-semibold text-on-surface">Noel Bautista</div>
+<div class="text-xs text-sonic-muted">#RDR-104</div>
+</td>
+<td class="py-3 px-3 text-right font-medium">54</td>
+<td class="py-3 px-3">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-sonic-bolt text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-bold text-on-surface">4.7</span>
+<span class="text-xs text-sonic-muted">(31)</span>
+</div>
+</td>
+<td class="py-3 px-3 text-right font-price-display font-semibold text-on-surface">₱8,640.00</td>
+<td class="py-3 px-3 text-right">
+<span class="px-2 py-0.5 rounded-full bg-sonic-blue-light text-primary font-label-sm text-label-sm font-bold">96.5%</span>
+</td>
+</tr>
+<!-- Rider 5 -->
+<tr class="hover:bg-sonic-bg/80 transition-colors">
+<td class="py-3 px-3">
+<div class="font-semibold text-on-surface">Jayson Cruz</div>
+<div class="text-xs text-sonic-muted">#RDR-105</div>
+</td>
+<td class="py-3 px-3 text-right font-medium">48</td>
+<td class="py-3 px-3">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-sonic-bolt text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-bold text-on-surface">4.8</span>
+<span class="text-xs text-sonic-muted">(29)</span>
+</div>
+</td>
+<td class="py-3 px-3 text-right font-price-display font-semibold text-on-surface">₱7,680.00</td>
+<td class="py-3 px-3 text-right">
+<span class="px-2 py-0.5 rounded-full bg-sonic-success/15 text-sonic-success font-label-sm text-label-sm font-bold">98.0%</span>
+</td>
+</tr>
+<!-- Rider 6 (Flagged) -->
+<tr class="bg-sonic-danger/5 hover:bg-sonic-danger/10 transition-colors">
+<td class="py-3 px-3">
+<div class="flex items-center gap-1.5 font-semibold text-on-surface">
+<span>Rodrigo V.</span>
+<span class="px-1.5 py-0.2 rounded bg-sonic-danger text-on-error text-[10px] font-bold">Flagged</span>
+</div>
+<div class="text-xs text-sonic-muted">#RDR-109</div>
+</td>
+<td class="py-3 px-3 text-right font-medium">22</td>
+<td class="py-3 px-3">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-sonic-bolt text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-bold text-on-surface">4.5</span>
+<span class="text-xs text-sonic-muted">(14)</span>
+</div>
+</td>
+<td class="py-3 px-3 text-right font-price-display font-semibold text-on-surface">₱3,520.00</td>
+<td class="py-3 px-3 text-right">
+<span class="px-2 py-0.5 rounded-full bg-sonic-danger/15 text-sonic-danger font-label-sm text-label-sm font-bold">91.2%</span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<!-- Bottom Section: Payment Method Breakdown & Settlement Reconciliation -->
+<div class="bg-sonic-surface rounded-xl p-space-lg shadow-sm flex flex-col gap-space-md">
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-space-xs">
+<div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Payment Method Breakdown &amp; Settlement Reconciliation</h3>
+<p class="font-body-sm text-body-sm text-sonic-muted">Payment distribution, liquidity clearing, and wallet payout balance verification</p>
+</div>
+<div class="flex items-center gap-space-xs">
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-sonic-success/10 text-sonic-success font-label-sm text-label-sm font-semibold">
+<span class="material-symbols-outlined text-[16px]">verified</span>
+          100% Balanced &amp; Reconciled
+        </span>
+</div>
+</div>
+<!-- Segmented Visual Bar -->
+<div class="w-full flex h-4 rounded-full overflow-hidden bg-surface-container">
+<div class="bg-primary hover:opacity-90 transition-opacity" style="width: 63.5%" title="COD: 63.5%"></div>
+<div class="bg-secondary-container hover:opacity-90 transition-opacity" style="width: 23.7%" title="GCash: 23.7%"></div>
+<div class="bg-tertiary-fixed-dim hover:opacity-90 transition-opacity" style="width: 7.7%" title="Maya: 7.7%"></div>
+<div class="bg-sonic-bolt hover:opacity-90 transition-opacity" style="width: 3.8%" title="QR Ph: 3.8%"></div>
+<div class="bg-outline-variant hover:opacity-90 transition-opacity" style="width: 1.3%" title="Card: 1.3%"></div>
+</div>
+<!-- 5 Method Detail Grid -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-space-sm pt-2">
+<!-- 1. COD -->
+<div class="p-space-sm rounded-xl bg-sonic-bg flex flex-col justify-between">
+<div class="flex items-center gap-2 mb-1">
+<span class="w-3 h-3 rounded-full bg-primary"></span>
+<span class="font-label-md text-label-md text-on-surface">Cash on Delivery</span>
+</div>
+<div class="font-price-display text-headline-sm text-on-surface font-bold">₱30,640.00</div>
+<div class="flex justify-between items-center text-xs text-sonic-muted mt-1">
+<span>198 orders</span>
+<span class="font-semibold text-primary">63.5%</span>
+</div>
+<div class="text-[11px] text-sonic-muted mt-0.5 truncate">High cash collection in Sipocot</div>
+</div>
+<!-- 2. GCash -->
+<div class="p-space-sm rounded-xl bg-sonic-bg flex flex-col justify-between">
+<div class="flex items-center gap-2 mb-1">
+<span class="w-3 h-3 rounded-full bg-secondary-container"></span>
+<span class="font-label-md text-label-md text-on-surface">GCash Wallet</span>
+</div>
+<div class="font-price-display text-headline-sm text-on-surface font-bold">₱11,435.00</div>
+<div class="flex justify-between items-center text-xs text-sonic-muted mt-1">
+<span>74 orders</span>
+<span class="font-semibold text-secondary">23.7%</span>
+</div>
+<div class="text-[11px] text-sonic-muted mt-0.5 truncate">Instant mobile e-wallet</div>
+</div>
+<!-- 3. Maya -->
+<div class="p-space-sm rounded-xl bg-sonic-bg flex flex-col justify-between">
+<div class="flex items-center gap-2 mb-1">
+<span class="w-3 h-3 rounded-full bg-tertiary-fixed-dim"></span>
+<span class="font-label-md text-label-md text-on-surface">Maya</span>
+</div>
+<div class="font-price-display text-headline-sm text-on-surface font-bold">₱3,715.00</div>
+<div class="flex justify-between items-center text-xs text-sonic-muted mt-1">
+<span>24 orders</span>
+<span class="font-semibold text-tertiary">7.7%</span>
+</div>
+<div class="text-[11px] text-sonic-muted mt-0.5 truncate">Direct bank clearing</div>
+</div>
+<!-- 4. QR Ph -->
+<div class="p-space-sm rounded-xl bg-sonic-bg flex flex-col justify-between">
+<div class="flex items-center gap-2 mb-1">
+<span class="w-3 h-3 rounded-full bg-sonic-bolt"></span>
+<span class="font-label-md text-label-md text-on-surface">QR Ph National</span>
+</div>
+<div class="font-price-display text-headline-sm text-on-surface font-bold">₱1,855.00</div>
+<div class="flex justify-between items-center text-xs text-sonic-muted mt-1">
+<span>12 orders</span>
+<span class="font-semibold text-on-surface">3.8%</span>
+</div>
+<div class="text-[11px] text-sonic-muted mt-0.5 truncate">Interoperable QR scan</div>
+</div>
+<!-- 5. Card -->
+<div class="p-space-sm rounded-xl bg-sonic-bg flex flex-col justify-between">
+<div class="flex items-center gap-2 mb-1">
+<span class="w-3 h-3 rounded-full bg-outline-variant"></span>
+<span class="font-label-md text-label-md text-on-surface">Credit / Debit</span>
+</div>
+<div class="font-price-display text-headline-sm text-on-surface font-bold">₱605.00</div>
+<div class="flex justify-between items-center text-xs text-sonic-muted mt-1">
+<span>4 orders</span>
+<span class="font-semibold text-sonic-muted">1.3%</span>
+</div>
+<div class="text-[11px] text-sonic-muted mt-0.5 truncate">Visa / Mastercard gateway</div>
+</div>
+</div>
+<!-- Settlement Alert & Audit Banner -->
+<div class="p-space-md rounded-xl bg-sonic-blue-light/50 flex flex-col md:flex-row items-center justify-between gap-space-md">
+<div class="flex items-center gap-space-sm">
+<div class="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-on-primary">
+<span class="material-symbols-outlined text-[20px]">account_balance</span>
+</div>
+<div class="flex flex-col">
+<div class="flex items-center gap-2">
+<span class="font-label-md text-label-md text-on-surface font-bold">Audit Status: Fully Balanced</span>
+<span class="px-2 py-0.2 rounded-full bg-sonic-success text-on-secondary text-[11px] font-semibold">Zero Discrepancy</span>
+</div>
+<p class="font-body-sm text-body-sm text-sonic-muted">
+            Total Processed: <strong class="text-on-surface">₱48,250.00</strong> · Total Refunds: <strong class="text-sonic-danger">₱840.00</strong> (2 refunded orders, 100% reconciled with merchants).
+          </p>
+</div>
+</div>
+<div class="flex items-center gap-space-xs">
+<button class="px-4 py-2 rounded-full bg-sonic-surface text-on-surface font-label-md text-label-md hover:bg-surface-container transition-colors shadow-sm">
+          Merchant Settlement Ledger
+        </button>
+<button class="px-4 py-2 rounded-full bg-primary text-on-primary font-label-md text-label-md hover:bg-sonic-blue-dark transition-colors shadow-sm flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[18px]">verified_user</span>
+<span>Close Weekly Books</span>
+</button>
+</div>
+</div>
+</div>
+</div></main></div></body></html>

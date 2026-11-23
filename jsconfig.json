@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "jsx": "react-jsx",
+    "paths": {
+      "@app/*": ["src/app/*"],
+      "@shared/*": ["src/shared/*"],
+      "@customer/*": ["src/roles/customer/*"],
+      "@rider/*": ["src/roles/rider/*"],
+      "@operator/*": ["src/roles/operator/*"],
+      "@admin/*": ["src/roles/admin/*"],
+      "@mock/*": ["src/mock/*"]
+    }
+  },
+  "include": ["src"]
+}

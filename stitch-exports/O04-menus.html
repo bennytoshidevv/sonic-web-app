@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Montserrat:wght@600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{colors:{"inverse-primary":"#bbc3ff","sonic-blue-light":"#E8ECFE","surface-dim":"#d4d7ff","surface-variant":"#dfe0ff","on-secondary-fixed-variant":"#3a00df","on-tertiary":"#ffffff","error-container":"#ffdad6","on-error-container":"#93000a","surface-container-lowest":"#ffffff","sonic-surface":"#FFFFFF","sonic-blue-dark":"#0F27B8","on-tertiary-container":"#93d6ff","sonic-danger":"#DC2626","sonic-border":"#DDE2F5","tertiary":"#004561","on-secondary-container":"#ddd8ff","primary":"#0026c0","on-background":"#13183b","surface-tint":"#2445f6","tertiary-fixed":"#c5e7ff","on-error":"#ffffff","tertiary-fixed-dim":"#7fd0ff","on-surface-variant":"#444656","on-secondary-fixed":"#150066","inverse-on-surface":"#f0efff","outline-variant":"#c4c5d9","sonic-success":"#16A34A","on-surface":"#13183b","on-primary-fixed-variant":"#002ad0","surface-container":"#edecff","sonic-warning":"#F59E0B","error":"#ba1a1a","primary-container":"#183cf0","sonic-muted":"#5B6386","on-primary":"#ffffff","on-primary-container":"#c5cbff","surface-bright":"#fbf8ff","secondary":"#3b00e6","secondary-fixed-dim":"#c6c0ff","on-tertiary-fixed":"#001e2d","secondary-container":"#5537fe","background":"#fbf8ff","sonic-bg":"#F5F7FF","outline":"#757688","primary-fixed-dim":"#bbc3ff","on-primary-fixed":"#000e5f","tertiary-container":"#005e82","surface-container-low":"#f4f2ff","surface-container-high":"#e6e6ff","surface-container-highest":"#dfe0ff","sonic-bolt":"#FFD60A","on-secondary":"#ffffff","secondary-fixed":"#e4dfff","surface":"#fbf8ff","primary-fixed":"#dfe0ff","inverse-surface":"#292e51","on-tertiary-fixed-variant":"#004c6a"},borderRadius:{"DEFAULT":"0.25rem","lg":"0.5rem","xl":"0.75rem","full":"9999px"},spacing:{"gutter-desktop":"1.5rem","space-md":"1rem","space-sm":"0.5rem","space-xs":"0.25rem","gutter":"1rem","margin-desktop":"2rem","margin":"1rem","space-lg":"1.5rem","space-xl":"2rem"},fontFamily:{"body-sm":["Inter"],"label-lg":["Montserrat"],"headline-md":["Montserrat"],"headline-sm":["Montserrat"],"label-md":["Montserrat"],"label-sm":["Inter"],"body-lg":["Inter"],"price-display":["Montserrat"],"headline-lg":["Montserrat"],"body-md":["Inter"]},fontSize:{"body-sm":["13px",{"lineHeight":"18px","fontWeight":"400"}],"label-lg":["16px",{"lineHeight":"20px","fontWeight":"600"}],"headline-md":["22px",{"lineHeight":"28px","letterSpacing":"-0.01em","fontWeight":"700"}],"headline-sm":["18px",{"lineHeight":"24px","fontWeight":"600"}],"label-md":["14px",{"lineHeight":"18px","fontWeight":"600"}],"label-sm":["12px",{"lineHeight":"16px","fontWeight":"500"}],"body-lg":["16px",{"lineHeight":"24px","fontWeight":"400"}],"price-display":["18px",{"lineHeight":"24px","fontWeight":"700"}],"headline-lg":["28px",{"lineHeight":"36px","letterSpacing":"-0.02em","fontWeight":"800"}],"body-md":["15px",{"lineHeight":"22px","fontWeight":"400"}]}}}}</script></head><body class="bg-sonic-bg text-on-surface min-h-screen"><aside class="fixed left-0 top-0 h-full w-72 bg-on-background z-50 flex flex-col justify-between shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="flex flex-col"><div class="p-space-lg flex items-center gap-space-sm"><div class="w-9 h-9 rounded-xl bg-primary-container flex items-center justify-center shrink-0 shadow-sm"><span class="material-symbols-outlined text-on-primary text-headline-sm">bolt</span></div><div class="flex flex-col min-w-0"><span class="font-headline-sm text-headline-sm text-on-primary leading-tight truncate">Super Sonic</span><span class="font-label-sm text-label-sm text-sonic-muted uppercase tracking-wider truncate">Dispatch Console</span></div></div><div class="px-space-md py-space-xs"><nav class="flex flex-col gap-space-xs" data-active-classes="bg-primary-container text-on-primary shadow-sm font-label-md"><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-xl text-surface-container-low hover:bg-surface-variant/20 hover:text-on-primary transition-all group" data-path="live-orders" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-surface-container-low group-hover:text-on-primary">radar</span><span class="font-label-md text-label-md">Live Orders</span></div><span class="flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-sonic-bolt text-on-background font-label-sm text-label-sm font-bold"><span class="w-1.5 h-1.5 rounded-full bg-on-background animate-ping"></span>3 pending</span></a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-xl text-surface-container-low hover:bg-surface-variant/20 hover:text-on-primary transition-all group" data-path="restaurants" href="#"><span class="material-symbols-outlined text-surface-container-low group-hover:text-on-primary">storefront</span><span class="font-label-md text-label-md">Restaurants</span></a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-xl text-surface-container-low hover:bg-surface-variant/20 hover:text-on-primary transition-all group" data-path="menus" href="#"><span class="material-symbols-outlined text-surface-container-low group-hover:text-on-primary">restaurant_menu</span><span class="font-label-md text-label-md">Menus</span></a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-xl text-surface-container-low hover:bg-surface-variant/20 hover:text-on-primary transition-all group" data-path="riders-and-customers" href="#"><span class="material-symbols-outlined text-surface-container-low group-hover:text-on-primary">two_wheeler</span><span class="font-label-md text-label-md">Riders &amp; Customers</span></a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-xl text-surface-container-low hover:bg-surface-variant/20 hover:text-on-primary transition-all group" data-path="settlements" href="#"><span class="material-symbols-outlined text-surface-container-low group-hover:text-on-primary">payments</span><span class="font-label-md text-label-md">Settlements</span></a><div class="pt-space-md pb-space-xs px-space-sm"><span class="font-label-sm text-label-sm uppercase tracking-wider text-sonic-muted">Administration</span></div><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-xl text-surface-container-low hover:bg-surface-variant/20 hover:text-on-primary transition-all group" data-path="reports" href="#"><span class="material-symbols-outlined text-surface-container-low group-hover:text-on-primary">query_stats</span><span class="font-label-md text-label-md">Reports</span></a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-xl text-surface-container-low hover:bg-surface-variant/20 hover:text-on-primary transition-all group" data-path="settings" href="#"><span class="material-symbols-outlined text-surface-container-low group-hover:text-on-primary">tune</span><span class="font-label-md text-label-md">Settings</span></a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-xl text-surface-container-low hover:bg-surface-variant/20 hover:text-on-primary transition-all group" data-path="rider-savings" href="#"><span class="material-symbols-outlined text-surface-container-low group-hover:text-on-primary">savings</span><span class="font-label-md text-label-md">Rider Savings</span></a></nav></div></div><div class="p-space-md bg-inverse-surface/40 m-space-md rounded-xl flex flex-col gap-space-sm"><div class="flex items-center gap-space-sm"><img alt="Profile" class="w-8 h-8 rounded-full object-cover ring-2 ring-primary-container shrink-0" src="https://lh3.googleusercontent.com/aida/ALJJyrC8lRXYdjybIE90MeONF2eH0KosGRJACkoy-lyzF-YOG4th5LTs_7Jhi6mtx3iDcwEOTXrNpX9Ra-N2vuj8M_5qI4lhK3Pbu8O2Nxa5QYOvR4R9--26DM48rQTpq20WdGYtm2_Cb0H6kwEaKRgzb0ESoksxV_CZU8LKOqPui2GGPVj45SFbthr2nqU0RhX9M0r78aMalNCPNMmYVdwVWXbrc9rJTHOJdp3fcfGr7t6I7eiQWVaN3c-xgqvP"/><div class="flex flex-col min-w-0"><span class="font-label-md text-label-md text-on-primary truncate">Operator Elena M.</span><span class="font-label-sm text-label-sm text-sonic-muted truncate">Sipocot Hub Dispatcher</span></div></div><div class="flex items-center justify-between pt-space-xs"><span class="inline-flex items-center gap-1 font-label-sm text-label-sm text-sonic-success"><span class="w-2 h-2 rounded-full bg-sonic-success"></span>Online</span><a class="inline-flex items-center gap-1 font-label-sm text-label-sm text-surface-variant hover:text-on-primary transition-colors" data-path="login" href="#"><span class="material-symbols-outlined text-label-sm">logout</span>Log out</a></div></div></aside><div class="pl-72"><header class="fixed top-0 left-72 right-0 h-16 bg-sonic-surface/90 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)] z-40 flex items-center justify-between px-gutter-desktop"><div class="flex items-center gap-space-md flex-1 max-w-xl"><div class="relative w-full flex items-center"><span class="material-symbols-outlined absolute left-3 text-sonic-muted text-body-lg pointer-events-none">search</span><input class="w-full pl-10 pr-12 py-2 bg-sonic-bg rounded-xl font-body-sm text-body-sm text-on-surface placeholder:text-sonic-muted focus:outline-none focus:ring-2 focus:ring-primary-container" placeholder="Search order no., customer, or barangay..." type="text"/><span class="absolute right-3 px-1.5 py-0.5 rounded bg-surface-container text-on-surface-variant font-label-sm text-label-sm font-semibold">⌘K</span></div></div><div class="flex items-center gap-space-md shrink-0"><div class="hidden xl:flex items-center gap-space-xs font-body-sm text-body-sm text-sonic-muted"><span class="w-2 h-2 rounded-full bg-sonic-success animate-pulse"></span><span>Last refreshed 10:42 AM</span></div><div class="flex items-center gap-1.5 px-space-sm py-1 rounded-full bg-sonic-blue-light text-primary font-label-sm text-label-sm font-semibold"><span class="material-symbols-outlined text-label-md">hub</span><span>Sipocot Main Hub · Shift Morning</span></div><button aria-label="Notifications" class="relative w-9 h-9 rounded-full bg-sonic-bg hover:bg-surface-container flex items-center justify-center text-on-surface transition-colors" type="button"><span class="material-symbols-outlined text-headline-sm">notifications</span><span class="absolute top-1 right-1 w-4 h-4 rounded-full bg-sonic-danger text-on-primary font-label-sm text-[10px] flex items-center justify-center font-bold">3</span></button><button class="inline-flex items-center gap-space-xs px-space-md py-2 rounded-full bg-primary-container hover:bg-sonic-blue-dark text-on-primary font-label-md text-label-md shadow-sm transition-all" type="button"><span class="material-symbols-outlined text-label-md">add</span><span>New Manual Order</span></button><img alt="Profile" class="w-8 h-8 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida/ALJJyrC8lRXYdjybIE90MeONF2eH0KosGRJACkoy-lyzF-YOG4th5LTs_7Jhi6mtx3iDcwEOTXrNpX9Ra-N2vuj8M_5qI4lhK3Pbu8O2Nxa5QYOvR4R9--26DM48rQTpq20WdGYtm2_Cb0H6kwEaKRgzb0ESoksxV_CZU8LKOqPui2GGPVj45SFbthr2nqU0RhX9M0r78aMalNCPNMmYVdwVWXbrc9rJTHOJdp3fcfGr7t6I7eiQWVaN3c-xgqvP"/></div></header><main class="w-full pt-16 bg-sonic-bg min-h-screen"><div class="flex flex-col w-full">
+<!-- View Mode Switcher Banner (Interactive Prototype Controller) -->
+<div class="bg-surface-container-high px-gutter-desktop py-space-sm flex items-center justify-between shadow-sm">
+<div class="flex items-center gap-space-sm">
+<span class="inline-flex items-center justify-center w-6 h-6 rounded-full bg-primary text-on-primary">
+<span class="material-symbols-outlined text-[15px]">desktop_windows</span>
+</span>
+<span class="font-label-sm text-label-sm text-on-surface">Console Display State:</span>
+<div class="inline-flex p-0.5 rounded-full bg-surface shadow-inner">
+<button class="px-space-md py-1 rounded-full font-label-sm text-label-sm font-semibold bg-primary text-on-primary shadow-sm transition-all flex items-center gap-1.5" id="btn-view-table" onclick="toggleEditModal(false)">
+<span class="material-symbols-outlined text-[16px]">table_rows</span>
+          Menu Management
+        </button>
+<button class="px-space-md py-1 rounded-full font-label-sm text-label-sm text-on-surface-variant hover:text-on-surface transition-all flex items-center gap-1.5" id="btn-view-modal" onclick="toggleEditModal(true)">
+<span class="material-symbols-outlined text-[16px]">edit_note</span>
+          Menu + Edit Item Modal
+        </button>
+</div>
+</div>
+<div class="flex items-center gap-space-sm">
+<span class="font-label-sm text-label-sm text-sonic-muted">Catalog Sync: Active</span>
+<span class="w-2 h-2 rounded-full bg-sonic-success"></span>
+<span class="px-2 py-0.5 rounded-full bg-sonic-blue-light text-primary font-label-sm text-label-sm font-bold">1440px Canvas</span>
+</div>
+</div>
+<!-- Subheader & Controls Bar -->
+<div class="px-gutter-desktop pt-space-lg pb-space-md flex flex-col xl:flex-row xl:items-center justify-between gap-space-md">
+<div class="flex flex-col gap-space-xs">
+<!-- Breadcrumb -->
+<nav class="flex items-center gap-2 font-label-sm text-label-sm text-sonic-muted">
+<a class="hover:text-primary transition-colors flex items-center gap-1" href="#">
+<span class="material-symbols-outlined text-[16px]">hub</span>
+          Operations
+        </a>
+<span class="material-symbols-outlined text-[14px]">chevron_right</span>
+<a class="hover:text-primary transition-colors" href="#">Menus</a>
+<span class="material-symbols-outlined text-[14px]">chevron_right</span>
+<span class="text-on-surface font-semibold">Kusina ni Aling Rosa</span>
+</nav>
+<!-- Restaurant Selector Card Pill -->
+<div class="flex items-center gap-space-md mt-space-xs">
+<div class="flex items-center gap-space-sm p-1.5 pr-space-md rounded-2xl bg-sonic-surface shadow-sm cursor-pointer group">
+<div class="w-11 h-11 rounded-xl bg-primary-container/10 overflow-hidden shrink-0 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-headline-sm">restaurant</span>
+</div>
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-2">
+<span class="font-headline-sm text-headline-sm text-on-surface group-hover:text-primary transition-colors">Kusina ni Aling Rosa</span>
+<span class="material-symbols-outlined text-primary text-[20px]">expand_more</span>
+</div>
+<div class="flex items-center gap-2 font-label-sm text-label-sm">
+<span class="text-sonic-muted">Filipino · Silog Specialist</span>
+<span class="text-outline-variant">•</span>
+<span class="inline-flex items-center gap-1 text-sonic-success font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-sonic-success animate-pulse"></span>
+                Open
+              </span>
+</div>
+</div>
+</div>
+<button class="hidden sm:inline-flex items-center gap-1.5 px-space-md py-2 rounded-full bg-surface-container hover:bg-surface-variant text-on-surface font-label-sm text-label-sm transition-colors" type="button">
+<span class="material-symbols-outlined text-[16px]">swap_horiz</span>
+          Switch Partner
+        </button>
+</div>
+</div>
+<!-- Right Header Actions -->
+<div class="flex items-center gap-space-sm self-start xl:self-center">
+<button class="inline-flex items-center gap-1.5 px-space-md py-2.5 rounded-full bg-sonic-surface hover:bg-surface-container text-on-surface font-label-md text-label-md shadow-sm transition-all" type="button">
+<span class="material-symbols-outlined text-body-lg">reorder</span>
+<span>Reorder Categories</span>
+</button>
+<button class="inline-flex items-center gap-1.5 px-space-md py-2.5 rounded-full bg-sonic-surface hover:bg-surface-container text-primary font-label-md text-label-md shadow-sm transition-all" type="button">
+<span class="material-symbols-outlined text-body-lg">visibility</span>
+<span>Preview Customer View</span>
+</button>
+<button class="inline-flex items-center gap-1.5 px-space-lg py-2.5 rounded-full bg-primary-container hover:bg-sonic-blue-dark text-on-primary font-label-md text-label-md shadow-md transition-all" onclick="toggleEditModal(true)" type="button">
+<span class="material-symbols-outlined text-body-lg">add</span>
+<span>Add New Item</span>
+</button>
+</div>
+</div>
+<!-- Workspace Two Columns Layout -->
+<div class="px-gutter-desktop pb-space-xl flex flex-col lg:flex-row gap-space-lg items-start">
+<!-- LEFT COLUMN: Categories Sidebar (320px) -->
+<div class="w-full lg:w-80 shrink-0 flex flex-col gap-space-md">
+<div class="bg-sonic-surface rounded-2xl p-space-md shadow-sm flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<h2 class="font-headline-sm text-headline-sm text-on-surface">Categories</h2>
+<span class="px-2 py-0.5 rounded-full bg-surface-container text-on-surface-variant font-label-sm text-label-sm font-bold">4</span>
+</div>
+<button class="p-1 rounded-full text-primary hover:bg-sonic-blue-light transition-colors" title="Add Category" type="button">
+<span class="material-symbols-outlined text-headline-sm">add_circle</span>
+</button>
+</div>
+<!-- Category Draggable List -->
+<div class="flex flex-col gap-1.5">
+<!-- Active Category: Silog Meals -->
+<div class="group relative flex items-center justify-between p- space-sm px-space-md py-3 rounded-xl bg-sonic-blue-light text-primary shadow-sm cursor-pointer transition-all">
+<div class="flex items-center gap-space-sm min-w-0">
+<span class="material-symbols-outlined text-primary/60 cursor-grab active:cursor-grabbing hover:text-primary transition-colors text-[20px]">drag_indicator</span>
+<div class="flex flex-col min-w-0">
+<span class="font-label-md text-label-md text-primary font-bold truncate">Silog Meals</span>
+<span class="font-label-sm text-label-sm text-primary/70">6 dishes listed</span>
+</div>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="px-2 py-0.5 rounded-full bg-primary text-on-primary font-label-sm text-[11px] font-bold">Active</span>
+<button class="w-7 h-7 rounded-full flex items-center justify-center hover:bg-primary/10 text-primary transition-colors">
+<span class="material-symbols-outlined text-[16px]">edit</span>
+</button>
+</div>
+</div>
+<!-- Category 2: Rice Bowls -->
+<div class="group flex items-center justify-between px-space-md py-3 rounded-xl bg-surface-container-low hover:bg-surface-container text-on-surface transition-all cursor-pointer">
+<div class="flex items-center gap-space-sm min-w-0">
+<span class="material-symbols-outlined text-sonic-muted/60 group-hover:text-sonic-muted cursor-grab text-[20px]">drag_indicator</span>
+<div class="flex flex-col min-w-0">
+<span class="font-label-md text-label-md text-on-surface font-semibold truncate">Rice Bowls</span>
+<span class="font-label-sm text-label-sm text-sonic-muted">4 dishes listed</span>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<span class="px-2 py-0.5 rounded-full bg-surface-container-high text-on-surface-variant font-label-sm text-label-sm font-semibold">4 items</span>
+<button class="opacity-0 group-hover:opacity-100 w-7 h-7 rounded-full flex items-center justify-center hover:bg-surface-container-highest text-sonic-muted transition-all">
+<span class="material-symbols-outlined text-[16px]">edit</span>
+</button>
+</div>
+</div>
+<!-- Category 3: Drinks -->
+<div class="group flex items-center justify-between px-space-md py-3 rounded-xl bg-surface-container-low hover:bg-surface-container text-on-surface transition-all cursor-pointer">
+<div class="flex items-center gap-space-sm min-w-0">
+<span class="material-symbols-outlined text-sonic-muted/60 group-hover:text-sonic-muted cursor-grab text-[20px]">drag_indicator</span>
+<div class="flex flex-col min-w-0">
+<span class="font-label-md text-label-md text-on-surface font-semibold truncate">Drinks &amp; Beverages</span>
+<span class="font-label-sm text-label-sm text-sonic-muted">5 drinks listed</span>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<span class="px-2 py-0.5 rounded-full bg-surface-container-high text-on-surface-variant font-label-sm text-label-sm font-semibold">5 items</span>
+<button class="opacity-0 group-hover:opacity-100 w-7 h-7 rounded-full flex items-center justify-center hover:bg-surface-container-highest text-sonic-muted transition-all">
+<span class="material-symbols-outlined text-[16px]">edit</span>
+</button>
+</div>
+</div>
+<!-- Category 4: Desserts -->
+<div class="group flex items-center justify-between px-space-md py-3 rounded-xl bg-surface-container-low hover:bg-surface-container text-on-surface transition-all cursor-pointer">
+<div class="flex items-center gap-space-sm min-w-0">
+<span class="material-symbols-outlined text-sonic-muted/60 group-hover:text-sonic-muted cursor-grab text-[20px]">drag_indicator</span>
+<div class="flex flex-col min-w-0">
+<span class="font-label-md text-label-md text-on-surface font-semibold truncate">Desserts</span>
+<span class="font-label-sm text-label-sm text-sonic-muted">3 treats listed</span>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<span class="px-2 py-0.5 rounded-full bg-surface-container-high text-on-surface-variant font-label-sm text-label-sm font-semibold">3 items</span>
+<button class="opacity-0 group-hover:opacity-100 w-7 h-7 rounded-full flex items-center justify-center hover:bg-surface-container-highest text-sonic-muted transition-all">
+<span class="material-symbols-outlined text-[16px]">edit</span>
+</button>
+</div>
+</div>
+</div>
+<button class="w-full py-2.5 rounded-xl bg-surface-container hover:bg-surface-container-high text-primary font-label-md text-label-md flex items-center justify-center gap-1.5 transition-colors" type="button">
+<span class="material-symbols-outlined text-label-md">add</span>
+<span>Add New Category</span>
+</button>
+<div class="pt-space-xs flex items-start gap-2 bg-surface-container-low p-space-sm rounded-xl">
+<span class="material-symbols-outlined text-primary text-[18px] shrink-0 mt-0.5">info</span>
+<p class="font-body-sm text-body-sm text-sonic-muted leading-relaxed">
+            Drag categories to reorder customer app presentation. Changes sync instantly across active customer apps.
+          </p>
+</div>
+</div>
+<!-- Quick Metrics Mini-card -->
+<div class="bg-sonic-surface rounded-2xl p-space-md shadow-sm flex flex-col gap-3">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-sonic-muted">Category Health</span>
+<div class="flex items-center justify-between">
+<span class="font-body-sm text-body-sm text-on-surface">Available Items Ratio</span>
+<span class="font-label-md text-label-md text-sonic-success font-bold">83.3%</span>
+</div>
+<div class="w-full h-2 rounded-full bg-surface-container overflow-hidden">
+<div class="h-full bg-sonic-success rounded-full" style="width: 83.3%;"></div>
+</div>
+<div class="flex items-center justify-between pt-1 text-sonic-muted font-label-sm text-label-sm">
+<span>15 Active</span>
+<span>3 Sold Out</span>
+</div>
+</div>
+</div>
+<!-- RIGHT MAIN COLUMN: Menu Items Data Table & Controls (flex-1) -->
+<div class="flex-1 w-full flex flex-col gap-space-md min-w-0">
+<!-- Category Header Card -->
+<div class="bg-sonic-surface rounded-2xl p-space-lg shadow-sm flex flex-col gap-space-md">
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-space-sm">
+<div>
+<div class="flex items-center gap-2">
+<h1 class="font-headline-lg text-headline-lg text-on-surface">Silog Meals</h1>
+<span class="px-2.5 py-0.5 rounded-full bg-sonic-blue-light text-primary font-label-sm text-label-sm font-bold">6 Items</span>
+</div>
+<p class="font-body-md text-body-md text-sonic-muted mt-1">
+              All-day Filipino garlic fried rice and egg breakfast combinations cooked to order with local ingredients.
+            </p>
+</div>
+<div class="flex items-center gap-space-xs shrink-0">
+<button class="p-2 rounded-full hover:bg-surface-container text-on-surface-variant transition-colors" title="Category Settings" type="button">
+<span class="material-symbols-outlined text-[20px]">tune</span>
+</button>
+<button class="p-2 rounded-full hover:bg-surface-container text-on-surface-variant transition-colors" title="Export CSV" type="button">
+<span class="material-symbols-outlined text-[20px]">download</span>
+</button>
+</div>
+</div>
+<!-- Filter, Status Pills and In-category Search -->
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-space-sm pt-space-xs">
+<!-- Filter Pills -->
+<div class="flex items-center gap-1.5 overflow-x-auto pb-1 md:pb-0">
+<button class="px-space-md py-1.5 rounded-full bg-primary text-on-primary font-label-sm text-label-sm font-semibold shadow-sm shrink-0">
+              All (6)
+            </button>
+<button class="px-space-md py-1.5 rounded-full bg-surface-container hover:bg-surface-container-high text-on-surface-variant font-label-sm text-label-sm font-medium shrink-0 transition-colors">
+              Available (5)
+            </button>
+<button class="px-space-md py-1.5 rounded-full bg-surface-container hover:bg-surface-container-high text-on-surface-variant font-label-sm text-label-sm font-medium shrink-0 transition-colors">
+              Sold Out (1)
+            </button>
+<button class="px-space-md py-1.5 rounded-full bg-surface-container hover:bg-surface-container-high text-on-surface-variant font-label-sm text-label-sm font-medium shrink-0 transition-colors">
+              Promos (2)
+            </button>
+</div>
+<!-- Category Search -->
+<div class="relative w-full md:w-72">
+<span class="material-symbols-outlined absolute left-3 top-2.5 text-sonic-muted text-[18px]">search</span>
+<input class="w-full pl-9 pr-4 py-2 rounded-xl bg-sonic-bg text-on-surface font-body-sm text-body-sm placeholder:text-sonic-muted focus:bg-sonic-surface focus:outline-none shadow-inner" placeholder="Search in Silog Meals..." type="text"/>
+</div>
+</div>
+</div>
+<!-- Main Items Data Table Card -->
+<div class="bg-sonic-surface rounded-2xl shadow-sm overflow-hidden flex flex-col">
+<div class="overflow-x-auto w-full">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low text-on-surface-variant font-label-sm text-label-sm uppercase tracking-wider">
+<th class="py-3.5 px-space-lg w-12 text-center">
+<input class="w-4 h-4 rounded text-primary focus:ring-0 focus:outline-none cursor-pointer" type="checkbox"/>
+</th>
+<th class="py-3.5 px-space-md min-w-[240px]">Item / Photo</th>
+<th class="py-3.5 px-space-md min-w-[260px]">Description</th>
+<th class="py-3.5 px-space-md min-w-[110px]">Price</th>
+<th class="py-3.5 px-space-md min-w-[130px]">Quick Stock</th>
+<th class="py-3.5 px-space-md min-w-[110px]">Status</th>
+<th class="py-3.5 px-space-lg text-right min-w-[120px]">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-surface-container/60 font-body-sm text-body-sm text-on-surface">
+<!-- Item 1: Beef Tapsilog Special (IMAGE_36) -->
+<tr class="hover:bg-surface-container-low/50 transition-colors group">
+<td class="py-space-md px-space-lg text-center">
+<input class="w-4 h-4 rounded text-primary focus:ring-0 cursor-pointer" type="checkbox"/>
+</td>
+<td class="py-space-md px-space-md">
+<div class="flex items-center gap-space-sm">
+<img class="w-14 h-14 rounded-xl object-cover shadow-sm shrink-0" data-alt="Traditional Filipino beef tapsilog served on a ceramic plate, featuring thinly sliced tender garlic-cured beef tapa strips alongside a generous mound of golden garlic sinangag fried rice topped with fried crispy garlic, and a perfect sunny side egg with runny yolk. Warm bright restaurant lighting, appetizing close-up." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBJTW4Ugy20ySayRynlxKtfsuPRIiebI8pc5rtNOkpw05qxbzNuduLG38r4ne-RPj_wBDGkAQQ7vtnWe8fchLMHF2MDfrNM5tsElggh04j0jY3Rv7vohblbZhJFJaOGOtlQ_B57AQ0CyWymaApHx_uOF9-cKmztQtQOkhXDrnHX_RR2Ia3eW06QOpnjTvOtczr-cz2__gj39-ySnNjoulh_BpQylHp224X31PVGjsBh"/>
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-1.5">
+<span class="font-headline-sm text-[15px] font-bold text-on-surface truncate">Beef Tapsilog Special</span>
+<span class="material-symbols-outlined text-sonic-bolt text-[16px]" title="Best Seller">bolt</span>
+</div>
+<span class="font-label-sm text-label-sm text-sonic-muted font-mono">SKU-SLG-001</span>
+</div>
+</div>
+</td>
+<td class="py-space-md px-space-md">
+<p class="font-body-sm text-body-sm text-on-surface-variant line-clamp-2 max-w-xs">
+                    Cured beef tapa slices, fragrant garlic sinangag, sunny-side egg, with pickled papaya atchara &amp; chili vinegar.
+                  </p>
+</td>
+<td class="py-space-md px-space-md whitespace-nowrap">
+<span class="font-headline-md text-headline-sm font-bold text-primary">₱140.00</span>
+</td>
+<td class="py-space-md px-space-md whitespace-nowrap">
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-surface-container peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-sonic-success shadow-inner"></div>
+<span class="ml-2 font-label-sm text-label-sm text-on-surface font-medium">In Stock</span>
+</label>
+</td>
+<td class="py-space-md px-space-md whitespace-nowrap">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-sonic-success/15 text-sonic-success font-label-sm text-label-sm font-bold">
+<span class="w-1.5 h-1.5 rounded-full bg-sonic-success"></span>
+                    Active
+                  </span>
+</td>
+<td class="py-space-md px-space-lg text-right whitespace-nowrap">
+<div class="flex items-center justify-end gap-1.5">
+<button class="px-3 py-1.5 rounded-lg bg-sonic-blue-light hover:bg-primary-fixed text-primary font-label-sm text-label-sm font-semibold transition-colors flex items-center gap-1" onclick="toggleEditModal(true)" type="button">
+<span class="material-symbols-outlined text-[15px]">edit</span>
+                      Edit
+                    </button>
+<button class="w-8 h-8 rounded-lg hover:bg-error-container hover:text-sonic-danger text-sonic-muted flex items-center justify-center transition-colors" title="Delete Item" type="button">
+<span class="material-symbols-outlined text-[18px]">delete</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Item 2: Longsilog Solo (IMAGE_34) -->
+<tr class="hover:bg-surface-container-low/50 transition-colors group">
+<td class="py-space-md px-space-lg text-center">
+<input class="w-4 h-4 rounded text-primary focus:ring-0 cursor-pointer" type="checkbox"/>
+</td>
+<td class="py-space-md px-space-md">
+<div class="flex items-center gap-space-sm">
+<img class="w-14 h-14 rounded-xl object-cover shadow-sm shrink-0" data-alt="Plated Filipino Longsilog breakfast plate featuring sweet garlic longganisa sausages caramelised and golden-brown, served with garlic fried sinangag rice, fresh cucumber slices, sliced tomatoes and a fried egg on a white plate. Fresh morning natural illumination, commercial food photography." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDm1n9siNFychgEhCQIeibxZL8qCiWAyjCORB0-nNVFURT0HP-g5ONWyKygtHCV3GxUo_-ndbTlAL_j9JzxTMDevyiVrtstiElfZKJldILovssw2iyTsXB9MRg19U9TsyecjBqJ94gY0vtzOGB5Hrx-flOFH8oRZCvkzcdDG3XxJpqKF8x3cP909497t3wuUlopZ-SB35YXIogLgOmqddGyDxrTQb3KYCZyTYrEA60e"/>
+<div class="flex flex-col min-w-0">
+<span class="font-headline-sm text-[15px] font-bold text-on-surface truncate">Longsilog Solo</span>
+<span class="font-label-sm text-label-sm text-sonic-muted font-mono">SKU-SLG-002</span>
+</div>
+</div>
+</td>
+<td class="py-space-md px-space-md">
+<p class="font-body-sm text-body-sm text-on-surface-variant line-clamp-2 max-w-xs">
+                    Two pieces plump sweet &amp; garlicky Lucban longganisa, fried egg, garlic rice and spiced dip.
+                  </p>
+</td>
+<td class="py-space-md px-space-md whitespace-nowrap">
+<span class="font-headline-md text-headline-sm font-bold text-primary">₱120.00</span>
+</td>
+<td class="py-space-md px-space-md whitespace-nowrap">
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-surface-container peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-sonic-success shadow-inner"></div>
+<span class="ml-2 font-label-sm text-label-sm text-on-surface font-medium">In Stock</span>
+</label>
+</td>
+<td class="py-space-md px-space-md whitespace-nowrap">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-sonic-success/15 text-sonic-success font-label-sm text-label-sm font-bold">
+<span class="w-1.5 h-1.5 rounded-full bg-sonic-success"></span>
+                    Active
+                  </span>
+</td>
+<td class="py-space-md px-space-lg text-right whitespace-nowrap">
+<div class="flex items-center justify-end gap-1.5">
+<button class="px-3 py-1.5 rounded-lg bg-sonic-blue-light hover:bg-primary-fixed text-primary font-label-sm text-label-sm font-semibold transition-colors flex items-center gap-1" onclick="toggleEditModal(true)" type="button">
+<span class="material-symbols-outlined text-[15px]">edit</span>
+                      Edit
+                    </button>
+<button class="w-8 h-8 rounded-lg hover:bg-error-container hover:text-sonic-danger text-sonic-muted flex items-center justify-center transition-colors" title="Delete Item" type="button">
+<span class="material-symbols-outlined text-[18px]">delete</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Item 3: Bangsilog (IMAGE_33) - SOLD OUT ITEM -->
+<tr class="bg-surface-container-low/30 hover:bg-surface-container-low transition-colors group opacity-85">
+<td class="py-space-md px-space-lg text-center">
+<input class="w-4 h-4 rounded text-primary focus:ring-0 cursor-pointer" type="checkbox"/>
+</td>
+<td class="py-space-md px-space-md">
+<div class="flex items-center gap-space-sm">
+<div class="relative w-14 h-14 rounded-xl overflow-hidden shadow-sm shrink-0">
+<img class="w-full h-full object-cover filter grayscale-[20%]" data-alt="Golden crisp fried marinated boneless milkfish Daing na Bangus served on a traditional plate with garlic sinangag rice, sliced red tomatoes, and two fried eggs. Rich texture, crispy skin details, rustic diner aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAV4c1cDytLaWvmfk9XvlL-YmpGnUEka9L2ixHdRJgUUWhwqkUMphH3OrkQUeEuCYNxP5VhfWpZkHzkQ47MJJlWow2nSnYTaYJUdpngKHy6XPA-NTCw3wDKuFUKFftk1zonkUb4MVTNWUM8aQsAktrELnWejPOp5wbMR0NT2Hlc4SfzKzUPlb3UuGlJxv2cKIrXkwXUBCwFDZPBafY5Od8rur21vAolore9Klz_OiqF"/>
+<div class="absolute inset-0 bg-on-background/40 flex items-center justify-center">
+<span class="font-label-sm text-[9px] uppercase font-bold text-on-primary bg-sonic-danger px-1 py-0.5 rounded">Sold Out</span>
+</div>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-headline-sm text-[15px] font-bold text-on-surface/80 truncate line-through">Bangsilog</span>
+<span class="font-label-sm text-label-sm text-sonic-muted font-mono">SKU-SLG-003</span>
+</div>
+</div>
+</td>
+<td class="py-space-md px-space-md">
+<p class="font-body-sm text-body-sm text-sonic-muted line-clamp-2 max-w-xs">
+                    Crispy garlic-marinated boneless bangus milkfish, seasoned fried rice, sunny egg with homemade vinegar.
+                  </p>
+</td>
+<td class="py-space-md px-space-md whitespace-nowrap">
+<span class="font-headline-md text-headline-sm font-bold text-sonic-muted">₱150.00</span>
+</td>
+<td class="py-space-md px-space-md whitespace-nowrap">
+<label class="relative inline-flex items-center cursor-pointer">
+<input class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-surface-container-highest peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-sonic-success shadow-inner"></div>
+<span class="ml-2 font-label-sm text-label-sm text-sonic-danger font-semibold">Sold Out</span>
+</label>
+</td>
+<td class="py-space-md px-space-md whitespace-nowrap">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-error-container text-sonic-danger font-label-sm text-label-sm font-bold">
+<span class="w-1.5 h-1.5 rounded-full bg-sonic-danger"></span>
+                    Sold Out
+                  </span>
+</td>
+<td class="py-space-md px-space-lg text-right whitespace-nowrap">
+<div class="flex items-center justify-end gap-1.5">
+<button class="px-3 py-1.5 rounded-lg bg-surface-container hover:bg-surface-variant text-on-surface font-label-sm text-label-sm font-semibold transition-colors flex items-center gap-1" onclick="toggleEditModal(true)" type="button">
+<span class="material-symbols-outlined text-[15px]">edit</span>
+                      Edit
+                    </button>
+<button class="w-8 h-8 rounded-lg hover:bg-error-container hover:text-sonic-danger text-sonic-muted flex items-center justify-center transition-colors" title="Delete Item" type="button">
+<span class="material-symbols-outlined text-[18px]">delete</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Item 4: Tocilog -->
+<tr class="hover:bg-surface-container-low/50 transition-colors group">
+<td class="py-space-md px-space-lg text-center">
+<input class="w-4 h-4 rounded text-primary focus:ring-0 cursor-pointer" type="checkbox"/>
+</td>
+<td class="py-space-md px-space-md">
+<div class="flex items-center gap-space-sm">
+<div class="w-14 h-14 rounded-xl bg-surface-container flex items-center justify-center text-primary-container shrink-0">
+<span class="material-symbols-outlined text-[28px]">lunch_dining</span>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-headline-sm text-[15px] font-bold text-on-surface truncate">Tocilog (Sweet Pork)</span>
+<span class="font-label-sm text-label-sm text-sonic-muted font-mono">SKU-SLG-004</span>
+</div>
+</div>
+</td>
+<td class="py-space-md px-space-md">
+<p class="font-body-sm text-body-sm text-on-surface-variant line-clamp-2 max-w-xs">
+                    Tender sweetened pork tocino cured in pineapple juice, served with sinangag garlic rice and farm fresh egg.
+                  </p>
+</td>
+<td class="py-space-md px-space-md whitespace-nowrap">
+<span class="font-headline-md text-headline-sm font-bold text-primary">₱130.00</span>
+</td>
+<td class="py-space-md px-space-md whitespace-nowrap">
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-surface-container peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-sonic-success shadow-inner"></div>
+<span class="ml-2 font-label-sm text-label-sm text-on-surface font-medium">In Stock</span>
+</label>
+</td>
+<td class="py-space-md px-space-md whitespace-nowrap">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-sonic-success/15 text-sonic-success font-label-sm text-label-sm font-bold">
+<span class="w-1.5 h-1.5 rounded-full bg-sonic-success"></span>
+                    Active
+                  </span>
+</td>
+<td class="py-space-md px-space-lg text-right whitespace-nowrap">
+<div class="flex items-center justify-end gap-1.5">
+<button class="px-3 py-1.5 rounded-lg bg-sonic-blue-light hover:bg-primary-fixed text-primary font-label-sm text-label-sm font-semibold transition-colors flex items-center gap-1" onclick="toggleEditModal(true)" type="button">
+<span class="material-symbols-outlined text-[15px]">edit</span>
+                      Edit
+                    </button>
+<button class="w-8 h-8 rounded-lg hover:bg-error-container hover:text-sonic-danger text-sonic-muted flex items-center justify-center transition-colors" title="Delete Item" type="button">
+<span class="material-symbols-outlined text-[18px]">delete</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Item 5: Chicosilog (Crispy Chicken) -->
+<tr class="hover:bg-surface-container-low/50 transition-colors group">
+<td class="py-space-md px-space-lg text-center">
+<input class="w-4 h-4 rounded text-primary focus:ring-0 cursor-pointer" type="checkbox"/>
+</td>
+<td class="py-space-md px-space-md">
+<div class="flex items-center gap-space-sm">
+<div class="w-14 h-14 rounded-xl bg-surface-container flex items-center justify-center text-primary-container shrink-0">
+<span class="material-symbols-outlined text-[28px]">fastfood</span>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-headline-sm text-[15px] font-bold text-on-surface truncate">Chicosilog (Crispy Chicken)</span>
+<span class="font-label-sm text-label-sm text-sonic-muted font-mono">SKU-SLG-005</span>
+</div>
+</div>
+</td>
+<td class="py-space-md px-space-md">
+<p class="font-body-sm text-body-sm text-on-surface-variant line-clamp-2 max-w-xs">
+                    Filipino style deep-fried breaded chicken fillet with rich spiced brown gravy, fried egg, garlic rice.
+                  </p>
+</td>
+<td class="py-space-md px-space-md whitespace-nowrap">
+<span class="font-headline-md text-headline-sm font-bold text-primary">₱135.00</span>
+</td>
+<td class="py-space-md px-space-md whitespace-nowrap">
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-surface-container peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-sonic-success shadow-inner"></div>
+<span class="ml-2 font-label-sm text-label-sm text-on-surface font-medium">In Stock</span>
+</label>
+</td>
+<td class="py-space-md px-space-md whitespace-nowrap">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-sonic-success/15 text-sonic-success font-label-sm text-label-sm font-bold">
+<span class="w-1.5 h-1.5 rounded-full bg-sonic-success"></span>
+                    Active
+                  </span>
+</td>
+<td class="py-space-md px-space-lg text-right whitespace-nowrap">
+<div class="flex items-center justify-end gap-1.5">
+<button class="px-3 py-1.5 rounded-lg bg-sonic-blue-light hover:bg-primary-fixed text-primary font-label-sm text-label-sm font-semibold transition-colors flex items-center gap-1" onclick="toggleEditModal(true)" type="button">
+<span class="material-symbols-outlined text-[15px]">edit</span>
+                      Edit
+                    </button>
+<button class="w-8 h-8 rounded-lg hover:bg-error-container hover:text-sonic-danger text-sonic-muted flex items-center justify-center transition-colors" title="Delete Item" type="button">
+<span class="material-symbols-outlined text-[18px]">delete</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Item 6: Drinks preview (IMAGE_31 iced tea) -->
+<tr class="hover:bg-surface-container-low/50 transition-colors group">
+<td class="py-space-md px-space-lg text-center">
+<input class="w-4 h-4 rounded text-primary focus:ring-0 cursor-pointer" type="checkbox"/>
+</td>
+<td class="py-space-md px-space-md">
+<div class="flex items-center gap-space-sm">
+<img class="w-14 h-14 rounded-xl object-cover shadow-sm shrink-0" data-alt="A tall condensation-beaded glass filled with iced Filipino style sweet calamansi iced tea, clear ice cubes, fresh lemon and lime wedges with a sprig of fresh mint on top, wooden bistro table backdrop in warm sunlight." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAmY5DhldcHBqs9uTZWe_fUave_DPAtCrI43NcsHGmIQAkbbYzea0QZeqEfC19Kvv_WWyMdz5WW95nRB8UkpYkD1ot-1Lv1uNEVymHdCfszq2WNO9maaLZLK7Bpgu4xDX_KRAJjw6XFb_SvWykItZxwxYbMThlAxu5osoZCwyelYGC600AOm68JMaCCcmwqnN7bE1i00C2xC0w4pOHlU23w88ftVUoRIbER4q8-vdcK"/>
+<div class="flex flex-col min-w-0">
+<span class="font-headline-sm text-[15px] font-bold text-on-surface truncate">House Calamansi Iced Tea</span>
+<span class="font-label-sm text-label-sm text-sonic-muted font-mono">SKU-SLG-006</span>
+</div>
+</div>
+</td>
+<td class="py-space-md px-space-md">
+<p class="font-body-sm text-body-sm text-on-surface-variant line-clamp-2 max-w-xs">
+                    Freshly squeezed local calamansi brewed with wild raw honey and freshly steeped black tea leaves over crushed ice.
+                  </p>
+</td>
+<td class="py-space-md px-space-md whitespace-nowrap">
+<span class="font-headline-md text-headline-sm font-bold text-primary">₱45.00</span>
+</td>
+<td class="py-space-md px-space-md whitespace-nowrap">
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-surface-container peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-sonic-success shadow-inner"></div>
+<span class="ml-2 font-label-sm text-label-sm text-on-surface font-medium">In Stock</span>
+</label>
+</td>
+<td class="py-space-md px-space-md whitespace-nowrap">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-sonic-success/15 text-sonic-success font-label-sm text-label-sm font-bold">
+<span class="w-1.5 h-1.5 rounded-full bg-sonic-success"></span>
+                    Active
+                  </span>
+</td>
+<td class="py-space-md px-space-lg text-right whitespace-nowrap">
+<div class="flex items-center justify-end gap-1.5">
+<button class="px-3 py-1.5 rounded-lg bg-sonic-blue-light hover:bg-primary-fixed text-primary font-label-sm text-label-sm font-semibold transition-colors flex items-center gap-1" onclick="toggleEditModal(true)" type="button">
+<span class="material-symbols-outlined text-[15px]">edit</span>
+                      Edit
+                    </button>
+<button class="w-8 h-8 rounded-lg hover:bg-error-container hover:text-sonic-danger text-sonic-muted flex items-center justify-center transition-colors" title="Delete Item" type="button">
+<span class="material-symbols-outlined text-[18px]">delete</span>
+</button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Table Footer Pagination and Batch Operations -->
+<div class="px-space-lg py-space-md bg-surface-container-low flex flex-col sm:flex-row items-center justify-between gap-space-sm">
+<div class="flex items-center gap-space-sm text-sonic-muted font-label-sm text-label-sm">
+<span>Showing <strong class="text-on-surface">1 - 6</strong> of <strong class="text-on-surface">6</strong> dishes</span>
+<span class="text-outline-variant">•</span>
+<button class="text-primary hover:underline font-semibold">Select All 6</button>
+</div>
+<div class="flex items-center gap-space-xs">
+<button class="w-8 h-8 rounded-lg flex items-center justify-center bg-surface text-sonic-muted/50 cursor-not-allowed" disabled="">
+<span class="material-symbols-outlined text-[18px]">chevron_left</span>
+</button>
+<span class="w-8 h-8 rounded-lg flex items-center justify-center bg-primary text-on-primary font-label-sm text-label-sm font-bold shadow-sm">1</span>
+<button class="w-8 h-8 rounded-lg flex items-center justify-center bg-surface text-sonic-muted/50 cursor-not-allowed" disabled="">
+<span class="material-symbols-outlined text-[18px]">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- EDIT ITEM MODAL / SLIDE-OVER OVERLAY -->
+<div class="fixed inset-0 z-50 flex items-center justify-center bg-inverse-surface/60 backdrop-blur-sm transition-opacity duration-300" id="edit-item-modal">
+<div class="relative w-full max-w-2xl bg-sonic-surface rounded-3xl shadow-2xl overflow-hidden flex flex-col max-h-[92vh] m-4 animate-in fade-in zoom-in-95 duration-200">
+<!-- Modal Header -->
+<div class="px-space-xl py-space-lg bg-surface-container-low flex items-center justify-between">
+<div class="flex items-center gap-space-sm">
+<div class="w-10 h-10 rounded-xl bg-primary-container text-on-primary flex items-center justify-center shadow-sm">
+<span class="material-symbols-outlined text-[22px]">restaurant_menu</span>
+</div>
+<div class="flex flex-col">
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Edit Menu Item</h3>
+<span class="font-label-sm text-label-sm text-sonic-muted">Beef Tapsilog Special · SKU-SLG-001</span>
+</div>
+</div>
+<button class="w-9 h-9 rounded-full bg-sonic-surface hover:bg-surface-container flex items-center justify-center text-on-surface-variant hover:text-on-surface transition-colors shadow-sm" onclick="toggleEditModal(false)" type="button">
+<span class="material-symbols-outlined text-[20px]">close</span>
+</button>
+</div>
+<!-- Modal Body (Scrollable) -->
+<div class="p-space-xl overflow-y-auto flex flex-col gap-space-lg">
+<!-- Row 1: Item Name & Category -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-space-md">
+<div class="flex flex-col gap-1.5">
+<label class="font-label-sm text-label-sm text-on-surface font-semibold">Item Name *</label>
+<input class="px-space-md py-2.5 rounded-xl bg-sonic-surface text-on-surface font-body-md text-body-md shadow-sm focus:outline-none focus:ring-2 focus:ring-primary-container" type="text" value="Beef Tapsilog Special"/>
+</div>
+<div class="flex flex-col gap-1.5">
+<label class="font-label-sm text-label-sm text-on-surface font-semibold">Category *</label>
+<select class="px-space-md py-2.5 rounded-xl bg-sonic-surface text-on-surface font-body-md text-body-md shadow-sm focus:outline-none focus:ring-2 focus:ring-primary-container cursor-pointer">
+<option selected="">Silog Meals</option>
+<option>Rice Bowls</option>
+<option>Drinks &amp; Beverages</option>
+<option>Desserts</option>
+</select>
+</div>
+</div>
+<!-- Row 2: Price & SKU -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-space-md">
+<div class="flex flex-col gap-1.5">
+<label class="font-label-sm text-label-sm text-on-surface font-semibold">Price (PHP) *</label>
+<div class="relative">
+<span class="absolute left-3.5 top-2.5 font-headline-sm text-headline-sm text-primary font-bold">₱</span>
+<input class="w-full pl-9 pr-space-md py-2.5 rounded-xl bg-sonic-surface text-on-surface font-headline-sm text-headline-sm font-bold shadow-sm focus:outline-none focus:ring-2 focus:ring-primary-container" type="text" value="140.00"/>
+</div>
+</div>
+<div class="flex flex-col gap-1.5">
+<label class="font-label-sm text-label-sm text-on-surface font-semibold">SKU / Item Identifier</label>
+<input class="px-space-md py-2.5 rounded-xl bg-surface-container-low text-on-surface-variant font-body-md text-body-md font-mono shadow-sm focus:outline-none" type="text" value="SKU-SLG-001"/>
+</div>
+</div>
+<!-- Row 3: Description -->
+<div class="flex flex-col gap-1.5">
+<div class="flex items-center justify-between">
+<label class="font-label-sm text-label-sm text-on-surface font-semibold">Description</label>
+<span class="font-label-sm text-label-sm text-sonic-muted">118 / 200 characters</span>
+</div>
+<textarea class="px-space-md py-2.5 rounded-xl bg-sonic-surface text-on-surface font-body-md text-body-md shadow-sm focus:outline-none focus:ring-2 focus:ring-primary-container resize-none" rows="3">Marinated tender beef tapa slices served with fragrant garlic sinangag, golden sunny-side-up egg, and pickled papaya atchara.</textarea>
+</div>
+<!-- Row 4: Photo Management & Preview -->
+<div class="flex flex-col gap-1.5">
+<label class="font-label-sm text-label-sm text-on-surface font-semibold">Item Presentation Photo</label>
+<div class="p-space-md rounded-2xl bg-surface-container-low flex flex-col sm:flex-row items-center gap-space-md">
+<img class="w-24 h-24 rounded-2xl object-cover shadow-md shrink-0" data-alt="Traditional Filipino beef tapsilog served on a ceramic plate, featuring thinly sliced tender garlic-cured beef tapa strips alongside a generous mound of golden garlic sinangag fried rice topped with fried crispy garlic, and a perfect sunny side egg with runny yolk. Warm bright restaurant lighting, appetizing close-up." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAvxywrecM7Nn0dMieAI-3cG1KsA7x_P_ATTWMPzDM1WQY8bTyf-1GtrQalL0KM6NvpYe-6iEm5lQL7RgHVuzxD_wFgy2RJ9MqSDrpkMCV-xSgV8aSNaL2V12csNltNTAe3U6ZzdgMwv9kZsh2LOcZDXd7GsW0Q3FS9j9XQZRc6caHjScXq-xiqmevpAFPnDI0LXTh8uVHW5RT_YygL3YXfbVSlC7kQkr9uJsclcI58"/>
+<div class="flex flex-col gap-2 min-w-0">
+<div class="flex items-center gap-space-xs">
+<button class="px-space-md py-2 rounded-full bg-primary text-on-primary font-label-sm text-label-sm font-semibold hover:bg-sonic-blue-dark transition-colors shadow-sm flex items-center gap-1.5" type="button">
+<span class="material-symbols-outlined text-[16px]">upload</span>
+                  Upload New Image
+                </button>
+<button class="px-space-md py-2 rounded-full bg-surface-container-high hover:bg-surface-variant text-on-surface font-label-sm text-label-sm font-semibold transition-colors" type="button">
+                  Remove Photo
+                </button>
+</div>
+<span class="font-body-sm text-body-sm text-sonic-muted">
+                Recommended 800×800px or 1:1 square. PNG, JPG or WebP up to 4MB.
+              </span>
+</div>
+</div>
+</div>
+<!-- Row 5: Stock Availability Toggle -->
+<div class="p-space-md rounded-2xl bg-sonic-blue-light/50 flex items-center justify-between">
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-primary text-[24px]">inventory_2</span>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface font-bold">Available for Ordering</span>
+<span class="font-body-sm text-body-sm text-sonic-muted">Toggle off immediately if ingredients run out</span>
+</div>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-12 h-7 bg-surface-container-highest peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-6 after:w-6 after:transition-all peer-checked:bg-sonic-success shadow-inner"></div>
+</label>
+</div>
+<!-- Policy Note Callout Banner -->
+<div class="p-space-md rounded-2xl bg-sonic-warning/10 flex items-start gap-space-sm">
+<span class="material-symbols-outlined text-sonic-warning text-[20px] shrink-0 mt-0.5">bolt</span>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm font-bold text-on-surface">Live Pricing &amp; Order Policy</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+              Price updates apply to upcoming carts instantly. Pending or dispatched orders already checked out by customers are not altered.
+            </p>
+</div>
+</div>
+</div>
+<!-- Modal Footer -->
+<div class="px-space-xl py-space-md bg-surface-container-low flex items-center justify-between">
+<button class="font-label-sm text-label-sm text-sonic-danger hover:underline flex items-center gap-1 font-semibold" type="button">
+<span class="material-symbols-outlined text-[16px]">archive</span>
+          Archive Dish
+        </button>
+<div class="flex items-center gap-space-sm">
+<button class="px-space-lg py-2.5 rounded-full bg-surface-container hover:bg-surface-variant text-on-surface font-label-md text-label-md transition-colors" onclick="toggleEditModal(false)" type="button">
+            Cancel
+          </button>
+<button class="px-space-xl py-2.5 rounded-full bg-primary-container hover:bg-sonic-blue-dark text-on-primary font-label-md text-label-md shadow-md transition-all flex items-center gap-1.5" onclick="toggleEditModal(false)" type="button">
+<span class="material-symbols-outlined text-[18px]">check</span>
+            Save Changes
+          </button>
+</div>
+</div>
+</div>
+</div>
+<script>
+    function toggleEditModal(show) {
+      const modal = document.getElementById('edit-item-modal');
+      const btnTable = document.getElementById('btn-view-table');
+      const btnModal = document.getElementById('btn-view-modal');
+
+      if (show) {
+        modal.classList.remove('hidden');
+        modal.classList.add('flex');
+        
+        btnModal.classList.add('bg-primary', 'text-on-primary', 'shadow-sm');
+        btnModal.classList.remove('text-on-surface-variant');
+
+        btnTable.classList.remove('bg-primary', 'text-on-primary', 'shadow-sm');
+        btnTable.classList.add('text-on-surface-variant');
+      } else {
+        modal.classList.add('hidden');
+        modal.classList.remove('flex');
+
+        btnTable.classList.add('bg-primary', 'text-on-primary', 'shadow-sm');
+        btnTable.classList.remove('text-on-surface-variant');
+
+        btnModal.classList.remove('bg-primary', 'text-on-primary', 'shadow-sm');
+        btnModal.classList.add('text-on-surface-variant');
+      }
+    }
+  </script>
+</div></main></div></body></html>

@@ -1,0 +1,1001 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Montserrat:wght@600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: 'class', theme: { extend: { colors: { 'outline': '#757688', 'surface-container-lowest': '#ffffff', 'inverse-surface': '#292e51', 'sonic-blue-dark': '#0F27B8', 'sonic-success': '#16A34A', 'on-tertiary-fixed': '#001e2d', 'secondary-fixed': '#e4dfff', 'sonic-bg': '#F5F7FF', 'sonic-blue-light': '#E8ECFE', 'surface-variant': '#dfe0ff', 'on-error-container': '#93000a', 'error': '#ba1a1a', 'surface-bright': '#fbf8ff', 'primary-container': '#183cf0', 'tertiary': '#004561', 'secondary': '#3b00e6', 'tertiary-fixed-dim': '#7fd0ff', 'primary': '#0026c0', 'surface-container-low': '#f4f2ff', 'surface-container-high': '#e6e6ff', 'outline-variant': '#c4c5d9', 'on-secondary-fixed-variant': '#3a00df', 'error-container': '#ffdad6', 'surface': '#fbf8ff', 'on-primary-fixed': '#000e5f', 'on-background': '#13183b', 'on-secondary-fixed': '#150066', 'on-secondary-container': '#ddd8ff', 'inverse-on-surface': '#f0efff', 'on-primary-container': '#c5cbff', 'surface-container-highest': '#dfe0ff', 'sonic-muted': '#5B6386', 'primary-fixed': '#dfe0ff', 'tertiary-container': '#005e82', 'surface-tint': '#2445f6', 'on-primary-fixed-variant': '#002ad0', 'sonic-bolt': '#FFD60A', 'sonic-warning': '#F59E0B', 'on-error': '#ffffff', 'inverse-primary': '#bbc3ff', 'sonic-border': '#DDE2F5', 'primary-fixed-dim': '#bbc3ff', 'sonic-surface': '#FFFFFF', 'on-primary': '#ffffff', 'secondary-fixed-dim': '#c6c0ff', 'on-surface': '#13183b', 'surface-dim': '#d4d7ff', 'background': '#fbf8ff', 'on-tertiary': '#ffffff', 'on-tertiary-container': '#93d6ff', 'secondary-container': '#5537fe', 'sonic-danger': '#DC2626', 'on-surface-variant': '#444656', 'tertiary-fixed': '#c5e7ff', 'on-secondary': '#ffffff', 'surface-container': '#edecff', 'on-tertiary-fixed-variant': '#004c6a' }, borderRadius: { 'DEFAULT': '0.25rem', 'lg': '0.5rem', 'xl': '0.75rem', 'full': '9999px' }, spacing: { 'gutter': '1rem', 'space-xs': '0.25rem', 'space-md': '1rem', 'space-xl': '2rem', 'space-sm': '0.5rem', 'space-lg': '1.5rem', 'margin': '1rem', 'gutter-desktop': '1.5rem', 'margin-desktop': '2rem' }, fontFamily: { 'headline-sm': ['Montserrat'], 'body-md': ['Inter'], 'label-md': ['Montserrat'], 'headline-md': ['Montserrat'], 'label-lg': ['Montserrat'], 'body-sm': ['Inter'], 'label-sm': ['Inter'], 'price-display': ['Montserrat'], 'headline-lg': ['Montserrat'], 'body-lg': ['Inter'] }, fontSize: { 'headline-sm': ['18px', { lineHeight: '24px', fontWeight: '600' }], 'body-md': ['15px', { lineHeight: '22px', fontWeight: '400' }], 'label-md': ['14px', { lineHeight: '18px', fontWeight: '600' }], 'headline-md': ['22px', { lineHeight: '28px', letterSpacing: '-0.01em', fontWeight: '700' }], 'label-lg': ['16px', { lineHeight: '20px', fontWeight: '600' }], 'body-sm': ['13px', { lineHeight: '18px', fontWeight: '400' }], 'label-sm': ['12px', { lineHeight: '16px', fontWeight: '500' }], 'price-display': ['18px', { lineHeight: '24px', fontWeight: '700' }], 'headline-lg': ['28px', { lineHeight: '36px', letterSpacing: '-0.02em', fontWeight: '800' }], 'body-lg': ['16px', { lineHeight: '24px', fontWeight: '400' }] } } } };</script></head><body class="bg-sonic-bg text-on-surface min-h-screen antialiased selection:bg-primary-fixed selection:text-on-primary-fixed"><aside class="fixed left-0 top-0 bottom-0 h-screen w-64 bg-[#0B1033] z-50 flex flex-col justify-between shadow-[0_2px_8px_rgba(11,16,51,0.18)] overflow-y-auto"><div class="flex flex-col"><div class="h-16 px-space-lg flex items-center gap-space-sm"><img alt="Super Sonic Delivery" class="w-9 h-9 object-contain rounded-xl" src="https://lh3.googleusercontent.com/aida/ALJJyrBFSEeHZhBBv7ANBUTkBYMW9XSdyksrbH08DFEIn0srcVgUMhmDK8GAIJDy7LdKoQZ_CD0Ak3-RDhOF9hkT_p5u5P78s5YN6iaRAJwyAKRzK0jcTBKC3BrtP3KRQXvshAcoW5kHdpu_oPDN1XW-r_9vw2Nip35UW94moAqjHm17dp_9QaZt_eAAE2kE9kdKjRprFW17sZwvVhvXE5n3aKAlJkOudLyhE7ZlO2hSTFtgKYgcOc9gzi1SiXFU"/><div class="flex flex-col"><span class="font-headline-sm text-headline-sm text-on-primary leading-tight tracking-tight">Super Sonic</span><span class="font-label-sm text-label-sm text-outline-variant font-medium tracking-wide uppercase">Admin Console</span></div></div><nav class="mt-space-md px-space-sm flex flex-col gap-1" data-active-classes="bg-primary-container text-on-primary font-bold shadow-[0_2px_8px_rgba(11,16,51,0.12)]"><a class="flex items-center px-space-md py-space-sm rounded-xl text-outline-variant hover:bg-surface-variant/10 hover:text-on-primary transition-colors font-label-md text-label-md" data-path="live-orders" href="#">Live Orders</a><a class="flex items-center px-space-md py-space-sm rounded-xl text-outline-variant hover:bg-surface-variant/10 hover:text-on-primary transition-colors font-label-md text-label-md" data-path="restaurants" href="#">Restaurants</a><a class="flex items-center px-space-md py-space-sm rounded-xl text-outline-variant hover:bg-surface-variant/10 hover:text-on-primary transition-colors font-label-md text-label-md" data-path="menus" href="#">Menus</a><a class="flex items-center px-space-md py-space-sm rounded-xl text-outline-variant hover:bg-surface-variant/10 hover:text-on-primary transition-colors font-label-md text-label-md" data-path="riders-and-customers" href="#">Riders &amp; Customers</a><a class="flex items-center px-space-md py-space-sm rounded-xl text-outline-variant hover:bg-surface-variant/10 hover:text-on-primary transition-colors font-label-md text-label-md" data-path="settlements" href="#">Settlements</a><div class="pt-space-md pb-space-xs px-space-md"><span class="font-label-sm text-label-sm text-outline tracking-wider font-semibold uppercase">Administration</span></div><a class="flex items-center px-space-md py-space-sm rounded-xl text-outline-variant hover:bg-surface-variant/10 hover:text-on-primary transition-colors font-label-md text-label-md" data-path="reports" href="#">Reports</a><a aria-current="page" class="flex items-center px-space-md py-space-sm rounded-xl transition-colors bg-primary-container text-on-primary font-bold shadow-[0_2px_8px_rgba(11,16,51,0.12)]" data-path="settings" href="#">Settings</a><a class="flex items-center px-space-md py-space-sm rounded-xl text-outline-variant hover:bg-surface-variant/10 hover:text-on-primary transition-colors font-label-md text-label-md" data-path="rider-savings" href="#">Rider Savings</a></nav></div><div class="p-space-sm m-space-sm rounded-xl bg-surface-variant/5 backdrop-blur-sm flex items-center justify-between"><div class="flex items-center gap-space-sm"><div class="relative"><div class="w-9 h-9 rounded-full bg-primary-container text-on-primary flex items-center justify-center font-headline-sm text-headline-sm font-bold">EM</div><span class="absolute bottom-0 right-0 w-2.5 h-2.5 rounded-full bg-sonic-success ring-2 ring-[#0B1033]"></span></div><div class="flex flex-col"><span class="font-label-md text-label-md text-on-primary leading-tight font-semibold">Elena M.</span><span class="font-label-sm text-label-sm text-outline-variant font-medium">Admin</span></div></div><button class="p-1.5 rounded-lg text-outline-variant hover:text-on-primary hover:bg-surface-variant/10 transition-colors" title="Sign out"><span class="material-symbols-outlined text-[20px]">logout</span></button></div></aside><div class="pl-64 flex flex-col min-h-screen"><header class="fixed top-0 left-64 right-0 h-16 bg-sonic-surface/90 backdrop-blur-xl z-40 flex items-center justify-between px-space-lg shadow-[0_1px_8px_rgba(11,16,51,0.04)]"><div class="flex items-center gap-space-md flex-1 max-w-xl"><div class="relative w-full"><span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-sonic-muted text-[18px]">search</span><input class="w-full pl-9 pr-14 py-2 bg-sonic-bg rounded-xl font-body-sm text-body-sm text-on-surface placeholder:text-sonic-muted focus:outline-none focus:ring-2 focus:ring-primary focus:bg-sonic-surface transition-all" placeholder="Search orders, riders, stores..." type="text"/><kbd class="absolute right-3 top-1/2 -translate-y-1/2 font-label-sm text-label-sm text-sonic-muted bg-sonic-surface px-1.5 py-0.5 rounded shadow-[0_1px_2px_rgba(11,16,51,0.05)]">⌘K</kbd></div><div class="hidden lg:flex items-center gap-space-xs px-3 py-1.5 rounded-full bg-sonic-blue-light text-primary font-label-sm text-label-sm whitespace-nowrap"><span class="material-symbols-outlined text-[16px]">hub</span><span>Sipocot Main Hub</span></div></div><div class="flex items-center gap-space-md"><button class="relative p-2 rounded-full hover:bg-sonic-bg text-on-surface-variant hover:text-on-surface transition-colors" title="Notifications"><span class="material-symbols-outlined text-[20px]">notifications</span><span class="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-sonic-danger ring-2 ring-sonic-surface"></span></button><div class="h-6 w-px bg-sonic-border"></div><button class="flex items-center gap-space-xs px-space-md py-2 rounded-full bg-primary-container text-on-primary hover:bg-sonic-blue-dark transition-colors font-label-md text-label-md font-semibold shadow-[0_2px_8px_rgba(24,60,240,0.2)]"><span class="material-symbols-outlined text-[18px]">add</span><span>New Dispatch</span></button></div></header><main class="w-full pt-16 bg-sonic-bg flex-1 p-gutter-desktop"><div class="flex flex-col w-full">
+<!-- Page Header Area -->
+<div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-space-md mb-space-lg">
+<div class="flex flex-col">
+<div class="flex items-center gap-space-xs text-primary font-label-sm text-label-sm font-semibold tracking-wider uppercase mb-1">
+<span>Administration</span>
+<span class="text-outline-variant">•</span>
+<span class="text-sonic-muted">Sipocot Hub Configuration</span>
+</div>
+<h1 class="font-headline-lg text-headline-lg text-on-surface tracking-tight">Settings &amp; Pricing Engine</h1>
+<p class="font-body-md text-body-md text-sonic-muted mt-0.5">
+        Configure delivery tariffs, rider compensation matrices, gas allowances, and hub deductions.
+      </p>
+</div>
+<!-- Quick action buttons -->
+<div class="flex items-center gap-space-sm self-start lg:self-auto">
+<button class="px-space-md py-2.5 rounded-full bg-sonic-surface text-primary font-label-md text-label-md font-semibold shadow-sm hover:bg-sonic-blue-light transition-all flex items-center gap-space-xs" type="button">
+<span class="material-symbols-outlined text-[18px]">undo</span>
+<span>Discard Changes</span>
+</button>
+<button class="px-space-lg py-2.5 rounded-full bg-primary-container text-on-primary font-label-md text-label-md font-semibold shadow-md hover:bg-sonic-blue-dark transition-all flex items-center gap-space-xs" type="button">
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span>Save All Configurations</span>
+</button>
+</div>
+</div>
+<!-- Universal Info Banner -->
+<div class="mb-space-lg rounded-xl bg-sonic-blue-light p-space-md shadow-sm flex items-start sm:items-center justify-between gap-space-md">
+<div class="flex items-start sm:items-center gap-space-sm text-primary">
+<div class="w-8 h-8 rounded-full bg-sonic-surface text-primary-container flex items-center justify-center shrink-0 shadow-sm">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">bolt</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface font-medium leading-relaxed">
+<span class="font-semibold text-primary">Active Engine Policy:</span> Changes apply to new orders and deliveries only. Ongoing dispatches, locked settlement shifts, and historical order records remain unchanged.
+      </p>
+</div>
+<span class="hidden md:inline-flex px-2.5 py-1 rounded-full bg-sonic-surface text-primary font-label-sm text-label-sm font-semibold shrink-0 shadow-sm">
+      v2.4 Live
+    </span>
+</div>
+<!-- Top Navigation Tabs (Pill Segmented Controller) -->
+<div class="mb-space-lg p-1.5 bg-sonic-surface rounded-full shadow-sm flex flex-wrap items-center gap-1 max-w-full overflow-x-auto">
+<button class="settings-tab-btn active-tab flex items-center gap-2 px-space-md py-2 rounded-full font-label-md text-label-md font-semibold transition-all bg-primary-container text-on-primary shadow-sm" onclick="switchSettingsTab('barangay-fees', this)" type="button">
+<span class="material-symbols-outlined text-[18px]">map</span>
+<span>Barangay Fees</span>
+</button>
+<button class="settings-tab-btn flex items-center gap-2 px-space-md py-2 rounded-full font-label-md text-label-md font-semibold text-sonic-muted hover:text-on-surface hover:bg-sonic-bg transition-all" onclick="switchSettingsTab('gas-allowance', this)" type="button">
+<span class="material-symbols-outlined text-[18px]">local_gas_station</span>
+<span>Gas Allowance</span>
+<span class="px-2 py-0.5 rounded-full bg-sonic-blue-light text-primary font-label-sm text-label-sm">7 Tiers</span>
+</button>
+<button class="settings-tab-btn flex items-center gap-2 px-space-md py-2 rounded-full font-label-md text-label-md font-semibold text-sonic-muted hover:text-on-surface hover:bg-sonic-bg transition-all" onclick="switchSettingsTab('deductions', this)" type="button">
+<span class="material-symbols-outlined text-[18px]">receipt_long</span>
+<span>Deductions</span>
+<span class="px-2 py-0.5 rounded-full bg-sonic-blue-light text-primary font-label-sm text-label-sm">3 Active</span>
+</button>
+<button class="settings-tab-btn flex items-center gap-2 px-space-md py-2 rounded-full font-label-md text-label-md font-semibold text-sonic-muted hover:text-on-surface hover:bg-sonic-bg transition-all" onclick="switchSettingsTab('rates-split', this)" type="button">
+<span class="material-symbols-outlined text-[18px]">pie_chart</span>
+<span>Rates &amp; Split</span>
+<span class="px-2 py-0.5 rounded-full bg-surface-container-high text-secondary-container font-label-sm text-label-sm">70 / 30</span>
+</button>
+</div>
+<!-- Tab 1: Barangay Fees Content -->
+<div class="settings-pane flex flex-col gap-space-lg" id="tab-barangay-fees">
+<!-- Top Filter & Action Bar -->
+<div class="bg-sonic-surface p-space-md rounded-xl shadow-sm flex flex-col md:flex-row items-stretch md:items-center justify-between gap-space-md">
+<div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-space-sm flex-1">
+<div class="relative flex-1 max-w-md">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-sonic-muted text-[18px]">search</span>
+<input class="w-full pl-9 pr-4 py-2 bg-sonic-bg rounded-xl font-body-sm text-body-sm text-on-surface placeholder:text-sonic-muted focus:outline-none focus:ring-2 focus:ring-primary focus:bg-sonic-surface transition-all" id="barangay-search-input" placeholder="Search barangay name..." type="text"/>
+</div>
+<div class="relative">
+<select class="appearance-none bg-sonic-bg text-on-surface font-label-md text-label-md pl-4 pr-10 py-2 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary cursor-pointer transition-all">
+<option selected="">Sipocot, Camarines Sur (All Zones)</option>
+<option>Zone 1 — Urban Core</option>
+<option>Zone 2 — Outer Corridor</option>
+<option>Zone 3 — Rural Periphery</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-sonic-muted text-[18px]">expand_more</span>
+</div>
+</div>
+<button class="px-space-md py-2 rounded-full bg-primary-container text-on-primary font-label-md text-label-md font-semibold hover:bg-sonic-blue-dark transition-all flex items-center justify-center gap-space-xs shadow-sm" type="button">
+<span class="material-symbols-outlined text-[18px]">add_location_alt</span>
+<span>+ Add barangay</span>
+</button>
+</div>
+<!-- Data Table Container -->
+<div class="bg-sonic-surface rounded-xl shadow-sm overflow-hidden flex flex-col">
+<div class="overflow-x-auto">
+<table class="w-full text-left font-body-sm text-body-sm">
+<thead>
+<tr class="bg-sonic-bg text-sonic-muted font-label-sm text-label-sm uppercase tracking-wider">
+<th class="py-3.5 px-space-md font-semibold">Barangay Name</th>
+<th class="py-3.5 px-space-md font-semibold">Municipality / Zone</th>
+<th class="py-3.5 px-space-md font-semibold">Base Delivery Fee</th>
+<th class="py-3.5 px-space-md font-semibold">Hub Distance Est.</th>
+<th class="py-3.5 px-space-md font-semibold text-center">Status</th>
+<th class="py-3.5 px-space-md font-semibold text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y-0 text-on-surface">
+<!-- Row 1: Poblacion Core -->
+<tr class="hover:bg-sonic-bg/50 transition-colors">
+<td class="py-3.5 px-space-md font-semibold text-on-surface flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-primary text-[18px]">location_on</span>
+<span>San Jose (Poblacion)</span>
+</td>
+<td class="py-3.5 px-space-md text-sonic-muted">Sipocot • Zone 1 Urban Core</td>
+<td class="py-3.5 px-space-md">
+<div class="relative w-28">
+<span class="absolute left-3 top-1/2 -translate-y-1/2 font-price-display text-price-display text-primary">₱</span>
+<input class="w-full pl-7 pr-3 py-1 bg-sonic-bg rounded-lg font-price-display text-price-display text-on-surface focus:outline-none focus:ring-2 focus:ring-primary focus:bg-sonic-surface transition-all text-right font-bold" type="text" value="40.00"/>
+</div>
+</td>
+<td class="py-3.5 px-space-md text-on-surface font-medium">1.2 km</td>
+<td class="py-3.5 px-space-md text-center">
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-9 h-5 bg-sonic-border peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-primary-container"></div>
+</label>
+</td>
+<td class="py-3.5 px-space-md text-right">
+<div class="inline-flex items-center gap-1">
+<button class="p-1.5 rounded-lg text-sonic-success hover:bg-sonic-blue-light transition-colors" title="Save" type="button">
+<span class="material-symbols-outlined text-[18px]">check</span>
+</button>
+<button class="p-1.5 rounded-lg text-sonic-muted hover:text-primary hover:bg-sonic-bg transition-colors" title="Edit" type="button">
+<span class="material-symbols-outlined text-[18px]">edit</span>
+</button>
+<button class="p-1.5 rounded-lg text-sonic-muted hover:text-sonic-danger hover:bg-sonic-bg transition-colors" title="Archive" type="button">
+<span class="material-symbols-outlined text-[18px]">delete</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 2: Centro (Inline Editing Highlight State) -->
+<tr class="bg-sonic-blue-light/60">
+<td class="py-3.5 px-space-md font-semibold text-on-surface flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-primary text-[18px]">location_on</span>
+<span>Centro</span>
+<span class="px-2 py-0.5 rounded-full bg-sonic-surface text-primary font-label-sm text-label-sm font-semibold ml-1">Editing</span>
+</td>
+<td class="py-3.5 px-space-md text-on-surface-variant">Sipocot • Zone 1 Urban Core</td>
+<td class="py-3.5 px-space-md">
+<div class="relative w-28 ring-2 ring-primary rounded-lg shadow-sm">
+<span class="absolute left-3 top-1/2 -translate-y-1/2 font-price-display text-price-display text-primary">₱</span>
+<input class="w-full pl-7 pr-3 py-1 bg-sonic-surface rounded-lg font-price-display text-price-display text-primary font-bold text-right outline-none" type="text" value="40.00"/>
+</div>
+</td>
+<td class="py-3.5 px-space-md text-on-surface font-medium">0.8 km</td>
+<td class="py-3.5 px-space-md text-center">
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-9 h-5 bg-sonic-border rounded-full peer peer-checked:after:translate-x-full after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-primary-container"></div>
+</label>
+</td>
+<td class="py-3.5 px-space-md text-right">
+<div class="inline-flex items-center gap-1.5">
+<button class="px-2.5 py-1 rounded-full bg-primary-container text-on-primary font-label-sm text-label-sm font-semibold flex items-center gap-1 shadow-sm" type="button">
+<span class="material-symbols-outlined text-[14px]">done</span>
+<span>Save</span>
+</button>
+<button class="px-2 py-1 rounded-full bg-sonic-surface text-sonic-muted hover:text-on-surface font-label-sm text-label-sm" type="button">
+                    Cancel
+                  </button>
+</div>
+</td>
+</tr>
+<!-- Row 3: South Centro -->
+<tr class="hover:bg-sonic-bg/50 transition-colors">
+<td class="py-3.5 px-space-md font-semibold text-on-surface flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-primary text-[18px]">location_on</span>
+<span>South Centro</span>
+</td>
+<td class="py-3.5 px-space-md text-sonic-muted">Sipocot • Zone 1 Urban Core</td>
+<td class="py-3.5 px-space-md">
+<div class="relative w-28">
+<span class="absolute left-3 top-1/2 -translate-y-1/2 font-price-display text-price-display text-primary">₱</span>
+<input class="w-full pl-7 pr-3 py-1 bg-sonic-bg rounded-lg font-price-display text-price-display text-on-surface focus:outline-none focus:ring-2 focus:ring-primary focus:bg-sonic-surface transition-all text-right font-bold" type="text" value="40.00"/>
+</div>
+</td>
+<td class="py-3.5 px-space-md text-on-surface font-medium">1.5 km</td>
+<td class="py-3.5 px-space-md text-center">
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-9 h-5 bg-sonic-border peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-primary-container"></div>
+</label>
+</td>
+<td class="py-3.5 px-space-md text-right">
+<div class="inline-flex items-center gap-1">
+<button class="p-1.5 rounded-lg text-sonic-success hover:bg-sonic-blue-light transition-colors" title="Save" type="button">
+<span class="material-symbols-outlined text-[18px]">check</span>
+</button>
+<button class="p-1.5 rounded-lg text-sonic-muted hover:text-primary hover:bg-sonic-bg transition-colors" title="Edit" type="button">
+<span class="material-symbols-outlined text-[18px]">edit</span>
+</button>
+<button class="p-1.5 rounded-lg text-sonic-muted hover:text-sonic-danger hover:bg-sonic-bg transition-colors" title="Archive" type="button">
+<span class="material-symbols-outlined text-[18px]">delete</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 4: North Centro -->
+<tr class="hover:bg-sonic-bg/50 transition-colors">
+<td class="py-3.5 px-space-md font-semibold text-on-surface flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-primary text-[18px]">location_on</span>
+<span>North Centro</span>
+</td>
+<td class="py-3.5 px-space-md text-sonic-muted">Sipocot • Zone 1 Urban Core</td>
+<td class="py-3.5 px-space-md">
+<div class="relative w-28">
+<span class="absolute left-3 top-1/2 -translate-y-1/2 font-price-display text-price-display text-primary">₱</span>
+<input class="w-full pl-7 pr-3 py-1 bg-sonic-bg rounded-lg font-price-display text-price-display text-on-surface focus:outline-none focus:ring-2 focus:ring-primary focus:bg-sonic-surface transition-all text-right font-bold" type="text" value="40.00"/>
+</div>
+</td>
+<td class="py-3.5 px-space-md text-on-surface font-medium">1.7 km</td>
+<td class="py-3.5 px-space-md text-center">
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-9 h-5 bg-sonic-border peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-primary-container"></div>
+</label>
+</td>
+<td class="py-3.5 px-space-md text-right">
+<div class="inline-flex items-center gap-1">
+<button class="p-1.5 rounded-lg text-sonic-success hover:bg-sonic-blue-light transition-colors" title="Save" type="button">
+<span class="material-symbols-outlined text-[18px]">check</span>
+</button>
+<button class="p-1.5 rounded-lg text-sonic-muted hover:text-primary hover:bg-sonic-bg transition-colors" title="Edit" type="button">
+<span class="material-symbols-outlined text-[18px]">edit</span>
+</button>
+<button class="p-1.5 rounded-lg text-sonic-muted hover:text-sonic-danger hover:bg-sonic-bg transition-colors" title="Archive" type="button">
+<span class="material-symbols-outlined text-[18px]">delete</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 5: Tara -->
+<tr class="hover:bg-sonic-bg/50 transition-colors">
+<td class="py-3.5 px-space-md font-semibold text-on-surface flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-primary text-[18px]">location_on</span>
+<span>Tara</span>
+</td>
+<td class="py-3.5 px-space-md text-sonic-muted">Sipocot • Zone 2 Outer Corridor</td>
+<td class="py-3.5 px-space-md">
+<div class="relative w-28">
+<span class="absolute left-3 top-1/2 -translate-y-1/2 font-price-display text-price-display text-primary">₱</span>
+<input class="w-full pl-7 pr-3 py-1 bg-sonic-bg rounded-lg font-price-display text-price-display text-on-surface focus:outline-none focus:ring-2 focus:ring-primary focus:bg-sonic-surface transition-all text-right font-bold" type="text" value="45.00"/>
+</div>
+</td>
+<td class="py-3.5 px-space-md text-on-surface font-medium">2.9 km</td>
+<td class="py-3.5 px-space-md text-center">
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-9 h-5 bg-sonic-border peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-primary-container"></div>
+</label>
+</td>
+<td class="py-3.5 px-space-md text-right">
+<div class="inline-flex items-center gap-1">
+<button class="p-1.5 rounded-lg text-sonic-success hover:bg-sonic-blue-light transition-colors" title="Save" type="button">
+<span class="material-symbols-outlined text-[18px]">check</span>
+</button>
+<button class="p-1.5 rounded-lg text-sonic-muted hover:text-primary hover:bg-sonic-bg transition-colors" title="Edit" type="button">
+<span class="material-symbols-outlined text-[18px]">edit</span>
+</button>
+<button class="p-1.5 rounded-lg text-sonic-muted hover:text-sonic-danger hover:bg-sonic-bg transition-colors" title="Archive" type="button">
+<span class="material-symbols-outlined text-[18px]">delete</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 6: Gaongan -->
+<tr class="hover:bg-sonic-bg/50 transition-colors">
+<td class="py-3.5 px-space-md font-semibold text-on-surface flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-primary text-[18px]">location_on</span>
+<span>Gaongan</span>
+</td>
+<td class="py-3.5 px-space-md text-sonic-muted">Sipocot • Zone 2 Outer Corridor</td>
+<td class="py-3.5 px-space-md">
+<div class="relative w-28">
+<span class="absolute left-3 top-1/2 -translate-y-1/2 font-price-display text-price-display text-primary">₱</span>
+<input class="w-full pl-7 pr-3 py-1 bg-sonic-bg rounded-lg font-price-display text-price-display text-on-surface focus:outline-none focus:ring-2 focus:ring-primary focus:bg-sonic-surface transition-all text-right font-bold" type="text" value="50.00"/>
+</div>
+</td>
+<td class="py-3.5 px-space-md text-on-surface font-medium">3.8 km</td>
+<td class="py-3.5 px-space-md text-center">
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-9 h-5 bg-sonic-border peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-primary-container"></div>
+</label>
+</td>
+<td class="py-3.5 px-space-md text-right">
+<div class="inline-flex items-center gap-1">
+<button class="p-1.5 rounded-lg text-sonic-success hover:bg-sonic-blue-light transition-colors" title="Save" type="button">
+<span class="material-symbols-outlined text-[18px]">check</span>
+</button>
+<button class="p-1.5 rounded-lg text-sonic-muted hover:text-primary hover:bg-sonic-bg transition-colors" title="Edit" type="button">
+<span class="material-symbols-outlined text-[18px]">edit</span>
+</button>
+<button class="p-1.5 rounded-lg text-sonic-muted hover:text-sonic-danger hover:bg-sonic-bg transition-colors" title="Archive" type="button">
+<span class="material-symbols-outlined text-[18px]">delete</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 7: Bologan -->
+<tr class="hover:bg-sonic-bg/50 transition-colors">
+<td class="py-3.5 px-space-md font-semibold text-on-surface flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-primary text-[18px]">location_on</span>
+<span>Bologan</span>
+</td>
+<td class="py-3.5 px-space-md text-sonic-muted">Sipocot • Zone 3 Rural Periphery</td>
+<td class="py-3.5 px-space-md">
+<div class="relative w-28">
+<span class="absolute left-3 top-1/2 -translate-y-1/2 font-price-display text-price-display text-primary">₱</span>
+<input class="w-full pl-7 pr-3 py-1 bg-sonic-bg rounded-lg font-price-display text-price-display text-on-surface focus:outline-none focus:ring-2 focus:ring-primary focus:bg-sonic-surface transition-all text-right font-bold" type="text" value="60.00"/>
+</div>
+</td>
+<td class="py-3.5 px-space-md text-on-surface font-medium">5.1 km</td>
+<td class="py-3.5 px-space-md text-center">
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-9 h-5 bg-sonic-border peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-primary-container"></div>
+</label>
+</td>
+<td class="py-3.5 px-space-md text-right">
+<div class="inline-flex items-center gap-1">
+<button class="p-1.5 rounded-lg text-sonic-success hover:bg-sonic-blue-light transition-colors" title="Save" type="button">
+<span class="material-symbols-outlined text-[18px]">check</span>
+</button>
+<button class="p-1.5 rounded-lg text-sonic-muted hover:text-primary hover:bg-sonic-bg transition-colors" title="Edit" type="button">
+<span class="material-symbols-outlined text-[18px]">edit</span>
+</button>
+<button class="p-1.5 rounded-lg text-sonic-muted hover:text-sonic-danger hover:bg-sonic-bg transition-colors" title="Archive" type="button">
+<span class="material-symbols-outlined text-[18px]">delete</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 8: Calagbangan -->
+<tr class="hover:bg-sonic-bg/50 transition-colors">
+<td class="py-3.5 px-space-md font-semibold text-on-surface flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-primary text-[18px]">location_on</span>
+<span>Calagbangan</span>
+</td>
+<td class="py-3.5 px-space-md text-sonic-muted">Sipocot • Zone 3 Rural Periphery</td>
+<td class="py-3.5 px-space-md">
+<div class="relative w-28">
+<span class="absolute left-3 top-1/2 -translate-y-1/2 font-price-display text-price-display text-primary">₱</span>
+<input class="w-full pl-7 pr-3 py-1 bg-sonic-bg rounded-lg font-price-display text-price-display text-on-surface focus:outline-none focus:ring-2 focus:ring-primary focus:bg-sonic-surface transition-all text-right font-bold" type="text" value="65.00"/>
+</div>
+</td>
+<td class="py-3.5 px-space-md text-on-surface font-medium">6.4 km</td>
+<td class="py-3.5 px-space-md text-center">
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-9 h-5 bg-sonic-border peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-primary-container"></div>
+</label>
+</td>
+<td class="py-3.5 px-space-md text-right">
+<div class="inline-flex items-center gap-1">
+<button class="p-1.5 rounded-lg text-sonic-success hover:bg-sonic-blue-light transition-colors" title="Save" type="button">
+<span class="material-symbols-outlined text-[18px]">check</span>
+</button>
+<button class="p-1.5 rounded-lg text-sonic-muted hover:text-primary hover:bg-sonic-bg transition-colors" title="Edit" type="button">
+<span class="material-symbols-outlined text-[18px]">edit</span>
+</button>
+<button class="p-1.5 rounded-lg text-sonic-muted hover:text-sonic-danger hover:bg-sonic-bg transition-colors" title="Archive" type="button">
+<span class="material-symbols-outlined text-[18px]">delete</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 9: Anib -->
+<tr class="hover:bg-sonic-bg/50 transition-colors">
+<td class="py-3.5 px-space-md font-semibold text-on-surface flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-primary text-[18px]">location_on</span>
+<span>Anib</span>
+</td>
+<td class="py-3.5 px-space-md text-sonic-muted">Sipocot • Zone 3 Rural Periphery</td>
+<td class="py-3.5 px-space-md">
+<div class="relative w-28">
+<span class="absolute left-3 top-1/2 -translate-y-1/2 font-price-display text-price-display text-primary">₱</span>
+<input class="w-full pl-7 pr-3 py-1 bg-sonic-bg rounded-lg font-price-display text-price-display text-on-surface focus:outline-none focus:ring-2 focus:ring-primary focus:bg-sonic-surface transition-all text-right font-bold" type="text" value="75.00"/>
+</div>
+</td>
+<td class="py-3.5 px-space-md text-on-surface font-medium">8.2 km</td>
+<td class="py-3.5 px-space-md text-center">
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-9 h-5 bg-sonic-border peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-primary-container"></div>
+</label>
+</td>
+<td class="py-3.5 px-space-md text-right">
+<div class="inline-flex items-center gap-1">
+<button class="p-1.5 rounded-lg text-sonic-success hover:bg-sonic-blue-light transition-colors" title="Save" type="button">
+<span class="material-symbols-outlined text-[18px]">check</span>
+</button>
+<button class="p-1.5 rounded-lg text-sonic-muted hover:text-primary hover:bg-sonic-bg transition-colors" title="Edit" type="button">
+<span class="material-symbols-outlined text-[18px]">edit</span>
+</button>
+<button class="p-1.5 rounded-lg text-sonic-muted hover:text-sonic-danger hover:bg-sonic-bg transition-colors" title="Archive" type="button">
+<span class="material-symbols-outlined text-[18px]">delete</span>
+</button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Pagination and table summary -->
+<div class="p-space-md bg-sonic-bg/60 flex flex-col sm:flex-row items-center justify-between gap-space-sm">
+<span class="font-body-sm text-body-sm text-sonic-muted">
+          Showing 9 of 46 registered barangays in Sipocot Hub coverage
+        </span>
+<div class="flex items-center gap-space-xs">
+<button class="px-3 py-1.5 rounded-lg bg-sonic-surface text-sonic-muted hover:text-on-surface font-label-sm text-label-sm shadow-sm disabled:opacity-50" disabled="" type="button">Previous</button>
+<span class="px-3 py-1.5 rounded-lg bg-primary-container text-on-primary font-label-sm text-label-sm font-semibold">1</span>
+<button class="px-3 py-1.5 rounded-lg bg-sonic-surface text-on-surface hover:bg-sonic-blue-light font-label-sm text-label-sm shadow-sm" type="button">2</button>
+<button class="px-3 py-1.5 rounded-lg bg-sonic-surface text-on-surface hover:bg-sonic-blue-light font-label-sm text-label-sm shadow-sm" type="button">3</button>
+<button class="px-3 py-1.5 rounded-lg bg-sonic-surface text-on-surface hover:bg-sonic-blue-light font-label-sm text-label-sm shadow-sm" type="button">Next</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Tab 2: Gas Allowance Tiers Content -->
+<div class="settings-pane hidden flex flex-col gap-space-lg" id="tab-gas-allowance">
+<!-- Header with Add Button -->
+<div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-space-md">
+<div class="flex flex-col">
+<div class="flex items-center gap-space-xs">
+<h2 class="font-headline-md text-headline-md text-on-surface">Gas Allowance Tiers</h2>
+<span class="px-2.5 py-0.5 rounded-full bg-sonic-blue-light text-primary font-label-sm text-label-sm font-semibold">Automatic Surcharge</span>
+</div>
+<p class="font-body-md text-body-md text-sonic-muted mt-0.5">
+          Computed per completed delivery based on order subtotal value to compensate rider fuel burn.
+        </p>
+</div>
+<button class="px-space-md py-2 rounded-full bg-primary-container text-on-primary font-label-md text-label-md font-semibold hover:bg-sonic-blue-dark transition-all flex items-center justify-center gap-space-xs shadow-sm self-start sm:self-auto" type="button">
+<span class="material-symbols-outlined text-[18px]">add</span>
+<span>+ Add Tier</span>
+</button>
+</div>
+<!-- Conflict Warning Callout -->
+<div class="rounded-xl bg-surface-container-high/60 p-space-md shadow-sm flex items-start gap-space-sm text-tertiary">
+<div class="w-7 h-7 rounded-full bg-sonic-surface text-secondary-container flex items-center justify-center shrink-0 shadow-sm">
+<span class="material-symbols-outlined text-[18px]">warning</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md font-bold text-on-surface">Contiguous Bounds Mandate</span>
+<p class="font-body-sm text-body-sm text-sonic-muted mt-0.5">
+          Tier ranges must be contiguous without gaps or overlapping bounds. All customer subtotal amounts must resolve to exactly one tier at order checkout.
+        </p>
+</div>
+</div>
+<!-- Grid: Table on Left (2/3), Interactive Test Calculator on Right (1/3) -->
+<div class="grid grid-cols-1 xl:grid-cols-3 gap-space-lg items-start">
+<!-- Tiers Table -->
+<div class="xl:col-span-2 bg-sonic-surface rounded-xl shadow-sm overflow-hidden flex flex-col">
+<div class="overflow-x-auto">
+<table class="w-full text-left font-body-sm text-body-sm">
+<thead>
+<tr class="bg-sonic-bg text-sonic-muted font-label-sm text-label-sm uppercase tracking-wider">
+<th class="py-3.5 px-space-md font-semibold">Order Subtotal Range</th>
+<th class="py-3.5 px-space-md font-semibold">Allowance Payout</th>
+<th class="py-3.5 px-space-md font-semibold">Calculated Impact</th>
+<th class="py-3.5 px-space-md font-semibold text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y-0 text-on-surface">
+<tr class="hover:bg-sonic-bg/50 transition-colors">
+<td class="py-3 px-space-md font-semibold text-on-surface">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-sonic-muted"></span>
+<span>Below ₱151.00</span>
+</div>
+<span class="font-label-sm text-label-sm text-sonic-muted font-normal block pl-4">Baseline order threshold</span>
+</td>
+<td class="py-3 px-space-md">
+<span class="font-price-display text-price-display text-sonic-muted font-bold">₱0.00</span>
+</td>
+<td class="py-3 px-space-md">
+<span class="px-2.5 py-1 rounded-full bg-sonic-bg text-sonic-muted font-label-sm text-label-sm font-semibold">0.0% subsidized</span>
+</td>
+<td class="py-3 px-space-md text-right">
+<button class="p-1.5 rounded-lg text-sonic-muted hover:text-primary hover:bg-sonic-bg transition-colors" type="button">
+<span class="material-symbols-outlined text-[18px]">edit</span>
+</button>
+</td>
+</tr>
+<tr class="hover:bg-sonic-bg/50 transition-colors">
+<td class="py-3 px-space-md font-semibold text-on-surface">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-primary"></span>
+<span>₱151.00 – ₱199.00</span>
+</div>
+</td>
+<td class="py-3 px-space-md">
+<span class="font-price-display text-price-display text-primary font-bold">₱35.00</span>
+</td>
+<td class="py-3 px-space-md">
+<span class="px-2.5 py-1 rounded-full bg-sonic-blue-light text-primary font-label-sm text-label-sm font-semibold">Standard Quick Drop</span>
+</td>
+<td class="py-3 px-space-md text-right">
+<button class="p-1.5 rounded-lg text-sonic-muted hover:text-primary hover:bg-sonic-bg transition-colors" type="button">
+<span class="material-symbols-outlined text-[18px]">edit</span>
+</button>
+</td>
+</tr>
+<tr class="hover:bg-sonic-bg/50 transition-colors">
+<td class="py-3 px-space-md font-semibold text-on-surface">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-primary"></span>
+<span>₱200.00 – ₱299.00</span>
+</div>
+</td>
+<td class="py-3 px-space-md">
+<span class="font-price-display text-price-display text-primary font-bold">₱50.00</span>
+</td>
+<td class="py-3 px-space-md">
+<span class="px-2.5 py-1 rounded-full bg-sonic-blue-light text-primary font-label-sm text-label-sm font-semibold">Mid-Tier Family Meal</span>
+</td>
+<td class="py-3 px-space-md text-right">
+<button class="p-1.5 rounded-lg text-sonic-muted hover:text-primary hover:bg-sonic-bg transition-colors" type="button">
+<span class="material-symbols-outlined text-[18px]">edit</span>
+</button>
+</td>
+</tr>
+<tr class="hover:bg-sonic-bg/50 transition-colors">
+<td class="py-3 px-space-md font-semibold text-on-surface">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-primary"></span>
+<span>₱300.00 – ₱399.00</span>
+</div>
+</td>
+<td class="py-3 px-space-md">
+<span class="font-price-display text-price-display text-primary font-bold">₱70.00</span>
+</td>
+<td class="py-3 px-space-md">
+<span class="px-2.5 py-1 rounded-full bg-sonic-blue-light text-primary font-label-sm text-label-sm font-semibold">High Volume Bundle</span>
+</td>
+<td class="py-3 px-space-md text-right">
+<button class="p-1.5 rounded-lg text-sonic-muted hover:text-primary hover:bg-sonic-bg transition-colors" type="button">
+<span class="material-symbols-outlined text-[18px]">edit</span>
+</button>
+</td>
+</tr>
+<tr class="hover:bg-sonic-bg/50 transition-colors">
+<td class="py-3 px-space-md font-semibold text-on-surface">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-primary"></span>
+<span>₱400.00 – ₱499.00</span>
+</div>
+</td>
+<td class="py-3 px-space-md">
+<span class="font-price-display text-price-display text-primary font-bold">₱80.00</span>
+</td>
+<td class="py-3 px-space-md">
+<span class="px-2.5 py-1 rounded-full bg-sonic-blue-light text-primary font-label-sm text-label-sm font-semibold">Bulk Grocery Order</span>
+</td>
+<td class="py-3 px-space-md text-right">
+<button class="p-1.5 rounded-lg text-sonic-muted hover:text-primary hover:bg-sonic-bg transition-colors" type="button">
+<span class="material-symbols-outlined text-[18px]">edit</span>
+</button>
+</td>
+</tr>
+<tr class="hover:bg-sonic-bg/50 transition-colors">
+<td class="py-3 px-space-md font-semibold text-on-surface">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-primary"></span>
+<span>₱500.00 – ₱599.00</span>
+</div>
+</td>
+<td class="py-3 px-space-md">
+<span class="font-price-display text-price-display text-primary font-bold">₱90.00</span>
+</td>
+<td class="py-3 px-space-md">
+<span class="px-2.5 py-1 rounded-full bg-sonic-blue-light text-primary font-label-sm text-label-sm font-semibold">Heavy Haul Subtotal</span>
+</td>
+<td class="py-3 px-space-md text-right">
+<button class="p-1.5 rounded-lg text-sonic-muted hover:text-primary hover:bg-sonic-bg transition-colors" type="button">
+<span class="material-symbols-outlined text-[18px]">edit</span>
+</button>
+</td>
+</tr>
+<tr class="hover:bg-sonic-bg/50 transition-colors">
+<td class="py-3 px-space-md font-semibold text-on-surface">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-sonic-success"></span>
+<span>₱600.00 and up</span>
+</div>
+</td>
+<td class="py-3 px-space-md">
+<span class="font-price-display text-price-display text-sonic-success font-bold">₱100.00</span>
+</td>
+<td class="py-3 px-space-md">
+<span class="px-2.5 py-1 rounded-full bg-sonic-bg text-sonic-success font-label-sm text-label-sm font-semibold">Capped Maximum</span>
+</td>
+<td class="py-3 px-space-md text-right">
+<button class="p-1.5 rounded-lg text-sonic-muted hover:text-primary hover:bg-sonic-bg transition-colors" type="button">
+<span class="material-symbols-outlined text-[18px]">edit</span>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<!-- Interactive Calculator Card -->
+<div class="bg-sonic-surface rounded-xl p-space-md shadow-sm flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-xs text-on-surface">
+<span class="material-symbols-outlined text-primary text-[20px]">calculate</span>
+<span class="font-headline-sm text-headline-sm">Simulation Engine</span>
+</div>
+<span class="px-2 py-0.5 rounded-full bg-sonic-bg text-sonic-muted font-label-sm text-label-sm">Live Test</span>
+</div>
+<p class="font-body-sm text-body-sm text-sonic-muted">
+          Input an order subtotal to verify which tier triggers and test payout accuracy before applying changes.
+        </p>
+<div class="flex flex-col gap-space-xs">
+<label class="font-label-sm text-label-sm text-on-surface font-semibold">Sample Customer Cart Subtotal</label>
+<div class="relative w-full">
+<span class="absolute left-3.5 top-1/2 -translate-y-1/2 font-price-display text-price-display text-primary">₱</span>
+<input class="w-full pl-8 pr-4 py-2.5 bg-sonic-bg rounded-xl font-headline-sm text-headline-sm text-on-surface font-bold focus:outline-none focus:ring-2 focus:ring-primary focus:bg-sonic-surface transition-all" id="test-calc-input" oninput="calculateTestTier(this.value)" type="number" value="340.00"/>
+</div>
+</div>
+<!-- Result Box -->
+<div class="p-space-md rounded-xl bg-sonic-blue-light/70 flex flex-col gap-space-xs">
+<div class="flex items-center justify-between text-on-surface font-label-sm text-label-sm">
+<span class="text-sonic-muted">Matching Tier:</span>
+<span class="font-semibold text-primary" id="test-tier-range">₱300.00 – ₱399.00</span>
+</div>
+<div class="flex items-center justify-between text-on-surface font-label-sm text-label-sm">
+<span class="text-sonic-muted">Allowance Credited:</span>
+<span class="font-price-display text-price-display text-primary font-bold" id="test-tier-payout">₱70.00</span>
+</div>
+<div class="h-px bg-sonic-border/50 my-1"></div>
+<div class="flex items-center gap-1.5 text-sonic-success font-label-sm text-label-sm font-semibold">
+<span class="material-symbols-outlined text-[16px]">verified</span>
+<span>Rider receives 100% of fuel allowance</span>
+</div>
+</div>
+<button class="w-full py-2.5 rounded-full bg-sonic-surface text-primary font-label-md text-label-md font-semibold shadow-sm hover:bg-sonic-blue-light transition-all flex items-center justify-center gap-space-xs" type="button">
+<span class="material-symbols-outlined text-[18px]">replay</span>
+<span>Reset Simulation</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Tab 3: Shift & Per-Delivery Deductions Content -->
+<div class="settings-pane hidden flex flex-col gap-space-lg" id="tab-deductions">
+<div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-space-md">
+<div class="flex flex-col">
+<h2 class="font-headline-md text-headline-md text-on-surface">Automatic Shift Deductions</h2>
+<p class="font-body-md text-body-md text-sonic-muted mt-0.5">
+          Hub maintenance, equipment wear, cooperative savings, and operational fee rules applied automatically during daily settlement cutoffs.
+        </p>
+</div>
+<button class="px-space-md py-2 rounded-full bg-primary-container text-on-primary font-label-md text-label-md font-semibold hover:bg-sonic-blue-dark transition-all flex items-center justify-center gap-space-xs shadow-sm self-start sm:self-auto" type="button">
+<span class="material-symbols-outlined text-[18px]">add</span>
+<span>+ Add deduction</span>
+</button>
+</div>
+<!-- 3 Mandatory Deduction Cards Grid -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-space-lg">
+<!-- Deduction 1: Operator Fee -->
+<div class="bg-sonic-surface rounded-xl p-space-lg shadow-sm flex flex-col justify-between">
+<div class="flex flex-col">
+<div class="flex items-center justify-between mb-space-md">
+<div class="w-10 h-10 rounded-xl bg-sonic-blue-light text-primary flex items-center justify-center shadow-sm">
+<span class="material-symbols-outlined text-[22px]">domain</span>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-10 h-5 bg-sonic-border rounded-full peer peer-checked:after:translate-x-full after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-primary-container"></div>
+</label>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Operator fee</h3>
+<div class="flex items-baseline gap-space-xs mt-1 mb-space-sm">
+<span class="font-headline-lg text-headline-lg text-primary font-bold">₱10.00</span>
+<span class="font-label-sm text-label-sm text-sonic-muted">per delivery</span>
+</div>
+<p class="font-body-sm text-body-sm text-sonic-muted leading-relaxed">
+            Hub booking, dispatch platform operation &amp; telemetry fee deducted on each completed drop/trip.
+          </p>
+</div>
+<div class="mt-space-lg pt-space-sm flex items-center justify-between">
+<span class="px-2.5 py-1 rounded-full bg-sonic-bg text-on-surface font-label-sm text-label-sm font-semibold">Frequency: Per Trip</span>
+<button class="p-1.5 rounded-lg text-sonic-muted hover:text-primary hover:bg-sonic-bg transition-colors" type="button">
+<span class="material-symbols-outlined text-[20px]">tune</span>
+</button>
+</div>
+</div>
+<!-- Deduction 2: Box Rent -->
+<div class="bg-sonic-surface rounded-xl p-space-lg shadow-sm flex flex-col justify-between">
+<div class="flex flex-col">
+<div class="flex items-center justify-between mb-space-md">
+<div class="w-10 h-10 rounded-xl bg-surface-container-high text-secondary-container flex items-center justify-center shadow-sm">
+<span class="material-symbols-outlined text-[22px]">inventory_2</span>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-10 h-5 bg-sonic-border rounded-full peer peer-checked:after:translate-x-full after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-primary-container"></div>
+</label>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Box rent</h3>
+<div class="flex items-baseline gap-space-xs mt-1 mb-space-sm">
+<span class="font-headline-lg text-headline-lg text-primary font-bold">₱10.00</span>
+<span class="font-label-sm text-label-sm text-sonic-muted">per shift</span>
+</div>
+<p class="font-body-sm text-body-sm text-sonic-muted leading-relaxed">
+            Insulated thermal delivery box maintenance, sanitization, and lock replacement reserve.
+          </p>
+</div>
+<div class="mt-space-lg pt-space-sm flex items-center justify-between">
+<span class="px-2.5 py-1 rounded-full bg-sonic-bg text-on-surface font-label-sm text-label-sm font-semibold">Frequency: Daily Shift</span>
+<button class="p-1.5 rounded-lg text-sonic-muted hover:text-primary hover:bg-sonic-bg transition-colors" type="button">
+<span class="material-symbols-outlined text-[20px]">tune</span>
+</button>
+</div>
+</div>
+<!-- Deduction 3: Rider Savings -->
+<div class="bg-sonic-surface rounded-xl p-space-lg shadow-sm flex flex-col justify-between relative overflow-hidden">
+<div class="flex flex-col">
+<div class="flex items-center justify-between mb-space-md">
+<div class="w-10 h-10 rounded-xl bg-sonic-bg text-sonic-success flex items-center justify-center shadow-sm">
+<span class="material-symbols-outlined text-[22px]" style="font-variation-settings: 'FILL' 1;">savings</span>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-10 h-5 bg-sonic-border rounded-full peer peer-checked:after:translate-x-full after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-primary-container"></div>
+</label>
+</div>
+<div class="flex items-center gap-space-xs flex-wrap">
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Rider savings</h3>
+<span class="px-2 py-0.5 rounded-full bg-sonic-bg text-sonic-success font-label-sm text-label-sm font-bold flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">shield</span>
+<span>Goes to rider savings</span>
+</span>
+</div>
+<div class="flex items-baseline gap-space-xs mt-1 mb-space-sm">
+<span class="font-headline-lg text-headline-lg text-sonic-success font-bold">₱10.00</span>
+<span class="font-label-sm text-label-sm text-sonic-muted">per shift</span>
+</div>
+<p class="font-body-sm text-body-sm text-sonic-muted leading-relaxed">
+            Mandatory rider passbook cooperative savings. Accessible on bi-weekly payout ledgers with full audit visibility.
+          </p>
+</div>
+<div class="mt-space-lg pt-space-sm flex items-center justify-between">
+<span class="px-2.5 py-1 rounded-full bg-sonic-blue-light text-primary font-label-sm text-label-sm font-semibold">Frequency: Daily Shift</span>
+<button class="p-1.5 rounded-lg text-sonic-muted hover:text-primary hover:bg-sonic-bg transition-colors" type="button">
+<span class="material-symbols-outlined text-[20px]">tune</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Tab 4: Rates, Platform Split & Historical Audit Ledger Content -->
+<div class="settings-pane hidden flex flex-col gap-space-lg" id="tab-rates-split">
+<!-- Configuration Split Card -->
+<div class="bg-sonic-surface rounded-xl p-space-lg shadow-sm flex flex-col gap-space-lg">
+<div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-space-md">
+<div>
+<h2 class="font-headline-md text-headline-md text-on-surface">Platform Split &amp; Multi-Store Tariffs</h2>
+<p class="font-body-md text-body-md text-sonic-muted mt-0.5">
+            Configure rider/hub commission ratios and surcharge multipliers for consolidated merchant orders.
+          </p>
+</div>
+<button class="px-space-md py-2.5 rounded-full bg-primary-container text-on-primary font-label-md text-label-md font-semibold hover:bg-sonic-blue-dark transition-all flex items-center gap-space-xs shadow-sm self-start sm:self-auto" type="button">
+<span class="material-symbols-outlined text-[18px]">save</span>
+<span>Save Rate Changes</span>
+</button>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-space-lg">
+<!-- Extra store pickup fee -->
+<div class="flex flex-col gap-space-xs">
+<label class="font-label-sm text-label-sm text-on-surface font-semibold">Extra store pickup fee</label>
+<div class="relative w-full">
+<span class="absolute left-3.5 top-1/2 -translate-y-1/2 font-price-display text-price-display text-primary">₱</span>
+<input class="w-full pl-8 pr-4 py-2.5 bg-sonic-bg rounded-xl font-headline-sm text-headline-sm text-on-surface font-bold focus:outline-none focus:ring-2 focus:ring-primary focus:bg-sonic-surface transition-all" type="text" value="10.00"/>
+</div>
+<p class="font-body-sm text-body-sm text-sonic-muted mt-1">
+            Additional fee charged to customer when ordering from multiple merchants in a single consolidated basket.
+          </p>
+</div>
+<!-- Rider Share Input -->
+<div class="flex flex-col gap-space-xs">
+<label class="font-label-sm text-label-sm text-on-surface font-semibold">Rider Commission Share</label>
+<div class="relative w-full">
+<input class="w-full pl-4 pr-10 py-2.5 bg-sonic-bg rounded-xl font-headline-sm text-headline-sm text-on-surface font-bold focus:outline-none focus:ring-2 focus:ring-primary focus:bg-sonic-surface transition-all" id="input-rider-share" oninput="updateSplitMath(this.value)" type="number" value="70"/>
+<span class="absolute right-4 top-1/2 -translate-y-1/2 font-headline-sm text-headline-sm text-sonic-muted">%</span>
+</div>
+<p class="font-body-sm text-body-sm text-sonic-muted mt-1">
+            Proportion of delivery fee directly credited to active rider ledger upon drop completion.
+          </p>
+</div>
+<!-- Sonic Platform Share (Auto-computed read-only) -->
+<div class="flex flex-col gap-space-xs">
+<label class="font-label-sm text-label-sm text-on-surface font-semibold">Sonic Platform Share (Computed)</label>
+<div class="relative w-full">
+<input class="w-full pl-4 pr-10 py-2.5 bg-sonic-blue-light rounded-xl font-headline-sm text-headline-sm text-primary font-bold cursor-not-allowed select-none" id="display-sonic-share" readonly="" type="text" value="30%"/>
+<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-primary text-[20px]">lock</span>
+</div>
+<p class="font-body-sm text-body-sm text-sonic-muted mt-1">
+            Platform share formula: <code class="font-semibold text-primary">100% - Rider Share</code>. Allocated to hub servers and administration.
+          </p>
+</div>
+</div>
+<!-- Schedule Effective Date -->
+<div class="p-space-md rounded-xl bg-sonic-bg/80 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-space-md">
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-primary text-[22px]">calendar_clock</span>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm font-semibold text-on-surface">Scheduled Policy Effective Date</span>
+<span class="font-body-sm text-body-sm text-sonic-muted">Target time when these rate split values transition to active dispatch calculations.</span>
+</div>
+</div>
+<div class="flex items-center gap-space-xs">
+<input class="px-4 py-2 bg-sonic-surface rounded-xl font-label-sm text-label-sm text-on-surface font-semibold focus:outline-none focus:ring-2 focus:ring-primary shadow-sm" type="text" value="Dec 01, 2026, 00:00:00"/>
+<button class="px-3 py-2 rounded-xl bg-sonic-surface text-sonic-muted hover:text-on-surface hover:bg-sonic-blue-light transition-colors shadow-sm" type="button">
+<span class="material-symbols-outlined text-[18px]">event</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Rate Change History Table (Historical Audit Ledger) -->
+<div class="bg-sonic-surface rounded-xl shadow-sm overflow-hidden flex flex-col">
+<div class="p-space-md bg-sonic-surface flex items-center justify-between">
+<div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Rate Change History</h3>
+<p class="font-body-sm text-body-sm text-sonic-muted">Immutable historical audit trail of pricing alterations and operator sign-offs.</p>
+</div>
+<button class="px-3 py-1.5 rounded-full bg-sonic-bg text-on-surface font-label-sm text-label-sm font-medium hover:bg-sonic-blue-light transition-colors flex items-center gap-1" type="button">
+<span class="material-symbols-outlined text-[16px]">file_download</span>
+<span>Export Ledger</span>
+</button>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left font-body-sm text-body-sm">
+<thead>
+<tr class="bg-sonic-bg text-sonic-muted font-label-sm text-label-sm uppercase tracking-wider">
+<th class="py-3.5 px-space-md font-semibold">Effective Date</th>
+<th class="py-3.5 px-space-md font-semibold">Rider / Sonic Split</th>
+<th class="py-3.5 px-space-md font-semibold">Extra Store Fee</th>
+<th class="py-3.5 px-space-md font-semibold">Changed By</th>
+<th class="py-3.5 px-space-md font-semibold">Reason / Notes</th>
+<th class="py-3.5 px-space-md font-semibold text-right">Status</th>
+</tr>
+</thead>
+<tbody class="divide-y-0 text-on-surface">
+<!-- Scheduled Row -->
+<tr class="hover:bg-sonic-bg/50 transition-colors">
+<td class="py-3.5 px-space-md font-semibold text-on-surface">
+<span>Dec 01, 2026</span>
+<span class="block text-sonic-muted font-normal text-xs">00:00:00 PST</span>
+</td>
+<td class="py-3.5 px-space-md">
+<span class="font-semibold text-primary">70% Rider</span>
+<span class="text-sonic-muted"> / 30% Sonic</span>
+</td>
+<td class="py-3.5 px-space-md font-bold">₱10.00</td>
+<td class="py-3.5 px-space-md">
+<div class="flex items-center gap-1.5">
+<div class="w-6 h-6 rounded-full bg-primary-container text-on-primary font-label-sm text-label-sm flex items-center justify-center font-bold text-[10px]">EM</div>
+<span>Admin (Super Admin)</span>
+</div>
+</td>
+<td class="py-3.5 px-space-md text-sonic-muted">Q4 Fleet incentive adjustment</td>
+<td class="py-3.5 px-space-md text-right">
+<span class="px-2.5 py-1 rounded-full bg-sonic-blue-light text-primary font-label-sm text-label-sm font-semibold">
+                  Upcoming
+                </span>
+</td>
+</tr>
+<!-- Active Row -->
+<tr class="hover:bg-sonic-bg/50 transition-colors bg-sonic-bg/30">
+<td class="py-3.5 px-space-md font-semibold text-on-surface">
+<span>Oct 01, 2026</span>
+<span class="block text-sonic-muted font-normal text-xs">00:00:00 PST</span>
+</td>
+<td class="py-3.5 px-space-md">
+<span class="font-semibold text-primary">70% Rider</span>
+<span class="text-sonic-muted"> / 30% Sonic</span>
+</td>
+<td class="py-3.5 px-space-md font-bold">₱10.00</td>
+<td class="py-3.5 px-space-md">
+<div class="flex items-center gap-1.5">
+<div class="w-6 h-6 rounded-full bg-surface-container-high text-secondary-container font-label-sm text-label-sm flex items-center justify-center font-bold text-[10px]">OL</div>
+<span>Operations Lead</span>
+</div>
+</td>
+<td class="py-3.5 px-space-md text-sonic-muted">Standardized multi-store fee</td>
+<td class="py-3.5 px-space-md text-right">
+<span class="px-2.5 py-1 rounded-full bg-sonic-bg text-sonic-success font-label-sm text-label-sm font-semibold flex items-center gap-1 inline-flex">
+<span class="w-1.5 h-1.5 rounded-full bg-sonic-success"></span>
+<span>Active</span>
+</span>
+</td>
+</tr>
+<!-- Superseded Row -->
+<tr class="hover:bg-sonic-bg/50 transition-colors">
+<td class="py-3.5 px-space-md font-semibold text-on-surface opacity-75">
+<span>Jan 15, 2026</span>
+<span class="block text-sonic-muted font-normal text-xs">00:00:00 PST</span>
+</td>
+<td class="py-3.5 px-space-md opacity-75">
+<span class="font-semibold text-on-surface">68% Rider</span>
+<span class="text-sonic-muted"> / 32% Sonic</span>
+</td>
+<td class="py-3.5 px-space-md font-bold opacity-75">₱0.00</td>
+<td class="py-3.5 px-space-md opacity-75">
+<div class="flex items-center gap-1.5">
+<div class="w-6 h-6 rounded-full bg-sonic-bg text-sonic-muted font-label-sm text-label-sm flex items-center justify-center font-bold text-[10px]">FA</div>
+<span>Founder / Admin</span>
+</div>
+</td>
+<td class="py-3.5 px-space-md text-sonic-muted opacity-75">Initial platform launch rate</td>
+<td class="py-3.5 px-space-md text-right">
+<span class="px-2.5 py-1 rounded-full bg-sonic-bg text-sonic-muted font-label-sm text-label-sm font-semibold">
+                  Superseded
+                </span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<!-- Client-side Interactive Logic -->
+<script>
+    function switchSettingsTab(tabId, btn) {
+      // Hide all pane sections
+      document.querySelectorAll('.settings-pane').forEach(function(pane) {
+        pane.classList.add('hidden');
+      });
+
+      // Show selected pane
+      var target = document.getElementById('tab-' + tabId);
+      if (target) {
+        target.classList.remove('hidden');
+      }
+
+      // Reset all buttons style
+      document.querySelectorAll('.settings-tab-btn').forEach(function(b) {
+        b.className = 'settings-tab-btn flex items-center gap-2 px-space-md py-2 rounded-full font-label-md text-label-md font-semibold text-sonic-muted hover:text-on-surface hover:bg-sonic-bg transition-all';
+      });
+
+      // Set active button style
+      btn.className = 'settings-tab-btn active-tab flex items-center gap-2 px-space-md py-2 rounded-full font-label-md text-label-md font-semibold transition-all bg-primary-container text-on-primary shadow-sm';
+    }
+
+    function updateSplitMath(riderValue) {
+      var riderNum = parseFloat(riderValue);
+      if (isNaN(riderNum)) {
+        riderNum = 0;
+      }
+      if (riderNum > 100) {
+        riderNum = 100;
+        document.getElementById('input-rider-share').value = 100;
+      }
+      if (riderNum < 0) {
+        riderNum = 0;
+        document.getElementById('input-rider-share').value = 0;
+      }
+      var sonicShare = 100 - riderNum;
+      document.getElementById('display-sonic-share').value = sonicShare + '%';
+    }
+
+    function calculateTestTier(val) {
+      var num = parseFloat(val);
+      var rangeEl = document.getElementById('test-tier-range');
+      var payoutEl = document.getElementById('test-tier-payout');
+
+      if (isNaN(num) || num < 151.00) {
+        rangeEl.textContent = 'Below ₱151.00 (Baseline)';
+        payoutEl.textContent = '₱0.00';
+      } else if (num >= 151.00 && num <= 199.99) {
+        rangeEl.textContent = '₱151.00 – ₱199.00';
+        payoutEl.textContent = '₱35.00';
+      } else if (num >= 200.00 && num <= 299.99) {
+        rangeEl.textContent = '₱200.00 – ₱299.00';
+        payoutEl.textContent = '₱50.00';
+      } else if (num >= 300.00 && num <= 399.99) {
+        rangeEl.textContent = '₱300.00 – ₱399.00';
+        payoutEl.textContent = '₱70.00';
+      } else if (num >= 400.00 && num <= 499.99) {
+        rangeEl.textContent = '₱400.00 – ₱499.00';
+        payoutEl.textContent = '₱80.00';
+      } else if (num >= 500.00 && num <= 599.99) {
+        rangeEl.textContent = '₱500.00 – ₱599.00';
+        payoutEl.textContent = '₱90.00';
+      } else {
+        rangeEl.textContent = '₱600.00 and up';
+        payoutEl.textContent = '₱100.00';
+      }
+    }
+  </script>
+</div></main></div></body></html>

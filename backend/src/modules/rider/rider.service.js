@@ -152,3 +152,39 @@ export function shiftMoney(view) {
     .reduce((sum, r) => sum + orderTotal(orderItemsSubtotal(r.stores.flatMap((st) => st.items)), r.order.base_delivery_fee, orderExtraStoreFees(r.stores)), 0)
   return { gross, net, cod, ...settlementAmounts(cod, net), pettyOnHand: pettyCashOnHand(view.pettyCash) }
 }
+
+// Every rider with what dispatch needs (the mock's getRidersOverview), also used by the admin reports:
+//   { user, profile, openShift, deliveriesThisShift, pettyCash, jobs, reviews }
+export async function getRidersOverview() {
+  const { rows } = await query(`
+    SELECT jsonb_build_object(
+      'user', jsonb_build_object('user_id', u.user_id, 'full_name', u.full_name, 'email', u.email,
+                                 'contact_number', u.contact_number, 'role', u.role, 'account_status', u.account_status,
+                                 'created_at', u.created_at, 'updated_at', u.updated_at),
+      'profile', to_jsonb(p),
+      'openShift', to_jsonb(s),
+      'deliveriesThisShift', (SELECT count(*)::int FROM delivery_earnings e WHERE e.shift_id = s.shift_id),
+      'pettyCash', COALESCE((SELECT jsonb_agg(to_jsonb(t) ORDER BY t.txn_id)
+                               FROM petty_cash_transactions t WHERE t.shift_id = s.shift_id), '[]'),
+      'jobs', COALESCE((
+        SELECT jsonb_agg(jsonb_build_object('order_id', o.order_id, 'order_number', o.order_number,
+                                            'order_status', o.order_status, 'response_status', a.response_status)
+                         ORDER BY a.assignment_id)
+          FROM delivery_assignments a
+          JOIN deliveries d ON d.delivery_id = a.delivery_id
+          JOIN customer_orders o ON o.order_id = d.order_id
+         WHERE a.rider_id = u.user_id AND a.ended_at IS NULL), '[]'),
+      'reviews', COALESCE((
+        SELECT jsonb_agg(to_jsonb(rv) ORDER BY rv.review_id)
+          FROM rider_reviews rv
+          JOIN deliveries d ON d.order_id = rv.order_id
+          JOIN delivery_assignments a ON a.delivery_id = d.delivery_id
+         WHERE a.rider_id = u.user_id AND a.end_reason = 'completed'), '[]')
+    ) AS rider
+    FROM users u
+    LEFT JOIN rider_profiles p ON p.user_id = u.user_id
+    LEFT JOIN rider_shifts s ON s.rider_id = u.user_id AND s.status = 'open'
+    WHERE u.role = 'rider'
+    ORDER BY u.user_id`)
+  return rows.map((row) => row.rider)
+}

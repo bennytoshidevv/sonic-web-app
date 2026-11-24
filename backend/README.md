@@ -118,6 +118,15 @@ An id in the path or query that is not a positive whole number gives 400 `invali
 | GET | `/api/staff/shifts?date=YYYY-MM-DD` | operator, admin | → shifts that started that day: `[{ shift, runs, deductions, settlement, pettyCash, rider, profile }]`; 400 `invalid_date` (`getShiftsOnDate`) |
 | POST | `/api/staff/shifts/:id/settlement` | operator, admin | `{ cash_received, payout_method, payout_reference, notes, return_petty_cash }` → `{ ok }`. The payout is computed by the API (`settlementAmounts`). 409 `shift_not_closed`, `already_settled`; 400 `reference_required` (GCash payout), `invalid` (`recordSettlement`) |
 | POST | `/api/staff/shifts/:id/petty-cash` | operator, admin | `{ txn_type: cash_issued|gcash_topup|cash_returned|adjustment, amount, gcash_reference_id, note }` → `{ ok }`; 400 `invalid_type`, `invalid_amount`, `reference_required`; 409 `not_enough`, `already_settled` (`addPettyCashTransaction`) |
+| **Admin** (module 8) | | | The admin only (operators get 403); every settings change is written to `audit_logs` |
+| GET | `/api/admin/reports` | admin | → `{ orders (staff view + earning), riders, deductions (+ type) }`; the Reports page picks the dates and computes totals with calc.js (`getReportData`) |
+| GET | `/api/admin/settings` | admin | → `{ barangays, tiers (active), deductionTypes, rates (+ created_by_name, state: upcoming|active|superseded) }` (`getSettingsData`) |
+| POST / PUT | `/api/admin/barangays`, `/api/admin/barangays/:id` | admin | `{ barangay_name, city_municipality, delivery_fee, is_active }` → `{ barangay }`; 400 `invalid`, 409 `duplicate` (`saveBarangay`) |
+| PUT | `/api/admin/gas-tiers` | admin | `{ tiers: [{ min_delivery_fee, max_delivery_fee (null = no limit), allowance_amount }] }` → `{ ok }`; all replaced in one transaction, old ones kept inactive; 400 `invalid_tiers` with the problem as message (`saveGasTiers`) |
+| POST / PUT | `/api/admin/deduction-types`, `/api/admin/deduction-types/:id` | admin | `{ name, amount, frequency, is_rider_savings, is_active }` → `{ deductionType }`; 400 `invalid`, 409 `duplicate` (`saveDeductionType`) |
+| POST | `/api/admin/rate-settings` | admin | `{ extra_store_fee, rider_share_pct, effective_from: 'YYYY-MM-DDTHH:MM' }` → `{ rate }` (always a new row); 400 `invalid` (`addRateSetting`) |
+| GET | `/api/admin/savings` | admin | → `[{ user, profile, entries (+ shift_date, processed_by_name), lastShift }]` (`getSavingsOverview`) |
+| POST | `/api/admin/savings/:riderId/withdrawals` | admin | `{ amount, note }` → `{ entry }`; 400 `invalid_amount`, `note_required`; 409 `not_enough` (`recordSavingsWithdrawal`) |
 
 ## Folder structure
 
@@ -141,6 +150,7 @@ backend/
       rider/      rider.routes.js, rider.service.js (shifts, deductions, pay snapshots, shift view)
       management/ restaurants.routes.js, menus.routes.js, users.routes.js (operator management)
       settlements/ settlements.routes.js (end-of-shift settlement, petty cash)
+      admin/      admin.routes.js (reports, settings, rider savings)
       uploads/    uploads.routes.js, storage.js (local or Google Cloud Storage)
   test/           helpers.js (starts the API for tests), <module>.test.js
 ```

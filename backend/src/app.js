@@ -4,6 +4,7 @@ import { config } from './config.js'
 import { errorHandler, notFoundHandler } from './middleware/errors.js'
 import { LOCAL_UPLOAD_DIR } from './modules/uploads/storage.js'
 import addressRoutes from './modules/addresses/addresses.routes.js'
+import adminRoutes from './modules/admin/admin.routes.js'
 import authRoutes from './modules/auth/auth.routes.js'
 import catalogRoutes from './modules/catalog/catalog.routes.js'
 import dispatchRoutes from './modules/dispatch/dispatch.routes.js'
@@ -39,6 +40,7 @@ export function createApp() {
   app.use('/api/staff/shifts', settlementRoutes)
   app.use('/api/staff', dispatchRoutes) // orders and riders
   app.use('/api/rider', riderRoutes) // the rider app
+  app.use('/api/admin', adminRoutes) // the admin only: reports, settings, rider savings
 
   // Photos saved by the 'local' upload driver.
   if (config.uploadDriver === 'local') app.use('/uploads', express.static(LOCAL_UPLOAD_DIR))

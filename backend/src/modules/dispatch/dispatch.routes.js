@@ -1,11 +1,11 @@
 import { Router } from 'express'
-import { query, withTransaction } from '../../db.js'
+import { withTransaction } from '../../db.js'
 import { requireAuth, requireRole } from '../../middleware/auth.js'
 import { badRequest, conflict, notFound } from '../../middleware/errors.js'
 import { notify, notifyOrderStatus } from '../../utils/notify.js'
 import { optionalText, toId } from '../../utils/validate.js'
 import { getStaffOrder, getStaffOrders } from '../orders/orders.service.js'
-import { freeRiderIfIdle } from '../rider/rider.service.js'
+import { freeRiderIfIdle, getRidersOverview } from '../rider/rider.service.js'
 
 // Operator orders and riders (module 4): live orders, order details, moving an order forward,
 // rejecting it, the riders overview and assigning a rider. Mounted at /api/staff.
@@ -166,37 +166,7 @@ router.post('/orders/:id/assign', async (req, res) => {
 // GET /api/staff/riders -> riders with what dispatch needs (getRidersOverview):
 //   { user, profile, openShift, deliveriesThisShift, pettyCash, jobs, reviews }
 router.get('/riders', async (req, res) => {
-  const { rows } = await query(`
-    SELECT jsonb_build_object(
-      'user', jsonb_build_object('user_id', u.user_id, 'full_name', u.full_name, 'email', u.email,
-                                 'contact_number', u.contact_number, 'role', u.role, 'account_status', u.account_status,
-                                 'created_at', u.created_at, 'updated_at', u.updated_at),
-      'profile', to_jsonb(p),
-      'openShift', to_jsonb(s),
-      'deliveriesThisShift', (SELECT count(*)::int FROM delivery_earnings e WHERE e.shift_id = s.shift_id),
-      'pettyCash', COALESCE((SELECT jsonb_agg(to_jsonb(t) ORDER BY t.txn_id)
-                               FROM petty_cash_transactions t WHERE t.shift_id = s.shift_id), '[]'),
-      'jobs', COALESCE((
-        SELECT jsonb_agg(jsonb_build_object('order_id', o.order_id, 'order_number', o.order_number,
-                                            'order_status', o.order_status, 'response_status', a.response_status)
-                         ORDER BY a.assignment_id)
-          FROM delivery_assignments a
-          JOIN deliveries d ON d.delivery_id = a.delivery_id
-          JOIN customer_orders o ON o.order_id = d.order_id
-         WHERE a.rider_id = u.user_id AND a.ended_at IS NULL), '[]'),
-      'reviews', COALESCE((
-        SELECT jsonb_agg(to_jsonb(rv) ORDER BY rv.review_id)
-          FROM rider_reviews rv
-          JOIN deliveries d ON d.order_id = rv.order_id
-          JOIN delivery_assignments a ON a.delivery_id = d.delivery_id
-         WHERE a.rider_id = u.user_id AND a.end_reason = 'completed'), '[]')
-    ) AS rider
-    FROM users u
-    LEFT JOIN rider_profiles p ON p.user_id = u.user_id
-    LEFT JOIN rider_shifts s ON s.rider_id = u.user_id AND s.status = 'open'
-    WHERE u.role = 'rider'
-    ORDER BY u.user_id`)
-  res.json(rows.map((r) => r.rider))
+  res.json(await getRidersOverview())
 })
 
 export default router

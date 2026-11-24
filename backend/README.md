@@ -36,6 +36,7 @@ Express 5 + PostgreSQL. Plain parameterized SQL through `pg` (no ORM), bcrypt pa
 All responses are JSON. Errors look like `{ "error": "email_taken", "message": "..." }` and use the same
 error codes as the mock functions, so the pages' error handling keeps working.
 Protected routes need the header `Authorization: Bearer <token>`.
+An id in the path or query that is not a positive whole number gives 400 `invalid_id`.
 
 | Method | Path | Who | Body → Response |
 |---|---|---|---|
@@ -47,6 +48,17 @@ Protected routes need the header `Authorization: Bearer <token>`.
 | PATCH | `/api/auth/me` | logged in | `{ full_name, email, contact_number }` → `{ user }` |
 | POST | `/api/auth/change-password` | logged in | `{ current_password, new_password }` → `{ ok }`; error `wrong_password` |
 | POST | `/api/uploads/:folder` | operator, admin | multipart field `photo` (JPG/PNG/WEBP, ≤ 2 MB); folder `restaurants` or `menu-items` → `{ url }` |
+| **Catalog** (module 1) | | | |
+| GET | `/api/barangays` | anyone | → active barangays (`getBarangays`) |
+| GET | `/api/cuisine-types` | anyone | → `[{ cuisine_id, cuisine_name }]` (`getCuisineTypes`) |
+| GET | `/api/restaurants` | anyone | → active restaurants, each with `cuisines` (names) and `hours` (`getRestaurants`) |
+| GET | `/api/restaurants/:id` | anyone | → one active restaurant; 404 `not_found` if missing or disabled (`getRestaurant`) |
+| GET | `/api/restaurants/:id/menu` | anyone | → active categories in display order, each with active `items` incl. sold out (`getMenu`) |
+| GET | `/api/restaurants/:id/reviews` | anyone | → review rows (`getRestaurantReviews`) |
+| GET | `/api/rate-settings/current` | anyone | → latest rate with `effective_from <= now()` (`getRateSettings`) |
+| GET | `/api/menu-items?ids=1,2,3` | anyone | → items with `restaurant: { restaurant_id, name, description, open_status, is_active }` (`getCartItemDetails`); error `too_many_items` (> 100) |
+| GET | `/api/restaurants/:id/favorite` | customer | → `{ favorite }` for the logged-in customer (`isFavoriteRestaurant`) |
+| PUT | `/api/restaurants/:id/favorite` | customer | `{ liked: true|false }` → `{ ok }`; errors `invalid_liked`, 404 for a disabled restaurant (`setFavoriteRestaurant`) |
 
 ## Folder structure
 
@@ -60,11 +72,12 @@ backend/
     config.js     reads .env
     db.js         connection pool, query(), withTransaction()
     middleware/   auth.js (requireAuth, requireRole), errors.js
-    utils/        validate.js, audit.js
+    utils/        validate.js, audit.js, calc.js (copy of frontend/src/shared/utils/calc.js)
     modules/
       auth/       auth.routes.js
+      catalog/    catalog.routes.js
       uploads/    uploads.routes.js, storage.js (local or Google Cloud Storage)
-  test/
+  test/           helpers.js (starts the API for tests), <module>.test.js
 ```
 
 ## Security rules followed everywhere

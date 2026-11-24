@@ -17,7 +17,8 @@ Express 5 + PostgreSQL. Plain parameterized SQL through `pg` (no ORM), bcrypt pa
    npm run db:reset             # creates all tables, then loads the demo data
    npm run dev                  # http://localhost:4000/api/health
    ```
-3. Run the tests (needs the seeded database): `npm test`
+3. Run the tests (needs the seeded database): `npm test`. Test files run one at a time because some
+   tests briefly change shared demo rows (e.g. hide a barangay) and put them back.
 
 `db:reset` wipes the database. The demo orders and shifts are dated "today", so run it again before a demo.
 
@@ -59,6 +60,12 @@ An id in the path or query that is not a positive whole number gives 400 `invali
 | GET | `/api/menu-items?ids=1,2,3` | anyone | → items with `restaurant: { restaurant_id, name, description, open_status, is_active }` (`getCartItemDetails`); error `too_many_items` (> 100) |
 | GET | `/api/restaurants/:id/favorite` | customer | → `{ favorite }` for the logged-in customer (`isFavoriteRestaurant`) |
 | PUT | `/api/restaurants/:id/favorite` | customer | `{ liked: true|false }` → `{ ok }`; errors `invalid_liked`, 404 for a disabled restaurant (`setFavoriteRestaurant`) |
+| **Customer addresses** (module 2) | | | Own addresses only; someone else's address → 404 `not_found` |
+| GET | `/api/addresses` | customer | → my active addresses with `barangay_name`, `city_municipality`, `delivery_fee` (`getCustomerAddresses`) |
+| POST | `/api/addresses` | customer | `{ label, barangay_id, street_address, landmark, is_default }` → the new address (first one becomes default); errors `missing_fields`, `invalid_barangay`, `too_long` (`addCustomerAddress`) |
+| PUT | `/api/addresses/:id` | customer | same body → `{ ok }` (`updateCustomerAddress`) |
+| PUT | `/api/addresses/:id/default` | customer | → `{ ok }` (`setDefaultAddress`) |
+| DELETE | `/api/addresses/:id` | customer | → `{ ok }`; soft delete, the oldest remaining address becomes default (`deleteCustomerAddress`) |
 
 ## Folder structure
 
@@ -76,6 +83,7 @@ backend/
     modules/
       auth/       auth.routes.js
       catalog/    catalog.routes.js
+      addresses/  addresses.routes.js
       uploads/    uploads.routes.js, storage.js (local or Google Cloud Storage)
   test/           helpers.js (starts the API for tests), <module>.test.js
 ```

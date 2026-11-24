@@ -3,6 +3,7 @@ import cors from 'cors'
 import { config } from './config.js'
 import { errorHandler, notFoundHandler } from './middleware/errors.js'
 import { LOCAL_UPLOAD_DIR } from './modules/uploads/storage.js'
+import addressRoutes from './modules/addresses/addresses.routes.js'
 import authRoutes from './modules/auth/auth.routes.js'
 import catalogRoutes from './modules/catalog/catalog.routes.js'
 import uploadRoutes from './modules/uploads/uploads.routes.js'
@@ -20,6 +21,7 @@ export function createApp() {
   // restaurants, menus, cart, orders, deliveries, shifts, payments, reviews, reports, settings...
   app.use('/api/auth', authRoutes)
   app.use('/api/uploads', uploadRoutes)
+  app.use('/api/addresses', addressRoutes)
   // Catalog paths start right under /api (/api/restaurants, /api/barangays, ...)
   app.use('/api', catalogRoutes)
 

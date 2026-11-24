@@ -1,7 +1,7 @@
 // Shared test setup: starts the API on a free port and gives small helpers to call it.
 // Usage in a test file:
 //   import { setup, call, loginAs } from './helpers.js'
-//   setup()
+//   setup()                       or   setup(async () => { ...runs once the API is listening... })
 import { after, before } from 'node:test'
 import { createApp } from '../src/app.js'
 import { pool } from '../src/db.js'
@@ -9,11 +9,12 @@ import { pool } from '../src/db.js'
 let server
 let base
 
-export function setup() {
+export function setup(afterStart) {
   before(async () => {
     server = createApp().listen(0)
     await new Promise((resolve) => server.once('listening', resolve))
     base = `http://localhost:${server.address().port}/api`
+    if (afterStart) await afterStart()
   })
   after(async () => {
     server.close()

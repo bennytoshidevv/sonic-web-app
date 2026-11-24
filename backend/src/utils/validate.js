@@ -35,3 +35,18 @@ export function toId(value, name = 'id') {
   if (!Number.isInteger(id) || id <= 0) throw badRequest('invalid_id', `Invalid ${name}`)
   return id
 }
+
+// Optional text: trimmed, '' becomes null, and it must fit the column (e.g. varchar(255)).
+export function optionalText(value, name, maxLength) {
+  if (value === undefined || value === null) return null
+  const text = String(value).trim()
+  if (text.length > maxLength) throw badRequest('too_long', `${name} must be at most ${maxLength} characters`)
+  return text === '' ? null : text
+}
+
+// Required text with the same length check.
+export function requiredText(value, name, maxLength) {
+  const text = optionalText(value, name, maxLength)
+  if (text === null) throw badRequest('missing_fields', `Missing: ${name}`)
+  return text
+}

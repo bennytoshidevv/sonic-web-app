@@ -52,10 +52,10 @@ An id in the path or query that is not a positive whole number gives 400 `invali
 | **Catalog** (module 1) | | | |
 | GET | `/api/barangays` | anyone | → active barangays (`getBarangays`) |
 | GET | `/api/cuisine-types` | anyone | → `[{ cuisine_id, cuisine_name }]` (`getCuisineTypes`) |
-| GET | `/api/restaurants` | anyone | → active restaurants, each with `cuisines` (names) and `hours` (`getRestaurants`) |
-| GET | `/api/restaurants/:id` | anyone | → one active restaurant; 404 `not_found` if missing or disabled (`getRestaurant`) |
-| GET | `/api/restaurants/:id/menu` | anyone | → active categories in display order, each with active `items` incl. sold out (`getMenu`) |
-| GET | `/api/restaurants/:id/reviews` | anyone | → review rows (`getRestaurantReviews`) |
+| GET | `/api/restaurants` | anyone | → active restaurants, each with `cuisines` (names), `hours`, `open_status`, and `average_rating` + `review_count` calculated in SQL (`getRestaurants`) |
+| GET | `/api/restaurants/:id` | anyone | → one active restaurant (same fields); 404 `not_found` if missing or disabled (`getRestaurant`) |
+| GET | `/api/restaurants/:id/menu` | anyone | → active categories in display order, each with active `items` incl. sold out; 404 `not_found` if missing or disabled (`getMenu`) |
+| GET | `/api/restaurants/:id/reviews` | anyone | → review rows; 404 `not_found` if missing or disabled (`getRestaurantReviews`) |
 | GET | `/api/rate-settings/current` | anyone | → latest rate with `effective_from <= now()` (`getRateSettings`) |
 | GET | `/api/menu-items?ids=1,2,3` | anyone | → items with `restaurant: { restaurant_id, name, description, open_status, is_active }` (`getCartItemDetails`); error `too_many_items` (> 100) |
 | GET | `/api/restaurants/:id/favorite` | customer | → `{ favorite }` for the logged-in customer (`isFavoriteRestaurant`) |

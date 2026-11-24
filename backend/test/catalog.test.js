@@ -40,6 +40,38 @@ describe('restaurants', () => {
     assert.equal(body.find((r) => r.restaurant_id === 4).hours.length, 6) // closed on Sundays
   })
 
+  test('average rating is calculated in SQL from the reviews (null when there are none)', async () => {
+    const { body } = await call('GET', '/restaurants')
+    const pearl = body.find((r) => r.restaurant_id === 3) // one 5-star review (order 1005)
+    assert.equal(pearl.average_rating, 5)
+    assert.equal(pearl.review_count, 1)
+    assert.equal(pearl.open_status, 'open')
+    const rosa = body.find((r) => r.restaurant_id === 1)
+    assert.equal(rosa.average_rating, null)
+    assert.equal(rosa.review_count, 0)
+    assert.equal((await call('GET', '/restaurants/3')).body.average_rating, 5)
+
+    // A second review (4 stars) on a test order changes the average without storing it: (5 + 4) / 2 = 4.5
+    const { rows } = await pool.query(
+      `INSERT INTO restaurant_reviews (order_id, restaurant_id, rating)
+       SELECT order_id, 3, 4 FROM order_restaurants WHERE restaurant_id = 3 AND order_id <> 1005 LIMIT 1 RETURNING review_id`,
+    )
+    try {
+      assert.equal((await call('GET', '/restaurants/3')).body.average_rating, 4.5)
+    } finally {
+      await pool.query('DELETE FROM restaurant_reviews WHERE review_id = $1', [rows[0].review_id])
+    }
+  })
+
+  test('menu and reviews of a disabled or unknown restaurant answer 404', async () => {
+    for (const path of ['/restaurants/6/menu', '/restaurants/999/menu', '/restaurants/6/reviews', '/restaurants/999/reviews']) {
+      const res = await call('GET', path)
+      assert.equal(res.status, 404, path)
+      assert.equal(res.body.error, 'not_found')
+    }
+    assert.equal((await call('GET', '/restaurants/abc/menu')).body.error, 'invalid_id')
+  })
+
   test('one restaurant; disabled, missing and bad ids', async () => {
     assert.equal((await call('GET', '/restaurants/2')).body.name, 'Golden Roast Express')
     const disabled = await call('GET', '/restaurants/6')

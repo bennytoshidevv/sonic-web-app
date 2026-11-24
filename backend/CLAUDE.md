@@ -76,6 +76,7 @@ Commands: `npm run dev` (http://localhost:4000), `npm run db:reset` (schema + se
 - Rejected rider/operator applications stay `inactive`; no new account status.
 - Operator "Delivered today" filter = today only.
 - Priority: modules 1–8, then connecting the frontend. PayMongo, a notifications page and deployment only if time is left.
-- Module 1: keep the mock's response shape (no `average_rating`; pages compute it from reviews). Catalog reads are
-  public; favorites need a customer login.
+- Module 1: keep the mock's response shape, plus extra fields `average_rating` (SQL, 1 decimal, null if no reviews) and
+  `review_count` on restaurants. Catalog reads are public; favorites need a customer login. Menu and reviews of a missing
+  or disabled restaurant answer 404.
 - The cart stays in the frontend (`CartContext`); checkout sends item ids and quantities. Ask before using `cart_items`.

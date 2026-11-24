@@ -14,11 +14,15 @@ import { toId } from '../../utils/validate.js'
 
 const router = Router()
 
-// A restaurant row plus its cuisine names and weekly hours, like the mock's withDetails().
-// Sub-queries with json_agg build the two lists inside the same query (no extra round trips).
+// A restaurant row plus its cuisine names and weekly hours, like the mock's withDetails(),
+// and its average rating. Sub-queries build the lists inside the same query (no extra round trips).
 // Cuisines have no order column, so they are sorted by name to always come back the same way.
+// average_rating = average of restaurant_reviews.rating rounded to 1 decimal (null when there are no
+// reviews), the same rule as calc.js averageRating. It is calculated on every read, never stored.
 export const RESTAURANT_WITH_DETAILS = `
   SELECT r.*,
+         (SELECT round(avg(rr.rating), 1) FROM restaurant_reviews rr WHERE rr.restaurant_id = r.restaurant_id) AS average_rating,
+         (SELECT count(*)::int FROM restaurant_reviews rr WHERE rr.restaurant_id = r.restaurant_id) AS review_count,
          COALESCE((SELECT json_agg(ct.cuisine_name ORDER BY ct.cuisine_name)
                      FROM restaurant_cuisines rc
                      JOIN cuisine_types ct ON ct.cuisine_id = rc.cuisine_id
@@ -34,6 +38,12 @@ async function findActiveRestaurant(restaurantId) {
   return rows[0] || null
 }
 
+// Customers only see active restaurants: a missing or disabled one answers 404 for its menu and reviews too.
+async function requireActiveRestaurant(restaurantId) {
+  const { rows } = await query('SELECT 1 FROM restaurants WHERE restaurant_id = $1 AND is_active', [restaurantId])
+  if (!rows[0]) throw notFound('not_found', 'Restaurant not found')
+}
+
 // GET /api/barangays -> active barangays (getBarangays)
 // Hidden barangays can't be chosen for new addresses.
 router.get('/barangays', async (req, res) => {
@@ -47,7 +57,7 @@ router.get('/cuisine-types', async (req, res) => {
   res.json(rows)
 })
 
-// GET /api/restaurants -> active restaurants with cuisines and hours (getRestaurants)
+// GET /api/restaurants -> active restaurants with cuisines, hours, open_status and average_rating (getRestaurants)
 router.get('/restaurants', async (req, res) => {
   const { rows } = await query(`${RESTAURANT_WITH_DETAILS} WHERE r.is_active ORDER BY r.restaurant_id`)
   res.json(rows)
@@ -63,7 +73,10 @@ router.get('/restaurants/:id', async (req, res) => {
 
 // GET /api/restaurants/:id/menu -> active categories in display order, each with its active items (getMenu)
 // Sold-out items (is_available = false) stay in the list so the page can show them as "Sold out".
+// 404 for a missing or disabled restaurant (the mock returned an empty list).
 router.get('/restaurants/:id/menu', async (req, res) => {
+  const restaurantId = toId(req.params.id, 'restaurant id')
+  await requireActiveRestaurant(restaurantId)
   const { rows } = await query(
     `SELECT c.*,
             COALESCE((SELECT json_agg(i ORDER BY i.item_id)
@@ -72,17 +85,17 @@ router.get('/restaurants/:id/menu', async (req, res) => {
        FROM menu_categories c
       WHERE c.restaurant_id = $1 AND c.is_active
       ORDER BY c.display_order, c.menu_category_id`,
-    [toId(req.params.id, 'restaurant id')],
+    [restaurantId],
   )
   res.json(rows)
 })
 
 // GET /api/restaurants/:id/reviews -> review rows (getRestaurantReviews)
-// The page computes the average rating from these (calc.js averageRating), so it is not stored.
+// 404 for a missing or disabled restaurant. (The restaurant itself also carries average_rating.)
 router.get('/restaurants/:id/reviews', async (req, res) => {
-  const { rows } = await query('SELECT * FROM restaurant_reviews WHERE restaurant_id = $1 ORDER BY review_id', [
-    toId(req.params.id, 'restaurant id'),
-  ])
+  const restaurantId = toId(req.params.id, 'restaurant id')
+  await requireActiveRestaurant(restaurantId)
+  const { rows } = await query('SELECT * FROM restaurant_reviews WHERE restaurant_id = $1 ORDER BY review_id', [restaurantId])
   res.json(rows)
 })
 

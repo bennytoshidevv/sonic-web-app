@@ -81,6 +81,19 @@ An id in the path or query that is not a positive whole number gives 400 `invali
 | POST | `/api/staff/orders/:id/reject` | operator, admin | `{ reason }` → `{ order }`; until ready_for_pickup (409 `not_allowed`), 400 `reason_required`. Ends the assignment (rider freed), pending refund if paid online, notifies customer + rider (`rejectOrderByStaff`) |
 | POST | `/api/staff/orders/:id/assign` | operator, admin | `{ rider_id }` → `{ ok }`; 409 `not_assignable` (not confirmed yet / picked up), 409 `rider_unavailable`. Reassigning ends the old assignment. Notifies the rider (`assignRider`) |
 | GET | `/api/staff/riders` | operator, admin | → `[{ user, profile, openShift, deliveriesThisShift, pettyCash, jobs, reviews }]` (`getRidersOverview`) |
+| **Rider** (module 5) | | | Riders only, always the logged-in rider; another rider's delivery → 404 |
+| GET | `/api/rider/dashboard` | rider | → `{ profile, shift, hasShiftToday, deliveries, deductions, pettyCash, activeDelivery }` (`getRiderDashboard`) |
+| POST | `/api/rider/shift/start` | rider | → `{ shift }`; charges per-shift deductions (+ savings deposit), rider available; 409 `already_open`, `already_today` (`startShift`) |
+| POST | `/api/rider/shift/end` | rider | → `{ shift }`; rider offline; 409 `no_open_shift`, `delivery_in_progress` (`endShift`) |
+| PUT | `/api/rider/availability` | rider | `{ availability_status }` → `{ ok }`; 400 `invalid_status`, 409 `no_open_shift` (`setRiderAvailability`) |
+| GET | `/api/rider/deliveries` | rider | → `{ pending, active, shiftIsOpen, availability, tiers, rate }` (`getRiderDeliveries`) |
+| POST | `/api/rider/assignments/:id/accept` | rider | → `{ ok }`; rider busy; 404 `not_found`, 409 `no_open_shift` (`acceptAssignment`) |
+| POST | `/api/rider/assignments/:id/reject` | rider | → `{ ok }`; assignment ends as rejected; 404 `not_found` (`rejectAssignment`) |
+| POST | `/api/rider/deliveries/:orderId/advance` | rider | → `{ order }`: ready_for_pickup → picked_up → on_the_way → delivered. Delivered = COD paid + pay snapshot + per-delivery deductions + assignment completed + rider free. 404 `not_assigned`, 409 `not_ready`, `no_open_shift` (`advanceDelivery`) |
+| GET | `/api/rider/deliveries/:orderId` | rider | → order + `{ assignment, earning, shiftPettyCash, orderPurchases, shiftIsOpen, tiers, rate }` (`getRiderDeliveryDetails`) |
+| POST | `/api/rider/deliveries/:orderId/purchases` | rider | `{ amount }` → `{ ok }`; 404 `not_assigned`, 409 `no_open_shift`, 400 `invalid_amount`, 409 `not_enough` (`recordPettyPurchase`) |
+| GET | `/api/rider/history` | rider | → `[{ shift, runs, deductions, settlement, pettyCash }]`, newest first (`getRiderHistory`) |
+| GET | `/api/rider/wallet` | rider | → `{ shift, pettyCash, savings, savingsPerShift }` (`getRiderWallet`) |
 
 ## Folder structure
 
@@ -101,6 +114,7 @@ backend/
       addresses/  addresses.routes.js
       orders/     orders.routes.js, orders.service.js (order details queries, checkout transaction)
       dispatch/   dispatch.routes.js (operator: live orders, status, reject, assign rider, riders overview)
+      rider/      rider.routes.js, rider.service.js (shifts, deductions, pay snapshots, shift view)
       uploads/    uploads.routes.js, storage.js (local or Google Cloud Storage)
   test/           helpers.js (starts the API for tests), <module>.test.js
 ```

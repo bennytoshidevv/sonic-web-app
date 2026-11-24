@@ -5,6 +5,7 @@ import { badRequest, conflict, notFound } from '../../middleware/errors.js'
 import { notify, notifyOrderStatus } from '../../utils/notify.js'
 import { optionalText, toId } from '../../utils/validate.js'
 import { getStaffOrder, getStaffOrders } from '../orders/orders.service.js'
+import { freeRiderIfIdle } from '../rider/rider.service.js'
 
 // Operator orders and riders (module 4): live orders, order details, moving an order forward,
 // rejecting it, the riders overview and assigning a rider. Mounted at /api/staff.
@@ -47,16 +48,7 @@ async function endActiveAssignments(db, deliveryId, endReason) {
       RETURNING rider_id`,
     [deliveryId, endReason],
   )
-  for (const { rider_id } of rows) {
-    // Only a 'busy' rider is set back to 'available' (an offline rider stays offline).
-    await db.query(
-      `UPDATE rider_profiles SET availability_status = 'available'
-        WHERE user_id = $1 AND availability_status = 'busy'
-          AND NOT EXISTS (SELECT 1 FROM delivery_assignments
-                           WHERE rider_id = $1 AND ended_at IS NULL AND response_status = 'accepted')`,
-      [rider_id],
-    )
-  }
+  for (const { rider_id } of rows) await freeRiderIfIdle(db, rider_id)
   return rows.map((r) => r.rider_id)
 }
 

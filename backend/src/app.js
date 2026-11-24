@@ -8,6 +8,7 @@ import authRoutes from './modules/auth/auth.routes.js'
 import catalogRoutes from './modules/catalog/catalog.routes.js'
 import dispatchRoutes from './modules/dispatch/dispatch.routes.js'
 import orderRoutes from './modules/orders/orders.routes.js'
+import riderRoutes from './modules/rider/rider.routes.js'
 import uploadRoutes from './modules/uploads/uploads.routes.js'
 
 // Builds the Express app. Kept separate from index.js so tests can use it without opening a port.
@@ -28,6 +29,7 @@ export function createApp() {
   app.use('/api', catalogRoutes)
   app.use('/api', orderRoutes) // /api/orders..., /api/riders/:id/reviews
   app.use('/api/staff', dispatchRoutes) // operator + admin: orders and riders
+  app.use('/api/rider', riderRoutes) // the rider app
 
   // Photos saved by the 'local' upload driver.
   if (config.uploadDriver === 'local') app.use('/uploads', express.static(LOCAL_UPLOAD_DIR))

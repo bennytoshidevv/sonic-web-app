@@ -16,12 +16,12 @@ import { orderTotal } from '../../utils/calc.js'
 // Everything is built inside one SQL query with jsonb sub-queries, so a list of 20 orders is
 // still one trip to the database.
 
-// The order's stores. Staff also see each store's address and phone number (where the rider buys the food).
-function storesSql(forStaff) {
+// The order's stores. Staff and riders also see each store's address and phone number (where the rider buys the food).
+function storesSql(withContacts) {
   return `COALESCE((
       SELECT jsonb_agg(to_jsonb(orr) || jsonb_build_object(
                'name', r.name,
-               ${forStaff ? "'address', r.address, 'contact_number', r.contact_number," : ''}
+               ${withContacts ? "'address', r.address, 'contact_number', r.contact_number," : ''}
                'items', COALESCE((
                  SELECT jsonb_agg(to_jsonb(oi) ORDER BY oi.order_item_id)
                    FROM order_items oi
@@ -35,21 +35,21 @@ function storesSql(forStaff) {
 }
 
 // The status history, oldest first. Staff also see who made each change ('System' = no user, e.g. a payment webhook).
-function historySql(forStaff) {
+function historySql(withNames) {
   return `COALESCE((
-      SELECT jsonb_agg(to_jsonb(h)${forStaff ? " || jsonb_build_object('changed_by_name', COALESCE(hu.full_name, 'System'))" : ''}
+      SELECT jsonb_agg(to_jsonb(h)${withNames ? " || jsonb_build_object('changed_by_name', COALESCE(hu.full_name, 'System'))" : ''}
                        ORDER BY h.changed_at, h.history_id)
         FROM order_status_history h
         LEFT JOIN users hu ON hu.user_id = h.changed_by
        WHERE h.order_id = o.order_id), '[]')`
 }
 
-function orderDetailsSql(forStaff) {
+function orderDetailsSql({ storeContacts = false, historyNames = false } = {}) {
   return `
   jsonb_build_object(
     'order', to_jsonb(o),
-    'stores', ${storesSql(forStaff)},
-    'history', ${historySql(forStaff)},
+    'stores', ${storesSql(storeContacts)},
+    'history', ${historySql(historyNames)},
     'payment', (
       SELECT to_jsonb(p) FROM payments p
        WHERE p.order_id = o.order_id
@@ -68,13 +68,18 @@ function orderDetailsSql(forStaff) {
   )`
 }
 
-const ORDER_DETAILS = orderDetailsSql(false)
+export const ORDER_DETAILS = orderDetailsSql()
+
+// What a rider sees (the mock's riderOrderView): store addresses + the customer's name and number.
+export const RIDER_ORDER_DETAILS = `${orderDetailsSql({ storeContacts: true })} || jsonb_build_object(
+    'customer', (SELECT jsonb_build_object('full_name', cu.full_name, 'contact_number', cu.contact_number)
+                   FROM users cu WHERE cu.user_id = o.customer_id))`
 
 // What staff see (the mock's staffOrderView): the customer view plus store addresses, history with names,
 // the customer (with their number of orders), the delivery, every rider assignment (with the rider's name)
 // and the current assignment (the one not ended yet, or null).
 const ASSIGNMENT_WITH_NAME = "to_jsonb(a) || jsonb_build_object('rider_name', au.full_name)"
-const STAFF_ORDER_DETAILS = `${orderDetailsSql(true)} || jsonb_build_object(
+const STAFF_ORDER_DETAILS = `${orderDetailsSql({ storeContacts: true, historyNames: true })} || jsonb_build_object(
     'customer', (
       SELECT jsonb_build_object('user_id', cu.user_id, 'full_name', cu.full_name, 'email', cu.email,
                                 'contact_number', cu.contact_number,

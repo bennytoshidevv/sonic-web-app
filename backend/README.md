@@ -66,6 +66,14 @@ An id in the path or query that is not a positive whole number gives 400 `invali
 | PUT | `/api/addresses/:id` | customer | same body → `{ ok }` (`updateCustomerAddress`) |
 | PUT | `/api/addresses/:id/default` | customer | → `{ ok }` (`setDefaultAddress`) |
 | DELETE | `/api/addresses/:id` | customer | → `{ ok }`; soft delete, the oldest remaining address becomes default (`deleteCustomerAddress`) |
+| **Customer orders + reviews** (module 3) | | | Own orders only; someone else's order → 404 `not_found` |
+| POST | `/api/orders` | customer | `{ address_id, lines: [{ item_id, quantity }], payment_method, order_notes }` → `{ order }`. Prices, fees and total are computed by the API; the first line's store is the primary store. Errors: 409 `unavailable` (sold out / closed / disabled), `empty_cart`, `invalid_quantity` (1–99), `duplicate_item`, `invalid_payment_method`, `invalid_address` (`placeOrder`) |
+| GET | `/api/orders` | customer | → my orders, newest first: `[{ order, stores, history, payment, rider, reviews }]` (`getCustomerOrders`) |
+| GET | `/api/orders/:id` | customer | → `{ order, stores, history, payment, rider }` (`getOrderDetails`) |
+| POST | `/api/orders/:id/cancel` | customer | `{ reason }` → `{ order }`; only while `pending`, else 409 `not_cancellable`. A paid online payment gets a pending `refunds` row (`cancelOrder`) |
+| GET | `/api/orders/:id/reviews` | customer | → `{ restaurantReviews, riderReview }` (`getOrderReviews`) |
+| POST | `/api/orders/:id/reviews` | customer | `{ restaurantRatings: [{ restaurant_id, rating, comment }], riderRating }` → `{ ok }`; errors 409 `not_delivered`, 409 `already_rated`, 400 `invalid` (`submitOrderReviews`) |
+| GET | `/api/riders/:id/reviews` | logged in | → reviews of the rider's completed deliveries (`getRiderReviews`) |
 
 ## Folder structure
 
@@ -84,6 +92,7 @@ backend/
       auth/       auth.routes.js
       catalog/    catalog.routes.js
       addresses/  addresses.routes.js
+      orders/     orders.routes.js, orders.service.js (order details query, checkout transaction)
       uploads/    uploads.routes.js, storage.js (local or Google Cloud Storage)
   test/           helpers.js (starts the API for tests), <module>.test.js
 ```

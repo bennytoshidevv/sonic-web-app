@@ -1,0 +1,12 @@
+{
+  "name": "super-sonic-delivery",
+  "private": true,
+  "description": "Runs the frontend/ and backend/ apps from the repo root (no workspaces)",
+  "scripts": {
+    "install:all": "npm --prefix frontend install && npm --prefix backend install",
+    "dev:frontend": "npm --prefix frontend run dev",
+    "dev:backend": "npm --prefix backend run dev",
+    "build": "npm --prefix frontend run build",
+    "test": "npm --prefix backend test"
+  }
+}

@@ -50,3 +50,17 @@ export function requiredText(value, name, maxLength) {
   if (text === null) throw badRequest('missing_fields', `Missing: ${name}`)
   return text
 }
+
+// Money typed in a form: a number of at most 2 decimals, at least `min`. Returns it rounded to centavos.
+export function checkMoney(value, name, { min = 0 } = {}) {
+  const amount = Math.round(Number(value) * 100) / 100
+  if (value === '' || value === null || value === undefined || !Number.isFinite(amount) || amount < min || amount >= 100000000) {
+    throw badRequest('invalid', `${name} must be a valid amount`)
+  }
+  return amount
+}
+
+export function checkBoolean(value, name) {
+  if (typeof value !== 'boolean') throw badRequest('invalid', `${name} must be true or false`)
+  return value
+}

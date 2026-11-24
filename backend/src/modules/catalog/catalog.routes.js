@@ -17,7 +17,7 @@ const router = Router()
 // A restaurant row plus its cuisine names and weekly hours, like the mock's withDetails().
 // Sub-queries with json_agg build the two lists inside the same query (no extra round trips).
 // Cuisines have no order column, so they are sorted by name to always come back the same way.
-const RESTAURANT_WITH_DETAILS = `
+export const RESTAURANT_WITH_DETAILS = `
   SELECT r.*,
          COALESCE((SELECT json_agg(ct.cuisine_name ORDER BY ct.cuisine_name)
                      FROM restaurant_cuisines rc

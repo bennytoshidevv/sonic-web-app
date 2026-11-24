@@ -94,6 +94,26 @@ An id in the path or query that is not a positive whole number gives 400 `invali
 | POST | `/api/rider/deliveries/:orderId/purchases` | rider | `{ amount }` → `{ ok }`; 404 `not_assigned`, 409 `no_open_shift`, 400 `invalid_amount`, 409 `not_enough` (`recordPettyPurchase`) |
 | GET | `/api/rider/history` | rider | → `[{ shift, runs, deductions, settlement, pettyCash }]`, newest first (`getRiderHistory`) |
 | GET | `/api/rider/wallet` | rider | → `{ shift, pettyCash, savings, savingsPerShift }` (`getRiderWallet`) |
+| **Operator management** (module 6) | | | Operator and admin only; every change is written to `audit_logs` |
+| GET | `/api/staff/restaurants` | operator, admin | → every restaurant (disabled too) with `cuisines`, `cuisine_ids`, `hours` (`getRestaurantsForStaff`) |
+| POST | `/api/staff/restaurants` | operator, admin | `{ name, description, address, contact_number, cuisine_ids, hours: [{ day_of_week, open_time, close_time }], logo_url? }` → `{ restaurant }` (starts closed); 400 `invalid` (`saveRestaurant`) |
+| PUT | `/api/staff/restaurants/:id` | operator, admin | same body → `{ restaurant }` (`saveRestaurant`) |
+| PUT | `/api/staff/restaurants/:id/open-status` | operator, admin | `{ open_status }` → `{ ok }` (`setRestaurantOpenStatus`) |
+| PUT | `/api/staff/restaurants/:id/active` | operator, admin | `{ is_active }` → `{ ok }`; disabling also closes it (`setRestaurantActive`) |
+| GET | `/api/staff/menus/:restaurantId` | operator, admin | → all categories in display order with active items (`getMenuForStaff`) |
+| POST | `/api/staff/menus/:restaurantId/categories` | operator, admin | `{ category_name }` → `{ category }` (added last); 409 `duplicate` (`saveMenuCategory`) |
+| PUT | `/api/staff/menus/categories/:id` | operator, admin | `{ category_name }` → `{ category }` (`saveMenuCategory`) |
+| POST | `/api/staff/menus/categories/:id/move` | operator, admin | `{ direction: -1|1 }` → `{ ok }`; 409 `edge` (`moveMenuCategory`) |
+| POST | `/api/staff/menus/items` | operator, admin | `{ menu_category_id, name, description, price, is_available, photo_url? }` → `{ item }`; 400 `invalid` (`saveMenuItem`) |
+| PUT | `/api/staff/menus/items/:id` | operator, admin | same body → `{ item }`; old and new price in the audit log (`saveMenuItem`) |
+| PUT | `/api/staff/menus/items/:id/availability` | operator, admin | `{ is_available }` → `{ ok }` (`setMenuItemAvailable`) |
+| POST | `/api/staff/menus/items/:id/archive` | operator, admin | → `{ ok }`; soft delete (`archiveMenuItem`) |
+| GET | `/api/staff/users/customers` | operator, admin | → `[{ user, order_count, delivered_count, total_spent }]` (`getCustomersForStaff`) |
+| GET | `/api/staff/users/operators` | operator, admin | → operator users (`getOperatorsForStaff`) |
+| POST | `/api/staff/users/riders` | operator, admin | `{ full_name, email, contact_number, password, vehicle_type, plate_number }` → `{ user }` (active); 409 `email_taken` (`createRiderAccount`) |
+| PUT | `/api/staff/users/:id/status` | operator, admin | `{ account_status, reason }` → `{ ok }`; operators manage riders + customers, only the admin manages operators, nobody changes the admin: 403 `not_allowed`; 400 `invalid_status` (`setAccountStatus`) |
+| GET | `/api/staff/users/:id/latest-change` | operator, admin | → latest audit row about the user, or null (`getLatestAccountChange`) |
+| GET | `/api/staff/users/names?ids=1,2` | operator, admin | → `{ "1": "name", ... }`, unknown = 'System' (`getUserNames`) |
 
 ## Folder structure
 
@@ -115,6 +135,7 @@ backend/
       orders/     orders.routes.js, orders.service.js (order details queries, checkout transaction)
       dispatch/   dispatch.routes.js (operator: live orders, status, reject, assign rider, riders overview)
       rider/      rider.routes.js, rider.service.js (shifts, deductions, pay snapshots, shift view)
+      management/ restaurants.routes.js, menus.routes.js, users.routes.js (operator management)
       uploads/    uploads.routes.js, storage.js (local or Google Cloud Storage)
   test/           helpers.js (starts the API for tests), <module>.test.js
 ```

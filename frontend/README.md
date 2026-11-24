@@ -1,8 +1,10 @@
 # Super Sonic Delivery – Frontend
 
 React + Vite + Tailwind CSS v4. See `CLAUDE.md` and `DESIGN.md` for project rules.
+Run these commands inside the `frontend/` folder (the API is in `../backend`).
 
 ```
+cd frontend
 npm install
 npm run dev     # http://localhost:5173
 npm run build

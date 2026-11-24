@@ -2,7 +2,7 @@
 
 Capstone web app for Sonic, a local food delivery company in Sipocot, Philippines.
 Sonic has no kitchen: it delivers orders from many partner restaurants.
-This repo is the **frontend only**. The Express + database backend comes later.
+This folder (`frontend/`) is the React app. The Express + PostgreSQL API lives in `../backend`.
 
 ## Tech stack
 - React (Vite), JavaScript (not TypeScript)
@@ -12,7 +12,8 @@ This repo is the **frontend only**. The Express + database backend comes later.
 
 ## Reference files (read these before building a screen)
 - `DESIGN.md` – the design system. Follow it for every color, font, radius, shadow and component.
-- `SonicDelivery_ERD_v6_MySQL.sql` – the database design. Mock data and form fields must match these tables and column names.
+- `../backend/db/schema.sql` – the database design (ERD v7, PostgreSQL; adds `favorite_restaurants`). Mock data and form fields
+  must match these tables and column names. The original v6 MySQL export is kept in `../docs/erd/` for reference.
 - `stitch-exports/` – Google Stitch designs (`<code>-<name>.html` + `.png` screenshot), e.g. `S01-login.html`.
 
 ## Design rules
@@ -20,8 +21,8 @@ This repo is the **frontend only**. The Express + database backend comes later.
 - Headings, buttons, prices: Poppins (`font-display`). Body, tables, forms: Inter (`font-sans`).
 - Cards and inputs: 12px radius. Buttons, chips, status badges: pill shape.
 - Yellow (`sonic-bolt`) is only a background or icon color, never text on white. At most one gradient per screen.
-- Use the logo image `src/assets/logo.jpg`. Never redraw the logo in text or SVG.
-- Money: `₱1,250.00` (peso sign, two decimals). Time: 12-hour (`7:30 AM`). Use the helpers in `src/lib/format.js`.
+- Use the logo image `src/shared/assets/logo.jpg`. Never redraw the logo in text or SVG.
+- Money: `₱1,250.00` (peso sign, two decimals). Time: 12-hour (`7:30 AM`). Use the helpers in `src/shared/utils/format.js`.
 - No dark mode, no maps, no chat, no vouchers, no push notifications in this version.
 
 ## Converting Stitch exports
@@ -93,7 +94,7 @@ src/
 - Rider pay per delivery: gas allowance (from the barangay fee tier) + rider share (70% of barangay fee minus allowance) + all extra-store fees.
   Example: fee ₱250.00 → allowance ₱50.00 → share ₱140.00 → gross ₱190.00 (+₱10.00 per extra store).
 - Rider deductions: ₱10.00 per delivery (operator fee), ₱10.00 per shift (box rent), ₱10.00 per shift (savings).
-- Calculated values (totals, earnings, balances, average ratings) are computed in `src/lib/calc.js`, never stored in mock data.
+- Calculated values (totals, earnings, balances, average ratings) are computed in `src/shared/utils/calc.js`, never stored in mock data.
 - Rate settings: the current rate is the latest `rate_settings` row whose `effective_from` has arrived; a future row is "upcoming".
   Settings changes (barangay fees, gas tiers, deductions, rates) only affect new orders/shifts and are written to `audit_logs`.
 

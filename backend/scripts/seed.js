@@ -1,6 +1,6 @@
 // Loads the demo data into the database.
 //
-// The dummy data lives in ONE place: the frontend's src/mock/mock.js (shaped like the ERD tables).
+// The dummy data lives in ONE place: the frontend's frontend/src/mock/mock.js (shaped like the ERD tables).
 // This script imports that file, keeps only the columns the real tables have, replaces the
 // demo SHA-256 password hashes with bcrypt hashes, and inserts everything in one transaction.
 // Demo orders and shifts in mock.js are dated "today", so re-run `npm run db:reset` before a demo.
@@ -17,7 +17,7 @@ import pg from 'pg'
 process.env.TZ = 'Asia/Manila' // mock.js builds "today" timestamps with the local clock
 
 const DEMO_PASSWORD = 'sonic1234'
-const frontendSrc = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../../src')
+const frontendSrc = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../../frontend/src')
 
 // Insert order: parents before children (foreign keys).
 const TABLES = [

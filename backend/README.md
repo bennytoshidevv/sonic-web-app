@@ -11,7 +11,7 @@ Express 5 + PostgreSQL. Plain parameterized SQL through `pg` (no ORM), bcrypt pa
    ```
 2. Set up the server:
    ```
-   cd server
+   cd backend
    cp .env.example .env         # then edit DATABASE_URL / JWT_SECRET if needed
    npm install
    npm run db:reset             # creates all tables, then loads the demo data
@@ -23,11 +23,11 @@ Express 5 + PostgreSQL. Plain parameterized SQL through `pg` (no ORM), bcrypt pa
 
 ## Database
 
-- `db/schema.sql` – the ERD v7 in PostgreSQL (same design as `SonicDelivery_ERD_v6_MySQL.sql`, plus
+- `db/schema.sql` – the ERD v7 in PostgreSQL (same design as `../docs/erd/SonicDelivery_ERD_v6_MySQL.sql`, plus
   `favorite_restaurants`, CHECK constraints and partial unique indexes for rules like
   "one open shift per rider" and "one primary store per order").
   To view it in dbdiagram.io: **Import → PostgreSQL** and paste the file.
-- `scripts/seed.js` – loads the dummy data straight from the frontend's `src/mock/mock.js`,
+- `scripts/seed.js` – loads the dummy data straight from the frontend's `frontend/src/mock/mock.js`,
   so there is only one copy of the demo data. All demo accounts use the password `sonic1234`
   (stored as bcrypt hashes). Mock reviews for orders 1–6 are skipped because those orders don't exist.
 
@@ -51,7 +51,7 @@ Protected routes need the header `Authorization: Bearer <token>`.
 ## Folder structure
 
 ```
-server/
+backend/
   db/schema.sql
   scripts/        run-sql.js, seed.js
   src/

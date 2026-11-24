@@ -22,3 +22,9 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Secrets and local data (both apps)
+.env
+.env.*
+!.env.example
+backend/uploads/

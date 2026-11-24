@@ -3,7 +3,7 @@
 
 function required(name) {
   const value = process.env[name]
-  if (!value) throw new Error(`Missing environment variable ${name} (see server/.env.example)`)
+  if (!value) throw new Error(`Missing environment variable ${name} (see backend/.env.example)`)
   return value
 }
 
@@ -14,7 +14,7 @@ export const config = {
   jwtExpiresIn: process.env.JWT_EXPIRES_IN || '7d',
   // The frontend address allowed to call the API (Vite dev server by default).
   corsOrigin: (process.env.CORS_ORIGIN || 'http://localhost:5173').split(','),
-  // Photo uploads: 'local' saves to server/uploads (development),
+  // Photo uploads: 'local' saves to backend/uploads (development),
   // 'gcs' saves to a Google Cloud Storage bucket (production).
   uploadDriver: process.env.UPLOAD_DRIVER || 'local',
   gcsBucket: process.env.GCS_BUCKET || '',

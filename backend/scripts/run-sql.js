@@ -4,7 +4,7 @@ import pg from 'pg'
 
 const file = process.argv[2]
 if (!file) throw new Error('Usage: node scripts/run-sql.js <file.sql>')
-if (!process.env.DATABASE_URL) throw new Error('Missing DATABASE_URL (see server/.env.example)')
+if (!process.env.DATABASE_URL) throw new Error('Missing DATABASE_URL (see backend/.env.example)')
 
 const client = new pg.Client({ connectionString: process.env.DATABASE_URL })
 await client.connect()

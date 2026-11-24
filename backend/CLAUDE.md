@@ -69,3 +69,13 @@ Commands: `npm run dev` (http://localhost:4000), `npm run db:reset` (schema + se
 - One commit per module on the `backend` branch. Don't push unless asked.
 - Ask before changing `db/schema.sql`; if approved, keep `scripts/seed.js` working and say what to update
   in the dbdiagram.io ERD. Never commit `.env` or keys.
+
+## Decisions (made by the team – don't re-ask)
+- Notifications: the backend saves them (order status → customer, rider assigned → rider). No notifications page for now.
+- Rejecting an online-paid order creates a `refunds` row with status `pending`. Actual PayMongo refunds only if time allows.
+- Rejected rider/operator applications stay `inactive`; no new account status.
+- Operator "Delivered today" filter = today only.
+- Priority: modules 1–8, then connecting the frontend. PayMongo, a notifications page and deployment only if time is left.
+- Module 1: keep the mock's response shape (no `average_rating`; pages compute it from reviews). Catalog reads are
+  public; favorites need a customer login.
+- The cart stays in the frontend (`CartContext`); checkout sends item ids and quantities. Ask before using `cart_items`.

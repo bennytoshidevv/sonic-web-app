@@ -1,13 +1,13 @@
 -- Super Sonic Delivery – PostgreSQL schema (ERD v7)
 --
--- Same design as SonicDelivery_ERD_v6_MySQL.sql, rewritten for PostgreSQL
+-- Same design as docs/erd/SonicDelivery_ERD_v6_MySQL.sql, rewritten for PostgreSQL
 -- (Cloud SQL for PostgreSQL). Changes from v6:
 --   * PostgreSQL syntax: SERIAL ids, CREATE TYPE enums, COMMENT ON, jsonb, timestamptz.
 --   * New table: favorite_restaurants (customers "like" restaurants).
 --   * CHECK constraints and partial unique indexes for rules the ERD drawing cannot show
 --     (ratings 1–5, positive amounts, one primary store per order, one open shift per rider, ...).
 --
--- Run:  psql "$DATABASE_URL" -f server/db/schema.sql
+-- Run:  psql "$DATABASE_URL" -f backend/db/schema.sql
 -- This file drops and recreates everything, so only run it on a dev/test database.
 
 DROP SCHEMA IF EXISTS public CASCADE;

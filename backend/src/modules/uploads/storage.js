@@ -8,7 +8,7 @@ import { config } from '../../config.js'
 // That URL is what goes into restaurants.logo_url or menu_items.photo_url.
 //
 // Two drivers, chosen by UPLOAD_DRIVER:
-//   local – writes to server/uploads/ and Express serves it at /uploads/... (for development)
+//   local – writes to backend/uploads/ and Express serves it at /uploads/... (for development)
 //   gcs   – writes to a Google Cloud Storage bucket (for the deployed app on Cloud Run,
 //           whose own disk is wiped on every restart)
 

@@ -11,7 +11,7 @@ import {
 } from '@shared/utils/calc.js'
 import { tierRangeProblem } from '@shared/utils/validate.js'
 
-// Mock data shaped like the ERD tables (SonicDelivery_ERD_v6_MySQL.sql).
+// Mock data shaped like the ERD tables (backend/db/schema.sql, ERD v7).
 // The functions at the bottom will be swapped for real API calls (JWT auth) later.
 
 // ---------- users ----------

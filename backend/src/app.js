@@ -6,6 +6,7 @@ import { LOCAL_UPLOAD_DIR } from './modules/uploads/storage.js'
 import addressRoutes from './modules/addresses/addresses.routes.js'
 import authRoutes from './modules/auth/auth.routes.js'
 import catalogRoutes from './modules/catalog/catalog.routes.js'
+import dispatchRoutes from './modules/dispatch/dispatch.routes.js'
 import orderRoutes from './modules/orders/orders.routes.js'
 import uploadRoutes from './modules/uploads/uploads.routes.js'
 
@@ -26,6 +27,7 @@ export function createApp() {
   // Catalog paths start right under /api (/api/restaurants, /api/barangays, ...)
   app.use('/api', catalogRoutes)
   app.use('/api', orderRoutes) // /api/orders..., /api/riders/:id/reviews
+  app.use('/api/staff', dispatchRoutes) // operator + admin: orders and riders
 
   // Photos saved by the 'local' upload driver.
   if (config.uploadDriver === 'local') app.use('/uploads', express.static(LOCAL_UPLOAD_DIR))

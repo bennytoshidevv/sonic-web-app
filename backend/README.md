@@ -74,6 +74,13 @@ An id in the path or query that is not a positive whole number gives 400 `invali
 | GET | `/api/orders/:id/reviews` | customer | → `{ restaurantReviews, riderReview }` (`getOrderReviews`) |
 | POST | `/api/orders/:id/reviews` | customer | `{ restaurantRatings: [{ restaurant_id, rating, comment }], riderRating }` → `{ ok }`; errors 409 `not_delivered`, 409 `already_rated`, 400 `invalid` (`submitOrderReviews`) |
 | GET | `/api/riders/:id/reviews` | logged in | → reviews of the rider's completed deliveries (`getRiderReviews`) |
+| **Operator orders + riders** (module 4) | | | Operator and admin only |
+| GET | `/api/staff/orders` | operator, admin | → every order, newest first: `{ order, stores (+ address, contact_number), history (+ changed_by_name), payment, rider, customer, delivery, assignments, currentAssignment }` (`getLiveOrders`) |
+| GET | `/api/staff/orders/:id` | operator, admin | → one order, same shape; 404 `not_found` (`getOrderForStaff`) |
+| POST | `/api/staff/orders/:id/advance` | operator, admin | → `{ order }`: pending → confirmed → preparing → ready_for_pickup; else 409 `not_allowed`. Notifies the customer (`advanceOrderByStaff`) |
+| POST | `/api/staff/orders/:id/reject` | operator, admin | `{ reason }` → `{ order }`; until ready_for_pickup (409 `not_allowed`), 400 `reason_required`. Ends the assignment (rider freed), pending refund if paid online, notifies customer + rider (`rejectOrderByStaff`) |
+| POST | `/api/staff/orders/:id/assign` | operator, admin | `{ rider_id }` → `{ ok }`; 409 `not_assignable` (not confirmed yet / picked up), 409 `rider_unavailable`. Reassigning ends the old assignment. Notifies the rider (`assignRider`) |
+| GET | `/api/staff/riders` | operator, admin | → `[{ user, profile, openShift, deliveriesThisShift, pettyCash, jobs, reviews }]` (`getRidersOverview`) |
 
 ## Folder structure
 
@@ -87,12 +94,13 @@ backend/
     config.js     reads .env
     db.js         connection pool, query(), withTransaction()
     middleware/   auth.js (requireAuth, requireRole), errors.js
-    utils/        validate.js, audit.js, calc.js (copy of frontend/src/shared/utils/calc.js)
+    utils/        validate.js, audit.js, notify.js (in-app notifications), calc.js (copy of frontend/src/shared/utils/calc.js)
     modules/
       auth/       auth.routes.js
       catalog/    catalog.routes.js
       addresses/  addresses.routes.js
-      orders/     orders.routes.js, orders.service.js (order details query, checkout transaction)
+      orders/     orders.routes.js, orders.service.js (order details queries, checkout transaction)
+      dispatch/   dispatch.routes.js (operator: live orders, status, reject, assign rider, riders overview)
       uploads/    uploads.routes.js, storage.js (local or Google Cloud Storage)
   test/           helpers.js (starts the API for tests), <module>.test.js
 ```

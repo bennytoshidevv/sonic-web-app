@@ -2,7 +2,7 @@ import { query, withTransaction } from '../../db.js'
 import { badRequest, conflict } from '../../middleware/errors.js'
 import { orderTotal } from '../../utils/calc.js'
 
-// Order logic shared by the customer routes now and the operator/rider routes later.
+// Order logic shared by the customer, operator and rider routes.
 
 // ---------- Reading orders ----------
 
@@ -12,15 +12,16 @@ import { orderTotal } from '../../utils/calc.js'
 //   history = order_status_history, oldest first
 //   payment = the latest payments row
 //   rider   = the current rider who accepted, else the rider who completed it, else null
-// ORDER_DETAILS is the SQL expression for that object (used as `SELECT ${ORDER_DETAILS} FROM customer_orders o`).
+// These are SQL expressions used as `SELECT ${ORDER_DETAILS} FROM customer_orders o`.
 // Everything is built inside one SQL query with jsonb sub-queries, so a list of 20 orders is
 // still one trip to the database.
-const ORDER_DETAILS = `
-  jsonb_build_object(
-    'order', to_jsonb(o),
-    'stores', COALESCE((
+
+// The order's stores. Staff also see each store's address and phone number (where the rider buys the food).
+function storesSql(forStaff) {
+  return `COALESCE((
       SELECT jsonb_agg(to_jsonb(orr) || jsonb_build_object(
                'name', r.name,
+               ${forStaff ? "'address', r.address, 'contact_number', r.contact_number," : ''}
                'items', COALESCE((
                  SELECT jsonb_agg(to_jsonb(oi) ORDER BY oi.order_item_id)
                    FROM order_items oi
@@ -30,11 +31,25 @@ const ORDER_DETAILS = `
              ORDER BY orr.is_primary DESC, orr.restaurant_id)
         FROM order_restaurants orr
         JOIN restaurants r ON r.restaurant_id = orr.restaurant_id
-       WHERE orr.order_id = o.order_id), '[]'),
-    'history', COALESCE((
-      SELECT jsonb_agg(to_jsonb(h) ORDER BY h.changed_at, h.history_id)
+       WHERE orr.order_id = o.order_id), '[]')`
+}
+
+// The status history, oldest first. Staff also see who made each change ('System' = no user, e.g. a payment webhook).
+function historySql(forStaff) {
+  return `COALESCE((
+      SELECT jsonb_agg(to_jsonb(h)${forStaff ? " || jsonb_build_object('changed_by_name', COALESCE(hu.full_name, 'System'))" : ''}
+                       ORDER BY h.changed_at, h.history_id)
         FROM order_status_history h
-       WHERE h.order_id = o.order_id), '[]'),
+        LEFT JOIN users hu ON hu.user_id = h.changed_by
+       WHERE h.order_id = o.order_id), '[]')`
+}
+
+function orderDetailsSql(forStaff) {
+  return `
+  jsonb_build_object(
+    'order', to_jsonb(o),
+    'stores', ${storesSql(forStaff)},
+    'history', ${historySql(forStaff)},
     'payment', (
       SELECT to_jsonb(p) FROM payments p
        WHERE p.order_id = o.order_id
@@ -51,6 +66,48 @@ const ORDER_DETAILS = `
        ORDER BY (a.ended_at IS NULL) DESC, a.assignment_id DESC
        LIMIT 1)
   )`
+}
+
+const ORDER_DETAILS = orderDetailsSql(false)
+
+// What staff see (the mock's staffOrderView): the customer view plus store addresses, history with names,
+// the customer (with their number of orders), the delivery, every rider assignment (with the rider's name)
+// and the current assignment (the one not ended yet, or null).
+const ASSIGNMENT_WITH_NAME = "to_jsonb(a) || jsonb_build_object('rider_name', au.full_name)"
+const STAFF_ORDER_DETAILS = `${orderDetailsSql(true)} || jsonb_build_object(
+    'customer', (
+      SELECT jsonb_build_object('user_id', cu.user_id, 'full_name', cu.full_name, 'email', cu.email,
+                                'contact_number', cu.contact_number,
+                                'order_count', (SELECT count(*)::int FROM customer_orders co WHERE co.customer_id = cu.user_id))
+        FROM users cu WHERE cu.user_id = o.customer_id),
+    'delivery', (SELECT to_jsonb(d) FROM deliveries d WHERE d.order_id = o.order_id),
+    'assignments', COALESCE((
+      SELECT jsonb_agg(${ASSIGNMENT_WITH_NAME} ORDER BY a.assignment_id)
+        FROM deliveries d
+        JOIN delivery_assignments a ON a.delivery_id = d.delivery_id
+        JOIN users au ON au.user_id = a.rider_id
+       WHERE d.order_id = o.order_id), '[]'),
+    'currentAssignment', (
+      SELECT ${ASSIGNMENT_WITH_NAME}
+        FROM deliveries d
+        JOIN delivery_assignments a ON a.delivery_id = d.delivery_id
+        JOIN users au ON au.user_id = a.rider_id
+       WHERE d.order_id = o.order_id AND a.ended_at IS NULL)
+  )`
+
+// Every order for staff, newest first (getLiveOrders; the page filters by status).
+export async function getStaffOrders() {
+  const { rows } = await query(
+    `SELECT ${STAFF_ORDER_DETAILS} AS details FROM customer_orders o ORDER BY o.placed_at DESC, o.order_id DESC`,
+  )
+  return rows.map((r) => r.details)
+}
+
+// One order for staff, or null (getOrderForStaff).
+export async function getStaffOrder(orderId) {
+  const { rows } = await query(`SELECT ${STAFF_ORDER_DETAILS} AS details FROM customer_orders o WHERE o.order_id = $1`, [orderId])
+  return rows[0]?.details ?? null
+}
 
 // One order of one customer, or null (also null when it belongs to someone else).
 export async function getOrderDetails(orderId, customerId) {

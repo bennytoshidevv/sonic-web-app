@@ -12,6 +12,7 @@ import staffRestaurantRoutes from './modules/management/restaurants.routes.js'
 import staffUserRoutes from './modules/management/users.routes.js'
 import orderRoutes from './modules/orders/orders.routes.js'
 import riderRoutes from './modules/rider/rider.routes.js'
+import settlementRoutes from './modules/settlements/settlements.routes.js'
 import uploadRoutes from './modules/uploads/uploads.routes.js'
 
 // Builds the Express app. Kept separate from index.js so tests can use it without opening a port.
@@ -35,6 +36,7 @@ export function createApp() {
   app.use('/api/staff/restaurants', staffRestaurantRoutes)
   app.use('/api/staff/menus', menuRoutes)
   app.use('/api/staff/users', staffUserRoutes)
+  app.use('/api/staff/shifts', settlementRoutes)
   app.use('/api/staff', dispatchRoutes) // orders and riders
   app.use('/api/rider', riderRoutes) // the rider app
 

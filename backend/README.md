@@ -114,6 +114,10 @@ An id in the path or query that is not a positive whole number gives 400 `invali
 | PUT | `/api/staff/users/:id/status` | operator, admin | `{ account_status, reason }` → `{ ok }`; operators manage riders + customers, only the admin manages operators, nobody changes the admin: 403 `not_allowed`; 400 `invalid_status` (`setAccountStatus`) |
 | GET | `/api/staff/users/:id/latest-change` | operator, admin | → latest audit row about the user, or null (`getLatestAccountChange`) |
 | GET | `/api/staff/users/names?ids=1,2` | operator, admin | → `{ "1": "name", ... }`, unknown = 'System' (`getUserNames`) |
+| **Settlements** (module 7) | | | Operator and admin only |
+| GET | `/api/staff/shifts?date=YYYY-MM-DD` | operator, admin | → shifts that started that day: `[{ shift, runs, deductions, settlement, pettyCash, rider, profile }]`; 400 `invalid_date` (`getShiftsOnDate`) |
+| POST | `/api/staff/shifts/:id/settlement` | operator, admin | `{ cash_received, payout_method, payout_reference, notes, return_petty_cash }` → `{ ok }`. The payout is computed by the API (`settlementAmounts`). 409 `shift_not_closed`, `already_settled`; 400 `reference_required` (GCash payout), `invalid` (`recordSettlement`) |
+| POST | `/api/staff/shifts/:id/petty-cash` | operator, admin | `{ txn_type: cash_issued|gcash_topup|cash_returned|adjustment, amount, gcash_reference_id, note }` → `{ ok }`; 400 `invalid_type`, `invalid_amount`, `reference_required`; 409 `not_enough`, `already_settled` (`addPettyCashTransaction`) |
 
 ## Folder structure
 
@@ -136,6 +140,7 @@ backend/
       dispatch/   dispatch.routes.js (operator: live orders, status, reject, assign rider, riders overview)
       rider/      rider.routes.js, rider.service.js (shifts, deductions, pay snapshots, shift view)
       management/ restaurants.routes.js, menus.routes.js, users.routes.js (operator management)
+      settlements/ settlements.routes.js (end-of-shift settlement, petty cash)
       uploads/    uploads.routes.js, storage.js (local or Google Cloud Storage)
   test/           helpers.js (starts the API for tests), <module>.test.js
 ```

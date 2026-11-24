@@ -1,5 +1,14 @@
 import { query } from '../../db.js'
-import { gasAllowanceFor } from '../../utils/calc.js'
+import {
+  deliveryGross,
+  gasAllowanceFor,
+  orderExtraStoreFees,
+  orderItemsSubtotal,
+  orderTotal,
+  pettyCashOnHand,
+  settlementAmounts,
+  sumAmounts,
+} from '../../utils/calc.js'
 import { ORDER_DETAILS } from '../orders/orders.service.js'
 
 // Rider pay, shift and delivery logic shared by the rider routes (module 5) and,
@@ -125,4 +134,21 @@ export async function getShiftViews(riderId) {
     [riderId],
   )
   return rows.map((r) => r.view)
+}
+
+// The money of one shift view, computed the same way as the operator's Settlements page (calc.js):
+//   gross  = rider pay of every delivered order (allowance + share + extra-store fees)
+//   net    = gross − the shift's deductions
+//   cod    = cash the rider collected (paid COD orders)
+//   toRemit / toPayRider = settlementAmounts(cod, net): who owes whom at the end of the shift
+export function shiftMoney(view) {
+  const gross = view.runs.reduce(
+    (sum, r) => sum + deliveryGross(r.order.base_delivery_fee, r.earning.gas_allowance_amount, r.earning.rider_share_pct, orderExtraStoreFees(r.stores)),
+    0,
+  )
+  const net = gross - sumAmounts(view.deductions)
+  const cod = view.runs
+    .filter((r) => r.payment?.payment_method === 'cod' && r.payment.payment_status === 'paid')
+    .reduce((sum, r) => sum + orderTotal(orderItemsSubtotal(r.stores.flatMap((st) => st.items)), r.order.base_delivery_fee, orderExtraStoreFees(r.stores)), 0)
+  return { gross, net, cod, ...settlementAmounts(cod, net), pettyOnHand: pettyCashOnHand(view.pettyCash) }
 }

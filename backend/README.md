@@ -204,7 +204,248 @@ once more. The API then asks PayMongo, sees the payment and marks the order paid
 A free tunnel gets a new address each time, so update the endpoint's URL when you restart it. Stop the tunnel when done:
 while it runs, your whole API is public.
 
-## Photo uploads in production
+## Deployment to Google Cloud
 
-Set `UPLOAD_DRIVER=gcs` and `GCS_BUCKET=<bucket>`. The bucket must allow public reads of objects
-(`allUsers` → Storage Object Viewer) and the Cloud Run service account needs Storage Object Creator.
+**Nothing here has been run yet.** Every command has a number, so each can be approved on its own. Run them in
+**PowerShell**, in order, in one window (the variables in D0 are lost when it closes).
+
+```
+Browser ──> Firebase Hosting (the React pages)
+   └──────> Cloud Run (the API) ──> Cloud SQL (PostgreSQL)
+                                └─> Cloud Storage (photos) ──> read directly by the browser
+            Secret Manager gives Cloud Run the database URL, JWT secret and PayMongo keys
+```
+
+### What costs money
+
+Prices change: check the [calculator](https://cloud.google.com/products/calculator) first. Billing must be on for this setup.
+New customers may get a free trial credit (the billing page shows yours).
+
+| Service | Costs | Free part |
+|---|---|---|
+| **Cloud SQL** `db-f1-micro` | 💰 **The main cost. Charged every second it runs, even with no visitors.** Roughly US$10–15 a month with disk and IP (estimate; about $8 for the machine alone in the US) | None |
+| Cloud SQL disk (10 GB) and public IP | 💰 Disk is charged **even while stopped**, and a stopped instance's IP may be too | None |
+| Cloud Run | 💰 Only above the free part (`min-instances 0`, so it sleeps when unused) | In Singapore, per month: 2M requests, 128,571 vCPU-seconds, 257,142 GiB-seconds |
+| Cloud Build | 💰 Above the free part (one build per deploy) | Daily free minutes (Firebase lists 120) |
+| Artifact Registry (API images) | 💰 Above the free part. Every deploy adds an image | 0.5 GB |
+| Cloud Storage (photos) | 💰 Cents. Storage, requests and downloads | The always-free 5 GB is for US regions only, **not** Singapore |
+| Secret Manager | 💰 Cents above its free part (this guide makes at most 4 secrets) | Check the pricing page |
+| Firebase Hosting | 💰 Above the free part | 10 GB stored, 360 MB downloaded per day |
+| IAM, service accounts, enabling APIs | Free | |
+
+**Do first, in the Console:** Billing → Budgets & alerts → a US$5 budget with alerts at 50/90/100%.
+A budget only sends e-mail. It does **not** stop the charges.
+
+### Settings used
+
+| Setting | Value | Why |
+|---|---|---|
+| Region | `asia-southeast1` (Singapore) | Near the Philippines. Cloud SQL's region can't be changed later |
+| Cloud SQL | PostgreSQL 16, `--edition=ENTERPRISE`, `db-f1-micro`, zonal, 10 GB SSD, no auto-increase, no backups | Cheapest. `ENTERPRISE` must be given: for version 16 the default is the expensive Enterprise Plus. No backups because demo data can be reseeded; **turn them on for real data**. Google says this size is for testing only (no SLA) |
+| Cloud SQL network | Public IP, no authorized networks | Only reachable through Google's authenticated connection |
+| Cloud Run | 512 MiB, 1 CPU, min 0, max 2 instances | Each instance opens up to 10 database connections, and this small database allows few |
+| Cloud Run access | `--allow-unauthenticated` | The website and PayMongo must reach it. Our own JWT login protects the routes |
+| Cloud Run identity | `sonic-api` service account | Only what it needs: use Cloud SQL, read its secrets, add photos |
+| Bucket | Uniform access, anyone can read a photo but **not list** them | Photos are shown to everyone |
+
+Environment variables of the API:
+
+| Variable | Value | Kind |
+|---|---|---|
+| `DATABASE_URL` | `postgresql://sonic:<password>@/sonic?host=/cloudsql/<connection name>` | Secret |
+| `JWT_SECRET` | new random text (not the local one) | Secret |
+| `PAYMONGO_SECRET_KEY`, `PAYMONGO_WEBHOOK_SECRET` | from PayMongo (optional; without them COD works) | Secret |
+| `JWT_EXPIRES_IN` | `7d` | Plain |
+| `CORS_ORIGIN` | `https://<project>.web.app,https://<project>.firebaseapp.com` | Plain |
+| `FRONTEND_URL` | `https://<project>.web.app` | Plain |
+| `UPLOAD_DRIVER` | `gcs` | Plain |
+| `GCS_BUCKET` | the bucket's name | Plain |
+| `PORT` | **do not set**: Cloud Run sets it | |
+| `PUBLIC_URL` | not needed with `gcs` | |
+
+The frontend has one: `VITE_API_URL`. It is built **into** the files, so rebuild after changing it, and never put a secret in it.
+
+### D0. Prepare (free)
+
+Install the [Google Cloud CLI](https://cloud.google.com/sdk/docs/install), then create a project in the Console and link billing.
+Choose the project id carefully: it becomes the site's address, and hosting links use it.
+
+```powershell
+$PROJECT = "your-project-id"
+$REGION  = "asia-southeast1"
+$BUCKET  = "$PROJECT-photos"
+$SA      = "sonic-api@$PROJECT.iam.gserviceaccount.com"
+cd "<the repo folder>"
+```
+
+| # | Command | Cost |
+|---|---|---|
+| D0.1 | `gcloud auth login` | Free |
+| D0.2 | `gcloud config set project $PROJECT` | Free |
+| D0.3 | `gcloud services enable run.googleapis.com cloudbuild.googleapis.com artifactregistry.googleapis.com sqladmin.googleapis.com secretmanager.googleapis.com storage.googleapis.com` | Free (using them is what costs) |
+| D0.4 | `gcloud iam service-accounts create sonic-api --display-name="Sonic API"` | Free |
+| D0.5 | `gcloud projects add-iam-policy-binding $PROJECT --member="serviceAccount:$SA" --role="roles/cloudsql.client"` | Free |
+| D0.6 | `$NUM = gcloud projects describe $PROJECT --format="value(projectNumber)"` | Free |
+| D0.7 | `gcloud projects add-iam-policy-binding $PROJECT --member="serviceAccount:$NUM-compute@developer.gserviceaccount.com" --role="roles/run.builder"` (lets Cloud Build build the API) | Free |
+
+### D1. Files to create first
+
+`backend/.gcloudignore`. **Required:** without it the deploy would upload `backend/.env` with your keys.
+
+```
+.env
+.env.*
+node_modules/
+uploads/
+test/
+cloudrun-env.yaml
+```
+
+`backend/cloudrun-env.yaml` (plain settings only, no secrets):
+
+```yaml
+JWT_EXPIRES_IN: "7d"
+CORS_ORIGIN: "https://your-project-id.web.app,https://your-project-id.firebaseapp.com"
+FRONTEND_URL: "https://your-project-id.web.app"
+UPLOAD_DRIVER: "gcs"
+GCS_BUCKET: "your-project-id-photos"
+```
+
+`frontend/firebase.json` (every path opens index.html, so refreshing `/customer/orders` works):
+
+```json
+{
+  "hosting": {
+    "public": "dist",
+    "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
+    "rewrites": [{ "source": "**", "destination": "/index.html" }]
+  }
+}
+```
+
+No Dockerfile is needed: Google detects Node and runs `npm start`.
+
+### D2. Database: Cloud SQL
+
+```powershell
+$DBPASS = node -e "console.log(require('crypto').randomBytes(24).toString('hex'))"   # hex: safe inside a URL
+$ROOTPASS = node -e "console.log(require('crypto').randomBytes(24).toString('hex'))"
+```
+
+| # | Command | Cost |
+|---|---|---|
+| D2.1 | `gcloud sql instances create sonic-db --database-version=POSTGRES_16 --edition=ENTERPRISE --tier=db-f1-micro --region=$REGION --availability-type=zonal --storage-type=SSD --storage-size=10 --no-storage-auto-increase --no-backup --root-password=$ROOTPASS` | 💰 **Charges start now** |
+| D2.2 | `gcloud sql databases create sonic --instance=sonic-db` | Included |
+| D2.3 | `gcloud sql users create sonic --instance=sonic-db --password=$DBPASS` | Included |
+| D2.4 | `$CONN = gcloud sql instances describe sonic-db --format="value(connectionName)"` | Free |
+
+Load the tables and demo data from your computer, through the encrypted
+[Cloud SQL Auth Proxy](https://docs.cloud.google.com/sql/docs/postgres/connect-auth-proxy)
+(download it and rename it to `cloud-sql-proxy.exe`). Port 5433, because your own PostgreSQL uses 5432.
+
+| # | Command | Cost |
+|---|---|---|
+| D2.5 | `gcloud auth application-default login` | Free |
+| D2.6 | In a **second** window: `.\cloud-sql-proxy.exe --port 5433 <the value of $CONN>` (leave it open) | Free |
+| D2.7 | `cd backend; $env:DATABASE_URL = "postgresql://sonic:$($DBPASS)@127.0.0.1:5433/sonic"; npm run db:reset; Remove-Item Env:DATABASE_URL; cd ..` | Included |
+
+⚠️ D2.7 **erases** the database that `DATABASE_URL` points to. Check the `5433` before pressing Enter, and never run it
+again once the site holds real data. If it says `must be owner of schema public`, stop: the `sonic` user's rights need fixing first.
+
+⚠️ **The demo accounts, including the admin, all use `sonic1234`, and the password is in this repository.** Before sharing
+the link, do D6.
+
+### D3. Secrets: Secret Manager
+
+Written through a temporary file, because PowerShell's pipe adds a line break that would break the secret.
+
+```powershell
+function Add-Secret($name, $value) {
+  $file = New-TemporaryFile
+  [IO.File]::WriteAllText($file, $value)
+  gcloud secrets create $name --replication-policy=automatic --data-file="$file"
+  Remove-Item $file
+  gcloud secrets add-iam-policy-binding $name --member="serviceAccount:$SA" --role="roles/secretmanager.secretAccessor"
+}
+```
+
+| # | Command | Cost |
+|---|---|---|
+| D3.1 | `Add-Secret "sonic-database-url" "postgresql://sonic:$($DBPASS)@/sonic?host=/cloudsql/$CONN"` | 💰 Cents above the free part |
+| D3.2 | `Add-Secret "sonic-jwt-secret" (node -e "console.log(require('crypto').randomBytes(48).toString('hex'))")` | 💰 Same |
+| D3.3 | Optional: `Add-Secret "sonic-paymongo-key" "sk_test_..."` | 💰 Same |
+| D3.4 | Optional, after D7: `Add-Secret "sonic-paymongo-webhook" "whsk_..."` | 💰 Same |
+
+### D4. Photos: Cloud Storage
+
+| # | Command | Cost |
+|---|---|---|
+| D4.1 | `gcloud storage buckets create "gs://$BUCKET" --location=$REGION --uniform-bucket-level-access --no-public-access-prevention` | 💰 Cents, by use |
+| D4.2 | `gcloud storage buckets add-iam-policy-binding "gs://$BUCKET" --member=allUsers --role=roles/storage.legacyObjectReader` (**makes the photos public**) | 💰 Downloads |
+| D4.3 | `gcloud storage buckets add-iam-policy-binding "gs://$BUCKET" --member="serviceAccount:$SA" --role=roles/storage.objectCreator` (the API may add photos, not change or delete them) | Free |
+
+### D5. API (Cloud Run) and website (Firebase Hosting)
+
+| # | Command | Cost |
+|---|---|---|
+| D5.1 | `gcloud run deploy sonic-api --source backend --region=$REGION --service-account=$SA --allow-unauthenticated --add-cloudsql-instances=$CONN --env-vars-file=backend/cloudrun-env.yaml --update-secrets="DATABASE_URL=sonic-database-url:1,JWT_SECRET=sonic-jwt-secret:1" --memory=512Mi --cpu=1 --min-instances=0 --max-instances=2` | 💰 Build, image and use (mostly free) |
+| D5.2 | `$API = gcloud run services describe sonic-api --region=$REGION --format="value(status.url)"` | Free |
+| D5.3 | `Invoke-RestMethod "$API/api/restaurants"` → the restaurants (proves API + database) | Free |
+| D5.4 | `npm install -g firebase-tools` | Free |
+| D5.5 | `firebase login` | Free |
+| D5.6 | `firebase projects:addfirebase $PROJECT` (or do it in the Firebase Console) | Free |
+| D5.7 | `cd frontend; "VITE_API_URL=$API/api" \| Out-File .env.production -Encoding ascii; npm ci; npm run build` | Free |
+| D5.8 | `firebase deploy --only hosting --project $PROJECT` | 💰 Above the free part |
+
+(In D5.7 type a plain `|`; the backslash is only for this table.) Then open `https://<project>.web.app`.
+
+### D6. Before sharing the link
+
+1. Change the password of **every** demo account you keep: operator and admin first. In the repo folder, per account:
+
+   ```powershell
+   $login = Invoke-RestMethod "$API/api/auth/login" -Method Post -ContentType "application/json" -Body '{"email":"admin@sonic.ph","password":"sonic1234"}'
+   $body = @{ current_password = "sonic1234"; new_password = (Read-Host "New password") } | ConvertTo-Json
+   Invoke-RestMethod "$API/api/auth/change-password" -Method Post -ContentType "application/json" -Headers @{ Authorization = "Bearer $($login.token)" } -Body $body
+   ```
+
+   Accounts: `customer`, `liza`, `rider`, `carlo`, `operator`, `admin` (all `@sonic.ph`). `suspended` and `ramon` can't log in yet,
+   but they also have `sonic1234`: change Ramon's after approving him. Ask testers to use the new passwords.
+2. Check: log in as each role, refresh on an inner page, place and cancel a COD order.
+3. Photos have no button in the pages yet, so test with the API: `curl.exe -H "Authorization: Bearer <operator token>" -F "photo=@C:\path\photo.jpg" "$API/api/uploads/restaurants"`, then open the returned URL.
+
+### D7. PayMongo (optional)
+
+Use **test** keys. In the PayMongo Dashboard add the endpoint `<API>/api/payments/webhook` with the event
+`checkout_session.payment.paid` (no tunnel needed now). Save the keys with D3.3 and D3.4, then:
+
+| # | Command | Cost |
+|---|---|---|
+| D7.1 | `gcloud run services update sonic-api --region=$REGION --update-secrets="PAYMONGO_SECRET_KEY=sonic-paymongo-key:1,PAYMONGO_WEBHOOK_SECRET=sonic-paymongo-webhook:1"` | Free |
+
+Known limit: closing the PayMongo page of a cancelled order happens after the answer is sent, when Cloud Run may pause the
+CPU, so it can be late. If the customer pays meanwhile, a pending refund is recorded.
+
+### Later: update, look for problems, save money, remove
+
+| # | Command | Cost |
+|---|---|---|
+| Update the API | D5.1 again | 💰 Adds an image |
+| Update the website | D5.7 (without `npm ci`) + D5.8 | Free part |
+| Change a secret | `gcloud secrets versions add <name> --data-file=<file>`, then `gcloud run services update ... --update-secrets="NAME=<name>:2"` | Cents |
+| Read the API's errors | `gcloud run services logs read sonic-api --region=$REGION --limit=50` | Free |
+| **Stop the database** | `gcloud sql instances patch sonic-db --activation-policy=NEVER` | Stops the machine's cost; disk (and possibly IP) still cost. The site stops working |
+| Start it again | `gcloud sql instances patch sonic-db --activation-policy=ALWAYS` | 💰 |
+| Back up by hand | `gcloud sql backups create --instance=sonic-db` | 💰 Backup storage |
+
+Remove everything after the defense. ⚠️ **These can't be undone:**
+
+| # | Command |
+|---|---|
+| R1 | `gcloud sql instances delete sonic-db` (ends the main cost; all data is lost) |
+| R2 | `gcloud run services delete sonic-api --region=$REGION` |
+| R3 | `gcloud storage rm --recursive "gs://$BUCKET"` |
+| R4 | `gcloud artifacts repositories delete cloud-run-source-deploy --location=$REGION` |
+| R5 | `gcloud secrets delete <name>` for each secret |
+| R6 | `firebase hosting:disable --project $PROJECT` |
+| All of it | `gcloud projects delete $PROJECT` |

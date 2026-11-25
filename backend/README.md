@@ -132,6 +132,9 @@ An id in the path or query that is not a positive whole number gives 400 `invali
 | GET | `/api/notifications/unread-count` | logged in | → `{ count }` |
 | PUT | `/api/notifications/:id/read` | logged in | → `{ ok }`; repeating it keeps the first `read_at` |
 | PUT | `/api/notifications/read-all` | logged in | → `{ ok, updated }` |
+| **Online payments** (module 10) | | | Off (503 `payments_unavailable`) while the PayMongo keys are empty; COD is not affected |
+| POST | `/api/payments/orders/:id/checkout` | customer | → `{ checkout_url }` (PayMongo page for my unpaid gcash/maya/qr_ph/card order; an open session is reused). 404 `not_found`; 409 `not_online`, `already_paid`, `not_payable`; 502 `payment_provider_error` |
+| POST | `/api/payments/webhook` | PayMongo (signed) | PayMongo event → `{ ok }`; 401 `invalid_signature`. Raw event stored once; `checkout_session.payment.paid` marks the payment paid |
 
 ## Folder structure
 
@@ -157,6 +160,7 @@ backend/
       settlements/ settlements.routes.js (end-of-shift settlement, petty cash)
       admin/      admin.routes.js (reports, settings, rider savings), reports.service.js (report totals in SQL)
       notifications/ notifications.routes.js (my notifications: list, unread count, mark as read)
+      payments/   payments.routes.js, payments.service.js, paymongo.js (the only file that knows PayMongo's format)
       uploads/    uploads.routes.js, storage.js (local or Google Cloud Storage)
   test/           helpers.js (starts the API for tests), <module>.test.js
 ```
@@ -171,6 +175,31 @@ backend/
   "wrong password".
 - Saves that touch several tables run in one transaction (all or nothing).
 - Users, restaurants and menu items are never hard-deleted (soft delete via status / `is_active`).
+
+## Online payments (PayMongo)
+
+Two values go in `backend/.env` (never commit them); restart the backend afterwards:
+
+| Variable | Where to get it (Dashboard in **Test mode**) |
+|---|---|
+| `PAYMONGO_SECRET_KEY` | Settings > Product Settings > Developers: the **secret** test key `sk_test_...` |
+| `PAYMONGO_WEBHOOK_SECRET` | Developers > Webhooks > Add Endpoint: `whsk_...`, shown after saving |
+
+The public key (`pk_test_...`) is not used, because customers pay on PayMongo's own page.
+
+Test the webhook locally. PayMongo needs a public HTTPS address, so use a tunnel to your computer:
+1. Start the backend, then in another window: `cloudflared tunnel --url http://localhost:4000`
+   (or `ngrok http 4000`). Copy the `https://...` address.
+2. Add an endpoint in the Dashboard: `https://<address>/api/payments/webhook`, event `checkout_session.payment.paid`.
+3. Put its `whsk_...` secret in `.env` and restart the backend.
+4. Place an online order, call the checkout route, open `checkout_url` and pay with a test method: card
+   `4343434343434345` (any future date, any CVC), or choose **Authorize** for GCash/Maya. For QR Ph use the test
+   page; never pay the QR with a real account.
+5. Check `payments` (paid) and `payment_webhook_events` (one row, `processed_at` filled). Resend the event from the
+   Dashboard: nothing may change.
+
+A free tunnel gets a new address each time, so update the endpoint's URL when you restart it. Stop the tunnel when done:
+while it runs, your whole API is public.
 
 ## Photo uploads in production
 

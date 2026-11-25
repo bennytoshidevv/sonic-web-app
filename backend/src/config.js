@@ -14,6 +14,12 @@ export const config = {
   jwtExpiresIn: process.env.JWT_EXPIRES_IN || '7d',
   // The frontend address allowed to call the API (Vite dev server by default).
   corsOrigin: (process.env.CORS_ORIGIN || 'http://localhost:5173').split(','),
+  // The customer's browser returns here after paying (the first CORS address unless set).
+  frontendUrl: process.env.FRONTEND_URL || (process.env.CORS_ORIGIN || 'http://localhost:5173').split(',')[0],
+  // PayMongo (optional): without these, online payment is off and COD works as usual.
+  paymongoSecretKey: process.env.PAYMONGO_SECRET_KEY || '',
+  paymongoWebhookSecret: process.env.PAYMONGO_WEBHOOK_SECRET || '',
+  paymongoApiUrl: 'https://api.paymongo.com', // the tests point this at a fake server
   // Photo uploads: 'local' saves to backend/uploads (development),
   // 'gcs' saves to a Google Cloud Storage bucket (production).
   uploadDriver: process.env.UPLOAD_DRIVER || 'local',

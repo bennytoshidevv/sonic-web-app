@@ -3,6 +3,7 @@ import { query, withTransaction } from '../../db.js'
 import { requireAuth, requireRole } from '../../middleware/auth.js'
 import { badRequest, conflict, notFound } from '../../middleware/errors.js'
 import { optionalText, toId } from '../../utils/validate.js'
+import { closeCheckout } from '../payments/payments.service.js'
 import { PAYMENT_METHODS, getCustomerOrders, getOrderDetails, placeOrder, readLines } from './orders.service.js'
 
 // Customer orders and reviews (module 3). Mounted at /api.
@@ -79,6 +80,7 @@ router.post('/orders/:id/cancel', ...customerOnly, async (req, res) => {
     )
     return rows[0]
   })
+  closeCheckout(orderId) // not awaited: the customer shouldn't wait for PayMongo (it never throws)
   res.json({ order })
 })
 

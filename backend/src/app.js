@@ -13,6 +13,7 @@ import staffRestaurantRoutes from './modules/management/restaurants.routes.js'
 import staffUserRoutes from './modules/management/users.routes.js'
 import notificationRoutes from './modules/notifications/notifications.routes.js'
 import orderRoutes from './modules/orders/orders.routes.js'
+import paymentRoutes from './modules/payments/payments.routes.js'
 import riderRoutes from './modules/rider/rider.routes.js'
 import settlementRoutes from './modules/settlements/settlements.routes.js'
 import uploadRoutes from './modules/uploads/uploads.routes.js'
@@ -22,6 +23,8 @@ export function createApp() {
   const app = express()
 
   app.use(cors({ origin: config.corsOrigin }))
+  // PayMongo signs the exact bytes it sends, so this one path keeps the raw body (must be before express.json).
+  app.use('/api/payments/webhook', express.raw({ type: () => true, limit: '1mb' }))
   app.use(express.json({ limit: '100kb' }))
 
   app.get('/api/health', (req, res) => res.json({ ok: true }))
@@ -32,6 +35,7 @@ export function createApp() {
   app.use('/api/uploads', uploadRoutes)
   app.use('/api/addresses', addressRoutes)
   app.use('/api/notifications', notificationRoutes) // every role, own notifications only
+  app.use('/api/payments', paymentRoutes) // PayMongo checkout + webhook
   // Catalog paths start right under /api (/api/restaurants, /api/barangays, ...)
   app.use('/api', catalogRoutes)
   app.use('/api', orderRoutes) // /api/orders..., /api/riders/:id/reviews

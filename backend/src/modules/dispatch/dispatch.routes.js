@@ -5,6 +5,7 @@ import { badRequest, conflict, notFound } from '../../middleware/errors.js'
 import { notify, notifyOrderStatus } from '../../utils/notify.js'
 import { optionalText, toId } from '../../utils/validate.js'
 import { getStaffOrder, getStaffOrders } from '../orders/orders.service.js'
+import { closeCheckout } from '../payments/payments.service.js'
 import { freeRiderIfIdle, getRidersOverview } from '../rider/rider.service.js'
 
 // Operator orders and riders (module 4): live orders, order details, moving an order forward,
@@ -115,6 +116,7 @@ router.post('/orders/:id/reject', async (req, res) => {
     )
     return rows[0]
   })
+  closeCheckout(orderId) // not awaited: staff shouldn't wait for PayMongo (it never throws)
   res.json({ order })
 })
 

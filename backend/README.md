@@ -127,6 +127,11 @@ An id in the path or query that is not a positive whole number gives 400 `invali
 | POST | `/api/admin/rate-settings` | admin | `{ extra_store_fee, rider_share_pct, effective_from: 'YYYY-MM-DDTHH:MM' }` → `{ rate }` (always a new row; the audit keeps the previous rate as old value); 400 `invalid` (`addRateSetting`) |
 | GET | `/api/admin/savings` | admin | → `[{ user, profile, entries (+ shift_date, processed_by_name), lastShift }]` (`getSavingsOverview`) |
 | POST | `/api/admin/savings/:riderId/withdrawals` | admin | `{ amount, note }` → `{ entry }` (the audit keeps the balance before and after); 400 `invalid_amount`, `note_required`; 409 `not_enough` (`recordSavingsWithdrawal`) |
+| **Notifications** | | | Every role; own notifications only, someone else's → 404 `not_found` |
+| GET | `/api/notifications?unread=true` | logged in | → my newest 50: `[{ notification_id, order_id, order_number, type, message, is_read, created_at, read_at }]`; `unread` is optional; 400 `invalid` |
+| GET | `/api/notifications/unread-count` | logged in | → `{ count }` |
+| PUT | `/api/notifications/:id/read` | logged in | → `{ ok }`; repeating it keeps the first `read_at` |
+| PUT | `/api/notifications/read-all` | logged in | → `{ ok, updated }` |
 
 ## Folder structure
 
@@ -151,6 +156,7 @@ backend/
       management/ restaurants.routes.js, menus.routes.js, users.routes.js (operator management)
       settlements/ settlements.routes.js (end-of-shift settlement, petty cash)
       admin/      admin.routes.js (reports, settings, rider savings), reports.service.js (report totals in SQL)
+      notifications/ notifications.routes.js (my notifications: list, unread count, mark as read)
       uploads/    uploads.routes.js, storage.js (local or Google Cloud Storage)
   test/           helpers.js (starts the API for tests), <module>.test.js
 ```

@@ -6,8 +6,8 @@ import Button from '@shared/components/Button'
 import Chip from '@shared/components/Chip'
 import Input from '@shared/components/Input'
 import Toast from '@shared/components/Toast'
-import { useAuth } from '@shared/auth/AuthContext'
-import { getCuisineTypes, getRestaurantsForStaff, saveRestaurant, setRestaurantActive, setRestaurantOpenStatus } from '@mock/mock'
+import { getCuisineTypes, getRestaurantsForStaff, saveRestaurant, setRestaurantActive, setRestaurantOpenStatus } from '@api'
+import { errorText } from '@shared/utils/errors'
 import { formatPhoneNumber, formatTodayHours } from '@shared/utils/format'
 import { useStaffPaths } from '@operator/hooks/useStaffPaths'
 
@@ -165,7 +165,6 @@ function RestaurantForm({ restaurant, cuisines, onSave, onCancel }) {
 }
 
 export default function Restaurants() {
-  const { user } = useAuth()
   const paths = useStaffPaths()
   const [list, setList] = useState(null)
   const [cuisines, setCuisines] = useState([])
@@ -199,19 +198,22 @@ export default function Restaurants() {
   }
 
   async function handleSave(data) {
-    await saveRestaurant(user.user_id, data)
+    const result = await saveRestaurant(data)
+    if (result.error) return showToast(errorText(result, result.message)) // the form stays open
     setEditing(null)
     showToast(data.restaurant_id ? 'Restaurant saved' : 'Restaurant added (closed until you open it)')
     reload()
   }
 
   async function toggleOpen(r) {
-    await setRestaurantOpenStatus(user.user_id, r.restaurant_id, r.open_status === 'open' ? 'closed' : 'open')
+    const result = await setRestaurantOpenStatus(r.restaurant_id, r.open_status === 'open' ? 'closed' : 'open')
+    if (result.error) showToast(errorText(result, result.message))
     reload()
   }
 
   async function setActive(r, isActive) {
-    await setRestaurantActive(user.user_id, r.restaurant_id, isActive)
+    const result = await setRestaurantActive(r.restaurant_id, isActive)
+    if (result.error) return showToast(errorText(result, result.message))
     setDisabling(null)
     showToast(isActive ? `${r.name} is enabled` : `${r.name} is disabled and hidden from customers`)
     reload()

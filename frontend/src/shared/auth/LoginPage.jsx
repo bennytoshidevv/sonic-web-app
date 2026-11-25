@@ -5,7 +5,7 @@ import AuthLayout from '@shared/auth/AuthLayout'
 import Alert from '@shared/components/Alert'
 import Button from '@shared/components/Button'
 import Input from '@shared/components/Input'
-import { login } from '@mock/mock'
+import { login } from '@api'
 import { HOME_BY_ROLE, useAuth } from '@shared/auth/AuthContext'
 import { isValidEmail } from '@shared/utils/validate'
 
@@ -40,11 +40,18 @@ const BLOCKED_MESSAGES = {
     title: 'Account suspended.',
     text: 'This account has been restricted. Please contact Super Sonic Delivery operations.',
   },
+  network: {
+    title: "Can't reach the server.",
+    text: 'Check your connection, then try again.',
+  },
   inactive: {
     title: 'Account not active yet.',
     text: 'If you just applied, please wait for Sonic staff to approve your account. Otherwise, contact Super Sonic Delivery operations.',
   },
 }
+
+// Any other answer (e.g. the server crashed).
+const OTHER_ERROR = { title: 'Something went wrong.', text: 'Please try again in a moment.' }
 
 // One login form for every role. Any account can log in here; after login the user goes to
 // their own role's home page (a rider who logs in on /customer/login goes to /rider).
@@ -89,7 +96,7 @@ export default function LoginPage({ role }) {
     } else if (result.error) {
       setBlocked(result.error)
     } else {
-      signIn(result.user)
+      signIn(result.user, result.token)
       navigate(HOME_BY_ROLE[result.user.role])
     }
   }
@@ -98,8 +105,8 @@ export default function LoginPage({ role }) {
     <AuthLayout title={text.title} subtitle={text.subtitle}>
       {blocked && (
         <div className="mb-5">
-          <Alert variant="error" title={BLOCKED_MESSAGES[blocked].title}>
-            {BLOCKED_MESSAGES[blocked].text}
+          <Alert variant="error" title={(BLOCKED_MESSAGES[blocked] || OTHER_ERROR).title}>
+            {(BLOCKED_MESSAGES[blocked] || OTHER_ERROR).text}
           </Alert>
         </div>
       )}

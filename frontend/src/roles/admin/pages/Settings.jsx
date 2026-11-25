@@ -5,8 +5,8 @@ import Button from '@shared/components/Button'
 import Input from '@shared/components/Input'
 import Select from '@shared/components/Select'
 import Toast from '@shared/components/Toast'
-import { useAuth } from '@shared/auth/AuthContext'
-import { addRateSetting, getSettingsData, saveBarangay, saveDeductionType, saveGasTiers } from '@mock/mock'
+import { addRateSetting, getSettingsData, saveBarangay, saveDeductionType, saveGasTiers } from '@api'
+import { errorText } from '@shared/utils/errors'
 import { deliveryGross, gasAllowanceFor, riderShare, sonicShare } from '@shared/utils/calc'
 import { formatDate, formatMoney, formatTimestampTime } from '@shared/utils/format'
 import { tierRangeProblem } from '@shared/utils/validate'
@@ -63,18 +63,19 @@ function BarangayForm({ barangay, onSave, onCancel }) {
   )
 }
 
-function BarangaysTab({ barangays, onSaved }) {
-  const { user } = useAuth()
+function BarangaysTab({ barangays, onSaved, onError }) {
   const [query, setQuery] = useState('')
   const [editing, setEditing] = useState(null) // barangay or 'new'
   const q = query.trim().toLowerCase()
   const shown = barangays.filter((b) => !q || b.barangay_name.toLowerCase().includes(q))
 
   async function handleSave(data) {
-    const result = await saveBarangay(user.user_id, data)
+    const result = await saveBarangay(data)
     if (!result.error) {
       setEditing(null)
       onSaved(data.barangay_id ? 'Barangay saved' : 'Barangay added')
+    } else if (result.error !== 'duplicate') {
+      onError(errorText(result, result.message))
     }
     return result
   }
@@ -144,7 +145,6 @@ function BarangaysTab({ barangays, onSaved }) {
 
 // ---------- Gas allowance tiers ----------
 function TiersTab({ tiers, rate, onSaved }) {
-  const { user } = useAuth()
   const [rows, setRows] = useState(() =>
     tiers.map((t) => ({ min: String(t.min_delivery_fee), max: t.max_delivery_fee === null ? '' : String(t.max_delivery_fee), allowance: String(t.allowance_amount) })),
   )
@@ -179,7 +179,8 @@ function TiersTab({ tiers, rate, onSaved }) {
       setError(problem)
       return
     }
-    await saveGasTiers(user.user_id, parsed)
+    const result = await saveGasTiers(parsed)
+    if (result.error) return setError(errorText(result, result.message))
     onSaved('Gas allowance tiers saved')
   }
 
@@ -349,15 +350,16 @@ function DeductionForm({ deduction, onSave, onCancel }) {
   )
 }
 
-function DeductionsTab({ deductionTypes, onSaved }) {
-  const { user } = useAuth()
+function DeductionsTab({ deductionTypes, onSaved, onError }) {
   const [editing, setEditing] = useState(null)
 
   async function handleSave(data) {
-    const result = await saveDeductionType(user.user_id, data)
+    const result = await saveDeductionType(data)
     if (!result.error) {
       setEditing(null)
       onSaved('Deduction saved')
+    } else if (result.error !== 'duplicate') {
+      onError(errorText(result, result.message))
     }
     return result
   }
@@ -399,7 +401,6 @@ function DeductionsTab({ deductionTypes, onSaved }) {
 
 // ---------- Rates & split ----------
 function RatesTab({ rates, current, onSaved }) {
-  const { user } = useAuth()
   const [form, setForm] = useState({ extra_store_fee: String(current.extra_store_fee), rider_share_pct: String(current.rider_share_pct), effective_from: '' })
   const [error, setError] = useState('')
   const pct = Number(form.rider_share_pct)
@@ -409,7 +410,8 @@ function RatesTab({ rates, current, onSaved }) {
     if (form.extra_store_fee === '' || !(Number(form.extra_store_fee) >= 0)) return setError('Enter the extra-store fee.')
     if (!(pct > 0 && pct <= 100)) return setError('Rider share must be between 1 and 100%.')
     if (!form.effective_from) return setError('Choose when the new rates start.')
-    await addRateSetting(user.user_id, { ...form, effective_from: `${form.effective_from}:00` })
+    const result = await addRateSetting({ ...form, effective_from: `${form.effective_from}:00` })
+    if (result.error) return setError(errorText(result, result.message))
     onSaved('New rates saved')
   }
 
@@ -496,10 +498,14 @@ export default function Settings() {
   if (!data) return <p className="py-10 text-center text-sonic-muted">Loading settings…</p>
 
   const current = data.rates.find((r) => r.state === 'active')
-  function onSaved(message) {
+  function showToast(message) {
     setToast(message)
     clearTimeout(toastTimer.current)
     toastTimer.current = setTimeout(() => setToast(''), 2500)
+  }
+
+  function onSaved(message) {
+    showToast(message)
     setRefreshKey(refreshKey + 1)
   }
 
@@ -544,9 +550,9 @@ export default function Settings() {
       </div>
 
       <div id="settings-panel" role="tabpanel" aria-labelledby={`tab-${tab}`}>
-        {tab === 'barangays' && <BarangaysTab barangays={data.barangays} onSaved={onSaved} />}
+        {tab === 'barangays' && <BarangaysTab barangays={data.barangays} onSaved={onSaved} onError={showToast} />}
         {tab === 'tiers' && <TiersTab key={refreshKey} tiers={data.tiers} rate={current} onSaved={onSaved} />}
-        {tab === 'deductions' && <DeductionsTab deductionTypes={data.deductionTypes} onSaved={onSaved} />}
+        {tab === 'deductions' && <DeductionsTab deductionTypes={data.deductionTypes} onSaved={onSaved} onError={showToast} />}
         {tab === 'rates' && <RatesTab key={refreshKey} rates={data.rates} current={current} onSaved={onSaved} />}
       </div>
 

@@ -24,8 +24,8 @@ import Button from '@shared/components/Button'
 import EmptyState from '@shared/components/EmptyState'
 import StatusBadge from '@shared/components/StatusBadge'
 import Toast from '@shared/components/Toast'
-import { useAuth } from '@shared/auth/AuthContext'
-import { STAFF_NEXT_STATUS, advanceOrderByStaff, getOrderForStaff, getRidersOverview, rejectOrderByStaff } from '@mock/mock'
+import { STAFF_NEXT_STATUS, advanceOrderByStaff, getOrderForStaff, getRidersOverview, rejectOrderByStaff } from '@api'
+import { errorText } from '@shared/utils/errors'
 import { minutesBetween, orderExtraStoreFees, orderItemsSubtotal, orderTotal } from '@shared/utils/calc'
 import { formatDate, formatMoney, formatPhoneNumber, formatTimestampTime } from '@shared/utils/format'
 import { ORDER_STATUS_LABELS, PAYMENT_METHOD_LABELS } from '@shared/utils/labels'
@@ -48,7 +48,6 @@ const REJECT_REASONS = [
 
 export default function OrderDetails() {
   const orderId = Number(useParams().orderId)
-  const { user } = useAuth()
   const paths = useStaffPaths()
 
   const [entry, setEntry] = useState(undefined) // undefined = loading, null = not found
@@ -108,9 +107,9 @@ export default function OrderDetails() {
 
   async function handleNext() {
     setBusy(true)
-    await advanceOrderByStaff(user.user_id, order.order_id)
+    const result = await advanceOrderByStaff(order.order_id)
     setBusy(false)
-    showToast(`Order marked as ${ORDER_STATUS_LABELS[next].toLowerCase()}`)
+    showToast(result.error ? errorText(result, 'This order cannot be updated right now.') : `Order marked as ${ORDER_STATUS_LABELS[next].toLowerCase()}`)
     reload()
   }
 
@@ -125,10 +124,10 @@ export default function OrderDetails() {
     }
     const fullReason = note.trim() ? (reason === 'Other reason' ? note.trim() : `${reason}: ${note.trim()}`) : reason
     setBusy(true)
-    const result = await rejectOrderByStaff(user.user_id, order.order_id, fullReason)
+    const result = await rejectOrderByStaff(order.order_id, fullReason)
     setBusy(false)
     if (result.error) {
-      setRejectError('This order can no longer be rejected.')
+      setRejectError(errorText(result, 'This order can no longer be rejected.'))
       return
     }
     setRejecting(false)

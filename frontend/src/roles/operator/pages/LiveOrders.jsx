@@ -16,8 +16,8 @@ import {
 } from 'lucide-react'
 import Toast from '@shared/components/Toast'
 import StatusBadge from '@shared/components/StatusBadge'
-import { useAuth } from '@shared/auth/AuthContext'
-import { advanceOrderByStaff, getLiveOrders, getRidersOverview } from '@mock/mock'
+import { advanceOrderByStaff, getLiveOrders, getRidersOverview } from '@api'
+import { errorText } from '@shared/utils/errors'
 import { averageRating, minutesBetween, orderExtraStoreFees, orderItemsSubtotal, orderTotal, pettyCashOnHand } from '@shared/utils/calc'
 import { formatMoney, formatPhoneNumber, formatTimestampTime, localDateKey } from '@shared/utils/format'
 import { PAYMENT_METHOD_LABELS } from '@shared/utils/labels'
@@ -50,7 +50,6 @@ function initials(name) {
 }
 
 export default function LiveOrders() {
-  const { user } = useAuth()
   const paths = useStaffPaths()
   const [orders, setOrders] = useState(null)
   const [riders, setRiders] = useState([])
@@ -93,9 +92,9 @@ export default function LiveOrders() {
 
   async function confirmOrder(entry) {
     setBusyId(entry.order.order_id)
-    await advanceOrderByStaff(user.user_id, entry.order.order_id)
+    const result = await advanceOrderByStaff(entry.order.order_id)
     setBusyId(null)
-    showToast(`#${entry.order.order_number} confirmed`)
+    showToast(result.error ? errorText(result, 'This order can no longer be confirmed.') : `#${entry.order.order_number} confirmed`)
     reload()
   }
 

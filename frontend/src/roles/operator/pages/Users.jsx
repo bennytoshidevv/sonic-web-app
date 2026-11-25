@@ -6,7 +6,8 @@ import Input from '@shared/components/Input'
 import Select from '@shared/components/Select'
 import Toast from '@shared/components/Toast'
 import { useAuth } from '@shared/auth/AuthContext'
-import { createRiderAccount, getCustomersForStaff, getOperatorsForStaff, getRidersOverview, setAccountStatus } from '@mock/mock'
+import { createRiderAccount, getCustomersForStaff, getOperatorsForStaff, getRidersOverview, setAccountStatus } from '@api'
+import { errorText } from '@shared/utils/errors'
 import { formatDate, formatMoney, formatPhoneNumber, formatTimestampTime } from '@shared/utils/format'
 import { isValidEmail, isValidPhMobile } from '@shared/utils/validate'
 
@@ -138,13 +139,14 @@ export default function Users() {
   }
 
   async function changeStatus(target, status, why) {
-    const result = await setAccountStatus(user.user_id, target.user_id, status, why)
+    const result = await setAccountStatus(target.user_id, status, why)
     if (result.error) {
-      showToast('You cannot change this account.')
-      return
+      showToast(errorText(result, 'You cannot change this account.'))
+      return false
     }
     showToast(`${target.full_name} is now ${status === 'active' ? 'active' : status}`)
     reload()
+    return true
   }
 
   async function confirmSuspend() {
@@ -152,16 +154,17 @@ export default function Users() {
       setReasonError('Please choose a reason.')
       return
     }
-    await changeStatus(suspending, 'suspended', reason)
-    setSuspending(null)
+    if (await changeStatus(suspending, 'suspended', reason)) setSuspending(null)
   }
 
   async function handleCreateRider(data) {
-    const result = await createRiderAccount(user.user_id, data)
+    const result = await createRiderAccount(data)
     if (!result.error) {
       setAddingRider(false)
       showToast(`Rider account created for ${result.user.full_name}`)
       reload()
+    } else if (result.error !== 'email_taken') {
+      showToast(errorText(result, result.message))
     }
     return result
   }

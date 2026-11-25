@@ -19,7 +19,8 @@ import {
   getRestaurantReviews,
   isFavoriteRestaurant,
   setFavoriteRestaurant,
-} from '@mock/mock'
+} from '@api'
+import { errorText } from '@shared/utils/errors'
 import { averageRating } from '@shared/utils/calc'
 import { formatHoursRange, formatMoney, formatTodayHours } from '@shared/utils/format'
 
@@ -51,7 +52,7 @@ export default function RestaurantMenu() {
       getMenu(restaurantId),
       getRestaurantReviews(restaurantId),
       getRateSettings(),
-      isFavoriteRestaurant(user.user_id, restaurantId),
+      isFavoriteRestaurant(restaurantId),
     ]).then(([restaurantData, menuData, reviewData, rateData, likedData]) => {
       setRestaurant(restaurantData)
       setMenu(menuData)
@@ -102,7 +103,12 @@ export default function RestaurantMenu() {
   async function toggleLike() {
     const next = !liked
     setLiked(next)
-    await setFavoriteRestaurant(user.user_id, restaurant.restaurant_id, next)
+    const result = await setFavoriteRestaurant(restaurant.restaurant_id, next)
+    if (result.error) {
+      setLiked(!next) // put the heart back
+      showToast(errorText(result, 'Could not update your favorites.'))
+      return
+    }
     showToast(next ? 'Added to your favorites' : 'Removed from your favorites')
   }
 

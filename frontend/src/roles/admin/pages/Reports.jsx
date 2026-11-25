@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { BadgeCheck, Ban, Bike, Download, Printer, ShoppingBag, Star, TrendingDown, TrendingUp, Zap } from 'lucide-react'
 import Button from '@shared/components/Button'
 import Chip from '@shared/components/Chip'
-import { getReportData } from '@mock/mock'
+import { getReportData } from '@api'
 import {
   average,
   averageRating,

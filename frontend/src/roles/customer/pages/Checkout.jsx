@@ -18,9 +18,9 @@ import Alert from '@shared/components/Alert'
 import AddressForm from '@customer/components/AddressForm'
 import BottomSheet from '@shared/components/BottomSheet'
 import Button from '@shared/components/Button'
-import { useAuth } from '@shared/auth/AuthContext'
 import { useCart } from '@customer/context/CartContext'
-import { getBarangays, placeOrder } from '@mock/mock'
+import { getBarangays, placeOrder } from '@api'
+import { errorText } from '@shared/utils/errors'
 import { cartItemCount, cartSubtotal, extraStoreFees, lineTotal, orderTotal } from '@shared/utils/calc'
 import { formatMoney } from '@shared/utils/format'
 import { PAYMENT_METHOD_LABELS } from '@shared/utils/labels'
@@ -39,7 +39,6 @@ const NOTES_MAX = 300
 
 export default function Checkout() {
   const navigate = useNavigate()
-  const { user } = useAuth()
   const { address, addresses, setAddressId, addAddress } = useOutletContext() // from CustomerLayout
   const { lines, stores, clearCart } = useCart()
   const { loading, cartLines, rates } = useCartDetails(lines)
@@ -79,16 +78,17 @@ export default function Checkout() {
   const canPlaceOrder = blockMessage === null && !placing
 
   async function handleSaveAddress(newAddress) {
-    await addAddress(newAddress)
+    const result = await addAddress(newAddress)
+    if (result.error) return result // the form shows why
     setAddingAddress(false)
     setChoosingAddress(false)
+    return result
   }
 
   async function handlePlaceOrder() {
     setOrderError('')
     setPlacing(true)
     const result = await placeOrder({
-      customer_id: user.user_id,
       address,
       lines: cartLines,
       stores,
@@ -99,7 +99,7 @@ export default function Checkout() {
     setPlacing(false)
 
     if (result.error) {
-      setOrderError('Some items just became unavailable. Please check your cart and try again.')
+      setOrderError(errorText(result, 'Some items just became unavailable. Please check your cart and try again.'))
       return
     }
     setPlacedOrderId(result.order.order_id)

@@ -23,7 +23,8 @@ import EmptyState from '@shared/components/EmptyState'
 import StatusBadge from '@shared/components/StatusBadge'
 import Toast from '@shared/components/Toast'
 import { useAuth } from '@shared/auth/AuthContext'
-import { acceptAssignment, advanceDelivery, getRiderDeliveries, rejectAssignment } from '@mock/mock'
+import { acceptAssignment, advanceDelivery, getRiderDeliveries, rejectAssignment } from '@api'
+import { errorText } from '@shared/utils/errors'
 import {
   deliveryGross,
   gasAllowanceFor,
@@ -290,7 +291,7 @@ export default function Deliveries() {
   const toastTimer = useRef(null)
 
   useEffect(() => {
-    getRiderDeliveries(user.user_id).then(setData)
+    getRiderDeliveries().then(setData)
   }, [user.user_id, refreshKey])
 
   useEffect(() => () => clearTimeout(toastTimer.current), [])
@@ -320,10 +321,15 @@ export default function Deliveries() {
   async function handleAccept(entry) {
     setError('')
     setBusy(true)
-    const result = await acceptAssignment(user.user_id, entry.assignment.assignment_id)
+    const result = await acceptAssignment(entry.assignment.assignment_id)
     setBusy(false)
     if (result.error === 'no_open_shift') {
       setError('Start your shift on the Dashboard before accepting deliveries.')
+      return
+    }
+    if (result.error) {
+      setError(errorText(result, 'This delivery can no longer be accepted.'))
+      reload()
       return
     }
     showToast(`Accepted ${entry.order.order_number}`)
@@ -333,21 +339,22 @@ export default function Deliveries() {
 
   async function confirmReject() {
     setBusy(true)
-    await rejectAssignment(user.user_id, rejecting.assignment.assignment_id)
+    const result = await rejectAssignment(rejecting.assignment.assignment_id)
     setBusy(false)
     setRejecting(null)
-    showToast('Rejected. The operator will assign another rider.')
+    if (result.error) setError(errorText(result, 'This delivery can no longer be rejected.'))
+    else showToast('Rejected. The operator will assign another rider.')
     reload()
   }
 
   async function advance(entry) {
     setError('')
     setBusy(true)
-    const result = await advanceDelivery(user.user_id, entry.order.order_id)
+    const result = await advanceDelivery(entry.order.order_id)
     setBusy(false)
     setConfirmingDelivered(null)
     if (result.error) {
-      setError(result.error === 'no_open_shift' ? 'Your shift is closed. Start a shift to continue.' : 'This delivery cannot be updated right now.')
+      setError(result.error === 'no_open_shift' ? 'Your shift is closed. Start a shift to continue.' : errorText(result, 'This delivery cannot be updated right now.'))
       reload()
       return
     }

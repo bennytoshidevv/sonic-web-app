@@ -16,7 +16,7 @@ import {
 import Button from '@shared/components/Button'
 import EmptyState from '@shared/components/EmptyState'
 import { useAuth } from '@shared/auth/AuthContext'
-import { getRiderHistory } from '@mock/mock'
+import { getRiderHistory } from '@api'
 import {
   deliveryGross,
   minutesBetween,
@@ -130,7 +130,7 @@ export default function History() {
   const [now] = useState(() => new Date().toISOString())
 
   useEffect(() => {
-    getRiderHistory(user.user_id).then(setShifts)
+    getRiderHistory().then(setShifts)
   }, [user.user_id])
 
   if (!shifts) return <p className="py-10 text-center text-sonic-muted">Loading your history…</p>

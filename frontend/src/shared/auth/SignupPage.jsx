@@ -6,7 +6,8 @@ import Alert from '@shared/components/Alert'
 import Button from '@shared/components/Button'
 import Input from '@shared/components/Input'
 import Select from '@shared/components/Select'
-import { applyAsStaff, registerCustomer } from '@mock/mock'
+import { applyAsStaff, registerCustomer } from '@api'
+import { errorText } from '@shared/utils/errors'
 import { HOME_BY_ROLE, LOGIN_BY_ROLE, useAuth } from '@shared/auth/AuthContext'
 import { isValidEmail, isValidPhMobile } from '@shared/utils/validate'
 
@@ -83,6 +84,7 @@ export default function SignupPage({ role }) {
   const [form, setForm] = useState(EMPTY_FORM)
   const [errors, setErrors] = useState({})
   const [submitting, setSubmitting] = useState(false)
+  const [formError, setFormError] = useState('')
   const [applied, setApplied] = useState(false) // rider/operator: application sent
 
   function handleChange(e) {
@@ -135,6 +137,7 @@ export default function SignupPage({ role }) {
       password: form.password,
     }
 
+    setFormError('')
     setSubmitting(true)
     const result =
       role === 'customer'
@@ -151,9 +154,13 @@ export default function SignupPage({ role }) {
       setErrors({ email: 'This email is already registered. Try logging in.' })
       return
     }
+    if (result.error) {
+      setFormError(errorText(result, result.message))
+      return
+    }
 
     if (role === 'customer') {
-      signIn(result.user)
+      signIn(result.user, result.token)
       navigate(HOME_BY_ROLE.customer)
     } else {
       setApplied(true)
@@ -200,6 +207,14 @@ export default function SignupPage({ role }) {
       <div className="mb-5 lg:hidden">
         <Alert variant="info">{text.notice}</Alert>
       </div>
+
+      {formError && (
+        <div className="mb-5">
+          <Alert variant="error" title="Not sent.">
+            {formError}
+          </Alert>
+        </div>
+      )}
 
       <form onSubmit={handleSubmit} noValidate className="flex flex-col gap-4">
         <Input

@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { getCartItemDetails, getRateSettings } from '@mock/mock'
+import { getCartItemDetails, getRateSettings } from '@api'
 
 // Checks a cart item against the current menu data. Returns null when it can be ordered,
 // or the reason it cannot: 'removed', 'closed' (restaurant closed) or 'sold_out'.

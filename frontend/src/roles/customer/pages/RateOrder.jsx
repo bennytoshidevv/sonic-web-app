@@ -7,7 +7,8 @@ import Chip from '@shared/components/Chip'
 import EmptyState from '@shared/components/EmptyState'
 import StarRating from '@customer/components/StarRating'
 import { useAuth } from '@shared/auth/AuthContext'
-import { getOrderDetails, getOrderReviews, getRiderReviews, submitOrderReviews } from '@mock/mock'
+import { getOrderDetails, getOrderReviews, getRiderReviews, submitOrderReviews } from '@api'
+import { errorText } from '@shared/utils/errors'
 import { averageRating, minutesBetween } from '@shared/utils/calc'
 import { formatDate, formatTimestampTime } from '@shared/utils/format'
 
@@ -133,7 +134,7 @@ export default function RateOrder() {
   const [justSubmitted, setJustSubmitted] = useState(false)
 
   useEffect(() => {
-    getOrderDetails(orderId, user.user_id).then(async (details) => {
+    getOrderDetails(orderId).then(async (details) => {
       if (!details) {
         setData({ details: null })
       } else {
@@ -210,7 +211,6 @@ export default function RateOrder() {
     setSubmitting(true)
     const result = await submitOrderReviews({
       order_id: order.order_id,
-      customer_id: user.user_id,
       restaurantRatings: stores.map((store) => {
         const entry = entryFor(`store-${store.restaurant_id}`)
         return { restaurant_id: store.restaurant_id, rating: entry.rating, comment: buildComment(entry) }
@@ -220,7 +220,7 @@ export default function RateOrder() {
     setSubmitting(false)
 
     if (result.error) {
-      setSubmitError(result.error === 'already_rated' ? 'This order was already rated.' : 'Something went wrong. Please try again.')
+      setSubmitError(result.error === 'already_rated' ? 'This order was already rated.' : errorText(result, 'Something went wrong. Please try again.'))
       if (result.error === 'already_rated') setRefreshKey(refreshKey + 1)
       return
     }

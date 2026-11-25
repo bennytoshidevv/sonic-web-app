@@ -18,7 +18,8 @@ import BottomSheet from '@shared/components/BottomSheet'
 import Button from '@shared/components/Button'
 import StatusBadge from '@shared/components/StatusBadge'
 import { useAuth } from '@shared/auth/AuthContext'
-import { endShift, getRiderDashboard, setRiderAvailability, startShift } from '@mock/mock'
+import { endShift, getRiderDashboard, setRiderAvailability, startShift } from '@api'
+import { errorText } from '@shared/utils/errors'
 import {
   deliveryGross,
   orderExtraStoreFees,
@@ -53,7 +54,7 @@ export default function Dashboard() {
   const [busy, setBusy] = useState(false)
 
   useEffect(() => {
-    getRiderDashboard(user.user_id).then(setData)
+    getRiderDashboard().then(setData)
   }, [user.user_id, refreshKey])
 
   if (!data) return <p className="py-10 text-center text-sonic-muted">Loading your dashboard…</p>
@@ -86,23 +87,28 @@ export default function Dashboard() {
   async function handleStart() {
     setActionError('')
     setBusy(true)
-    const result = await startShift(user.user_id)
+    const result = await startShift()
     setBusy(false)
-    if (result.error) setActionError('You already had a shift today. Shifts are one per day.')
+    if (result.error) setActionError(errorText(result, 'You already had a shift today. Shifts are one per day.'))
     reload()
   }
 
   async function handleEnd() {
     setBusy(true)
-    const result = await endShift(user.user_id)
+    const result = await endShift()
     setBusy(false)
     setConfirmEnd(false)
-    if (result.error === 'delivery_in_progress') setActionError('Finish your current delivery before ending your shift.')
+    if (result.error) {
+      setActionError(
+        result.error === 'delivery_in_progress' ? 'Finish your current delivery before ending your shift.' : errorText(result, 'Your shift could not be ended. Please try again.'),
+      )
+    }
     reload()
   }
 
   async function handleAvailability(value) {
-    await setRiderAvailability(user.user_id, value)
+    const result = await setRiderAvailability(value)
+    setActionError(result.error ? errorText(result, 'Your availability was not changed.') : '')
     reload()
   }
 

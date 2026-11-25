@@ -9,7 +9,6 @@ import Input from '@shared/components/Input'
 import Select from '@shared/components/Select'
 import StatusBadge from '@shared/components/StatusBadge'
 import Toast from '@shared/components/Toast'
-import { useAuth } from '@shared/auth/AuthContext'
 import {
   archiveMenuItem,
   getMenuForStaff,
@@ -18,7 +17,8 @@ import {
   saveMenuCategory,
   saveMenuItem,
   setMenuItemAvailable,
-} from '@mock/mock'
+} from '@api'
+import { errorText } from '@shared/utils/errors'
 import { formatMoney } from '@shared/utils/format'
 
 // Small on/off switch for "available" (is_available = false means sold out)
@@ -118,7 +118,6 @@ function ItemForm({ item, categories, defaultCategoryId, onSave, onCancel }) {
 }
 
 export default function Menus() {
-  const { user } = useAuth()
   const [searchParams, setSearchParams] = useSearchParams()
   const [restaurants, setRestaurants] = useState(null)
   const [menu, setMenu] = useState([])
@@ -172,7 +171,8 @@ export default function Menus() {
   }
 
   async function handleSaveItem(data) {
-    await saveMenuItem(user.user_id, data)
+    const result = await saveMenuItem(data)
+    if (result.error) return showToast(errorText(result, result.message)) // the form stays open
     setEditingItem(null)
     setCategoryId(data.menu_category_id)
     showToast(data.item_id ? 'Item saved' : 'Item added')
@@ -180,12 +180,14 @@ export default function Menus() {
   }
 
   async function toggleAvailable(item) {
-    await setMenuItemAvailable(user.user_id, item.item_id, !item.is_available)
+    const result = await setMenuItemAvailable(item.item_id, !item.is_available)
+    if (result.error) showToast(errorText(result, result.message))
     reload()
   }
 
   async function handleArchive() {
-    await archiveMenuItem(user.user_id, archiving.item_id)
+    const result = await archiveMenuItem(archiving.item_id)
+    if (result.error) return showToast(errorText(result, result.message))
     showToast(`${archiving.name} archived`)
     setArchiving(null)
     reload()
@@ -197,10 +199,11 @@ export default function Menus() {
       setCategoryError('Category name is required.')
       return
     }
-    const result = await saveMenuCategory(user.user_id, restaurant.restaurant_id, {
+    const result = await saveMenuCategory(restaurant.restaurant_id, {
       menu_category_id: editingCategory === 'new' ? null : editingCategory.menu_category_id,
       category_name: categoryName,
     })
+    if (result.error) return setCategoryError(errorText(result, result.message))
     setEditingCategory(null)
     setCategoryId(result.category.menu_category_id)
     showToast('Category saved')
@@ -208,7 +211,8 @@ export default function Menus() {
   }
 
   async function move(c, direction) {
-    await moveMenuCategory(user.user_id, c.menu_category_id, direction)
+    const result = await moveMenuCategory(c.menu_category_id, direction)
+    if (result.error) showToast(errorText(result, result.message))
     reload()
   }
 

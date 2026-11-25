@@ -28,7 +28,8 @@ import Input from '@shared/components/Input'
 import StatusBadge from '@shared/components/StatusBadge'
 import Toast from '@shared/components/Toast'
 import { useAuth } from '@shared/auth/AuthContext'
-import { advanceDelivery, getRiderDeliveryDetails, recordPettyPurchase } from '@mock/mock'
+import { advanceDelivery, getRiderDeliveryDetails, recordPettyPurchase } from '@api'
+import { errorText } from '@shared/utils/errors'
 import {
   cashOptions,
   changeDue,
@@ -81,7 +82,7 @@ export default function DeliveryDetails() {
   const toastTimer = useRef(null)
 
   useEffect(() => {
-    getRiderDeliveryDetails(user.user_id, orderId).then((result) => {
+    getRiderDeliveryDetails(orderId).then((result) => {
       setData(result)
       setLoading(false)
     })
@@ -134,11 +135,11 @@ export default function DeliveryDetails() {
   async function advance() {
     setError('')
     setBusy(true)
-    const result = await advanceDelivery(user.user_id, order.order_id)
+    const result = await advanceDelivery(order.order_id)
     setBusy(false)
     setCashSheet(false)
     if (result.error) {
-      setError(result.error === 'no_open_shift' ? 'Your shift is closed. Start a shift on the Dashboard.' : 'This delivery cannot be updated right now.')
+      setError(result.error === 'no_open_shift' ? 'Your shift is closed. Start a shift on the Dashboard.' : errorText(result, 'This delivery cannot be updated right now.'))
     } else if (result.order.order_status === 'delivered') {
       setJustDelivered(true)
       window.scrollTo({ top: 0 })
@@ -174,13 +175,13 @@ export default function DeliveryDetails() {
       setPettyError('Enter the amount you paid the store.')
       return
     }
-    const result = await recordPettyPurchase(user.user_id, order.order_id, Math.round(amount * 100) / 100)
+    const result = await recordPettyPurchase(order.order_id, Math.round(amount * 100) / 100)
     if (result.error === 'not_enough') {
       setPettyError(`You only have ${formatMoney(pettyOnHand)} petty cash on hand.`)
       return
     }
     if (result.error) {
-      setPettyError('This delivery cannot record a store advance right now.')
+      setPettyError(errorText(result, 'This delivery cannot record a store advance right now.'))
       return
     }
     setPettyAmount('')

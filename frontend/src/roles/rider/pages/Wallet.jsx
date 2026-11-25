@@ -14,7 +14,7 @@ import {
   Zap,
 } from 'lucide-react'
 import { useAuth } from '@shared/auth/AuthContext'
-import { getRiderWallet } from '@mock/mock'
+import { getRiderWallet } from '@api'
 import { pettyCashBreakdown, pettyCashOnHand, savingsBalance } from '@shared/utils/calc'
 import { formatDate, formatMoney, formatTimestampTime } from '@shared/utils/format'
 
@@ -35,7 +35,7 @@ export default function Wallet() {
   const [data, setData] = useState(null)
 
   useEffect(() => {
-    getRiderWallet(user.user_id).then(setData)
+    getRiderWallet().then(setData)
   }, [user.user_id])
 
   if (!data) return <p className="py-10 text-center text-sonic-muted">Loading your wallet…</p>

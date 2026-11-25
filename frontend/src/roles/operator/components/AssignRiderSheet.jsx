@@ -2,8 +2,8 @@ import { useState } from 'react'
 import { AlertTriangle, Bike, Send, Star } from 'lucide-react'
 import BottomSheet from '@shared/components/BottomSheet'
 import Button from '@shared/components/Button'
-import { useAuth } from '@shared/auth/AuthContext'
-import { assignRider } from '@mock/mock'
+import { assignRider } from '@api'
+import { errorText } from '@shared/utils/errors'
 import { averageRating, orderExtraStoreFees, orderItemsSubtotal, orderTotal, pettyCashOnHand } from '@shared/utils/calc'
 import { formatMoney } from '@shared/utils/format'
 
@@ -12,7 +12,6 @@ import { formatMoney } from '@shared/utils/format'
 //   entry:  the order (getLiveOrders / getOrderForStaff shape), or null when closed
 //   riders: getRidersOverview()
 export default function AssignRiderSheet({ entry, riders, onClose, onAssigned }) {
-  const { user } = useAuth()
   const [riderId, setRiderId] = useState(null)
   const [error, setError] = useState('')
   const [saving, setSaving] = useState(false)
@@ -34,10 +33,10 @@ export default function AssignRiderSheet({ entry, riders, onClose, onAssigned })
       return
     }
     setSaving(true)
-    const result = await assignRider(user.user_id, entry.order.order_id, riderId)
+    const result = await assignRider(entry.order.order_id, riderId)
     setSaving(false)
     if (result.error) {
-      setError(result.error === 'not_assignable' ? 'Confirm the order before assigning a rider.' : 'That rider is no longer available.')
+      setError(result.error === 'not_assignable' ? 'Confirm the order before assigning a rider.' : errorText(result, 'That rider is no longer available.'))
       return
     }
     onAssigned(sorted.find((r) => r.user.user_id === riderId).user.full_name)

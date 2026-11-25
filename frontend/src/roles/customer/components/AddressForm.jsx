@@ -4,6 +4,7 @@ import Button from '@shared/components/Button'
 import Chip from '@shared/components/Chip'
 import Input from '@shared/components/Input'
 import Select from '@shared/components/Select'
+import { errorText } from '@shared/utils/errors'
 import { formatMoney } from '@shared/utils/format'
 
 const LABELS = ['Home', 'Work', 'Other']
@@ -12,7 +13,7 @@ const LABELS = ['Home', 'Work', 'Other']
 // so it is shown as soon as one is picked.
 //   initial:     values of the address being edited (leave out to add a new one)
 //   showDefault: show the "Set as default address" switch
-// onSave receives { label, barangay_id, street_address, landmark, is_default }.
+// onSave receives { label, barangay_id, street_address, landmark, is_default }, and returns { error } when it was not saved.
 export default function AddressForm({ barangays, initial, showDefault = false, onSave, onCancel }) {
   const [form, setForm] = useState({
     label: initial?.label || 'Home',
@@ -41,7 +42,7 @@ export default function AddressForm({ barangays, initial, showDefault = false, o
     if (Object.keys(found).length > 0) return
 
     setSaving(true)
-    await onSave({
+    const result = await onSave({
       label: form.label,
       barangay_id: Number(form.barangay_id),
       street_address: form.street_address.trim(),
@@ -49,6 +50,7 @@ export default function AddressForm({ barangays, initial, showDefault = false, o
       is_default: form.is_default,
     })
     setSaving(false)
+    if (result?.error) setErrors({ form: errorText(result, result.message) })
   }
 
   return (
@@ -128,6 +130,12 @@ export default function AddressForm({ barangays, initial, showDefault = false, o
             className="relative h-6 w-11 shrink-0 rounded-full bg-sonic-border transition peer-checked:bg-sonic-blue peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-sonic-blue after:absolute after:top-0.5 after:left-0.5 after:size-5 after:rounded-full after:bg-white after:shadow-card after:transition peer-checked:after:translate-x-5"
           />
         </label>
+      )}
+
+      {errors.form && (
+        <p role="alert" className="text-small font-medium text-red-600">
+          {errors.form}
+        </p>
       )}
 
       <div className="mt-1 flex flex-col gap-2 md:flex-row-reverse">

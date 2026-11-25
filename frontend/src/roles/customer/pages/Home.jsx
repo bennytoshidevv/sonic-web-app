@@ -6,7 +6,7 @@ import Chip from '@shared/components/Chip'
 import EmptyState from '@shared/components/EmptyState'
 import Input from '@shared/components/Input'
 import RestaurantCard from '@customer/components/RestaurantCard'
-import { getCuisineTypes, getRestaurants } from '@mock/mock'
+import { getCuisineTypes, getRestaurants } from '@api'
 import { formatMoney } from '@shared/utils/format'
 
 const ALL = 'All'

@@ -5,7 +5,8 @@ import Chip from '@shared/components/Chip'
 import Input from '@shared/components/Input'
 import Toast from '@shared/components/Toast'
 import { useAuth } from '@shared/auth/AuthContext'
-import { getSavingsOverview, recordSavingsWithdrawal } from '@mock/mock'
+import { getSavingsOverview, recordSavingsWithdrawal } from '@api'
+import { errorText } from '@shared/utils/errors'
 import { savingsBalance, sumAmounts } from '@shared/utils/calc'
 import { formatDate, formatMoney, formatPhoneNumber, formatTimestampTime } from '@shared/utils/format'
 
@@ -139,9 +140,9 @@ export default function RiderSavings() {
   const history = selected ? selected.entries.filter((e) => historyFilter === 'all' || e.entry_type === historyFilter) : []
 
   async function handleWithdraw(amount, note) {
-    const result = await recordSavingsWithdrawal(user.user_id, selected.user.user_id, amount, note)
+    const result = await recordSavingsWithdrawal(selected.user.user_id, amount, note)
     if (result.error) {
-      setToast(result.error === 'not_enough' ? 'Not enough savings for that amount.' : 'Could not record the withdrawal.')
+      setToast(result.error === 'not_enough' ? 'Not enough savings for that amount.' : errorText(result, 'Could not record the withdrawal.'))
     } else {
       setToast(`${formatMoney(amount)} paid out to ${selected.user.full_name}`)
       setRefreshKey(refreshKey + 1)

@@ -9,7 +9,9 @@
       "@rider/*": ["src/roles/rider/*"],
       "@operator/*": ["src/roles/operator/*"],
       "@admin/*": ["src/roles/admin/*"],
-      "@mock/*": ["src/mock/*"]
+      "@mock/*": ["src/mock/*"],
+      "@api": ["src/api/index.js"],
+      "@api/*": ["src/api/*"]
     }
   },
   "include": ["src"]

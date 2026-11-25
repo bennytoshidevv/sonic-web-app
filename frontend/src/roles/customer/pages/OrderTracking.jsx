@@ -22,7 +22,8 @@ import EmptyState from '@shared/components/EmptyState'
 import OrderStepper from '@customer/components/OrderStepper'
 import StatusBadge from '@shared/components/StatusBadge'
 import { useAuth } from '@shared/auth/AuthContext'
-import { cancelOrder, getOrderDetails } from '@mock/mock'
+import { cancelOrder, getOrderDetails } from '@api'
+import { errorText } from '@shared/utils/errors'
 import { orderExtraStoreFees, orderItemsSubtotal, orderTotal } from '@shared/utils/calc'
 import { formatDate, formatMoney, formatTimestampTime } from '@shared/utils/format'
 import { ORDER_STATUS_MESSAGES, PAYMENT_METHOD_LABELS } from '@shared/utils/labels'
@@ -49,7 +50,7 @@ export default function OrderTracking() {
   const [cancelling, setCancelling] = useState(false)
 
   useEffect(() => {
-    getOrderDetails(orderId, user.user_id).then((result) => {
+    getOrderDetails(orderId).then((result) => {
       setData(result)
       setLastUpdated(new Date().toISOString())
       setLoading(false)
@@ -103,11 +104,11 @@ export default function OrderTracking() {
       return
     }
     setCancelling(true)
-    const result = await cancelOrder(order.order_id, user.user_id, cancelReason.trim())
+    const result = await cancelOrder(order.order_id, cancelReason.trim())
     setCancelling(false)
     if (result.error) {
-      setCancelError('This order can no longer be cancelled: the store already confirmed it.')
-      refresh()
+      setCancelError(errorText(result, 'This order can no longer be cancelled: the store already confirmed it.'))
+      if (result.error === 'not_cancellable') refresh()
       return
     }
     setCancelOpen(false)

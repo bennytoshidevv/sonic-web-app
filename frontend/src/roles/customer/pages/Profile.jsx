@@ -37,7 +37,8 @@ import {
   setDefaultAddress,
   updateCustomerAddress,
   updateUserProfile,
-} from '@mock/mock'
+} from '@api'
+import { errorText } from '@shared/utils/errors'
 import { average, minutesBetween } from '@shared/utils/calc'
 import { formatMoney, formatPhoneNumber } from '@shared/utils/format'
 import { isValidEmail, isValidPhMobile } from '@shared/utils/validate'
@@ -173,7 +174,7 @@ export default function Profile() {
   const toastTimer = useRef(null)
 
   useEffect(() => {
-    getCustomerOrders(user.user_id).then(setOrders)
+    getCustomerOrders().then(setOrders)
     getBarangays().then(setBarangays)
   }, [user.user_id])
 
@@ -211,40 +212,47 @@ export default function Profile() {
 
   // ---- Actions ----
   async function saveProfile(values) {
-    const result = await updateUserProfile(user.user_id, values)
+    const result = await updateUserProfile(values)
     if (!result.error) {
       signIn(result.user) // keep the logged-in user up to date
       closeSheet()
       showToast('Profile saved')
+    } else if (result.error !== 'email_taken') {
+      showToast(errorText(result, result.message))
     }
     return result
   }
 
   async function savePassword(current, next) {
-    const result = await changePassword(user.user_id, current, next)
+    const result = await changePassword(current, next)
     if (!result.error) {
       closeSheet()
       showToast('Password changed')
+    } else if (result.error !== 'wrong_password') {
+      showToast(errorText(result, result.message))
     }
     return result
   }
 
   async function saveAddress(values) {
-    if (selectedAddress) await updateCustomerAddress(user.user_id, selectedAddress.address_id, values)
-    else await addCustomerAddress({ ...values, user_id: user.user_id })
+    const result = selectedAddress ? await updateCustomerAddress(selectedAddress.address_id, values) : await addCustomerAddress(values)
+    if (result.error) return result // the form shows why
     await reloadAddresses()
     closeSheet()
     showToast(selectedAddress ? 'Address updated' : 'Address saved')
+    return result
   }
 
   async function makeDefault(address) {
-    await setDefaultAddress(user.user_id, address.address_id)
+    const result = await setDefaultAddress(address.address_id)
+    if (result.error) return showToast(errorText(result, 'Could not change the default address.'))
     await reloadAddresses()
     showToast(`${address.label || 'Address'} is now your default address`)
   }
 
   async function confirmDelete() {
-    await deleteCustomerAddress(user.user_id, selectedAddress.address_id)
+    const result = await deleteCustomerAddress(selectedAddress.address_id)
+    if (result.error) return showToast(errorText(result, 'Could not delete the address.'))
     await reloadAddresses()
     closeSheet()
     showToast('Address deleted')

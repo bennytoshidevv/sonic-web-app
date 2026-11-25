@@ -19,6 +19,7 @@ export default defineConfig({
       '@operator': folder('./src/roles/operator'),
       '@admin': folder('./src/roles/admin'),
       '@mock': folder('./src/mock'),
+      '@api': folder('./src/api'),
     },
   },
 })

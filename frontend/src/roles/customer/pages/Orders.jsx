@@ -7,7 +7,7 @@ import OrderCard from '@customer/components/OrderCard'
 import Toast from '@shared/components/Toast'
 import { useAuth } from '@shared/auth/AuthContext'
 import { useCart } from '@customer/context/CartContext'
-import { getCartItemDetails, getCustomerOrders } from '@mock/mock'
+import { getCartItemDetails, getCustomerOrders } from '@api'
 import { findProblem } from '@customer/hooks/useCartDetails'
 
 // Delivered and cancelled orders are "past"; every other status is "active".
@@ -27,7 +27,7 @@ export default function Orders() {
   const toastTimer = useRef(null)
 
   useEffect(() => {
-    getCustomerOrders(user.user_id).then((list) => {
+    getCustomerOrders().then((list) => {
       setOrders(list)
       setLoading(false)
     })

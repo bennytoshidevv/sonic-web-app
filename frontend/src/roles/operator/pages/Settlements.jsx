@@ -7,8 +7,8 @@ import EmptyState from '@shared/components/EmptyState'
 import Input from '@shared/components/Input'
 import Select from '@shared/components/Select'
 import Toast from '@shared/components/Toast'
-import { useAuth } from '@shared/auth/AuthContext'
-import { addPettyCashTransaction, getShiftsOnDate, getUserNames, recordSettlement } from '@mock/mock'
+import { addPettyCashTransaction, getShiftsOnDate, getUserNames, recordSettlement } from '@api'
+import { errorText } from '@shared/utils/errors'
 import {
   deliveryGross,
   minutesBetween,
@@ -178,7 +178,6 @@ function SettlementForm({ money, onSave }) {
 }
 
 export default function Settlements() {
-  const { user } = useAuth()
   const [date, setDate] = useState(() => localDateKey())
   const [views, setViews] = useState(null)
   const [names, setNames] = useState({})
@@ -220,9 +219,9 @@ export default function Settlements() {
   const petty = view ? pettyCashBreakdown(view.pettyCash) : null
 
   async function handleSettle(data) {
-    const result = await recordSettlement(user.user_id, { shift_id: view.shift.shift_id, ...data })
+    const result = await recordSettlement({ shift_id: view.shift.shift_id, ...data })
     if (result.error) {
-      showToast('This shift cannot be settled now.')
+      showToast(errorText(result, 'This shift cannot be settled now.'))
       return
     }
     showToast(`Shift of ${view.rider.full_name} settled`)
@@ -232,7 +231,7 @@ export default function Settlements() {
   async function handleAddTxn(e) {
     e.preventDefault()
     const amount = Number(txn.amount)
-    const result = await addPettyCashTransaction(user.user_id, {
+    const result = await addPettyCashTransaction({
       shift_id: view.shift.shift_id,
       txn_type: txn.txn_type,
       amount: Math.round(amount * 100) / 100,
@@ -246,7 +245,7 @@ export default function Settlements() {
         not_enough: `The rider only has ${formatMoney(money.pettyOnHand)} petty cash.`,
         already_settled: 'This shift is already settled.',
       }
-      setTxnError(messages[result.error])
+      setTxnError(messages[result.error] || errorText(result, result.message))
       return
     }
     setAddingTxn(false)

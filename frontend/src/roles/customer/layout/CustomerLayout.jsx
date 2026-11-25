@@ -4,7 +4,7 @@ import { ChevronDown, House, MapPin, ReceiptText, ShoppingBag, User } from 'luci
 import logo from '@shared/assets/logo.jpg'
 import { useAuth } from '@shared/auth/AuthContext'
 import { useCart } from '@customer/context/CartContext'
-import { addCustomerAddress, getCustomerAddresses } from '@mock/mock'
+import { addCustomerAddress, getCustomerAddresses } from '@api'
 import { cartItemCount } from '@shared/utils/calc'
 
 const NAV_ITEMS = [
@@ -40,7 +40,7 @@ export default function CustomerLayout() {
   const [addressId, setAddressId] = useState(null)
 
   useEffect(() => {
-    getCustomerAddresses(user.user_id).then((list) => {
+    getCustomerAddresses().then((list) => {
       setAddresses(list)
       const defaultAddress = list.find((a) => a.is_default) || list[0]
       setAddressId(defaultAddress ? defaultAddress.address_id : null)
@@ -49,17 +49,20 @@ export default function CustomerLayout() {
 
   const address = addresses.find((a) => a.address_id === addressId) || null
 
-  // Saves a new address and makes it the selected one (used by Checkout)
+  // Saves a new address and makes it the selected one (used by Checkout).
+  // Returns { error } when it was not saved.
   async function addAddress(newAddress) {
-    const saved = await addCustomerAddress({ ...newAddress, user_id: user.user_id })
+    const saved = await addCustomerAddress(newAddress)
+    if (saved.error) return saved
     setAddresses([...addresses, saved])
     setAddressId(saved.address_id)
+    return saved
   }
 
   // Reloads the saved addresses after the Profile page changes them. Keeps the selected
   // address if it still exists, otherwise picks the default one.
   async function reloadAddresses() {
-    const list = await getCustomerAddresses(user.user_id)
+    const list = await getCustomerAddresses()
     setAddresses(list)
     if (!list.some((a) => a.address_id === addressId)) {
       const defaultAddress = list.find((a) => a.is_default) || list[0]

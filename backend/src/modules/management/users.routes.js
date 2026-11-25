@@ -9,7 +9,7 @@ import { checkContactNumber, checkPassword, cleanEmail, optionalText, requireFie
 // Operator management, part 3 (module 6): customers, operators, rider accounts and account status.
 // Mounted at /api/staff/users. Operators and the admin only.
 // Approval rules (same as the mock): operators manage riders and customers; only the admin can change
-// operator accounts; nobody can change an admin account here. Users are never deleted.
+// operator accounts; nobody can change an admin account here, or their own account. Users are never deleted.
 
 const router = Router()
 router.use(requireAuth, requireRole('operator'))
@@ -95,6 +95,8 @@ router.put('/:id/status', async (req, res) => {
     const { rows } = await db.query('SELECT user_id, role, account_status FROM users WHERE user_id = $1 FOR UPDATE', [userId])
     const target = rows[0]
     if (!target) throw notFound('not_found', 'User not found')
+    // Checked first, so the reason is clear: nobody can approve, suspend or deactivate themselves.
+    if (userId === req.user.user_id) throw forbidden('not_allowed', 'You cannot change your own account status')
     if (target.role === 'admin') throw forbidden('not_allowed', 'Admin accounts cannot be changed here')
     if (target.role === 'operator' && req.user.role !== 'admin') throw forbidden('not_allowed', 'Only the admin can change operator accounts')
 

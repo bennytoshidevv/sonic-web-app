@@ -30,6 +30,10 @@ describe('shifts on a date', () => {
     assert.equal(view.runs.length, 2)
     assert.equal(view.settlement, null)
     assert.deepEqual(view.pettyCash.map((t) => [t.txn_type, t.amount]), [['cash_issued', 500]])
+    // calculated by the API with calc.js (not stored): ₱575 COD, ₱188 net pay → the rider remits ₱387
+    // gross ₱228 = ₱28 (North Centro ₱40 fee: no allowance, 70% share) + ₱200 (Mangga ₱250 + 1 extra store)
+    // deductions ₱40 = box rent + savings + 2 operator fees
+    assert.deepEqual(view.money, { gross: 228, deductions: 40, net: 188, cod: 575, toRemit: 387, toPayRider: 0, pettyOnHand: 500 })
   })
 
   test('bad date', async () => {
@@ -101,11 +105,25 @@ describe('settling', () => {
     await call('POST', `/staff/orders/${orderId}/assign`, { rider_id: riderId }, operator)
     const pending = (await call('GET', '/rider/deliveries', null, rider)).body.pending[0]
     await call('POST', `/rider/assignments/${pending.assignment.assignment_id}/accept`, null, rider)
+
+    // Petty cash: issue ₱500 + GCash top-up ₱100, the rider buys the order's food (₱320) → ₱280 on hand
+    const today = (await pool.query("SELECT shift_id, shift_date FROM rider_shifts WHERE rider_id = $1 AND status = 'open'", [riderId])).rows[0]
+    await staff('POST', `/${today.shift_id}/petty-cash`, { txn_type: 'cash_issued', amount: 500 })
+    await staff('POST', `/${today.shift_id}/petty-cash`, { txn_type: 'gcash_topup', amount: 100, gcash_reference_id: 'GC-111' })
+    assert.equal((await call('POST', `/rider/deliveries/${orderId}/purchases`, { amount: 320 }, rider)).status, 201)
+    const onHand = async () => (await staff('GET', `?date=${today.shift_date}`)).body.find((v) => v.shift.shift_id === today.shift_id).money.pettyOnHand
+    assert.equal(await onHand(), 280)
     await call('POST', `/staff/orders/${orderId}/advance`, null, operator)
     await call('POST', `/staff/orders/${orderId}/advance`, null, operator)
     for (let i = 0; i < 3; i++) await call('POST', `/rider/deliveries/${orderId}/advance`, null, rider)
     const ended = await call('POST', '/rider/shift/end', null, rider)
     const shiftId = ended.body.shift.shift_id
+
+    // The rider gives back ₱80 → ₱200 still on hand (500 + 100 − 320 − 80)
+    await staff('POST', `/${shiftId}/petty-cash`, { txn_type: 'cash_returned', amount: 80 })
+    assert.equal(await onHand(), 200)
+    const money = (await staff('GET', `?date=${today.shift_date}`)).body.find((v) => v.shift.shift_id === shiftId).money
+    assert.deepEqual([money.net, money.cod, money.toRemit, money.toPayRider], [160, 0, 0, 160])
 
     // Net pay = ₱50 allowance + ₱140 share − ₱30 deductions = ₱160; no cash collected (GCash order)
     assert.equal((await staff('POST', `/${shiftId}/settlement`, { payout_method: 'gcash' })).body.error, 'reference_required')

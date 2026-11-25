@@ -4,7 +4,7 @@
 import { describe, test } from 'node:test'
 import assert from 'node:assert/strict'
 import { call, loginAs, pool, setup } from './helpers.js'
-import { deliveryGross, orderExtraStoreFees } from '../src/utils/calc.js'
+import { deliveryGross, gasAllowanceFor, orderExtraStoreFees } from '../src/utils/calc.js'
 
 let rider // token of the new rider
 let riderId
@@ -181,6 +181,43 @@ describe('a full shift', () => {
 function order_number_of(history) {
   return history[0].runs[0].order.order_number
 }
+
+describe('pay rule and the open-shift rule', () => {
+  test('pay examples with the tiers and rate the API uses: ₱250 → ₱190, +₱10 per extra store', async () => {
+    const marcelo = await loginAs('rider@sonic.ph')
+    const { tiers, rate } = (await call('GET', '/rider/deliveries', null, marcelo)).body
+    const allowance = gasAllowanceFor(250, tiers) // from the BARANGAY fee only
+    assert.equal(allowance, 50)
+    assert.equal(deliveryGross(250, allowance, rate.rider_share_pct, 0), 190) // ₱50 + ₱140
+    assert.equal(deliveryGross(250, allowance, rate.rider_share_pct, 10), 200) // 1 extra store
+    assert.equal(deliveryGross(250, allowance, rate.rider_share_pct, 20), 210) // 2 extra stores
+  })
+
+  test('a delivery cannot be moved without an open shift', async () => {
+    // Carlo (8) has an open shift today. He accepts a delivery, then his shift is closed behind his back
+    // (the rider app itself blocks "end shift" during a delivery, so this can only happen in the database).
+    orderId = await placeAndConfirm()
+    await staff('/assign', { rider_id: 8 })
+    const carlo = await loginAs('carlo@sonic.ph')
+    const pending = (await call('GET', '/rider/deliveries', null, carlo)).body.pending.find((e) => e.order.order_id === orderId)
+    await call('POST', `/rider/assignments/${pending.assignment.assignment_id}/accept`, null, carlo)
+    await staff('/advance') // preparing
+    await staff('/advance') // ready_for_pickup
+
+    const { rows } = await pool.query("UPDATE rider_shifts SET status = 'closed', ended_at = now() WHERE rider_id = 8 AND status = 'open' RETURNING shift_id", [])
+    try {
+      const res = await call('POST', `/rider/deliveries/${orderId}/advance`, null, carlo)
+      assert.equal(res.status, 409)
+      assert.equal(res.body.error, 'no_open_shift')
+      assert.equal((await call('GET', `/orders/${orderId}`, null, customer)).body.order.order_status, 'ready_for_pickup') // unchanged
+    } finally {
+      await pool.query("UPDATE rider_shifts SET status = 'open', ended_at = NULL WHERE shift_id = $1", [rows[0].shift_id])
+    }
+    // With the shift open again, Carlo finishes the delivery (so the demo state stays clean)
+    for (let i = 0; i < 3; i++) await call('POST', `/rider/deliveries/${orderId}/advance`, null, carlo)
+    assert.equal((await call('GET', `/orders/${orderId}`, null, customer)).body.order.order_status, 'delivered')
+  })
+})
 
 describe('rejecting a dispatch and privacy', () => {
   test('Carlo rejects a dispatch: it ends and the operator can reassign', async () => {

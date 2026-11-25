@@ -112,6 +112,30 @@ describe('assigning riders', () => {
     assert.equal((await notifications(8, order.order_id))[0].type, 'rider_assignment')
   })
 
+  test('an active rider who is offline is refused (no shift, or on shift but set to offline)', async () => {
+    const order = await newOrder()
+    await advance(order.order_id)
+    const email = `offline${Date.now()}@test.ph`
+    const created = await call('POST', '/staff/users/riders', { full_name: 'Offline Rider', email, contact_number: '09181239876', password: 'temp12345', vehicle_type: 'Motorcycle' }, operator)
+    const riderId = created.body.user.user_id
+
+    // Active account, but no shift yet (offline)
+    assert.equal((await assign(order.order_id, riderId)).body.error, 'rider_unavailable')
+
+    // On shift, then switches to offline
+    const rider = (await call('POST', '/auth/login', { email, password: 'temp12345' })).body.token
+    await call('POST', '/rider/shift/start', null, rider)
+    await call('PUT', '/rider/availability', { availability_status: 'offline' }, rider)
+    const res = await assign(order.order_id, riderId)
+    assert.equal(res.status, 409)
+    assert.equal(res.body.error, 'rider_unavailable')
+    assert.equal((await staffOrder(order.order_id)).currentAssignment, null) // nothing was assigned
+
+    // Back to available: now it works
+    await call('PUT', '/rider/availability', { availability_status: 'available' }, rider)
+    assert.equal((await assign(order.order_id, riderId)).status, 200)
+  })
+
   test('reassigning ends the old assignment', async () => {
     const order = await newOrder()
     await advance(order.order_id)

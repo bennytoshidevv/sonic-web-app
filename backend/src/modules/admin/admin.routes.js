@@ -7,6 +7,7 @@ import { savingsBalance } from '../../utils/calc.js'
 import { checkBoolean, checkMoney, optionalText, requiredText, tierRangeProblem, toId } from '../../utils/validate.js'
 import { getStaffOrders } from '../orders/orders.service.js'
 import { getRidersOverview } from '../rider/rider.service.js'
+import { getReportSummary } from './reports.service.js'
 
 // Admin (module 8): reports, settings and rider savings. Mounted at /api/admin. The admin only.
 // Settings changes only affect new orders, deliveries and shifts: placed orders and recorded earnings
@@ -17,12 +18,19 @@ router.use(requireAuth, requireRole('admin'))
 
 // ---------- A01 Reports ----------
 
-// GET /api/admin/reports -> { orders, riders, deductions } (getReportData)
+// GET /api/admin/reports?from=YYYY-MM-DD&to=YYYY-MM-DD -> { orders, riders, deductions, summary } (getReportData)
 //   orders     = every order (staff view) + its delivery_earnings row (null if not delivered by a rider)
 //   riders     = the riders overview (with reviews)
 //   deductions = every applied deduction with its type
-// Like the mock, the Reports page picks the date range and computes the totals with calc.js.
+//   summary    = only when from/to are given: the report totals for that range computed in SQL
+//                (sales, orders per restaurant, top items, rider performance, payment methods; reports.service.js)
+// The first three are the mock's shape, so the current Reports page (which computes with calc.js) keeps working.
+const DATE = /^\d{4}-\d{2}-\d{2}$/
 router.get('/reports', async (req, res) => {
+  const { from, to } = req.query
+  if ((from || to) && !(DATE.test(from) && DATE.test(to) && !Number.isNaN(Date.parse(from)) && !Number.isNaN(Date.parse(to)) && from <= to)) {
+    throw badRequest('invalid_date', 'Use from and to dates like 2026-11-25, with from on or before to')
+  }
   const [orders, earnings, riders, deductions] = await Promise.all([
     getStaffOrders(),
     query('SELECT e.*, d.order_id FROM delivery_earnings e JOIN deliveries d ON d.delivery_id = e.delivery_id'),
@@ -38,6 +46,7 @@ router.get('/reports', async (req, res) => {
     orders: orders.map((entry) => ({ ...entry, earning: earningByOrder.get(entry.order.order_id) ?? null })),
     riders,
     deductions: deductions.rows,
+    ...(from && { summary: await getReportSummary(from, to) }),
   })
 })
 
@@ -209,13 +218,17 @@ router.post('/rate-settings', async (req, res) => {
     throw badRequest('invalid', 'Choose when the new rates start')
   }
   const rate = await withTransaction(async (db) => {
+    // The rate in use before this change, kept in the audit log as the "old value".
+    const { rows: before } = await db.query(
+      'SELECT * FROM rate_settings WHERE effective_from <= now() ORDER BY effective_from DESC, setting_id DESC LIMIT 1',
+    )
     // A time without a zone is read in the connection's zone (Asia/Manila).
     const { rows } = await db.query(
       `INSERT INTO rate_settings (extra_store_fee, rider_share_pct, effective_from, created_by)
        VALUES ($1, $2, $3::timestamp, $4) RETURNING *`,
       [fee, pct, effectiveFrom, req.user.user_id],
     )
-    await audit(db, { user_id: req.user.user_id, action: 'create_rate_setting', target_entity: 'rate_settings', target_id: rows[0].setting_id, new_value: rows[0] })
+    await audit(db, { user_id: req.user.user_id, action: 'create_rate_setting', target_entity: 'rate_settings', target_id: rows[0].setting_id, old_value: before[0] ?? null, new_value: rows[0] })
     return rows[0]
   })
   res.status(201).json({ rate })
@@ -265,13 +278,22 @@ router.post('/savings/:riderId/withdrawals', async (req, res) => {
     const { rows: rider } = await db.query('SELECT 1 FROM rider_profiles WHERE user_id = $1 FOR UPDATE', [riderId])
     if (!rider[0]) throw notFound('not_found', 'Rider not found')
     const { rows: ledger } = await db.query('SELECT entry_type, amount FROM rider_savings_entries WHERE rider_id = $1', [riderId])
-    if (amount > savingsBalance(ledger)) throw conflict('not_enough', 'Not enough savings for that amount')
+    const balance = savingsBalance(ledger)
+    if (amount > balance) throw conflict('not_enough', 'Not enough savings for that amount')
     const { rows } = await db.query(
       `INSERT INTO rider_savings_entries (rider_id, entry_type, amount, processed_by, note)
        VALUES ($1, 'withdrawal', $2, $3, $4) RETURNING *`,
       [riderId, amount, req.user.user_id, note],
     )
-    await audit(db, { user_id: req.user.user_id, action: 'savings_withdrawal', target_entity: 'rider_savings_entries', target_id: rows[0].entry_id, new_value: rows[0] })
+    // Old and new value = the rider's balance before and after, plus the new ledger row.
+    await audit(db, {
+      user_id: req.user.user_id,
+      action: 'savings_withdrawal',
+      target_entity: 'rider_savings_entries',
+      target_id: rows[0].entry_id,
+      old_value: { balance },
+      new_value: { ...rows[0], balance: Math.round((balance - amount) * 100) / 100 },
+    })
     return rows[0]
   })
   res.status(201).json({ entry })

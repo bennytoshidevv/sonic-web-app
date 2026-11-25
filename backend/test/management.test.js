@@ -113,6 +113,7 @@ describe('menus', () => {
 
     assert.equal((await staff('POST', `/menus/categories/${categoryIds[0]}/move`, { direction: -1 })).body.error, 'edge')
     assert.deepEqual((await staff('POST', `/menus/categories/${categoryIds[1]}/move`, { direction: -1 })).body, { ok: true })
+    assert.equal((await lastAudit('menu_categories', categoryIds[1])).action, 'move_menu_category')
     const menu = (await staff('GET', `/menus/${restaurantId}`)).body
     assert.deepEqual(menu.map((c) => c.category_name), ['Cold Drinks', 'Grilled'])
   })
@@ -134,11 +135,27 @@ describe('menus', () => {
     assert.equal((await call('GET', `/restaurants/${restaurantId}/menu`)).body.find((c) => c.menu_category_id === categoryIds[0]).items[0].is_available, false)
     assert.equal((await lastAudit('menu_items', itemId)).action, 'set_item_availability')
 
+    assert.ok((await call('GET', `/restaurants/${restaurantId}/menu`)).body.find((c) => c.menu_category_id === categoryIds[0]).items.some((i) => i.item_id === itemId))
     assert.deepEqual((await staff('POST', `/menus/items/${itemId}/archive`)).body, { ok: true })
+    // gone from the customer menu (and the staff menu), but still in the table
+    assert.deepEqual((await call('GET', `/restaurants/${restaurantId}/menu`)).body.find((c) => c.menu_category_id === categoryIds[0]).items, [])
+    assert.equal((await lastAudit('menu_items', itemId)).action, 'archive_menu_item')
     const menu = (await staff('GET', `/menus/${restaurantId}`)).body
     assert.deepEqual(menu.find((c) => c.menu_category_id === categoryIds[0]).items, [])
     const { rows } = await pool.query('SELECT is_active FROM menu_items WHERE item_id = $1', [itemId])
     assert.equal(rows[0].is_active, false) // still in the table
+  })
+
+  test('photos: the URL returned by /api/uploads is saved; leaving it out keeps it', async () => {
+    const url = 'http://localhost:4000/uploads/menu-items/bbq.jpg' // what POST /api/uploads/menu-items returns
+    const add = await staff('POST', '/menus/items', { menu_category_id: categoryIds[0], name: 'Chicken BBQ', price: 45, photo_url: url })
+    assert.equal(add.body.item.photo_url, url)
+    const edit = await staff('PUT', `/menus/items/${add.body.item.item_id}`, { menu_category_id: categoryIds[0], name: 'Chicken BBQ', price: 50 })
+    assert.equal(edit.body.item.photo_url, url)
+    const logo = await staff('PUT', `/restaurants/${restaurantId}`, { ...NEW_RESTAURANT, name: 'Sipocot Grill House', logo_url: 'http://localhost:4000/uploads/restaurants/grill.png' })
+    assert.equal(logo.body.restaurant.logo_url, 'http://localhost:4000/uploads/restaurants/grill.png')
+    const keep = await staff('PUT', `/restaurants/${restaurantId}`, { ...NEW_RESTAURANT, name: 'Sipocot Grill House' })
+    assert.equal(keep.body.restaurant.logo_url, 'http://localhost:4000/uploads/restaurants/grill.png')
   })
 
   test('a price change does not change placed orders', async () => {
@@ -210,6 +227,15 @@ describe('users', () => {
     assert.equal((await staff('PUT', '/users/4/status', { account_status: 'suspended' }, admin)).body.error, 'not_allowed') // admin
     assert.equal((await staff('PUT', '/users/99999/status', { account_status: 'active' })).status, 404)
     assert.equal((await staff('PUT', '/users/7/status', { account_status: 'deleted' })).body.error, 'invalid_status')
+  })
+
+  test('nobody can change their own account status', async () => {
+    const own = await staff('PUT', `/users/${operatorId}/status`, { account_status: 'inactive' })
+    assert.equal(own.status, 403)
+    assert.equal(own.body.error, 'not_allowed')
+    assert.match(own.body.message, /your own account/)
+    const ownAdmin = await staff('PUT', '/users/4/status', { account_status: 'inactive' }, admin)
+    assert.match(ownAdmin.body.message, /your own account/)
   })
 
   test('the admin can approve an operator application', async () => {

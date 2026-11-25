@@ -137,20 +137,25 @@ export async function getShiftViews(riderId) {
 }
 
 // The money of one shift view, computed the same way as the operator's Settlements page (calc.js):
-//   gross  = rider pay of every delivered order (allowance + share + extra-store fees)
-//   net    = gross − the shift's deductions
+//   gross      = rider pay of every delivered order (allowance + share + extra-store fees)
+//   deductions = the shift's applied deductions (operator fee, box rent, savings)
+//   net        = gross − deductions
 //   cod    = cash the rider collected (paid COD orders)
 //   toRemit / toPayRider = settlementAmounts(cod, net): who owes whom at the end of the shift
+//   pettyOnHand = petty cash the rider still holds (pettyCashOnHand)
+// None of these are stored; they are calculated every time from the shift's rows.
 export function shiftMoney(view) {
   const gross = view.runs.reduce(
     (sum, r) => sum + deliveryGross(r.order.base_delivery_fee, r.earning.gas_allowance_amount, r.earning.rider_share_pct, orderExtraStoreFees(r.stores)),
     0,
   )
-  const net = gross - sumAmounts(view.deductions)
+  const deductions = sumAmounts(view.deductions)
+  const net = gross - deductions
   const cod = view.runs
     .filter((r) => r.payment?.payment_method === 'cod' && r.payment.payment_status === 'paid')
     .reduce((sum, r) => sum + orderTotal(orderItemsSubtotal(r.stores.flatMap((st) => st.items)), r.order.base_delivery_fee, orderExtraStoreFees(r.stores)), 0)
-  return { gross, net, cod, ...settlementAmounts(cod, net), pettyOnHand: pettyCashOnHand(view.pettyCash) }
+  const round = (n) => Math.round(n * 100) / 100
+  return { gross: round(gross), deductions, net: round(net), cod: round(cod), ...settlementAmounts(cod, net), pettyOnHand: pettyCashOnHand(view.pettyCash) }
 }
 
 // Every rider with what dispatch needs (the mock's getRidersOverview), also used by the admin reports:

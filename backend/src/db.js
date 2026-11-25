@@ -8,10 +8,9 @@ pg.types.setTypeParser(pg.types.builtins.NUMERIC, (value) => (value === null ? n
 // Keep DATE columns as plain 'YYYY-MM-DD' strings (no timezone shifting).
 pg.types.setTypeParser(pg.types.builtins.DATE, (value) => value)
 
-export const pool = new pg.Pool({ connectionString: config.databaseUrl })
-
 // Every connection works in Philippine time, so "today" and shift dates are local.
-pool.on('connect', (client) => client.query("SET TIME ZONE 'Asia/Manila'"))
+// (Sent as a connection option, so it is set before the first query runs.)
+export const pool = new pg.Pool({ connectionString: config.databaseUrl, options: '-c TimeZone=Asia/Manila' })
 
 // Runs one parameterized query. Always pass values as params ($1, $2, ...),
 // never by building the SQL string, so user input can't change the query (SQL injection).

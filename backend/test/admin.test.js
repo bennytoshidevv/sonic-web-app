@@ -3,6 +3,7 @@
 import { describe, test } from 'node:test'
 import assert from 'node:assert/strict'
 import { call, loginAs, pool, setup } from './helpers.js'
+import { orderExtraStoreFees, orderItemsSubtotal, orderTotal } from '../src/utils/calc.js'
 
 let admin
 let adminId
@@ -35,6 +36,47 @@ describe('reports', () => {
     const d = body.deductions[0]
     assert.ok(['Operator fee', 'Box rent', 'Rider savings'].includes(d.type.name))
     assert.equal(typeof d.type.is_rider_savings, 'boolean')
+  })
+})
+
+describe('report totals (SQL)', () => {
+  // Nov 20, 2026 in the seed: order 1002 (Maria: Half Lechon + 2 Java Rice, North Centro ₱40, COD) and
+  // order 1010 (Liza: Whole Lechon, Tara ₱150, COD), both from Golden Roast Express, both delivered by Marcelo.
+  test('one day of seed data: totals, restaurants, items, riders, payments, Sonic income', async () => {
+    const { status, body } = await a('GET', '/reports?from=2026-11-20&to=2026-11-20')
+    assert.equal(status, 200)
+    const s = body.summary
+    // sales = (165 + 2×25 + 40) + (320 + 150) = 255 + 470 = 725; delivery fees = 40 + 150 = 190
+    assert.deepEqual([s.totals.orders, s.totals.delivered, s.totals.cancelled, s.totals.sales, s.totals.delivery_fees], [2, 2, 0, 725, 190])
+    assert.deepEqual(s.perRestaurant.map((r) => [r.name, r.orders]), [['Golden Roast Express', 2]])
+    assert.deepEqual(s.topItems.map((i) => [i.name, i.quantity, i.sales]), [['Whole Lechon Manok', 1, 320], ['Half Lechon Manok', 1, 165], ['Java Rice', 2, 50]])
+    // Marcelo: 1002 → ₱0 allowance + ₱28 share; 1010 → ₱20 allowance + ₱91 share = ₱139
+    const marcelo = s.riders.find((r) => r.user_id === 2)
+    assert.deepEqual([marcelo.delivered, marcelo.gross_pay, marcelo.rating], [2, 139, 5])
+    assert.equal(s.riders.find((r) => r.user_id === 8).delivered, 0)
+    assert.deepEqual(s.payments.map((p) => [p.payment_method, p.orders, p.amount]).find((p) => p[0] === 'cod'), ['cod', 2, 725])
+    assert.equal(s.payments.length, 5) // every method listed
+    // Sonic: fee share (40 − 0 − 28) + (150 − 20 − 91) = 51, plus box rent ₱10 + 2 operator fees = ₱30 → ₱81
+    assert.deepEqual([s.totals.fee_share, s.totals.rider_fees, s.totals.sonic_income], [51, 30, 81])
+  })
+
+  test('SQL totals equal the calc.js totals the page computes from the raw orders', async () => {
+    const { body } = await a('GET', '/reports?from=2026-11-15&to=2026-11-20')
+    const inRange = body.orders.filter((e) => {
+      const day = new Date(e.order.placed_at).toLocaleDateString('en-CA', { timeZone: 'Asia/Manila' })
+      return day >= '2026-11-15' && day <= '2026-11-20'
+    })
+    const delivered = inRange.filter((e) => e.order.order_status === 'delivered')
+    const sales = delivered.reduce((sum, e) => sum + orderTotal(orderItemsSubtotal(e.stores.flatMap((st) => st.items)), e.order.base_delivery_fee, orderExtraStoreFees(e.stores)), 0)
+    assert.equal(body.summary.totals.sales, sales)
+    assert.equal(body.summary.totals.orders, inRange.length)
+    assert.equal(body.summary.totals.cancelled, 1) // 1003 on Nov 19
+  })
+
+  test('bad dates', async () => {
+    assert.equal((await a('GET', '/reports?from=2026-11-20')).body.error, 'invalid_date')
+    assert.equal((await a('GET', '/reports?from=2026-11-21&to=2026-11-20')).body.error, 'invalid_date')
+    assert.equal((await a('GET', '/reports')).body.summary, undefined) // no range: raw data only, like the mock
   })
 })
 
@@ -84,6 +126,9 @@ describe('settings', () => {
     assert.equal(gap.body.error, 'invalid_tiers')
     assert.match(gap.body.message, /should start at ₱101/)
     assert.equal((await a('PUT', '/gas-tiers', { tiers: [] })).body.error, 'invalid_tiers')
+    const overlap = await a('PUT', '/gas-tiers', { tiers: [{ min_delivery_fee: 0, max_delivery_fee: 100, allowance_amount: 5 }, { min_delivery_fee: 90, max_delivery_fee: null, allowance_amount: 30 }] })
+    assert.equal(overlap.body.error, 'invalid_tiers') // ₱90–₱100 would be in two tiers
+    assert.match(overlap.body.message, /should start at ₱101/)
 
     const before = (await pool.query('SELECT count(*)::int AS n FROM gas_allowance_tiers')).rows[0].n
     const ok = await a('PUT', '/gas-tiers', { tiers: [{ min_delivery_fee: 101, max_delivery_fee: '', allowance_amount: 25 }, { min_delivery_fee: 0, max_delivery_fee: 100, allowance_amount: 5 }] })
@@ -125,6 +170,34 @@ describe('settings', () => {
   })
 })
 
+describe('a new rate only affects new orders', () => {
+  test('new orders use the new extra-store fee; an old delivery keeps its old rider share', async () => {
+    const { rows: t } = await pool.query(`SELECT to_char(now() - interval '1 minute', 'YYYY-MM-DD"T"HH24:MI') AS since`)
+    const res = await a('POST', '/rate-settings', { extra_store_fee: 15, rider_share_pct: 75, effective_from: t[0].since })
+    try {
+      assert.equal(res.status, 201)
+      const log = await lastAudit('rate_settings')
+      assert.deepEqual([log.old_value.rider_share_pct, log.new_value.rider_share_pct], [70, 75]) // old and new rate
+      assert.equal((await call('GET', '/rate-settings/current')).body.rider_share_pct, 75)
+
+      // A new 2-store order pays the new ₱15 extra-store fee
+      const reg = await call('POST', '/auth/register', { full_name: 'Rate Tester', email: `rate${Date.now()}@test.ph`, contact_number: '09171239000', password: 'password123' })
+      const address = await call('POST', '/addresses', { barangay_id: 1, street_address: 'Rizal St.' }, reg.body.token)
+      const placed = await call('POST', '/orders', { address_id: address.body.address_id, lines: [{ item_id: 1, quantity: 1 }, { item_id: 13, quantity: 1 }] }, reg.body.token)
+      const details = (await call('GET', `/orders/${placed.body.order.order_id}`, null, reg.body.token)).body
+      assert.equal(details.stores[1].extra_store_fee, 15)
+      assert.equal(details.payment.amount, 95 + 79 + 40 + 15)
+
+      // Old order 1001 still has its ₱10 fee, and old delivery 1006 keeps its 70% rider share snapshot
+      const reports = (await a('GET', '/reports')).body.orders
+      assert.equal(reports.find((e) => e.order.order_id === 1001).stores[1].extra_store_fee, 10)
+      assert.equal(reports.find((e) => e.order.order_id === 1006).earning.rider_share_pct, 70)
+    } finally {
+      await pool.query('DELETE FROM rate_settings WHERE setting_id = $1', [res.body.rate.setting_id])
+    }
+  })
+})
+
 describe('rider savings', () => {
   test('overview: ledger newest first with shift dates and who processed it', async () => {
     const { body } = await a('GET', '/savings')
@@ -150,7 +223,9 @@ describe('rider savings', () => {
     assert.equal(ok.status, 201)
     assert.equal(ok.body.entry.entry_type, 'withdrawal')
     assert.equal(ok.body.entry.processed_by, adminId)
-    assert.equal((await lastAudit('rider_savings_entries')).action, 'savings_withdrawal')
+    const log = await lastAudit('rider_savings_entries')
+    assert.equal(log.action, 'savings_withdrawal')
+    assert.deepEqual([log.old_value.balance, log.new_value.balance], [330, 300]) // balance before and after
     assert.equal((await a('POST', '/savings/2/withdrawals', { amount: 300.01, note: 'More' })).body.error, 'not_enough')
     assert.equal((await a('POST', '/savings/99999/withdrawals', { amount: 1, note: 'x' })).status, 404)
   })

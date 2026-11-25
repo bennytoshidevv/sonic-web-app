@@ -35,7 +35,9 @@ async function loadShiftView(db, shiftId, { lock = false } = {}) {
 }
 
 // GET /api/staff/shifts?date=YYYY-MM-DD -> shifts that started that day, earliest first (getShiftsOnDate)
-//   each: { shift, runs, deductions, settlement, pettyCash, rider, profile }
+//   each: { shift, runs, deductions, settlement, pettyCash, rider, profile, money }
+//   money = { gross, deductions, net, cod, toRemit, toPayRider, pettyOnHand }, calculated with calc.js
+//   (shiftMoney) on every read and never stored. The mock had no `money`; the page may keep computing its own.
 router.get('/', async (req, res) => {
   const date = String(req.query.date ?? '')
   if (!DATE.test(date) || Number.isNaN(Date.parse(date))) throw badRequest('invalid_date', 'Use a date like 2026-11-25')
@@ -52,7 +54,7 @@ router.get('/', async (req, res) => {
       ORDER BY s.started_at`,
     [date],
   )
-  res.json(rows.map((r) => r.view))
+  res.json(rows.map((r) => ({ ...r.view, money: shiftMoney(r.view) })))
 })
 
 // POST /api/staff/shifts/:id/settlement  { cash_received, payout_method, payout_reference, notes, return_petty_cash } -> { ok } (recordSettlement)

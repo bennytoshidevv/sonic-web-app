@@ -86,6 +86,7 @@ router.put('/categories/:id', async (req, res) => {
 
 // POST /api/staff/menus/categories/:id/move  { direction: -1 (up) | 1 (down) } -> { ok } (moveMenuCategory)
 // Swaps display_order with the neighbour; 409 'edge' when it is already first/last.
+// Audited like every other menu edit (the mock did not log moves).
 router.post('/categories/:id/move', async (req, res) => {
   const categoryId = toId(req.params.id, 'category id')
   const direction = req.body?.direction
@@ -102,6 +103,14 @@ router.post('/categories/:id/move', async (req, res) => {
     if (!other) throw conflict('edge', 'This category is already at the edge')
     await db.query('UPDATE menu_categories SET display_order = $2 WHERE menu_category_id = $1', [categoryId, other.display_order])
     await db.query('UPDATE menu_categories SET display_order = $2 WHERE menu_category_id = $1', [other.menu_category_id, category.display_order])
+    await audit(db, {
+      user_id: req.user.user_id,
+      action: 'move_menu_category',
+      target_entity: 'menu_categories',
+      target_id: categoryId,
+      old_value: { display_order: category.display_order },
+      new_value: { display_order: other.display_order },
+    })
   })
   res.json({ ok: true })
 })

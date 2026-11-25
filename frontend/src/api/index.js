@@ -105,6 +105,9 @@ export function placeOrder({ address, lines, stores, payment_method, order_notes
   })
 }
 
+// Opens the PayMongo page of an unpaid online order. Returns { checkout_url } or { error: 'already_paid' | ... }.
+export const startOnlinePayment = (order_id) => api.post(`/payments/orders/${order_id}/checkout`)
+
 export const getCustomerOrders = () => api.get('/orders')
 // { order, stores, history, payment, rider }, or null when it isn't this customer's order.
 export const getOrderDetails = async (order_id) => orNull(await api.get(`/orders/${order_id}`))

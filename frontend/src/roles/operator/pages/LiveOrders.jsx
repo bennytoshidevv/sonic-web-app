@@ -94,7 +94,7 @@ export default function LiveOrders() {
     setBusyId(entry.order.order_id)
     const result = await advanceOrderByStaff(entry.order.order_id)
     setBusyId(null)
-    showToast(result.error ? errorText(result, 'This order can no longer be confirmed.') : `#${entry.order.order_number} confirmed`)
+    showToast(result.error ? errorText(result, result.error === 'payment_required' ? 'Waiting for online payment.' : 'This order can no longer be confirmed.') : `#${entry.order.order_number} confirmed`)
     reload()
   }
 

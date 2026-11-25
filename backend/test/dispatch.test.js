@@ -197,6 +197,30 @@ describe('rejecting', () => {
   })
 })
 
+describe('online orders must be paid before they are confirmed', () => {
+  test('unpaid: refused and unchanged; paid: confirmed', async () => {
+    for (const method of ['gcash', 'maya', 'qr_ph', 'card']) {
+      const order = await newOrder(method)
+      const refused = await advance(order.order_id)
+      assert.equal(refused.status, 409)
+      assert.equal(refused.body.error, 'payment_required')
+      assert.equal((await staffOrder(order.order_id)).order.order_status, 'pending')
+      assert.equal((await advance(order.order_id, admin)).status, 409) // the admin too
+
+      await pool.query("UPDATE payments SET payment_status = 'paid', paid_at = now() WHERE order_id = $1", [order.order_id])
+      assert.equal((await advance(order.order_id)).body.order.order_status, 'confirmed')
+      await call('POST', `/staff/orders/${order.order_id}/reject`, { reason: 'Test order' }, operator)
+    }
+  })
+
+  test('an unpaid online order can still be rejected, without a refund', async () => {
+    const order = await newOrder('gcash')
+    assert.equal((await call('POST', `/staff/orders/${order.order_id}/reject`, { reason: 'Never paid' }, operator)).status, 200)
+    const { rows } = await pool.query('SELECT 1 FROM refunds r JOIN payments p USING (payment_id) WHERE p.order_id = $1', [order.order_id])
+    assert.equal(rows.length, 0)
+  })
+})
+
 describe('riders overview', () => {
   test('shift, jobs, petty cash and reviews per rider (no password hash)', async () => {
     const { status, body } = await call('GET', '/staff/riders', null, operator)

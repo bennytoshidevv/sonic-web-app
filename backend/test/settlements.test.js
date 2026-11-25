@@ -101,6 +101,8 @@ describe('settling', () => {
     const address = await call('POST', '/addresses', { barangay_id: 5, street_address: 'Zone 4' }, reg.body.token)
     const placed = await call('POST', '/orders', { address_id: address.body.address_id, payment_method: 'gcash', lines: [{ item_id: 9, quantity: 1 }] }, reg.body.token)
     const orderId = placed.body.order.order_id
+    // Online orders must be paid before the operator can confirm them.
+    await pool.query("UPDATE payments SET payment_status = 'paid', paid_at = now() WHERE order_id = $1", [orderId])
     await call('POST', `/staff/orders/${orderId}/advance`, null, operator)
     await call('POST', `/staff/orders/${orderId}/assign`, { rider_id: riderId }, operator)
     const pending = (await call('GET', '/rider/deliveries', null, rider)).body.pending[0]

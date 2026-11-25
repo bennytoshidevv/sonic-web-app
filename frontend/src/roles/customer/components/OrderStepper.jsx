@@ -8,7 +8,8 @@ import { formatTimestampTime } from '@shared/utils/format'
 export default function OrderStepper({ status, history }) {
   // Time of each status (the latest change wins)
   const times = {}
-  for (const row of history) times[row.status] = row.changed_at
+  // (the first row per status: a later row with the same status only adds a remark, e.g. "payment received")
+  for (const row of history) times[row.status] ??= row.changed_at
 
   let steps
   if (status === 'cancelled') {

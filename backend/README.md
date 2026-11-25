@@ -77,7 +77,7 @@ An id in the path or query that is not a positive whole number gives 400 `invali
 | **Operator orders + riders** (module 4) | | | Operator and admin only |
 | GET | `/api/staff/orders` | operator, admin | → every order, newest first: `{ order, stores (+ address, contact_number), history (+ changed_by_name), payment, rider, customer, delivery, assignments, currentAssignment }` (`getLiveOrders`) |
 | GET | `/api/staff/orders/:id` | operator, admin | → one order, same shape; 404 `not_found` (`getOrderForStaff`) |
-| POST | `/api/staff/orders/:id/advance` | operator, admin | → `{ order }`: pending → confirmed → preparing → ready_for_pickup; else 409 `not_allowed`. Notifies the customer (`advanceOrderByStaff`) |
+| POST | `/api/staff/orders/:id/advance` | operator, admin | → `{ order }`: pending → confirmed → preparing → ready_for_pickup; else 409 `not_allowed`, or 409 `payment_required` when confirming an unpaid online order. Notifies the customer (`advanceOrderByStaff`) |
 | POST | `/api/staff/orders/:id/reject` | operator, admin | `{ reason }` → `{ order }`; until ready_for_pickup (409 `not_allowed`), 400 `reason_required`. Ends the assignment (rider freed), pending refund if paid online, notifies customer + rider (`rejectOrderByStaff`) |
 | POST | `/api/staff/orders/:id/assign` | operator, admin | `{ rider_id }` → `{ ok }`; 409 `not_assignable` (not confirmed yet / picked up), 409 `rider_unavailable`. Reassigning ends the old assignment. Notifies the rider (`assignRider`) |
 | GET | `/api/staff/riders` | operator, admin | → `[{ user, profile, openShift, deliveriesThisShift, pettyCash, jobs, reviews }]` (`getRidersOverview`) |
@@ -192,11 +192,14 @@ Test the webhook locally. PayMongo needs a public HTTPS address, so use a tunnel
    (or `ngrok http 4000`). Copy the `https://...` address.
 2. Add an endpoint in the Dashboard: `https://<address>/api/payments/webhook`, event `checkout_session.payment.paid`.
 3. Put its `whsk_...` secret in `.env` and restart the backend.
-4. Place an online order, call the checkout route, open `checkout_url` and pay with a test method: card
+4. Place an online order on the site (it opens the PayMongo page) and pay with a test method: card
    `4343434343434345` (any future date, any CVC), or choose **Authorize** for GCash/Maya. For QR Ph use the test
    page; never pay the QR with a real account.
 5. Check `payments` (paid) and `payment_webhook_events` (one row, `processed_at` filled). Resend the event from the
    Dashboard: nothing may change.
+
+Without a tunnel you can still test paying with only `PAYMONGO_SECRET_KEY`: after paying, press **Pay now** on the order
+once more. The API then asks PayMongo, sees the payment and marks the order paid.
 
 A free tunnel gets a new address each time, so update the endpoint's URL when you restart it. Stop the tunnel when done:
 while it runs, your whole API is public.

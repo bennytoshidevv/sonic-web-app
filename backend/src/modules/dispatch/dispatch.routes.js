@@ -65,14 +65,23 @@ router.get('/orders/:id', async (req, res) => {
   res.json(order)
 })
 
+async function checkOnlinePaid(db, orderId) {
+  const { rows } = await db.query('SELECT payment_method, payment_status FROM payments WHERE order_id = $1 ORDER BY payment_id DESC LIMIT 1', [orderId])
+  if (rows[0] && rows[0].payment_method !== 'cod' && rows[0].payment_status !== 'paid') {
+    throw conflict('payment_required', 'Waiting for online payment')
+  }
+}
+
 // POST /api/staff/orders/:id/advance -> { order } (advanceOrderByStaff)
 // pending → confirmed → preparing → ready_for_pickup. Later steps belong to the rider.
+// An online order can't be confirmed until it is paid, so food never goes out unpaid. COD is paid on delivery.
 router.post('/orders/:id/advance', async (req, res) => {
   const orderId = toId(req.params.id, 'order id')
   const order = await withTransaction(async (db) => {
     const current = await lockOrder(db, orderId)
     const next = STAFF_NEXT_STATUS[current.order_status]
     if (!next) throw conflict('not_allowed', `An order that is ${current.order_status} can't be moved by staff`)
+    if (current.order_status === 'pending') await checkOnlinePaid(db, orderId)
     const { rows } = await db.query('UPDATE customer_orders SET order_status = $2 WHERE order_id = $1 RETURNING *', [orderId, next])
     await addHistory(db, orderId, next, req.user.user_id)
     await notifyOrderStatus(db, rows[0], next)

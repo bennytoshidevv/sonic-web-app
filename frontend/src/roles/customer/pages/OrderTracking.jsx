@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { Link, useNavigate, useParams } from 'react-router-dom'
+import { Link, useLocation, useNavigate, useParams } from 'react-router-dom'
 import {
   AlertCircle,
   ArrowLeft,
@@ -22,7 +22,7 @@ import EmptyState from '@shared/components/EmptyState'
 import OrderStepper from '@customer/components/OrderStepper'
 import StatusBadge from '@shared/components/StatusBadge'
 import { useAuth } from '@shared/auth/AuthContext'
-import { cancelOrder, getOrderDetails } from '@api'
+import { cancelOrder, getOrderDetails, startOnlinePayment } from '@api'
 import { errorText } from '@shared/utils/errors'
 import { orderExtraStoreFees, orderItemsSubtotal, orderTotal } from '@shared/utils/calc'
 import { formatDate, formatMoney, formatTimestampTime } from '@shared/utils/format'
@@ -43,6 +43,10 @@ export default function OrderTracking() {
   const [refreshing, setRefreshing] = useState(false)
   const [refreshKey, setRefreshKey] = useState(0) // +1 reloads the order
   const [lastUpdated, setLastUpdated] = useState(null)
+
+  // Checkout passes a message here when the payment page could not be opened.
+  const [payError, setPayError] = useState(useLocation().state?.payError || '')
+  const [paying, setPaying] = useState(false)
 
   const [cancelOpen, setCancelOpen] = useState(false)
   const [cancelReason, setCancelReason] = useState('')
@@ -88,6 +92,8 @@ export default function OrderTracking() {
   const lastChange = history[history.length - 1]
   const storeNames = stores.map((s) => s.name).join(' & ')
 
+  const canPayOnline = !isCancelled && payment && payment.payment_method !== 'cod' && payment.payment_status === 'pending'
+
   // What the payment row says
   let paymentText = ''
   if (payment) {
@@ -95,6 +101,20 @@ export default function OrderTracking() {
     else if (isCancelled) paymentText = 'Not charged'
     else if (payment.payment_method === 'cod') paymentText = `Pay ${formatMoney(total)} to the rider`
     else paymentText = 'Waiting for payment'
+  }
+
+  async function handlePay() {
+    setPayError('')
+    setPaying(true)
+    const result = await startOnlinePayment(order.order_id)
+    setPaying(false)
+    if (result.checkout_url) {
+      window.location.assign(result.checkout_url)
+      return
+    }
+    // Already paid, or cancelled meanwhile: show the order as it is now.
+    if (result.error !== 'already_paid') setPayError(errorText(result, result.message))
+    if (result.error === 'already_paid' || result.error === 'not_payable') refresh()
   }
 
   async function handleCancel(e) {
@@ -327,6 +347,25 @@ export default function OrderTracking() {
               </div>
             )}
           </section>
+
+          {/* Unpaid online order: continue on PayMongo's page */}
+          {canPayOnline && (
+            <div className="flex flex-col gap-2">
+              {payError && (
+                <p role="alert" className="flex items-start gap-1.5 rounded-lg bg-red-50 px-3 py-2 text-small text-red-700">
+                  <AlertCircle className="mt-px size-4 shrink-0" aria-hidden="true" />
+                  {payError}
+                </p>
+              )}
+              <Button fullWidth disabled={paying} onClick={handlePay}>
+                <Wallet className="size-5" aria-hidden="true" />
+                {paying ? 'Opening payment…' : `Pay now · ${formatMoney(payment.amount)}`}
+              </Button>
+              <p className="text-center text-caption text-sonic-muted">
+                The store confirms your order after payment. Already paid? Press Refresh in a moment.
+              </p>
+            </div>
+          )}
 
           {/* Actions: cancel only while pending, rate only after delivered */}
           {status === 'pending' && (

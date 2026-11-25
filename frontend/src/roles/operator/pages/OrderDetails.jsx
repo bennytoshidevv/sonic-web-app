@@ -109,7 +109,7 @@ export default function OrderDetails() {
     setBusy(true)
     const result = await advanceOrderByStaff(order.order_id)
     setBusy(false)
-    showToast(result.error ? errorText(result, 'This order cannot be updated right now.') : `Order marked as ${ORDER_STATUS_LABELS[next].toLowerCase()}`)
+    showToast(result.error ? errorText(result, result.error === 'payment_required' ? 'Waiting for online payment.' : 'This order cannot be updated right now.') : `Order marked as ${ORDER_STATUS_LABELS[next].toLowerCase()}`)
     reload()
   }
 

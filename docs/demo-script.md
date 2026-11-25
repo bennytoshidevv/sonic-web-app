@@ -125,7 +125,7 @@ You should see Ana's price change (95 → 105) and Ramon's approval.
 
 | Avoid | Why |
 |---|---|
-| GCash, Maya, QR Ph, card at checkout | PayMongo is not connected. The order is placed but nothing is paid. Use COD. |
+| GCash, Maya, QR Ph, card at checkout | Without PayMongo keys in `backend/.env` the order can't be paid, and an unpaid online order can't be confirmed. Use COD. (The demo GCash order ending in 1004 also answers "Waiting for online payment".) |
 | Ending Ramon's shift before the order is delivered, or twice | One shift per day; he can't start again until `db:reset`. |
 | `npm run db:reset` or `npm test` during the demo | Reset erases the order; the tests add and change data. |
 | "Duplicate tab", or logging in as another role in the same tab | The tab switches to that account. |

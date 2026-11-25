@@ -19,7 +19,7 @@ import AddressForm from '@customer/components/AddressForm'
 import BottomSheet from '@shared/components/BottomSheet'
 import Button from '@shared/components/Button'
 import { useCart } from '@customer/context/CartContext'
-import { getBarangays, placeOrder } from '@api'
+import { getBarangays, placeOrder, startOnlinePayment } from '@api'
 import { errorText } from '@shared/utils/errors'
 import { cartItemCount, cartSubtotal, extraStoreFees, lineTotal, orderTotal } from '@shared/utils/calc'
 import { formatMoney } from '@shared/utils/format'
@@ -51,6 +51,7 @@ export default function Checkout() {
   const [placing, setPlacing] = useState(false)
   const [orderError, setOrderError] = useState('')
   const [placedOrderId, setPlacedOrderId] = useState(null) // set once the order is placed
+  const [payError, setPayError] = useState('') // the order is placed, but the payment page could not be opened
 
   useEffect(() => {
     getBarangays().then(setBarangays)
@@ -58,7 +59,7 @@ export default function Checkout() {
 
   // Nothing to check out: go back to the (empty) cart
   // Order placed: go to its tracking page (the cart is now empty, so this must come first)
-  if (placedOrderId) return <Navigate to={`/customer/orders/${placedOrderId}`} replace />
+  if (placedOrderId) return <Navigate to={`/customer/orders/${placedOrderId}`} replace state={{ payError }} />
   // Nothing to check out: go back to the (empty) cart
   if (lines.length === 0) return <Navigate to="/customer/cart" replace />
   if (loading) return <p className="py-10 text-center text-sonic-muted">Loading checkout…</p>
@@ -96,14 +97,18 @@ export default function Checkout() {
       order_notes: notes.trim(),
       amount: total,
     })
-    setPlacing(false)
 
     if (result.error) {
+      setPlacing(false)
       setOrderError(errorText(result, 'Some items just became unavailable. Please check your cart and try again.'))
       return
     }
+    // Online: continue on PayMongo's page. If that fails, the order still exists and its tracking page has "Pay now".
+    const payment = paymentMethod === 'cod' ? null : await startOnlinePayment(result.order.order_id)
+    if (payment?.error) setPayError(errorText(payment, payment.message))
     setPlacedOrderId(result.order.order_id)
     clearCart()
+    if (payment?.checkout_url) window.location.assign(payment.checkout_url)
   }
 
   // Shown in the bottom bar (phone/tablet) and in the summary card (desktop)

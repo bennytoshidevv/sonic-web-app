@@ -74,6 +74,7 @@ Commands: `npm run dev` (http://localhost:4000), `npm run db:reset` (schema + se
 - Notifications: the backend saves them (order status → customer, rider assigned → rider). No notifications page for now.
 - Rejecting an online-paid order creates a `refunds` row with status `pending`. Actual PayMongo refunds only if time allows.
 - Rejected rider/operator applications stay `inactive`; no new account status.
+- An online order (gcash, maya, qr_ph, card) can be confirmed only after it is paid (409 `payment_required`). It can still be rejected.
 - Operator "Delivered today" filter = today only.
 - Priority: modules 1–8, then connecting the frontend. PayMongo, a notifications page and deployment only if time is left.
 - Module 1: keep the mock's response shape, plus extra fields `average_rating` (SQL, 1 decimal, null if no reviews) and

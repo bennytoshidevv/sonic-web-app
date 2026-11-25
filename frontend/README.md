@@ -6,7 +6,7 @@ Run these commands inside the `frontend/` folder (the API is in `../backend`).
 ```
 cd frontend
 npm install
-npm run dev     # http://localhost:5173
+npm run dev     # http://localhost:5173 (start the backend first)
 npm run build
 ```
 
@@ -20,9 +20,11 @@ npm run build
 | Operator | `/operator` | `/operator/login` | `/operator/apply` (needs the admin's approval) |
 | Admin | `/admin` (Reports, Rider savings, Settings + all operator pages) | `/admin/login` | none |
 
-## Demo accounts (mock data)
+## Demo accounts
 
-All mock accounts use the password `sonic1234`. Only its SHA-256 hash is stored in `src/mock/mock.js`.
+All demo accounts use the password `sonic1234` (stored in the database as bcrypt hashes).
+The demo data comes from `src/mock/mock.js`: the backend's `npm run db:reset` loads it into PostgreSQL. The pages themselves
+use the real API (`src/api/`).
 
 | Email | Role | Goes to |
 |---|---|---|
@@ -35,5 +37,6 @@ All mock accounts use the password `sonic1234`. Only its SHA-256 hash is stored 
 | suspended@sonic.ph | rider (suspended) | shows "Account suspended" |
 | ramon@sonic.ph | rider application (inactive) | shows "Account not active yet" |
 
-New accounts, applications, orders and other changes are kept in memory only and are lost on page refresh.
-Staff changes (suspensions, menu and price edits, restaurant edits) are also written to the mock `audit_logs` table.
+New accounts, applications, orders and other changes are saved in the database, so they are still there after a refresh.
+Only `npm run db:reset` (in `backend/`) erases them. Staff changes (suspensions, menu and price edits, restaurant edits)
+are also written to the `audit_logs` table. The cart is kept in the browser tab until checkout.

@@ -130,7 +130,7 @@ You should see Ana's price change (95 → 105) and Ramon's approval.
 | `npm run db:reset` or `npm test` during the demo | Reset erases the order; the tests add and change data. |
 | "Duplicate tab", or logging in as another role in the same tab | The tab switches to that account. |
 | Photos and logos | There is no upload button in the pages (the API supports it). "Logo upload comes with the backend" is still on the restaurant form. |
-| A notifications page or bell | The backend saves notifications, but there is no page for them. |
+| A notifications page or bell | The backend saves notifications and has an API for them, but there is no page. |
 | Settings → Save new rates, gas tiers | Works, but changes the numbers in this script. |
 | Suspending Maria or Ramon | Locks that account out immediately. |
 
@@ -146,4 +146,4 @@ If "Can't reach the server" appears: check the backend window, start it again, t
 - **Can a customer see another customer's order?** No. The user comes from the login token, so someone else's order answers "not found".
 - **Are passwords safe?** They are stored as bcrypt hashes and never sent to the browser.
 - **Are things really deleted?** Users, restaurants and menu items are never deleted, only deactivated, so old orders stay complete.
-- **How was it tested?** 111 automated backend tests, all passing, plus this whole flow run in a browser.
+- **How was it tested?** 142 automated backend tests, all passing, plus this whole flow run in a browser.
